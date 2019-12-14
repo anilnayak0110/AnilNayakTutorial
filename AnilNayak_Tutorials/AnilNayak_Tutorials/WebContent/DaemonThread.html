@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Multithreading : </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Daemon Threads :</b>
+	</h4>
+	<ul>
+	  <li>The threads which are executing in the background are called Daemon Threads . </li>
+	  <li>Example: Garbage Collector </li>
+	  <li>The main purpose of Daemon Threads is to provide support for non-daemon threads (main threads) . </li>
+	  <li>Whenever main thread running with less memory then JVM runs Garbage Collector to destroy useless objects. So that free memory will be provided . </li>
+	  <li>We can check whether the thread is Daemon or not by using isDaemon() method of Thread class .
+	  <br>public final boolean isDaemon();</li>
+	  <li>We can change daemon nature of a thread by using setDaemon() <br>
+	      public final void setDaemon(boolean b);
+	  </li>
+	  <li>We can change daemon nature before starting of a Thread, by mistake if we are trying to change daemon nature after starting of a Thread then we will get Runtime Exception: IllegalThreadStateException . </li>
+	</ul>
+	<textarea rows="6" cols="50" style="color: blue;">
+	     Example :
+	        MyThread t = new MyThread();
+	        t.setDaemon(true);
+	        t.start();
+	        t.setDaemon(false);// RE: IllegalThreadStateException 
+	
+	</textarea>
+	<ul>
+	  <li>By default main thread is always non-daemon and for all remaining threads daemon nature will be inheriting from parent to child . </li>
+	  <li>We can not change daemon nature of main thread because it is already started by JVM at very beginning </li>
+	</ul>
+	  <textarea rows="15" cols="50" style="color: blue;">
+	     Example :
+	        Example: class MyThread extends Thread{ 
+	                 
+	            } 
+	            class Test { 
+	                public static void main(String[] args){ 
+	                   System.out.println(Thread.currentThread().isDaemon()); // o/p: false
+	                   Thread.currentThread().setDaemon(true);// RE: IllegalThreadStateException
+	                   MyThread t = new MyThread();
+	                   System.out.println(t.isDaemon()); // o/p: false
+	                   t.setDaemon(true);
+	                   System.out.println(t.isDaemon()); // o/p: true
+	                }
+	            }
+	
+	</textarea>
+	<ul>
+	  <li>Once last non-daemon thread terminates automatically all daemon threads will be terminated . </li>
+	</ul>
+	 <textarea rows="15" cols="50" style="color: blue;">
+	     Example :
+	               class MyThread extends Thread { 
+	                   public void run(){ 
+	                      for(int i = 0;i<10;i++){ 
+	                         System.out.println("Child Thread");
+	                         try{
+	                            Thread.sleep(2000); 
+	                         }
+	                         catch(InterruptedException ie){ 
+	                         
+	                         }
+	                      }
+	                   }
+	               }
+	               class DaemonThreadDemo { 
+	                  public static void main(String[] args){ 
+	                     MyThread t = new MyThread();
+	                     t.setDaemon(true);
+	                     t.start();
+	                     System.out.println("End of Main");
+	                  }
+	               }
+	
+	</textarea>
+	<ul>
+	  <li>If we comment t.setDaemon(true); line then both main  and child threads are daemon . </li>
+	  <li>Hence both threads will be continued until their completion . </li>
+	  <li>If we are not commenting t.setDaemon(true); then main thread is non-daemon but child thread is daemon . </li>
+	  <li>Hence whenever main thread terminates automatically child thread will be terminated . </li>
+	  <li>Note: Usually daemon threads run with low priority, but based on our requirement they may run with high priority . </li>
+	</ul>
+	
+</body>
+</html>

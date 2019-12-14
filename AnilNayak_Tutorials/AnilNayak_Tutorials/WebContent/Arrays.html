@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">Arrays:</b>
+     </h4>
+     <ul>
+       <li>Arrays class is an utility class to define several utility methods for Array objects . </li>
+       <li>Sorting elements of Array :- 
+         <ul>
+           <li>public static void sort(primitive[] p)<br>
+              To sort according to default natural sorting order . 
+           </li>
+           <li>public static void sort(Object[] o)<br>
+              To sort according to default natural sorting order . 
+           </li>
+           <li>public static void sort(Object[] o, Comparator c)<br>
+               To sort according to Customized sorting order . 
+           </li>
+         </ul>
+       </li>
+     </ul>
+     <ul>
+       <li>Note:- For Object type Arrays, we can sort according to default natural sorting order or customized sorting order .
+        But we can sort primitive array only based on default natural sorting order, but not based on customized sorting order . </li>
+     </ul>
+     	  <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: To sort elements based on Array :
+	    ------------------------------------------
+	             import java.util.*;
+	             public class CollectionsDemo {
+	                public static void main(String[] args){ 
+	                   int[] a = {10,5,20,11,6};
+	                   System.out.println("Primitive Array before Sorting");
+	                   for(int a1: a){ 
+	                      System.out.println(a1);
+	                   }
+	                   Arrays.sort(a);
+	                   System.out.println("Primitive Array after sorting");
+	                   for(int a2 : a){ 
+	                      System.out.println(a2);
+	                   }
+	                   String[] s = {"A","Z","B"};
+	                   System.out.println("Object Array before sorting");
+	                   for(String s1:s){ 
+	                      System.out.println(s1);
+	                   }
+	                   Arrays.sort(s);
+	                   System.out.println("Object Array after sorting");
+	                   for(String s2: s){ 
+	                      System.out.println(s2);
+	                   }
+	                   Arrays.sort(s, new MyComparator());
+	                   System.out.println("Object Array After sorting by Comparator");
+	                   for(String s3:s){
+	                     System.out.println(s3); 
+	                   }
+	                }
+	              }
+	             class MyComparator implements Comparator { 
+	                public int compare(Object o1, Object o2){ 
+	                   String s1 = o1.toString();
+	                   String s2 = o2.toString();
+	                   return s2.compareTo(s1);
+	                }
+	             }
+	          
+	          o/p:
+	          Primitive Array before Sorting
+10
+5
+20
+11
+6
+Primitive Array after sorting
+5
+6
+10
+11
+20
+Object Array before sorting
+A
+Z
+B
+Object Array after sorting
+A
+B
+Z
+Object Array After sorting by Comparator
+Z
+B
+A
+	</textarea>
+	<h5>
+        <b style="color: green;">Searching Elements of Array:</b>
+     </h5>
+     <ul>
+      <li>Arrays class defines the following methods:<br>
+         public static int binarySearch(primitive[] p, primitive target)<br>
+         If the primitive Array sorted according to default natural sorting order then we have to use this method .
+      </li>
+      <li>public static int binarySearch(Object[] o, Object target)<br>
+         If the Object Array sorted according to default natural sorting order then we have to use this method .
+      </li>
+      <li>public static int binarySearch(Object[] o, Object target, Comparator c)<br>
+         If the Object Array sorted according to Comparator then we have to use this method . 
+      </li>
+      <li>Note: All rules of Arrays class binarySearch() method are same as Collections class binarySearch() method . </li>
+     </ul>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: To search elements based on Array :
+	    ------------------------------------------
+	             import java.util.*;
+	             public class ArraySearchDemo { 
+	                public static void main(String[] args){ 
+	                   int[] a = {10,5,20,11,6};
+	                   Arrays.sort(a);
+	                   System.out.println(Arrays.binarySearch(a,6));
+	                   System.out.println(Arrays.binarySearch(a,14));
+	                   String[] s = {"A","Z","B"};
+	                   Arrays.sort(s);
+	                   System.out.println(Arrays.binarySearch(s,"Z"));
+	                   System.out.println(Arrays.binarySearch(s,"S"));
+	                   Arrays.sort(s,new MyComparator());
+	                   System.out.println(Arrays.binarySearch(s,"Z", new MyComparator()));
+	                   System.out.println(Arrays.binarySearch(s,"S", new MyComparator()));
+	                   System.out.println(Arrays.binarySearch(S,"N"));
+	                }
+	             }
+	             class MyComparator implements Comparator { 
+	                public int compare(Object o1, Object o2){ 
+	                   String s1 = o1.toString();
+	                   String s2 = o2.toString();
+	                   return s2.compareTo(s1);
+	                }
+	             }
+	             o/p:
+	             1
+                -5
+                 2
+                -3
+                 0
+                -2
+                -4
+	</textarea>
+	<h5>
+        <b style="color: green;">Conversion of Array to List :</b>
+     </h5>
+     <ul>
+       <li>Arrays class contains asList() method for this <br>
+           public static List asList(Object[] a)
+       </li>
+       <li>This method won't create an independent List Object, just we are viewing existing array in List form . <br>
+          Example: String[] s = {"A","Z","B"};<br>
+          List l = Arrays.asList(s);
+       </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Conclusion:</b>
+     </h5>
+     <ul>
+       <li>By using array reference we can perform any change automatically that change will be reflected to List reference. Using List reference if we perform any change automatically that change will be reflected to array . </li>
+       <li>By using List reference we can not perform any operation which varies the size , otherwise we will get Runtime Exception saying UnsupportedOperation Exception . </li>
+     </ul>
+	  <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: To search elements based on Array :
+	    ------------------------------------------
+	             import java.util.*;
+	             public ArrayAsListDemo { 
+	                public static void main(String[] args){ 
+	                   String[] s = {"A","Z","B"};
+	                   List l = Arrays.asList(s);
+	                   System.out.println(l);
+	                   s[0] = "K";
+	                   System.out.println(l);
+	                   l.set(1,"L");
+	                   for(String s1: s)
+	                   System.out.println(s1);
+	                   l.add("Anil");//java.lang.UnsupportedOperationException
+	                   l.remove(2);//java.lang.UnsupportedOperationException
+	                   l.set(l,new Integer(10));// java.lang.ArrayStoreException: 
+	                }
+	             }
+	             
+	             o/p:
+	             [A, Z, B]
+                 [K, Z, B]
+                 K
+                 L
+                 B
+	</textarea>
+</body>
+</html>

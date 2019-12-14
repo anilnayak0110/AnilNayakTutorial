@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IO  Package</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">BufferedReader</b>
+     </h4>
+     <ul>
+      <li>We can use BufferedReader to read character data from the file .</li>
+      <li>The main advantage of BufferedReader over FileReader is we can read data line by line instead of character by character which is more convenient to the programmer . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors : </b>
+     </h5>
+     <ul>
+      <li>BufferedReader br = new BufferedReader(Reader r);</li>
+      <li>BufferedReader br = new BufferedReader(Reader r, int buffersize);</li>
+      <li>Note: BufferedReader can not communicate with a file, it can communicate by a some Reader object .  </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Methods : </b>
+     </h5>
+     <ul>
+       <li>int read()</li>
+       <li>int read(char[] ch)</li>
+       <li>void close()</li>
+       <li>String readLine()</li>
+     </ul>
+     <ul>
+      <li>It attempts to read next line from the file and returns it . If the next line is not available then we will get null . </li>
+     </ul>
+      <textarea rows="20" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class BufferedReaderDemo { 
+	       public static void main(String[] args) Throws Exception{ 
+	         FileReader fr = new FileReader("AG.txt");
+	         BufferedReader br = new BufferedReader(fr);
+	         String line = br.readLine();
+	         while(line!=null){ 
+	           System.out.println(line);
+	           line = br.readLine();
+	         }
+	         br.close();
+	       }
+	    }
+	</textarea>
+ <ul>
+ <li>Note: Whenever are closing BufferedReader automatically underlying Readers will be closed and we are not required to close explicitly . </li>
+ </ul>
+</body>
+</html>

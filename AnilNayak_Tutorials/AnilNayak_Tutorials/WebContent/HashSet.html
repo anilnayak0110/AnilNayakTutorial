@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h5>
+        <b style="color: green;">Set Interface is implemented by HashSet,LinkedHashSet and TreeSet </b>
+     </h5>
+     <ul>
+        <li><b>Set</b> 
+          <ul>
+            <li><b>HashSet</b></li>
+            <li><b>LinkedHashSet</b></li>
+            <li><b>TreeSet</b></li>
+          </ul>
+        </li>
+     </ul>
+      <h4>
+		<b style="color: green;">HashSet</b>
+	  </h4>
+    
+     <ul>
+        <li>The underlying data structure is HashTable .</li>
+        <li>Insertion order is not preserved and it is based on hashcode of objects. </li>
+        <li>Duplicate objects are not allowed and if we are trying to insert duplicate objects then we won't get any compile time error and Runtime error simply add() method returns false . </li>
+        <li>Null insertion is possible . </li>
+        <li>Heterogeneous objects are allowed .</li>
+        <li>HashSet implements Serializable amd Cloneable interfaces, but not RansomAccess interface . </li>
+        <li>If our frequent operation is search operation then HashSet is the best choice . </li>
+     </ul>
+       <h5>
+		<b style="color: green;">Constructors</b>
+	  </h5>
+	  <ul>
+	   <li>HashSet h = new HashSet();<br>
+	       creates an empty HashSet objects with default initial capacity 16 and default fill ratio or load factor 0.75
+	   </li>
+	   <li>HashSet h = new HashSet(int initialCapacity); <br>
+	      creates an empty HashSet objects with specified initial capacity and default fill ratio 0.75
+	   </li>
+	   <li>HashSet h = new HashSet(int initialCapacity, float fillRatio);</li>
+	   <li>HashSet h = new HashSet(Collection c)</li>
+	  </ul>
+	   <h5>
+		<b style="color: green;">Load Factor :</b>
+	  </h5>
+	  <ul>
+	    <li>After loading this much factor a new HashSet object will be created, this factor is called Load Factor or Fill ratio . </li>
+	  </ul>
+	  <textarea rows="18" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                   HashSet h = new HashSet();
+	                   h.add("B");
+	                   h.add("C");
+	                   h.add("D");
+	                   h.add("E");
+	                   h.add(null);
+	                   h.add(10);
+	                   System.out.println(h.add("E"));o/p==>false
+	                   System.out.println(h);o/p==>[null, D, E, B, C, 10]
+
+	                 }
+	             }
+	</textarea>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Data types</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Literals</b>
+	</h4>
+	<b>Literals</b> is any constant value which can be assigned to a variable .
+	<br><br>
+	<img alt="" src="images/Literal1.PNG"/>
+	<br><br>
+	<h5>
+		<b style="color: green;">Integral Literals</b>
+	</h5>
+	For Integral data types(<b>byte, short, int, long</b>) we can specify literal value in following ways .
+	<h6>
+	  <b style="color: green;">Decimal Literals(base-10)</b>
+	</h6>
+	Allowed digits are <b>0 to 9</b> .
+	<b>e.g: int x = 10; </b>
+	<h6>
+	  <b style="color: green;">Octal Literals(base-8)</b>
+	</h6>
+	Literal value should be prefixed with <b>'0'</b> and allowed digits are <b>0 to 7</b> .
+	<b>e.g: int x = 010; </b>
+	<h6>
+	  <b style="color: green;">Hexadecimal Literals(base-16)</b>
+	</h6>
+	Literal value should be prefixed with <b>'0x' or 0X'</b> and allowed digits are <b>0 to 9, a to f(A to F)</b> .
+	<b>e.g: int x = 0X10; </b>
+	<br><br>
+	<ul>
+	<li>By default every integral literals are int type, but we can explicitly specify long type
+	by suffixed with <b>l or L</b> as shown in below example
+	<b>e.g: long l = 10L</b></li>
+	<li>Every literal data type should not cross their range value .
+	For <b>byte</b> and <b>short</b> if the value is within the range of <b>byte</b> and <b>short</b>
+	then compiler automatically treats it as <b>byte</b> and <b>short</b> value .
+	<b>e.g: byte b = 127;</b>
+	     <b>short s = 32767;</b></li>
+	     </ul>
+</body>
+</html>

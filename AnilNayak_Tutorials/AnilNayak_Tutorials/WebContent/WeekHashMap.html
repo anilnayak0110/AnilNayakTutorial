@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h5>
+        <b style="color: green;">WeakHashMap</b>
+     </h5>
+     <ul>
+       <li>It is exactly same as HashMap except the following difference </li>
+       <li>In case of Normal HashMap , if an object associated with HashMap, then it is not eligible for Garbage Collection, eventhough it does not contain any references i.e , HashMap dominates Garbage Collector . </li>
+       <li>But in case of WeakHashMap , if an object does not contain any references then it always eligible for Garbage Collector eventhough it is associated with WeakHashMap i.e Garbage Collector dominates WeakHashMap . </li>
+     </ul>
+      <textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class HashMapDemo{ 
+	                public static void main(String[] args){ 
+	                    WeakHashMap h = new WeakHashMap();
+		Temp t = new Temp();
+		h.put(t, "Anil");
+		System.out.println(h);
+		t = null;
+		System.gc();
+		Thread.sleep(5000);
+		System.out.println(h);   
+	              
+	                }
+	             }
+	             class Temp{
+	public String toString(){ 
+	   return "temp";	
+	}
+	public void finalize(){ 
+	   System.out.println("Finalize method called");	
+	}
+	
+}
+O/P:{temp=Anil}
+Finalize method called
+{}
+	</textarea>
+    
+</body>
+</html>

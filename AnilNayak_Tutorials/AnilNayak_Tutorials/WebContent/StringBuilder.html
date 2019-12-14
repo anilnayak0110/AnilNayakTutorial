@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>StringBuilder</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">java.lang.StringBuilder:-</b>
+	</h4>
+    <ul>
+      <li>It is exactly same as StringBuffer including constructors and methods except following difference . </li>
+    </ul>
+    <img alt="" src="images/StringBuffBuilder.PNG">
+     <h5>
+       <b style="color: green ">String vs StringBuffer vs StringBuilder</b>
+	</h5>
+	<ul>
+	  <li>If the content is fixed and won't change frequently then we should go for String</li>
+	  <li>If the content is not fixed and keep on changing and thread safety is required , then we should go for StringBuffer . </li>
+	  <li>If the content is not fixed and keep on changing and thread safety is not required then we should go for StringBuilder . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Method chaining</b>
+	</h5>
+	<ul>
+	  <li>For most of methods in String, StringBuffer, StringBuilder return types are same type only . </li>
+	  <li>Hence after applying a method call on the result we can call another method which forms method chaining .</li>
+	  <li>In method chaining, all method calls will be performed from left to right .</li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	 Example :
+	          StringBuffer sb = new StringBuffer();
+	          sb.append("gayatree").append("acharya").append("anil").append("Kumar").append("nayak").insert(2,"heera").delete(5,11).reverse().append("smile");
+	          System.out.println(sb);
+	</textarea>
+</body>
+</html>

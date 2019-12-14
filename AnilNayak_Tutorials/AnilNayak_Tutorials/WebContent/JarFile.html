@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java ClassPath </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Jar File :</b>
+	</h4>
+	<ul>
+	 <li>If several dependent classes are available then its never recommended to set the classpath individually . We have to group all those class files into a single zip file which is nothing but jar file, we have to place that jar file in classpath .  </li>
+	 <li>All third party software plug-in's are available in the form of jar file only . </li>
+	 <li>Example-1: To write a Servlet all dependent classes are available in servlet-api.jar . We have to place this jar file in classpath . So that we can compile servlet class . </li>
+	 <li>Example-2: To use log4J in our application all required class files available in log4j.jar, we have to place this jar file in classpath. So that we can use log4J  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Various Commands :</b>
+	</h5>
+	<ul>
+	 <li><b>To create a jar file(zip file):-</b>
+	   <ul>
+	    <li>jar -cvf ag.jar AG.class </li>
+	   </ul>
+	 </li>
+	</ul>
+	<ul>
+	 <li><b>To extract jar file(unzip)</b>
+	   <ul>
+	     <li>jar -xvf ag.jar</li>
+	   </ul>
+	 </li>
+	</ul>
+	<ul>
+	 <li><b>To display table contents of a jar file :</b>
+	   <ul>
+	     <li>jar -tvf ag.jar</li>
+	   </ul>
+	 </li>
+	</ul>
+	<textarea rows="30" cols="80" style="color: blue;">
+	        Service Provider Role :
+	        ----------------------
+	        public class AG { 
+	           public static void add(int x, int y){ 
+	             System.out.println(x+y);
+	           }
+	           public static void multiply(int x, int y){ 
+	             System.out.println(2*x*y);
+	           }
+	        }
+	        
+	        Example : javac AG.java
+	        jar -cvf ag.jar AG.class
+	        
+	        Client's Role:
+	        -------------
+	        Downloaded jar file and placed in D: of local machine . 
+	        class Nilyatree { 
+	           public static void main(String[] args){ 
+	             AG.add(10,20);
+	             AG.multiply(10,20);
+	           }
+	        }
+	        
+	        D:\AG> javac Nilyatree.java
+	        D:\AG> javac -cp D: Nilyatree.java(Error)
+	        D:\AG> javac -cp E:\ag.jar Nilyatree.java
+	        D:\AG> java Nilyatree (Error)
+	        D:\AG> java -cp .;E:\ag.jar Nilyatree
+	        
+	        o/p: 30
+	             400
+	</textarea>
+	<ul>
+	  <li>Note: To place jar file in the classpath just location is not enough compulsory we have to include name of the jar file also . </li>
+	</ul>
+	 <h4>
+       <b style="color: green ">Shortcut way to place jar file in the classpath :</b>
+	</h4>
+	<ul>
+	  <li>If we place jar file in the following location automatically, it is available to java compiler and JVM . </li>
+	  <li>We are not required to set classpath explicitly . </li>
+	</ul>
+		<textarea rows="8" cols="80" style="color: blue;">
+	       jdk
+	         |-jre
+	            |-lib
+	               |-ext
+	                  |-*.jar
+	</textarea>
+</body>
+</html> 

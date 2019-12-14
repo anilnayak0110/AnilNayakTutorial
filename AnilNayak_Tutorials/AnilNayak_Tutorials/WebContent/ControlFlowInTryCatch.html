@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Control Flow in Try Catch</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Control Flow in Try Catch:</b>
+	</h4>
+	<textarea rows="10" cols="60" style="color: blue;">
+	     try{ 
+	         statement 1;
+	         statement 2;
+	         statement 3;
+	     }
+	     catch(Exception e){
+	         statement 4;
+	     }
+	     statement 5;
+	     
+	  
+	</textarea>
+	<ul>
+	  <li><b>Case 1:</b> If there is no Exception<br>
+	                    then statement 1, statement 2, statement 3, statement 5 will execute with normal termination.</li>
+	  <li><b>Case 2:</b>If an exception raised at statement 2  and the corresponding catch block matched<br>
+	             then statement 1 , statement 4, statement 5 will execute with normal termination</li>
+	  <li><b>Case 3:</b>If an Exception raised at statement 2 and the corresponding catch block not matched<br>
+	           then statement 1 will execute with abnormal termination . </li>
+	   <li><b>Case 4:</b>If an Exception raised at statement 4 or statement 5 <br>
+	      then it will always a abnormal termination . </li>
+	   <li><b>Note : </b> Within the try block if any where an Exception raised rest of the try block won't be executed eventhough we handeled that exception. 
+	        Hence length of <b>try</b> block should as less as possible . We have to write only risky code within the try block, but not normal java code . </li>
+	   <li>In addition to <b>try</b> block there may be a chance of raising Exception inside <b>catch</b> and <b>finally</b> blocks also . </li> 
+	  <li>If any statement raises an Exception and if it is not part of <b>try</b> block then it is always <b>Abnormal termination</b> of the program . </li>
+	</ul>
+	<h4>
+       <b style="color: green ">Method to print Exception information:</b>
+	</h4>
+	<ul>
+	  <li>Throwable class defines the following methods to print Exception information . </li>
+	</ul>
+	<img alt="" src="images/MethodException.PNG">
+	<textarea rows="15" cols="70" style="color: blue;">
+	    class Test { 
+	         public static void main(String[] args){ 
+	              try{ 
+	                   System.out.println(10/0);
+	              }
+	              catch(ArithmeticException ae){ 
+	                   e.printStackTrace(); // java.lang.ArithmeticException : / by zero
+	                                            at Test.main()
+	                   System.out.println(e); // java.lang.ArithmeticException:/by zero
+	                   System.out.println(e.getMessage());//  / by zero
+	              }
+	         }
+	    }
+	</textarea>
+	<ul>
+	  <li>Default Exception Handler always print Exception information by using printStackTrace() method . </li>
+	</ul>
+</body>
+</html>

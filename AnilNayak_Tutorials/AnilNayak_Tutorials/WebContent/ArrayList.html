@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h5>
+        <b style="color: green;">List Interface is implemented by ArrayList, LinkedList, Vector and Stack classes.</b>
+     </h5>
+     <ul>
+        <li><b>List</b> 
+          <ul>
+            <li><b>ArrayList</b></li>
+            <li><b>LinkedList</b></li>
+            <li><b>Vector</b></li>
+            <li><b>Stack</b></li>
+          </ul>
+        </li>
+     </ul>
+	<h4>
+		<b style="color: green;">ArrayList</b>
+	</h4>
+	<ul>
+	  <li>The underlying data structure for ArrayList is Resizable or Growable Array .</li>
+	  <li>Duplicate Objects are allowed .</li>
+	  <li>Insertion order will preserved .</li>
+	  <li>Heterogeneous objects are allowed . </li>
+	  <li>'Null' insertion is possible .</li>
+	</ul>
+	<h5>
+		<b style="color: green;">Constructors:</b>
+	</h5>
+	<ul>
+	  <li>ArrayList al = new ArrayList();
+	    <ul>
+	      <al>Creates an empty ArrayList object with default initial capacity 10 . </al>
+	    </ul>
+	  </li>
+	  <li>If ArrayList reaches max capacity a new ArrayList object will be created with 
+	     <ul>
+	       <li>new capacity = (current capacity * 3/2) + 1</li>
+	     </ul>
+	  </li>
+	  <li>ArrayList l = new ArrayList(int initialCapacity); <br>
+	     Creates an empty ArrayList object with specified initial capcity . 
+	  </li>
+	  <li>ArrayList l = new ArrayList(Collection c);<br>
+	      Creates an equivalent ArrayList object for the given Collection object . 
+	  </li>
+	  <li>This constructor meant for inter-conversion between Collection objects . </li>
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class ArrayListDemo { 
+	                 public static void main(String[] args){ 
+	                    ArrayList al = new ArrayList();
+	                    l.add("A");
+	                    l.add(10);
+	                    l.add("A");
+	                    l.add(null);
+	                    System.out.println(l);==>O/P:[A,10,A,null]
+	                    l.remove(2);
+	                    System.out.println(l);==>o/p:[A,10,null]
+	                    l.add(2,"M");
+	                    l.add("N");
+	                    System.out.println(l);==>o/p: [A,10,M,null,N]
+	                 }
+	             }
+	</textarea>
+	<ul>
+	 <li>Usually we can use Collection to hold and transfer data (Objects) from one location to another location .</li>
+	 <li>To provide support for this requirement every Collection class implements Serializable and Cloneable interfaces .</li>
+	 <li>ArrayList and Vector classes implements RandomAccess interfaces . So that we can access any random element with the same speed . </li>
+	 <li>Hence ArrayList is best suitable if our frequent operation is retrieval operation . </li>
+	 <li>RandomAccess interface present in java.util package and doesn't contain any methods . Hence it is Marker interface . </li>
+	</ul>
+	<textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class ArrayListDemo { 
+	                 public static void main(String[] args){ 
+	                    ArrayList l1 = new ArrayList();
+	                    LinkedList l2 = new LinkedList();
+	                    System.out.println(l1 instanceOf Serializabl);==> o/p: true
+	                    System.out.println(l2 instanceOf Cloneable);==> o/p: true
+	                    System.out.println(l2 instanceOf RandomAccess);==> o/p: false
+	                    System.out.println(l1 instanceOf RandomAccess);==> o/p: true
+	                 }
+	             }
+	</textarea>
+	<img alt="" src="images/DiffALVector.PNG">
+	<ul>
+	 <li><b>How to get Synchronized version of ArrayList object ?</b>
+	    <ul>
+	      <li>By default ArrayList object is non-synchronized . But we can get synchronized version of ArrayList object by using following methods of Collections class.<ul>
+	         <li>public static List synchronizedList(List l)<br>
+	            Example: ArrayList al = new ArrayList();<br>
+	            List l = Collections.synchronizedList(al);
+	         </li>
+	      </ul>
+	      </li>
+	    </ul> 
+	 </li>
+	 <li>Similarly we can get synchronized version of Set and Map objects by using the following methods .
+	     <ul>
+	       <li>public static Set synchronizedSet(Set s)</li>
+	       <li>public static Map synchronizedMap(Map m)</li>
+	     </ul>
+	 </li>
+	 <li>ArrayList is the best choice if we want to perform retrieval operation frequently . </li>
+	 <li>ArrayList is the worst choice if our frequent operation is insertion or deletion in the middle because it is required several shift operations internally . </li>
+	</ul>
+</body>
+</html>

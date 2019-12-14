@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Introduction to Exception</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Default Exception Handling in Java :</b>
+	</h4>
+	<ul>
+	  <li>In our program, if any where an exception raised the method in which it is raised is responsible to create Exception object by 
+	     including the following information . </li>
+	   <li>
+	     <ul>
+	       <li>Name of the Exception</li>
+	       <li>Description</li>
+	       <li>Location(Stack Trace)</li>
+	     </ul>
+	   </li>
+	   <li>After creating Exception object, the method hand overs that object to the JVM .</li>
+	   <li>JVM Will check whether the corresponding method having any exception handling code or not . </li>
+	   <li>If the method having any Exception handling code then it will be executed, otherwise JVM terminates that method abnormally and removes corresponding from the stack .</li>
+	   <li>JVM identifies caller method and will check whether caller method contains handling code or not . If the caller method does not contain 
+	       Exception handling code then JVM terminates caller method also abnormally and removes corresponding entry from the stack . </li>
+	   <li>This process will be continued until main() method and if the main() method also does not contain Exception handling code then JVM terminates main() method also abnormally and removes corresponding entry from the stack .</li>
+	   <li>Then JVM hand overs Exception object to the Default Exception Handler and it is part of JVM . </li>
+	   <li>Default Exception Handler just print Exception information to the console in the following format and terminates program abnormally . </li>
+	   <li>
+	      <ul>
+	        <li>Name of Exception: Description</li>
+	        <li>Stack Trace</li>
+	      </ul>
+	   </li>
+	   </ul>
+	   <textarea rows="10" cols="80" style="color: blue;">
+              public class Test { 
+                     public static void m1(){ 
+                         System.out.println(10/0);
+                       }
+                  public static void main(String[] args){ 
+                      m1();  
+                  }  
+              }
+	</textarea>
+	   
+	   <ul>
+	   <li>Exception in thread "main" : java.lang.ArithmeticException :/ by zero<br>
+	                                 at Test.m1()<br>
+	                                 at Test.main()</li>
+	   <li>Note: In our program if at least one method terminated abnormally then the program termination is Abnormal termination . </li>
+	   <li>If all the methods terminated terminated normally then only the program termination is Normal termination . </li>
+	</ul>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inner Class</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Method Local Inner Classes :</b>
+     </h4>
+     <ul>
+       <li>Sometimes we can declare a class inside a method such type of Inner classes are called Method Local Inner Classes . </li>
+       <li>The main purpose of method local inner classes is to define method specific repeatedly required functionality . </li>
+       <li>Method local inner classes are best suitable to handle nested method requirements . </li>
+       <li>We can access method local inner classes only inside the method in which we declared it i.e from outside the method we can not access . </li>
+       <li>Hence Method Local Inner classes are most rarely used type of Inner classes because their scope is very less . </li>
+     </ul>
+     <textarea rows="20" cols="80" style="color: blue;">
+	     class Outer { 
+	        public void m1(){ 
+	           class Inner{ 
+	                public void sum(int x, int y){ 
+	                System.out.println(x+y);
+	             }
+	           }
+	           Inner i = new Inner();
+	           i.sum(10,20);
+	           i.sum(100,200);
+	           i.sum(1000,2000);
+	          
+	        }
+	        public static void main(String[] args){ 
+	           Outer o = new Outer();
+	           o.m1();
+	        }
+	     }
+	</textarea>
+	<ul>
+	 <li>We can declare Inner class inside both instance and static methods . </li>
+	 <li>If we declare inside instance method then we can access both static and non-static members of Outer class directly . </li>
+	 <li>If we declare inside static method then we can access only static members of Outer class from that Method local inner class . </li>
+	</ul>
+	   <textarea rows="20" cols="80" style="color: blue;">
+	     class Test { 
+	        int x = 10;
+	        static int y = 20;
+	        public void m1(){ 
+	            class Inner { 
+	               public void m2(){ 
+	                 System.out.println(x);
+	                 System.out.println(y);
+	               }
+	            }
+	            Inner i = new Inner();
+	            i.m2();
+	        }
+	        public static void main(String[] args){ 
+	           Test t = new Test();
+	           t.m1();
+	        }
+	     }
+	     o/p:
+	     10
+	     20
+	</textarea>
+	<ul>
+	 <li>From Method local inner class we can not access local variables of the method in which we declared that inner class . </li>
+	 <li>But if that local variable declared as final then we can access . </li>
+	</ul>
+	  <textarea rows="20" cols="80" style="color: blue;">
+	      class Test { 
+	         int x = 10;
+	         public void m1(){ 
+	            int y = 20;
+	            class Inner {
+	              public void m2(){ 
+	                System.out.println(x);
+	                System.out.println(y);
+	              }
+	            }
+	            Inner i = new Inner();
+	            i.m2();
+	         }
+	         public static void main(String[] args){ 
+	           Test t = new Test();
+	           t.m1();
+	         }
+	      }
+	      o/p:
+	      CE: local variable y is accessed from within inner class, needs to be declared as final . 
+	      Note: If we declared y as final then we won't get any Compile time error . 
+	      Note: The only applicable modifiers for method local inner classes are final,abstract and strictfp . 
+	</textarea>
+</body>
+</html>

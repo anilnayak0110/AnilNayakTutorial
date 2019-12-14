@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h5>
+        <b style="color: green;">Map Interface is implemented by HashMap, LinkedHashMap, WeakHashMap, IdentityHashMap, TreeMap, HashTable classes.</b>
+     </h5>
+     <ul>
+        <li><b>Map</b> 
+          <ul>
+            <li><b>HashMap</b></li>
+            <li><b>LinkedHashMap</b></li>
+            <li><b>WeakHashMap</b></li>
+            <li><b>IdentityHashMap</b></li>
+            <li><b>TreeMap</b></li>
+            <li><b>HashTable</b></li>
+          </ul>
+        </li>
+     </ul>
+     <ul>
+       <li>Map is not child interface of Collection</li>
+       <li>If we want to represent a group of objects as a key and value pairs then we should go for Map</li>
+       <li>Both keys and values are objects only . </li>
+       <li>Duplicate keys are not allowed . But values can be duplicated . </li>
+       <li>Each key and value pair is called an Entry . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Map interface methods :</b>
+     </h5>
+     <ul>
+       <li>Object put(Object key, Object value)
+          <ul>
+            <li>To add one key-value pair, if the key is already available then old value will be replaced with new value.</li>
+          </ul>
+       </li>
+       <li>void putAll(Map m)</li>
+       <li>Object get(Object key)</li>
+       <li>Object remove(Object key)</li>
+       <li>boolean containsKey(Object key)</li>
+       <li>boolean containsVlaue(Object value)</li>
+       <li>boolean isEmpty()</li>
+       <li>int size()</li>
+       <li>void clear()</li>
+       <li>Set keySet()</li>
+       <li>Collection values()</li>
+       <li>set entrySet()</li>
+     </ul>
+      <h5>
+        <b style="color: green;">Entry Interface :</b>
+     </h5>
+     <ul>
+       <li>Each key-value pair is called an Entry .</li>
+       <li>Without existing Map Object there is no chance of existing Entry object . Hence Entry interface is defined inside Map interface . </li>
+     </ul>
+     <textarea rows="12" cols="80" style="color: blue;">
+	    
+	    Example:
+	              interface Map { 
+	                  interface Entry { 
+	                     Object getKey()
+	                     Object getValue()
+	                     Object setValue(Object new)
+	                  }
+	              }
+	</textarea>
+	<h4>
+		<b style="color: green;">HashMap</b>
+	</h4>
+	<ul>
+	  <li>The underlying data structure is HashTable . </li>
+	  <li>Duplicate keys are not allowed . But values can be duplicated . </li>
+	  <li>Heterogeneous Objects are allowed for both keys and values . </li>
+	  <li>Insertion order is not preserved and it is based on HashCode of the keys . </li>
+	  <li>Null is allowed for key(Only once) and allowed for values (any no of times )</li>
+	</ul>
+		<img alt="" src="images/HMHT.PNG">
+    <ul>
+      <li><b>How to get synchronized version of HashMap ?</b><br>
+         Ans: By default HashMap is non-synchronized . But we can get synchronized version of HashMap by using synchronizedMap() method of Collections class .
+      </li>
+    </ul>
+    <h4>
+		<b style="color: green;">Constructors:-</b>
+	</h4>
+	<ul>
+	  <li>HashMap m = new HashMap();<br>
+	      Creates an empty HashMap object with default initial capacity 16 and default fill ratio 0.75 or 75% . 
+	  </li>
+	  <li>HashMap m = new HashMap(int initialCapacity)</li>
+	  <li>HashMap m = new HashMap(int initialCapacity, float fillRatio)</li>
+	  <li>HashMap m = new HashMap(Map m)</li>
+	</ul>
+	<textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class HashMapDemo{ 
+	                public static void main(String[] args){ 
+	                     HashMap m = new HashMap();
+	                     m.put("A",40);
+	                     m.put("Z",10);
+	                     m.put("K",20);
+	                     System.out.println(m);
+	                     System.out.println(m.put("A",30));
+	                     Set s = m.keySet();
+	                     System.out.println(s);
+	                     Collection c = m.values();
+	                     System.out.println(c);
+	                     Set s1 = m.entrySet();
+	                     System.out.println(s1);
+	                     Iterator itr = s1.iterator();
+	                     while(itr.hasNext()){
+	                        Map.Entry m1 = (Map.Entry)itr.next();
+	                        System.out.println(m1.getKey()+"-----"+m1.getValue());
+	                        if(m1.getKey().equals("A"))
+	                         m1.setValue(10000);
+	                     }
+	                     System.out.println(m);
+	                }
+	             }
+	         O/P:===>    {A=40, K=20, Z=10}
+40
+[A, K, Z]
+[30, 20, 10]
+[A=30, K=20, Z=10]
+A-----30
+K-----20
+Z-----10
+{A=10000, K=20, Z=10}
+	             
+	</textarea>
+</body>
+</html>

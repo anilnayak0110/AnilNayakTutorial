@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IO  Package</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">BufferedWriter</b>
+     </h4>
+     <ul>
+      <li>We can use BufferedWriter to write character data to the file . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors : </b>
+     </h5>
+     <ul>
+      <li>BufferedWriter bw = new BufferedWriter(Writer w);</li>
+      <li>BufferedWriter bw = new BufferedWriter(Writer w, int buffersize);</li>
+      <li>Note: BufferedWriter can not communicate directly with the file . It should communicate via some Writer object . </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Methods : </b>
+     </h5>
+     <ul>
+       <li>write(int ch)</li>
+       <li>write(char[] ch)</li>
+       <li>write(String s)</li>
+       <li>flush()</li>
+       <li>close()</li>
+       <li>newLine()</li>
+     </ul>
+      <textarea rows="20" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class BufferedWriterDemo { 
+	        public static void main(String[] args) Throws Exception{  
+	           FileWriter fw = new FileWriter("ag.txt");
+	           BufferedWriter bw = new BufferedWriter(fw);
+	           bw.write(1000);
+	           bw.newLine();
+	           bw.write("AG");
+	           bw.newLine();
+	           bw.write("Nilyatree");
+	           bw.flush();
+	           bw.close();
+	        }
+	    }
+	</textarea>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>HAS-A-Relationship</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">HAS-A-Relationship:</b>
+	</h4>
+	<ul>
+	  <li>It is also known as Composition or Aggregation . </li>
+	  <li>There is no specific keyword to implement HAS-A relationship. But, mostly we can use new operator . </li>
+	  <li>The advantage is reusability . </li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example: 
+	  class Car { 
+	     Engine e = new Engine();
+	  }
+	  
+	  class Engine { 
+	    // Engine Specific Functionalityy
+	  }
+	  
+	  Note: class Car HAS-A Engine reference . 
+	</textarea>
+	<ul>
+	  <li>The main advantages of HAS-A-Relationship is reusability. But the main advantages is it increases dependency between the components and it effects maintainability .  </li>
+	</ul>
+	
+	<h4>
+       <b style="color: green ">Composition vs Aggregation:</b>
+	</h4>
+	
+	<h4>
+       <b style="color: green ">Composition : </b>
+	</h4>
+	<ul>
+	  <li>Without existing container object if there is no chance of existing contained objects, then these container and contained objects are strongly associated and this strong association is called as composition . </li>
+	</ul>
+	  <b>Example:</b> A university consists of several departments. Without existing University there is no chance of existing Department . Hence University and Department objects are strongly associated and this relationship is nothing but Composition . 
+	<h4>
+       <b style="color: green ">Aggregation : </b>
+	</h4>
+	<ul>
+	 <li>Without existing of Container object there may be a chance of existing Contained Objects, then Container and Contained objects are weekly associated, which is called Aggregation. </li>
+	</ul>
+	   <b>Example:</b> Within a University there are several Professors . Without existing of Department Object there may be a chance of existing of Professors . Hence Department and Professors Objects are weakly associated, which is nothing but Aggregation .<br>
+	   Note: In composition, Objects are strongly associated, where as in Aggregation, Objects are weakly associated . <br>
+	 <textarea rows="10" cols="100" style="color: blue;">
+	  Example: 
+	   class Student { 
+	        String studentName;
+	        static String collegeName = "SalepurCollege";
+	   }
+	  Note 1: Without existing of Student Object there is no chance of existing of "studentName", hence the relationship between Student and studentName is Composition (Strong Association).
+	  Note 2: Without existing of Student there may be a chance of existing "collegeName", hence the relationship between Student and collegeName is Aggregation(Weak Association) .  
+	</textarea>
+	  
+</body>
+</html>

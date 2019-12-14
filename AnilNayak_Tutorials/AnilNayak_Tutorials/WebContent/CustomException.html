@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Custom Exception</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Custom Exception</b>
+	</h4>
+	<ul>
+	  <li>Sometimes to meet programming requirements we have to define our own Exceptions such type of Exceptions are called Customized(or) User defined Exceptions . <br>
+	     Example: NotEligibleException, EligibleException, InSufficientFundsException etc .
+	  </li>
+	</ul>
+  <textarea rows="20" cols="45" style="color: blue;">
+      class VoterEligibleException extends RuntimeException { 
+         VoterEligibleException(String s){ 
+             super(s);
+         }
+      }
+      class Test{ 
+            public static void main(String[] args){ 
+               
+               int age = Integer.parseInt(args[0]);
+               if(age>=18){ 
+                    throw new VoterEligibleException("You are eligible to give vote");
+               }else{ 
+                     throw new VoterEligibleException("You are not eligible to give vote");
+               }
+            }
+      }
+      
+    </textarea>
+    <ul>
+      <li>Note : throw keyword is best use for Customized Exceptions, but not for predefined Exceptions . </li>
+      <li>It is highly recommended to define customized Exception as unchecked i.e Our Exception class should extends RuntimeException but not Exception class . </li>
+    </ul>
+    
+    <h5>
+       <b style="color: green ">Top - 10 Exceptions :</b>
+	</h5>
+	<ul>
+	  <li>Exceptions are divided into the following 2 types : 
+	    <ul>
+	      <li>JVM Exceptions</li>
+	      <li>Programmatic Exceptions</li>
+	    </ul>
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">JVM Exceptions :</b>
+	</h5>
+	<ul>
+	  <li>The Exceptions which are raised automatically by the JVM whenever a particular events occurs are called JVM Exceptions . 
+	     <br>EX: ArithmeticException, NullPointerException , ArrayIndexOutOfBoundExceptions
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Programmatic Exceptions : </b>
+	</h5>
+	<ul>
+	  <li>The Exceptions which are raised explicitly either by programmer or API Developer to indicate that something goes wrong are called Programmatic Exceptions . <br>
+	     Example: IllegalArgumentException etc . 
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">ArrayIndexOutOfBoundsException :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of RuntimeException and hence it is unchecked . </li>
+	  <li>Raised automatically by JVM whenever we are trying to access array element with out of range index . <br>
+	    Example :
+	     int[] a = new int[10];
+	     System.out.println(a[0]);
+	     System.out.println(a[15]); ---> ArrayIndexOutOfBoundsException
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">NullPointerException :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of RuntimeException and hence it is unchecked . </li>
+	  <li>Raised automatically by JVM whenever we are trying to perform any method call on null reference . <br>
+	    Example : String s = null;
+	              System.out.println(s.length());--> NullPointerException
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">NullPointerException :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of RuntimeException and hence it is unchecked </li>
+	  <li>Raised automatically by JVM whenever we are trying to type cast parent object to the child type . <br>
+	     String s = new String("Heera");<br>
+	     Object o = (Object)s;<br>
+	     Object o = new String("Heera");<br>
+	     String s = (String)o;<br>
+	     
+	     Object o = new Object();<br>
+	     String s = (String)o;--> RE: ClassCastException
+	   </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">NoClassDefFoundError :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of Error and hence it is unchecked . </li>
+	  <li>Raised automatically by JVM whenever, JVM unable to find required .class file . <br>
+	     EX: java Test<br>
+	     If Test.class file is not available then we will get Runtime Exception : saying : <br>
+	     NoClassDefFoundError : Test     
+	   </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">StackOverFlowError :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of Error and hence it is unchecked .</li>
+	  <li>Raised automatically by JVM whenever we are trying to perform recursive method call .</li>
+	</ul>
+	<textarea rows="10" cols="45" style="color: blue;">
+      class Test {
+           public static void m1(){ 
+                m2();
+           }
+           public static void m2(){ 
+                m1();
+           }
+           public static void main(String[] args){ 
+              m1();
+           }
+      } RE: StackOverFlowError . 
+    </textarea>
+    
+     <h5>
+       <b style="color: green ">ExceptionInitializerError :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of Error and hence it is unchecked . </li>
+      <li>Raised automatically by JVM whenever an Exception occurs while executing static variable assignments and static blocks .</li>
+	</ul>
+	<textarea rows="10" cols="45" style="color: blue;">
+      class Test {
+        static int i = 10/0;   
+      }
+      RE: Exception in Thread "main": 
+          java.lang.ExceptionInitializerError
+          caused by : java.lang.ArithmeticException :/ by zero
+    </textarea>
+    <textarea rows="10" cols="45" style="color: blue;">
+      class Test {
+        static { 
+           String s = null;
+           System.out.println(s.length());
+        } 
+      }
+       RE: ExceptionInInitializerError
+       caused by : java.lang.NullPointerException
+    </textarea>
+    <h5>
+       <b style="color: green ">IllegalArgumentException :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of RuntimeException and hence it is unchecked .</li>
+	  <li>Raised explicitly either by programmer or API developer to indicate that a method has been invoked with illegal argument . </li>
+	  <li>The valid range of Thread priorities is 1 to 10 . If we are trying to set with any other value then we will get 
+	     <br> RuntimeException : IllegalArgumentException . 
+	  </li>
+	</ul>
+	 <textarea rows="8" cols="45" style="color: blue;">
+        Thread t = new Thread();
+        t.setPriority(10);
+        t.setPriority(100);--->RE: IllegalArgumentException
+    </textarea>
+    <h5>
+       <b style="color: green ">NumberFormatException :</b>
+	</h5>
+	<ul>
+	  <li>It is the direct child class of IllegalArgumentException . <br>
+	    which is the child class of RuntimeException and hence it is unchecked . 
+	  </li>
+	  <li>Raised explicitly either by programmer or API developer to indicate we are trying to convert String to Number, <br>
+	     but the String is not properly formatted . <br>
+	     Example : int i = Integer.parseInt("10");
+	               int i = Integer.parseInt("ten"); RE:NumberFormatedException
+	  </li>
+	</ul>
+	<h5>
+       <b style="color: green ">IllegalStateException :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of RuntimeException and hence it is unchecked . </li>
+	  <li>Raised explicitly either by programmer or API developer to indicate that a method has been invoked at wrong time . </li>
+	  <li>Example: After starting a thread we are not allowed to restart the same  thread again, other wise we will get <br>
+	      RE: saying : IllegalThreadStateException .
+	  </li>
+	</ul>
+	 <textarea rows="8" cols="45" style="color: blue;">
+       Thread t = new Thread();
+       t.start();
+       t.start();---RE:IllegalThreadStateException
+    </textarea>
+    <h5>
+       <b style="color: green ">AssertionError :</b>
+	</h5>
+	<ul>
+	  <li>It is the child class of Error and hence it is unchecked . <br>
+	     Raised explicitly by the programmer or API developer to indicate that assert statement fails .
+	  </li>
+	  <li>EX: assert(x>10) <br>
+	    if x is not > 10 then we will get RE: saying , AssertionError . 
+	  </li>
+	</ul>
+</body>
+</html>

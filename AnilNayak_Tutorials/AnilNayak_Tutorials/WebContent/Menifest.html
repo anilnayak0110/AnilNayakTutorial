@@ -1,0 +1,70 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Menifest File:</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Menifest File:</b>
+	</h4>
+	<ul>
+	  <li><b>How to create executable jar file ?</b></li>
+	</ul>
+	 <textarea rows="15" cols="80" style="color: blue;">
+	     Jar Demo.java :
+	     ----------------
+	     import java.awt.*;
+	     import awt.event.*;
+	     public class JarDemo{
+	       public static void main(String[] args){ 
+	         Frame f = new Frame();
+	         f.addWindowListener(new WindowAdapter() { 
+	           
+	           public void windowClosing(WindowEvent e){ 
+	             System.exit(0);
+	           } 
+	         });
+	         f.add(new Label("Hii Mama Papa , I am Nilyatree and I create my first jar file !!"));
+	         f.setSize(500,500);
+	         f.setVisible(true);
+	       }
+	     }
+	</textarea>
+	 <textarea rows="10" cols="80" style="color: blue;">
+	     manifest.MF:--
+		---------------
+		Main-Class: JarDemo
+		Cursor will be in the next line .
+		javac JarDemo.java
+		JarDemo.class     JarDemo$1.class
+	
+			jar -cvfm demo3.jar manifest.MF JarDemo.class JarDemo$1.class
+			java -jar demo3.jar
+	</textarea>
+	<ul>
+	  <li><b>In how many ways we can execute a Java program ?</b></li>
+	</ul>
+	<ul>
+	  <li>With java command to run.class file <br>
+	    java JarDemo
+	    
+	  </li>
+	  <li>With java command to run .jar file <br>
+	      java -jar demo3.jar
+	  </li>
+	  <li>By double clicking a jar file . </li>
+	  <li>By double clicking a batch file . </li>
+	</ul>
+	 <textarea rows="2" cols="80" style="color: blue;">
+	    java -cp D:\AG JarDemo
+	</textarea>
+</body>
+</html> 

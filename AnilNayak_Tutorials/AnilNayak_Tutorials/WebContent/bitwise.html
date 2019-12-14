@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Bitwise Operator</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Bitwise Operators(&,|,^)</b>
+	</h4>
+	<ul>
+	 <li><b>&(AND) : If both arguments are true then only result is true .</b></li>
+	 <li><b>|(OR)  : If at least one argument is true then only result is true .</b></li>
+	 <li><b>^(X-OR)  : If both are different arguments then only result is true .</b></li>
+	</ul>
+	
+	<b>System.out.println(true&false)//output : false</b><br><b>System.out.println(true|false)//output : true</b><br><b>System.out.println(true^false)//output : true</b><br><b>System.out.println(true&true)//output :true</b>
+	<br>
+	<img alt="" src="images/bitwise.PNG" />
+	<h4>
+		<b style="color: green;">Bitwise complement operator(~)</b>
+	</h4>
+	<ul>
+	 <li>We can apply this operator only for integral types but not for boolean types .</li>
+	</ul>
+	<b>System.out.println(~true)//output : <b style="color: red">C.E: operator ~ can not be applied to boolean </b></b>
+	<br>
+	<img alt="" src="images/bitwise1.PNG" />
+	<br>
+	<h4>
+		<b style="color: green;">Boolean complement operator(!)</b>
+	</h4>
+	<ul>
+	  <li>We can apply these operator only for boolean type, not for integral type .</li>
+	</ul>
+	<b>System.out.println(!4)//output : <b style="color: red"> C.E: operator ~ can not be applied to int </b></b><br><b>System.out.println(!true) //output : false</b><br><b>System.out.println(!false) //output : true</b>
+	<h4>
+		<b style="color: green;">Double AND,OR(&&,||) operator</b>
+	</h4>
+	<ul>
+	  <li>We can use && and || operator instead of & and | to improve the performance .</li>
+	   <li>The difference between && and & And  || and | operator is :</li>
+	</ul>
+	<br>
+	<img alt="" src="images/bitwise2.PNG" />
+</body>
+</html>

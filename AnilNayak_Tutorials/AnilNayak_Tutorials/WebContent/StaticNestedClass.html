@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inner Class</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Static Nested Classes:</b>
+     </h4>
+     <ul>
+       <li>Sometimes we can declare inner class with static modifier such type of inner classes are called Static Nested classes . </li>
+       <li>In Normal or Regular Inner class, without existing  Outer class object there is no chance of existing Inner class object . </li>
+       <li>But in case of Static Nested classes, without existing Outer class object there may be chance of existing Static Nested class object . i.e, Nested class object is not strongly associated with outer class object . </li>
+     </ul>
+     <textarea rows="25" cols="80" style="color: blue;">
+	    class Test { 
+	 
+	 static class Nested { 
+         public void m1(){ 
+           System.out.println("Static Nested class method");
+         }
+      }
+    public static void main(String[] args){ 
+      
+    	Test.Nested n = new Test.Nested();
+    	Nested n1 = new Nested();
+    	n1.m1();
+    	n.m1();
+    }
+ }
+ o/p:
+ Static Nested class method
+Static Nested class method
+ 
+	</textarea>
+	<ul>
+	  <li>In normal or regular inner classes, we can not take static declarations, but in Static Nested classes we can take static declarations including main() method also . </li>
+	  <li>Hence we can invoke Static Nested class directly from command prompt . </li>
+	</ul>
+	 <textarea rows="25" cols="80" style="color: blue;">
+	    class Test { 
+	      static class Nested { 
+	         public static void main(String[] args){ 
+	           System.out.println("Static Nested class main method");
+	         }
+	      }
+	      
+	      public static void main(String[] args){ 
+	       System.out.println("Outer class main method");
+	      }
+	    }
+	    o/p:
+	    If we run javac Test.java we will get
+	    Test.class and Test$Nested.class
+	    java Test
+	    Outer class main method
+	    java Test$Nested
+	    Static Nested class main method 
+	    
+	</textarea>
+	<ul>
+	 <li>From Normal or Regular Inner class, we can access both static and non-static member of Outer class directly . </li>
+	 <li>But from Static Nested class, we can access only static members of outer class directly . </li>
+	</ul>
+	 <textarea rows="25" cols="80" style="color: blue;">
+	    class Test { 
+	       int x = 10;
+	       static int y = 20;
+	       static class Nested {
+	         public void m1(){ 
+	           System.out.println(x);// o/p: Compile time error: non-static variable x can not be referenced from a static content
+	           System.out.println(y);// o/p: 20
+	         } 
+	       }
+	    }
+	    
+	</textarea>
+	<img alt="" src="images/InnerClassStaticNested.PNG"/>
+</body>
+</html>

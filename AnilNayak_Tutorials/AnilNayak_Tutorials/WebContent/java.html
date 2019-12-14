@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java</title>
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script>
+	$(document).ready(function() {
+		$("#bc").load('myImage.html');
+		$("#bb").load('javaIntro.html');
+		$("#install").on("click", function() {
+			$("#bb").load('javaInstall.html');
+		});
+		$("#path").on("click", function() {
+			$("#bb").load('setclasspath.html');
+		});
+		$("#jre").on("click", function() {
+			$("#bb").load('towjre.html');
+		});
+		$("#feature").on("click", function() {
+			$("#bb").load('jdkjrejvm.html');
+		});
+		$("#sample").on("click", function() {
+			$("#bb").load('sampleprogram.html');
+		});
+		$("#ident").on("click", function() {
+			$("#bb").load('Identifier.html');
+		});
+		$("#reserv").on("click", function() {
+			$("#bb").load('reserve.html');
+		});
+		$("#data").on("click", function() {
+			$("#bb").load('datatype.html');
+		});
+		$("#literals").on("click", function() {
+			$("#bb").load('literals.html');
+		});
+		$("#var").on("click", function() {
+			$("#bb").load('variable.html');
+		});
+		$("#javacoding").on("click", function() {
+			$("#bb").load('javacoding.html');
+		});
+		$("#array").on("click", function() {
+			$("#bb").load('array.html');
+		});
+		$("#cmd").on("click", function() {
+			$("#bb").load('commandline.html');
+		});
+		$("#vararg").on("click", function() {
+			$("#bb").load('var-arg.html');
+		});
+		$("#inc_dec").on("click", function() {
+			$("#bb").load('inc_dec.html');
+		});
+		$("#arith").on("click", function() {
+			$("#bb").load('arithmetic.html');
+		});
+		$("#conc").on("click", function() {
+			$("#bb").load('strconcat.html');
+		});
+		$("#rel").on("click", function() {
+			$("#bb").load('relational.html');
+		});
+		$("#equa").on("click", function() {
+			$("#bb").load('equality.html');
+		});
+		$("#bit").on("click", function() {
+			$("#bb").load('bitwise.html');
+		});
+		$("#inst").on("click", function() {
+			$("#bb").load('instanceof.html');
+		});
+		$("#assign").on("click", function() {
+			$("#bb").load('assignment.html');
+		});
+		$("#cond").on("click", function() {
+			$("#bb").load('conditional.html');
+		});
+		$("#ifelse").on("click", function() {
+			$("#bb").load('ifelse.html');
+		});
+		$("#switch").on("click", function() {
+			$("#bb").load('switch.html');
+		});
+		$("#while").on("click", function() {
+			$("#bb").load('while.html');
+		});
+		$("#doW").on("click", function() {
+			$("#bb").load('doWhile.html');
+		});
+		$("#for").on("click", function() {
+			$("#bb").load('for.html');
+		});
+		$("#forE").on("click", function() {
+			$("#bb").load('forEach.html');
+		});
+		$("#javafs").on("click", function() {
+			$("#bb").load('JavaSourceFileStructure.html');
+		});
+		$("#clsm").on("click", function() {
+			$("#bb").load('classModifier.html');
+		});
+		$("#membr").on("click", function() {
+			$("#bb").load('membermodifier.html');
+		});
+		$("#intr").on("click", function() {
+			$("#bb").load('interface.html');
+		});
+		$("#dataHide").on("click", function() {
+			$("#bb").load('DataHiding.html');
+		});
+		$("#abstrct").on("click", function() {
+			$("#bb").load('Abstraction.html');
+		});
+		$("#encap").on("click", function() {
+			$("#bb").load('Encapsulation.html');
+		});
+		$("#isa").on("click", function() {
+			$("#bb").load('IS-A-Relationship.html');
+		});
+		$("#hasa").on("click", function() {
+			$("#bb").load('HAS-A-Relationship.html');
+		});
+		$("#methsig").on("click", function() {
+			$("#bb").load('MethodSignature.html');
+		});
+		$("#overload").on("click", function() {
+			$("#bb").load('Overloading.html');
+		});
+		$("#override").on("click", function() {
+			$("#bb").load('Overriding.html');	
+		});
+		$("#coup").on("click", function() {
+			$("#bb").load('Coupling.html');
+		});
+		$("#typcas").on("click", function() {
+			$("#bb").load('TypeCasting.html');
+		});
+		$("#stCtFlow").on("click", function() {
+			$("#bb").load('StaticControlFlow.html');
+		});
+		$("#icf").on("click", function() {
+			$("#bb").load('InstanceControlFlow.html');
+		});
+		$("#const").on("click", function() {
+			$("#bb").load('Constructor.html');
+		});
+		$("#single").on("click", function() {
+			$("#bb").load('Singleton.html');
+		});
+		$("#single").on("click", function() {
+			$("#bb").load('Singleton.html');
+		});
+		$("#exception").on("click", function() {
+			$("#bb").load('IntroductionException.html');
+		});
+		$("#defaultexcep").on("click", function() {
+			$("#bb").load('DefaultException.html');
+		});
+		$("#exceptionhira").on("click", function() {
+			$("#bb").load('ExceptionHierarchy.html');
+		});
+		$("#trycatch").on("click", function() {
+			$("#bb").load('ControlFlowInTryCatch.html');
+		});
+		$("#trywith").on("click", function() {
+			$("#bb").load('TryWithMultipleCatch.html');
+		});
+		$("#finally").on("click", function() {
+			$("#bb").load('FinallyBlock.html');
+		});
+		$("#trycatchfinaaly").on("click", function() {
+			$("#bb").load('CombinationOfTryCatchFinally.html');
+		});
+		$("#throw").on("click", function() {
+			$("#bb").load('Throw.html');
+		});
+		$("#throws").on("click", function() {
+			$("#bb").load('Throws.html');
+		});
+		$("#customexception").on("click", function() {
+			$("#bb").load('CustomException.html');
+		});
+		$("#multicatch").on("click", function() {
+			$("#bb").load('MultiCatchBlock.html');
+		});
+		$("#object").on("click", function() {
+			$("#bb").load('Object.html');
+		});
+		$("#string").on("click", function() {
+			$("#bb").load('String.html');
+		});
+		$("#stringBuff").on("click", function() {
+			$("#bb").load('StringBuffer.html');
+		});
+		$("#stringBuild").on("click", function() {
+			$("#bb").load('StringBuilder.html');
+		});
+		$("#wrapper").on("click", function() {
+			$("#bb").load('Wrapper.html');
+		});
+		$("#autobox").on("click", function() {
+			$("#bb").load('AutoBox.html');
+		});
+		$("#mthint").on("click", function() {
+			$("#bb").load('MthIntroduction.html');
+		});
+		$("#gtstnmth").on("click", function() {
+			$("#bb").load('GetSetThread.html');
+		});
+		$("#thp").on("click", function() {
+			$("#bb").load('ThreadPriorities.html');
+		});
+		$("#thpm").on("click", function() {
+			$("#bb").load('ThreadPrevent.html');
+		});
+		$("#synch").on("click", function() {
+			$("#bb").load('Synchronization.html');
+		});
+		$("#inthcomm").on("click", function() {
+			$("#bb").load('Interthread.html');
+		});
+		$("#deadlck").on("click", function() {
+			$("#bb").load('DeadLock.html');
+		});
+		$("#dmnth").on("click", function() {
+			$("#bb").load('DaemonThread.html');
+		});
+		$("#intcl").on("click", function() {
+			$("#bb").load('IntroductionCollection.html');
+		});
+		$("#al").on("click", function() {
+			$("#bb").load('ArrayList.html');
+		});
+		$("#ll").on("click", function() {
+			$("#bb").load('LinkedList.html');
+		});
+		$("#vec").on("click", function() {
+			$("#bb").load('Vector.html');
+		});
+		$("#st").on("click", function() {
+			$("#bb").load('Stack.html');
+		});
+		$("#cur").on("click", function() {
+			$("#bb").load('Cursor.html');
+		});
+		$("#hs").on("click", function() {
+			$("#bb").load('HashSet.html');
+		});
+		$("#lhs").on("click", function() {
+			$("#bb").load('LinkedHashSet.html');
+		});
+		$("#ss").on("click", function() {
+			$("#bb").load('SortedSet.html');
+		});
+		$("#ts").on("click", function() {
+			$("#bb").load('TreeSet.html');
+		});
+		$("#comprable").on("click", function() {
+			$("#bb").load('Comparable.html');
+		});
+		$("#comprator").on("click", function() {
+			$("#bb").load('Comparator.html');
+		});
+		$("#nvs").on("click", function() {
+			$("#bb").load('NavigableSet.html');
+		});
+		$("#hm").on("click", function() {
+			$("#bb").load('HashMap.html');
+		});
+		$("#lhm").on("click", function() {
+			$("#bb").load('LinkedHashMap.html');
+		});
+		$("#ihm").on("click", function() {
+			$("#bb").load('IdentityHashMap.html');
+		});
+		$("#whm").on("click", function() {
+			$("#bb").load('WeekHashMap.html');
+		});
+		$("#nvm").on("click", function() {
+			$("#bb").load('NavigableMap.html');
+		});
+		$("#trm").on("click", function() {
+			$("#bb").load('TreeMap.html');
+		});
+		$("#hst").on("click", function() {
+			$("#bb").load('HashTable.html');
+		});
+		$("#prop").on("click", function() {
+			$("#bb").load('Properties.html');
+		});
+		$("#queue").on("click", function() {
+			$("#bb").load('Queue.html');
+		});
+		$("#collec").on("click", function() {
+			$("#bb").load('Collections.html');
+		});
+		$("#arrays").on("click", function() {
+			$("#bb").load('Arrays.html');
+		});
+		$("#generics").on("click", function() {
+			$("#bb").load('Generics.html');
+		});
+		$("#intdinn").on("click", function() {
+			$("#bb").load('InnerClassIntro.html');
+		});
+		$("#norreg").on("click", function() {
+			$("#bb").load('NormalInnerclass.html');
+		});
+		$("#mlcin").on("click", function() {
+			$("#bb").load('MethodLocalinnerClass.html');
+		});
+		$("#anincls").on("click", function() {
+			$("#bb").load('AnonymousInnerClass.html');
+		});
+		$("#snc").on("click", function() {
+			$("#bb").load('StaticNestedClass.html');
+		});
+		$("#clinter").on("click", function() {
+			$("#bb").load('ClassInterface.html');
+		});
+		$("#filee").on("click", function() {
+			$("#bb").load('File.html');
+		});
+		$("#fw").on("click", function() {
+			$("#bb").load('FileWriter.html');
+		});
+		$("#fr").on("click", function() {
+			$("#bb").load('FileReader.html');
+		});
+		$("#bw").on("click", function() {
+			$("#bb").load('BufferedWriter.html');
+		});
+		$("#brd").on("click", function() {
+			$("#bb").load('BufferedReader.html');
+		});
+		$("#pw").on("click", function() {
+			$("#bb").load('PrintWriter.html');
+		});
+		$("#sintd").on("click", function() {
+			$("#bb").load('SerializationIntroduction.html');
+		});
+		$("#ogs").on("click", function() {
+			$("#bb").load('ObjectGraphSerialization.html');
+		});
+		$("#cser").on("click", function() {
+			$("#bb").load('CustomizedSerialization.html');
+		});
+		$("#swrtin").on("click", function() {
+			$("#bb").load('SerializationWrtInheritance.html');
+		});
+		$("#extn").on("click", function() {
+			$("#bb").load('Externalization.html');
+		});
+		$("#suid").on("click", function() {
+			$("#bb").load('SerialVersionUID.html');
+		});
+		$("#garind").on("click", function() {
+			$("#bb").load('GarbageIntroduction.html');
+		});
+		$("#vwyasgc").on("click", function() {
+			$("#bb").load('VariousGarbageCollector.html');
+		});
+		$("#hgc").on("click", function() {
+			$("#bb").load('FinalizeMethod.html');
+		});
+		$("#jdc").on("click", function() {
+			$("#bb").load('JavaCommand.html');
+		});
+		$("#cp").on("click", function() {
+			$("#bb").load('ClassPath.html');
+		});
+		$("#jar").on("click", function() {
+			$("#bb").load('JarFile.html');
+		});
+		$("#sp").on("click", function() {
+			$("#bb").load('SystemProperties.html');
+		});
+		$("#jmf").on("click", function() {
+			$("#bb").load('Menifest.html');
+		});
+		$("#vm").on("click", function() {
+			$("#bb").load('VirtualMachine.html');
+		});jvm
+		$("#jvm").on("click", function() {
+			$("#bb").load('JVM.html');
+		});
+		$("#cload").on("click", function() {
+			$("#bb").load('ClassLaoder.html');
+		});
+		$("#jmemory").on("click", function() {
+			$("#bb").load('JVMMemory.html');
+		});
+	   
+		
+	});
+	function expandCollapse1() {
+		
+		if($(".javaIntroduction").css('display') == 'none') {
+			$("#expand-collapse1").html("<a href='#' class='btn btn-info'><b>Java Introductions</b></a>");
+			$(".javaIntroduction").show("slow");
+		} else{
+			$("#expand-collapse1").html("<a href='#' class='btn btn-info'><b>Java Introductions</b></a>");
+			$(".javaIntroduction").hide("slow");
+		}
+		
+	}
+
+	function expandCollapse2() {
+
+		if($(".languageFunda").css('display') == 'none') {
+			$("#expand-collapse2").html("<a href='#' class='btn btn-info'><b>Language Fundamentals</b></a>");
+			$(".languageFunda").show("slow");
+		} else{
+			$("#expand-collapse2").html("<a href='#' class='btn btn-info'><b>Language Fundamentals</b></a>");
+			$(".languageFunda").hide("slow");
+		}
+	}
+
+	function expandCollapse3() {
+
+		if($(".operatorassignment").css('display') == 'none') {
+			$("#expand-collapse3").html("<a href='#' class='btn btn-info'><b>Operator Assignments</b></a>");
+			$(".operatorassignment").show("slow");
+		} else{
+			$("#expand-collapse3").html("<a href='#' class='btn btn-info'><b>Operator Assignments</b></a>");
+			$(".operatorassignment").hide("slow");
+		}
+	}
+
+	function expandCollapse4() {
+
+		if($(".flowControl").css('display') == 'none') {
+			$("#expand-collapse4").html("<a href='#' class='btn btn-info'><b>Flow Control</b></a>");
+			$(".flowControl").show("slow");
+		} else{
+			$("#expand-collapse4").html("<a href='#' class='btn btn-info'><b>Flow Control</b></a>");
+			$(".flowControl").hide("slow");
+		}
+	}
+
+	function expandCollapse5() {
+
+		if($(".declarationAccessModifiers").css('display') == 'none') {
+			$("#expand-collapse5").html("<a href='#' class='btn btn-info'><b>Declaration Access Modifiers</b></a>");
+			$(".declarationAccessModifiers").show("slow");
+		} else{
+			$("#expand-collapse5").html("<a href='#' class='btn btn-info'><b>Declaration Access Modifiers</b></a>");
+			$(".declarationAccessModifiers").hide("slow");
+		}
+	}
+
+	function expandCollapse6() {
+		if($(".oops").css('display') == 'none') {
+			$("#expand-collapse6").html("<a href='#' class='btn btn-info'><b>Object Oriented Concepts(oops)</b></a>");
+			$(".oops").show("slow");
+		} else{
+			$("#expand-collapse6").html("<a href='#' class='btn btn-info'><b>Object Oriented Concepts(oops)</b></a>");
+			$(".oops").hide("slow");
+		}
+	}
+
+	function expandCollapse7() {
+		if($(".excep").css('display') == 'none') {
+			$("#expand-collapse7").html("<a href='#' class='btn btn-info'><b>Exception Handling</b></a>");
+			$(".excep").show("slow");
+		} else{
+			$("#expand-collapse7").html("<a href='#' class='btn btn-info'><b>Exception Handling</b></a>");
+			$(".excep").hide("slow");
+		}
+	}
+
+	function expandCollapse8() {
+		if($(".lang").css('display') == 'none') {
+			$("#expand-collapse8").html("<a href='#' class='btn btn-info'><b>Java Lang Package</b></a>");
+			$(".lang").show("slow");
+		} else{
+			$("#expand-collapse8").html("<a href='#' class='btn btn-info'><b>Java Lang Package</b></a>");
+			$(".lang").hide("slow");
+		}
+	}
+
+	function expandCollapse9() {
+		if($(".mthread").css('display') == 'none') {
+			$("#expand-collapse9").html("<a href='#' class='btn btn-info'><b>Multi Threading</b></a>");
+			$(".mthread").show("slow");
+		} else{
+			$("#expand-collapse9").html("<a href='#' class='btn btn-info'><b>Multi Threading</b></a>");
+			$(".mthread").hide("slow");
+		}
+	}
+
+	function expandCollapse10() {
+		if($(".collection").css('display') == 'none') {
+			$("#expand-collapse10").html("<a href='#' class='btn btn-info'><b>Collections</b></a>");
+			$(".collection").show("slow");
+		} else{
+			$("#expand-collapse10").html("<a href='#' class='btn btn-info'><b>Collections</b></a>");
+			$(".collection").hide("slow");
+		}
+	}
+
+	function expandCollapse11() {
+		if($(".inner").css('display') == 'none') {
+			$("#expand-collapse11").html("<a href='#' class='btn btn-info'><b>Inner Class</b></a>");
+			$(".inner").show("slow");
+		} else{
+			$("#expand-collapse11").html("<a href='#' class='btn btn-info'><b>Inner Class</b></a>");
+			$(".inner").hide("slow");
+		}
+	}
+
+	function expandCollapse12() {
+		if($(".iostream").css('display') == 'none') {
+			$("#expand-collapse12").html("<a href='#' class='btn btn-info'><b>Java IO Stream</b></a>");
+			$(".iostream").show("slow");
+		} else{
+			$("#expand-collapse12").html("<a href='#' class='btn btn-info'><b>Java IO Stream</b></a>");
+			$(".iostream").hide("slow");
+		}
+	}
+
+	function expandCollapse13() {
+		if($(".serialization").css('display') == 'none') {
+			$("#expand-collapse13").html("<a href='#' class='btn btn-info'><b>Serialization</b></a>");
+			$(".serialization").show("slow");
+		} else{
+			$("#expand-collapse13").html("<a href='#' class='btn btn-info'><b>Serialization</b></a>");
+			$(".serialization").hide("slow");
+		}
+	}
+
+	function expandCollapse14() {
+		if($(".garbage").css('display') == 'none') {
+			$("#expand-collapse14").html("<a href='#' class='btn btn-info'><b>Garbage Collections</b></a>");
+			$(".garbage").show("slow");
+		} else{
+			$("#expand-collapse14").html("<a href='#' class='btn btn-info'><b>Garbage Collections</b></a>");
+			$(".garbage").hide("slow");
+		}
+	}
+
+	function expandCollapse15() {
+		if($(".javaDev").css('display') == 'none') {
+			$("#expand-collapse15").html("<a href='#' class='btn btn-info'><b>Java Development</b></a>");
+			$(".javaDev").show("slow");
+		} else{
+			$("#expand-collapse15").html("<a href='#' class='btn btn-info'><b>Java Development</b></a>");
+			$(".javaDev").hide("slow");
+		}
+	}
+
+	function expandCollapse16() {
+		if($(".jvmArch").css('display') == 'none') {
+			$("#expand-collapse16").html("<a href='#' class='btn btn-info'><b>JVM Architecture</b></a>");
+			$(".jvmArch").show("slow");
+		} else{
+			$("#expand-collapse16").html("<a href='#' class='btn btn-info'><b>JVM Architecture</b></a>");
+			$(".jvmArch").hide("slow");
+		}
+	}
+</script>
+<style type="text/css">
+body {
+	margin: 0;
+}
+</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3">
+				<div onclick="expandCollapse1()" id="expand-collapse1"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Java Introductions</b></a>
+				</div>
+				<div>
+					<div class="javaIntroduction">
+					 <ul>
+					  <li><b><a href="#" id="install">How to Install Java</a></b></li>
+					  <li><b><a href="#" id="path">How to set class path</a></b></li>
+					  <li><b><a href="#" id="jre">Why two JRE in Java</a></b></li>
+					  <li><b><a href="#" id="feature">JDK, JRE, JVM</a></b></li>
+					  <li> <b><a href="#" id="sample">Sample Program of Java</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br>
+				<div onclick="expandCollapse2()" id="expand-collapse2"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Language Fundamentals</b></a>
+				</div>
+				<div>
+					<div class="languageFunda">
+					 <ul>
+					  <li><b><a href="#" id="ident">Identifier</a></b></li>
+					  <li><b><a href="#" id="reserv">Reserve Words</a></b></li>
+					  <li><b><a href="#" id="data">Data type</a></b></li>
+					  <li><b><a href="#" id="literals">Literals</a></b></li>
+					  <li> <b><a href="#" id="var">Variables</a></b></li>
+					  <li> <b><a href="#" id="javacoding">Java Coding Standards</a></b></li>
+					  <li> <b><a href="#" id="array">Array</a></b></li>
+					  <li> <b><a href="#" id="cmd">Command Line Arguments</a></b></li>
+					  <li> <b><a href="#" id="vararg">Var-Arg-Method</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br>
+                <div onclick="expandCollapse3()" id="expand-collapse3"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Operators and Assignments</b></a>
+				</div>
+				<div>
+					<div class="operatorassignment">
+					 <ul>
+					  <li><b><a href="#" id="inc_dec">Increment/Decrement</a></b></li>
+					  <li><b><a href="#" id="arith">Arithmetic</a></b></li>
+					  <li><b><a href="#" id="conc">Concatinator</a></b></li>
+					  <li><b><a href="#" id="rel">Relational</a></b></li>
+					  <li> <b><a href="#" id="equa">Equality</a></b></li>
+					  <li> <b><a href="#" id="bit">Bitwise</a></b></li>
+					  <li> <b><a href="#" id="inst">InstanceOf</a></b></li>
+					  <li> <b><a href="#" id="assign">Assignments</a></b></li>
+					  <li> <b><a href="#" id="cond">Conditional</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse4()" id="expand-collapse4"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Flow Control</b></a>
+				</div>
+				<div>
+					<div class="flowControl">
+					 <ul>
+					  <li><b><a href="#" id="ifelse">if-else</a></b></li>
+					  <li><b><a href="#" id="switch">switch</a></b></li>
+					  <li><b><a href="#" id="while">while</a></b></li>
+					  <li><b><a href="#" id="doW">do-while</a></b></li>
+					  <li> <b><a href="#" id="for">for</a></b></li>
+					  <li> <b><a href="#" id="forE">for-each</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse5()" id="expand-collapse5"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Declarations and Access Modifiers</b></a>
+				</div>
+				<div>
+					<div class="declarationAccessModifiers">
+					 <ul>
+					  <li><b><a href="#" id="javafs">Java Source File Structure</a></b></li>
+					  <li><b><a href="#" id="clsm">Class Modifiers</a></b></li>
+					  <li><b><a href="#" id="membr">Member Modifiers</a></b></li>
+					  <li><b><a href="#" id="intr">Interfaces</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse6()" id="expand-collapse6"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Object Oriented Concepts(oops)</b></a>
+				</div>
+				<div>
+					<div class="oops">
+					 <ul>
+					  <li><b><a href="#" id="dataHide">Data Hiding</a></b></li>
+					  <li><b><a href="#" id="abstrct">Abstraction</a></b></li>
+					  <li><b><a href="#" id="encap">Encapsulation</a></b></li>
+					  <li><b><a href="#" id="isa">IS-A Relationship</a></b></li>
+					  <li><b><a href="#" id="hasa">HAS-A Relationship</a></b></li>
+					  <li><b><a href="#" id="methsig">Method Signature</a></b></li>
+					  <li><b><a href="#" id="overload">Overloading</a></b></li>
+					  <li><b><a href="#" id="override">Overriding</a></b></li>
+					  <li><b><a href="#" id="coup">Coupling</a></b></li>
+					  <li><b><a href="#" id="typcas">Type Casting</a></b></li>
+					  <li><b><a href="#" id="stCtFlow">Static Control Flow</a></b></li>
+					  <li><b><a href="#" id="icf">Instance Control Flow</a></b></li>
+					  <li><b><a href="#" id="const">Constructors</a></b></li>
+					  <li><b><a href="#" id="single">Singleton Class</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse7()" id="expand-collapse7"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Exception Handling</b></a>
+				</div>
+				<div>
+					<div class="excep">
+					 <ul>
+					  <li><b><a href="#" id="exception">Introduction</a></b></li>
+					  <li><b><a href="#" id="defaultexcep">Default Exception Handling</a></b></li>
+					  <li><b><a href="#" id="exceptionhira">Exception Hierarchy</a></b></li>
+					  <li><b><a href="#" id="trycatch">Control Flow in try-catch</a></b></li>
+					  <li><b><a href="#" id="trywith">try with multiple catch block</a></b></li>
+					  <li><b><a href="#" id="finally">finally</a></b></li>
+					  <li><b><a href="#" id="trycatchfinaaly">Various Combinations of try-catch-finally</a></b></li>
+					  <li><b><a href="#" id="throw">throw</a></b></li>
+					  <li><b><a href="#" id="throws">throws</a></b></li>
+					  <li><b><a href="#" id="customexception">Customized Exception</a></b></li>
+					  <li><b><a href="#" id="multicatch">1.7 version Multi Catch Block</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse8()" id="expand-collapse8"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Java Lang Package</b></a>
+				</div>
+				<div>
+					<div class="lang">
+					 <ul>
+					  <li><b><a href="#" id="object">Object</a></b></li>
+					  <li><b><a href="#" id="string">String</a></b></li>
+					  <li><b><a href="#" id="stringBuff">String Buffer</a></b></li>
+					  <li><b><a href="#" id="stringBuild">String Builder</a></b></li>
+					  <li><b><a href="#" id="wrapper">Wrapper Class</a></b></li>
+					  <li><b><a href="#" id="autobox">Auto boxing and Auto Unboxing</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse9()" id="expand-collapse9"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Multi Threading</b></a>
+				</div>
+				<div>
+					<div class="mthread">
+					 <ul>
+					  <li><b><a href="#" id="mthint">Introduction</a></b></li>
+					  <li><b><a href="#" id="gtstnmth">Getting and Setting name Of Thread</a></b></li>
+					  <li><b><a href="#" id="thp">Thread Priorities</a></b></li>
+					  <li><b><a href="#" id="thpm">Thread Prevent Method</a></b></li>
+					  <li><b><a href="#" id="synch">Synchronization</a></b></li>
+					  <li><b><a href="#" id="inthcomm">Inter Thread Communication</a></b></li>
+					  <li><b><a href="#" id="deadlck">Deadlock</a></b></li>
+					  <li><b><a href="#" id="dmnth">Demon Thread</a></b></li>
+					 </ul>
+					</div>
+				</div><br>
+				<div onclick="expandCollapse10()" id="expand-collapse10"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Collections</b></a>
+				</div>
+				<div>
+					<div class="collection">
+					 <ul>
+					  <li><b><a href="#" id="intcl">Introduction to Collections</a></b></li>
+					  <li><b><a href="#" id="al">ArrayList</a></b></li>
+					  <li><b><a href="#" id="ll">LinkedList</a></b></li>
+					  <li><b><a href="#" id="vec">Vector</a></b></li>
+					  <li><b><a href="#" id="st">Stack</a></b></li>
+					  <li><b><a href="#" id="cur">Cursors</a></b></li>
+					  <li><b><a href="#" id="hs">HashSet</a></b></li>
+					  <li><b><a href="#" id="lhs">LinkedHashSet</a></b></li>
+					  <li><b><a href="#" id="ss">SortedSet</a></b></li>
+					  <li><b><a href="#" id="ts">TreeSet</a></b></li>
+					  <li><b><a href="#" id="comprable">Comparable</a></b></li>
+					  <li><b><a href="#" id="comprator">Comparator</a></b></li>
+					  <li><b><a href="#" id="nvs">NavigableSet</a></b></li>
+					  <li><b><a href="#" id="hm">HashMap</a></b></li>
+					  <li><b><a href="#" id="lhm">LinkedHashMap</a></b></li>
+					  <li><b><a href="#" id="ihm">IdentityHashMap</a></b></li>
+					  <li><b><a href="#" id="whm">WeakHashMap</a></b></li>
+					  <li><b><a href="#" id="nvm">NavigabledMap</a></b></li>
+					  <li><b><a href="#" id="trm">TreeMap</a></b></li>
+					  <li><b><a href="#" id="hst">HashTable</a></b></li>
+					  <li><b><a href="#" id="prop">Properties</a></b></li>
+					  <li><b><a href="#" id="queue">Queue</a></b></li>
+					  <li><b><a href="#" id="collec">Collections</a></b></li>
+					  <li><b><a href="#" id="arrays">Arrays</a></b></li>
+					  <li><b><a href="#" id="generics">Generics</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse11()" id="expand-collapse11"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Inner Class</b></a>
+				</div>
+				<div>
+					<div class="inner">
+					 <ul>
+					  <li><b><a href="#" id="intdinn">Introduction</a></b></li>
+					  <li><b><a href="#" id="norreg">Normal/Regular Inner Class</a></b></li>
+					  <li><b><a href="#" id="mlcin">Method Local Inner Class</a></b></li>
+					  <li><b><a href="#" id="anincls">Anonymous Inner Class</a></b></li>
+					  <li><b><a href="#" id="snc">Static Nested Class</a></b></li>
+					  <li><b><a href="#" id="clinter">Combination of classes and interfaces</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse12()" id="expand-collapse12"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Java IO Stream</b></a>
+				</div>
+				<div>
+					<div class="iostream">
+					 <ul>
+					  <li><b><a href="#" id="filee">File</a></b></li>
+					  <li><b><a href="#" id="fw">File Writer</a></b></li>
+					  <li><b><a href="#" id="fr">File Reader</a></b></li>
+					  <li><b><a href="#" id="brd">Buffered Reader</a></b></li>
+					  <li><b><a href="#" id="bw">Buffered Writer</a></b></li>
+					  <li><b><a href="#" id="pw">Print Writer</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse13()" id="expand-collapse13"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Serialization</b></a>
+				</div>
+				<div>
+					<div class="serialization">
+					 <ul>
+					  <li><b><a href="#" id="sintd">Introduction</a></b></li>
+					  <li><b><a href="#" id="ogs">Object Graphs in Serialization</a></b></li>
+					  <li><b><a href="#" id="cser">Customized Serialization</a></b></li>
+					  <li><b><a href="#" id="swrtin">Serialization With Inheritance</a></b></li>
+					  <li><b><a href="#" id="extn">Externalization</a></b></li>
+					  <li><b><a href="#" id="suid">SerialVersionUID</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br> 
+				<div onclick="expandCollapse14()" id="expand-collapse14"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Garbage Collections</b></a>
+				</div>
+				<div>
+					<div class="garbage">
+					 <ul>
+					  <li><b><a href="#" id="garind">Introduction</a></b></li>
+					  <li><b><a href="#" id="vwyasgc">Various Ways make Object as GC</a></b></li>
+					  <li><b><a href="#" id="hgc">How to use Finalize method in GC</a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br>
+				<div onclick="expandCollapse15()" id="expand-collapse15"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>Java Development</b></a>
+				</div>
+				<div>
+					<div class="javaDev">
+					 <ul>
+					  <li><b><a href="#" id="jdc">java different command</a></b></li>
+					  <li><b><a href="#" id="cp">ClassPath</a></b></li>
+					  <li><b><a href="#" id="jar">jar file</a></b></li>
+					  <li><b><a href="#" id="sp">System Properties</a></b></li>
+					  <li> <b><a href="#" id="jmf">java manifest.MF </a></b></li>
+					 </ul>
+					</div>
+				</div>
+				<br>
+				<div onclick="expandCollapse16()" id="expand-collapse16"
+					class="glyphicon glyphicon-hand-right" style="color: red;">
+					<a href="#" class="btn btn-info"><b>JVM(Java Virtual Machine) Architecture</b></a>
+				</div>
+				<div>
+					<div class="jvmArch">
+					 <ul>
+					  <li><b><a href="#" id="vm">Virtual Machine</a></b></li>
+					  <li><b><a href="#" id="jvm">JVM</a></b></li>
+					  <li><b><a href="#" id="cload">Class Loader Sub System</a></b></li>
+					  <li><b><a href="#" id="jmemory">Various Memory areas of JVM</a></b></li>
+					 </ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm-7" id="bb"></div>
+			<div class="col-sm-2">
+				<div class="affix" id="bc"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IO  Package</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">File</b>
+     </h4>
+     <ul>
+       <li>File f = new File("ag.txt");</li>
+       <li>This line won't create any physical file . </li>
+       <li>First it will check is there any physical file named with ag.txt is available or not , if it is available then simply pointing to that file . If it is not available then it won't create any physical file just we are creating java File Object to represent the name ag.txt</li>
+     </ul>
+     <textarea rows="8" cols="80" style="color: blue;">
+	    Example: 
+	               File f = new File("ag.txt");
+	               System.out.println(f.exist());// o/p: false
+	               f.createNewFile();
+	               System.out.println(f.exist()); // o/p: true
+	</textarea>
+	<ul>
+	 <li>Java File object can be used to represent directories also . </li>
+	</ul>
+	 <textarea rows="8" cols="80" style="color: blue;">
+	    Example: 
+	               File f = new File("AG");
+	               System.out.println(f.exist());==> o/p: false
+	               f.mkdir();
+	               System.out.println(f.exist());==> o/p: true
+	</textarea>
+	 <h5>
+        <b style="color: green;">File class Constructor :</b>
+     </h5>
+	<ul>
+	  <li>File f = new File(String name);
+	    <ul>
+	      <li>Creates a java file object to represent name of the file or directory in current working directory . </li>
+	    </ul>
+	  </li>
+	  <li>File f = new File(String subdirectroy, String name);
+	    <ul>
+	      <li>Creates a java file object to represent name of the file or directory in the specified subdirectory . </li>
+	    </ul>
+	  </li>
+	  <li>File f = new File(File subdirectory, String name);</li>
+	</ul>
+    <h6>
+        <b style="color: green;">Write  code to create a file named with ag.txt in current working directory . </b>
+     </h6>
+     <textarea rows="4" cols="80" style="color: blue;">
+	    Example: 
+	             File f = new File("ag.txt");
+	             f. createNewFile();
+	</textarea>
+	 <h6>
+        <b style="color: green;">Write  code to create a directory named with ag0110 in current working directory : </b>
+     </h6>
+     <textarea rows="4" cols="80" style="color: blue;">
+	    Example: 
+	             File f = new File("ag0110");
+	             f.mkdir();
+	</textarea>
+	 <h6>
+        <b style="color: green;">Write  code to create a directory named with ag0110 in cwd and create a file named with ag.txt in that directory : </b>
+     </h6>
+     <textarea rows="4" cols="80" style="color: blue;">
+	    Example: 
+	             File f = new File("ag0110");
+	             f.mkdir();
+	             File f1 = new File(f,"ag.txt");
+	             try{ 
+	                  f1.createNewFile();
+	                }
+	                catch(Exception e){ 
+	                  e.printStackTrace();
+	                }
+	</textarea>
+	 <h6>
+        <b style="color: green;">Write  code to create a file named with ag.txt inside D:\\xyz folder</b>
+     </h6>
+     
+	<textarea rows="4" cols="80" style="color: blue;">
+	    Example: 
+	             File f = new File("D:\\xyz","ag.txt");
+	             f.createNewFile();
+	</textarea>
+	 <h5>
+        <b style="color: green;">Important Methods of File class :</b>
+     </h5>
+      <h6>
+        <b style="color: green;">boolean exists()</b>
+     </h6>
+     <ul>
+       <li>This method checks whether the physical file or directory present or not . If it is available returns true otherwise returns false .</li>
+     </ul>
+      <h6>
+        <b style="color: green;">boolean createNewFile()</b>
+     </h6>
+     <ul>
+       <li>First this method will check is there any physical file is already available or not with the required name . If it is already available returns false without creating any file , if it is not already available creates a new file and returns true . </li>
+     </ul>
+     <h6>
+        <b style="color: green;">boolean mkdir()</b>
+     </h6>
+      <h6>
+        <b style="color: green;">boolean isFile()</b>
+     </h6>
+     <ul>
+       <li>returns true if the File object represents a physical file . </li>
+     </ul>
+     <h6>
+        <b style="color: green;">boolean isDirectory()</b>
+     </h6>
+     <h6>
+        <b style="color: green;">String[] list()</b>
+     </h6>
+     <ul>
+       <li>It returns the names of all files and subdirectories present in specified sub directory . </li>
+     </ul>
+     <h6>
+        <b style="color: green;">long length()</b>
+     </h6>
+     <ul>
+       <li>It returns the no. of characters present in the file .   </li>
+     </ul>
+     <h6>
+        <b style="color: green;">boolean delete()</b>
+     </h6>
+     <ul>
+      <li>To delete a file or directory . </li>
+     </ul>
+     <textarea rows="30" cols="80" style="color: blue;">
+	    Example: Write code to display the names of all files and subdirectories present in D:\AG
+	    import java.io.*;
+	    class Test { 
+	      public static void main(String[] args){ 
+	        try{ 
+	             int count = 0;
+	             File f = new File("D:\\AG");
+	             String[] s = f.list();
+	             for(String s1:s){ 
+	               count++;
+	               System.out.println(s1);
+	             }
+	             System.out.println("Total Number :"+count);
+	        }
+	        catch(Exception e){ 
+	          e.printStackTrace();
+	        }
+	      }
+	    }
+	    
+	    To represent only file names :
+	    ------------------------------
+	    File f = new File("D:\\AG");
+	    String[] s = f.list();
+	    for(String s1: s){ 
+	       File f1 = new File(f,s1);
+	       if(f1.isFile()){ 
+	         System.out.println(s1);
+	       }
+	    }
+	    
+	    To represent only directory names :
+	    -----------------------------------
+	   In the above code replace isFile() method with isDirectory() method .
+	    
+	             
+	</textarea>
+</body>
+</html>

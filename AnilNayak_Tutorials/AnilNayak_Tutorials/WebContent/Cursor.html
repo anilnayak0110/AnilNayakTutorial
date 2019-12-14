@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Cursors :</b>
+	</h4>
+	<ul>
+	  <li>We can use cursors to get objects one by one from the Collection .</li>
+	  <li>There are 3 types of cursors available in java . </li>
+	  <li>
+	    <ul>
+	      <li>Enumeration</li>
+	      <li>Iterator</li>
+	      <li>ListIterator</li>
+	    </ul>
+	  </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Enumeration :</b>
+	</h5>
+	<ul>
+	  <li>We can use Enumeration object to get objects one by one from the Collection .</li>
+	  <li>We can create Enumeration objects by using elements() method . <br>
+	       public Enumeration elements()<br>
+	  </li>
+	  <li>Method: 1. public boolean hashMoreElements()</li>
+	  <li>Method: 2. public Object nextElement()</li>
+	</ul>
+    <textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                  Vector v = new Vector();
+					  for(int i=0;i<=10;i++){
+						v.addElement(i);
+					  }
+					System.out.println(v);// ==> o/p: [0,1,2,....10]
+		            Enumeration e = v.elements();
+		            while(e.hasMoreElements()){
+			           Integer i = (Integer)e.nextElement();
+			           System.out.println(i); ==>/o/p: 0,1,2,....10
+		              }
+		
+	             }
+	            }
+	</textarea>
+	<h5>
+		<b style="color: green;">Limitations of Enumeration :</b>
+	</h5>
+	<ul>
+	  <li>Enumeration concept is applicable only for legacy classes and it is not universal cursor . </li>
+	  <li>By using Enumeration we can perform only read operation and we can not perform remove operation .</li>
+	  <li>To overcome the above limitations of Enumeration we should go for Iterator . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Iterator :</b>
+	</h5>
+	<ul>
+	  <li>We can use Iterator to get objects one by one from Collection .</li>
+	  <li>We can apply Iterator concept for any Collection object . Hence it is universal cursor . </li>
+	  <li>By using Iterator we can able to perform both read and remove operations . </li>
+	  <li>We can create Iterator object by using iterator() method of Collection interface <br>
+	       public Iterator iterator();
+	  </li>
+	  <li>Methods :
+	    <ul>
+	      <li>public boolean hasNext();</li>
+	      <li>public Object next();</li>
+	      <li>public void remove();</li>
+	    </ul>
+	  </li>
+	</ul>
+	<textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                  ArrayList al = new ArrayList();
+		 			 for(int i=0;i<=10;i++){
+			             al.add(i);
+		                 }
+		              System.out.println(al);==>o/p: [1,2,3...10]
+		              Iterator itr = al.iterator();
+		              while (itr.hasNext()) {
+			             Integer i = (Integer) itr.next();
+			             if(i%2==0){
+			                System.out.println(i) 
+			             }
+			             else{
+			                 itr.remove(); 
+			             }
+			            
+		                }
+		               System.out.println(al); ==> o/p: [0,2,4,6,8,10]
+	                }
+		
+	             }
+	</textarea>
+	<h5>
+		<b style="color: green;">Limitations of Iterator :</b>
+	</h5>
+	<ul>
+	  <li>By using Enumeration and Iterator we can always move only forward direction i.e, these are 1-direction cursors(forward direction)</li>
+	  <li>By using Iterator we can perform only read and remove operations and we can not perform replacement and addition of new objects . </li>
+	  <li>To overcome these limitations we should go for ListIterator . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">ListIterator :</b>
+	</h5>
+	<ul>
+	  <li>By using ListIterator we can move either to the forward direction or backward direction i.e it is a bi-directional cursor . </li>
+	  <li>By using ListIterator we can able to perform replacement and addition of new objects in addition to read and remove operations . </li>
+	  <li>ListIterator is the child interface of Iterator . </li>
+	  <li>We can create ListIterator object by using listIterator() method of List interface . <br>
+	      public ListIteartor listIteartor();
+	  </li>
+	  <li>ListIterator contains following methods : 
+	     <ul>
+	       <li>public boolean hashNext()</li>
+	       <li>public Object next()</li>
+	       <li>public int nextIndex()</li>
+	       <li>public boolean hashPrevious()</li>
+	       <li>public Object previous()</li>
+	       <li>public int previousIndex()</li>
+	       <li>public void remove()</li>
+	       <li>public void set(Object o)</li>
+	       <li>public void add(Object o)</li>
+	     </ul>
+	  </li>
+	</ul>
+	<textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                   	LinkedList ll = new LinkedList<>();
+		ll.add("Gayatree");
+		ll.add("Anil");
+		ll.add("Heera");
+		ll.add("Others");
+		System.out.println(ll);==> o/p:[Gayatree,Anil,Heera,Others]
+		ListIterator ltr = ll.listIterator();
+		while (ltr.hasNext()) {
+		     String s = (String)ltr.next();
+		     if(s.equals("Others")){
+		    	 ltr.remove();
+		     }
+		     if(s.equals("Gayatree")){
+		    	 ltr.set("Acharya");
+		     }
+		     if(s.equals("Anil")){
+		    	 ltr.add("Nayak");
+		     }
+		}
+		System.out.println(ll); ==>o/p:[Acharya,Anil,Nayak,Heera]
+	                }
+		
+	             }
+	</textarea>
+	<ul>
+	 <li>The most powerful cursor is ListIterator. But its limitations is it only applicable for List objects only .</li>
+	</ul>
+</body>
+</html>

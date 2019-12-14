@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Serialization</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Introduction :</b>
+     </h4>
+     <h5>
+        <b style="color: green;">Serialization: :</b>
+     </h5>
+     <ul>
+       <li>The processing of writing state of an object to a file is called Serialization . But it is the process of converting an object from java supported from to either file supported from or Network supported form . </li>
+       <li>By using FileOutputStream and ObjectOutputStream classes we can achieve Serialization . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">DeSerialization :</b>
+     </h5>
+     <ul>
+       <li>The process of reading state of an object from a file is called Deserialization . But it is the process of converting an object from either file or network supported from into java supported form . </li>
+       <li>By using FileInputStream and ObjectInputStream classes we can achieve Deserialization . </li>
+     </ul>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	   class Human implements Serializable{ 
+    		int hand = 2;
+    		int leg = 2;
+		}
+	class TestSerialization  { 
+   		public static void main(String[] args) throws Exception{ 
+	  		 Human h = new Human();
+      		 FileOutputStream fos = new FileOutputStream("abc.ser");
+      		 ObjectOutputStream oos = new ObjectOutputStream(fos);
+       		 oos.writeObject(h);
+       
+       		FileInputStream fis = new FileInputStream("abc.ser");
+       		ObjectInputStream ois = new ObjectInputStream(fis);
+       		Human h1 =(Human)ois.readObject();
+       		System.out.println(h1.hand+" ------"+h1.leg);
+   }
+}
+	</textarea>
+	<ul>
+	  <li>We can Serialize only Serializable objects .</li>
+	  <li>An object is said to be Serializable if the corresponding class implements Serializable interface . </li>
+	  <li>Serializable interface present in java.io package and it does not contain any methods . It is a marker interface . </li>
+	  <li>If we are trying to Serialize a non-serializable object then we will get runtime exception saying NotSerializableException . </li>
+	</ul>
+	<h5>
+        <b style="color: green;">transient keyword :</b>
+     </h5>
+     <ul>
+       <li>transient is the modifier applicable only for variables .</li>
+       <li>While performing Serialization if we don't want to save the value of a particular variable to meet security constraints such type of variables we have to declare with transient keyword . </li>
+       <li>At the time of Serialization JVM ignores original value of transient variables  and save default value to the file . </li>
+       <li>Hence transient means not to Serialize . </li>
+     </ul>
+     <h6>
+        <b style="color: green;">static vs transient :</b>
+     </h6>
+     <ul>
+       <li>static variable is not part of object state . Hence it won't  participate in Serialization . </li>
+       <li>Due to this dealing static variable as transient there is no use . </li>
+     </ul>
+     <h6>
+        <b style="color: green;">final vs transient :</b>
+     </h6>
+     <ul>
+       <li>final variables will be participated in Serialization directly by their values . </li>
+       <li>Due to this declaring final variable as transient there is no use . </li>
+     </ul>
+           <textarea rows="20" cols="80" style="color: blue;">
+              Without transient keyword after serialize :
+              -------------------------------------------
+	           int i = 10;
+	           int j = 20;
+	           
+	           o/p: 10 ... 20
+	           With transient keyword after serialize :
+	           ---------------------------------------
+	           transient int i = 10;
+	                     int j = 20;
+	           o/p: 0....20
+	           with transient static keyword after serialize:
+	           ---------------------------------------------
+	           transient static int i =10;
+	                  transient int j =20;
+	            o/p: 10.....0
+	            with transient final keyword after serialize:
+	            --------------------------------------------
+	            transient int i = 10;
+	            transient final int = 10;
+	            o/p: 0....10
+	            with transient static and final after serialization:
+	            ----------------------------------------------------
+	            transient static int i =10;
+	            transient final int j = 20;
+	            o/p: 10....20
+	          
+	</textarea>
+	<ul>
+	  <li>We can serialize multiple objects to the file . But in which order we Serialize in the same order only we should Deserialize . </li>
+	  <li>i.e In serialization the order of Objects is important . If don't make deserialize in sameorder  as serialization then we will get RuntimeException: ClassCastException</li>
+	</ul>
+</body>
+</html>

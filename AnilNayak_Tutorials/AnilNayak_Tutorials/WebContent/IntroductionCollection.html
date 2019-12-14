@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Collection Framework :</b>
+	</h4>
+	<ul>
+	  <li>An Array is an indexed collection of fixed no of homogeneous data elements . </li>
+	  <li>The main advantage of arrays is can represent multiple values by using single variable . So that readability of the code will be improved . </li>
+	</ul>
+	<h4>
+		<b style="color: green;">Limitations of Object type Arrays :</b>
+	</h4>
+	<ul>
+	  <li>Arrays are fixed in size i.e once we created an array there is no chance of increasing and decreasing the size based on our requirement . </li>
+	  <li>Hence to use arrays concept compulsory we should know the size in advance, which may not possible always . </li>
+	  <li>Arrays can hold only homogeneous data types .<br>
+	       Student[] s = new Student[100];<br>
+	       s[0] = new Student();<br>
+	       s[1] = new Customer(); --> CE: incompatible types<br>
+	                                  found: Customer<br>
+	                                  required : Student<br>
+	   We can resolve this problem by using Object type arrays . <br>
+	     Object[] o = new Object[100];<br>
+	     a[0] = new Student();<br>
+	     a[1] = new Customer();<br>
+	   </li>
+	   <li>There is no underlying data structure for arrays . Hence readymade data support we can not expect .<br>
+	        For every requirement we have to write code explicitly, which increases complexity of the programming . 
+	    </li>
+	    <li>To overcome this problems of arrays we should go for Collections . </li>
+	    <li>Collections are growable in nature i.e based on our requirements we can increase and decrease the size . </li>
+	    <li>Collections can hold both homogeneous and heterogeneous elements . </li>
+	    <li>Every Collections class is implemented based on some standard data structure . Hence for every requirement readymade data structure is available . </li>
+	</ul>
+		<img alt="" src="images/ArrayCollect.PNG">
+	
+	<h5>
+		<b style="color: green;">Interfaces of Collection Framework : -</b>
+	</h5>
+	<ul>
+	  <li>List</li>
+	  <li>Set</li>
+	  <li>Map</li>
+	  <li>Queue</li>
+	</ul>
+	<h5>
+		<b style="color: green;">Collection :</b>
+	</h5>
+	<ul>
+	  <li>If we want to represent a group of individual  objects as a single entity then we should go for Collection . </li>
+	  <li>In general Collection interface is consider as root interface of Collection Framework . </li>
+	  <li>Collection interface defines the most general methods which are applicable for any Collection object . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Difference between Collection and Collections  :</b>
+	</h5>
+	<ul>
+	  <li>Collection is an interface which is used to represent group of individual objects as a single entity . </li>
+	  <li>Collections is an utility class present in java.util package to define several utility methods for Collection objects . </li>
+	</ul>
+	<h6>
+		<b style="color: green;">The following methods present in Collection class :</b>
+	</h6>
+	<ul>
+	  <li>boolean add(Object o)</li>
+	  <li>boolean addAll(Collection c)</li>
+	  <li>boolean remove(Object o)</li>
+	  <li>boolean removeAll(Collection c)// To remove</li>
+	  <li>boolean retainAll(Collection c)// To remove all objects except those present in 'c'</li>
+	  <li>void clear()</li>
+	  <li>boolean contains(Object o)</li>
+	  <li>boolean containsAll(Collection c)</li>
+	  <li>boolean isEmpty()</li>
+	  <li>int size()</li>
+	  <li>Object[] toArray()</li>
+	  <li>Iterator iterator()</li>
+	</ul>
+	<h6>
+		<b style="color: green;">List :</b>
+	</h6>
+	<ul>
+	  <li>It is the child interface of Collection . </li>
+	  <li>If we want to represent a group of individual objects where duplicates are allowed and insertion order preserved then we should go for List . </li>
+	  <li>We can preserve insertion order and differentiate  duplicate object by using index , hence index will play very important role in List . </li>
+	  <li>List interface defines the following specific methods
+	    <ul>
+	      <li>void add(int index, Object o)</li>
+	      <li>boolean addAll(int index, Collection c)</li>
+	      <li>Object get(int index)</li>
+	      <li>Object remove(int index)</li>
+	      <li>Object set(int index,Object o)// To replace the element present at specified index with provided Object and returns old object . </li>
+	      <li>int indexOf(Object o)// return index of first occurrence of 'o'</li>
+	      <li>int lastIndexOf(Object o)</li>
+	      <li>ListIterator listIterator()</li>
+	     </ul>
+	  </li>
+	</ul>
+</body>
+</html>

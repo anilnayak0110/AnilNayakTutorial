@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Identifier</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Increment and Decrement Operators</b>
+	</h4>
+	<img alt="" src="images/inc_dec.png"/><br>
+	<ul>
+	  <li>Increment and decrement operators we can apply only for variables but not for constant values, otherwise we will get compile time error .</li>
+	</ul> <b>Example::</b><br>
+	  <textarea rows="14" cols="30" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+public static void main(String args[]) {
+		int x = 5;
+		int y = ++x;
+		System.out.println(y);
+   }
+}
+     Output:: java Sample
+               6
+             </textarea>
+             <textarea rows="14" cols="40" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+public static void main(String args[]) {
+		int x = 5;
+		int y = ++5;
+		System.out.println(y);
+  }
+}
+    Output:: java Sample
+             Compile Time Error: unexpected type
+             required: variable
+             found: value
+             </textarea>
+             <ul>
+               <li>We can not perform nesting of increment or decrement operator, otherwise we will get compile time error .</li>
+             </ul>
+              <textarea rows="14" cols="40" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+public static void main(String args[]) {
+		int x = 5;
+		int y = ++(++x);
+		System.out.println(y);
+  }
+}
+    Output:: java Sample
+             Compile Time Error: unexpected type
+             required: variable
+             found: value
+             </textarea>
+             <ul>
+               <li>For the final variable we can not apply increment or decrement operators, otherwise we will get compile time error .</li>
+             </ul>
+                           <textarea rows="14" cols="60" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+public static void main(String args[]) {
+		final int x = 5;
+		     x++;
+		System.out.println(x);
+  }
+}
+    Output:: java Sample
+             Compile Time Error: can not assign a value to final variable x
+             x++;
+             </textarea>
+             <ul>
+              <li>We can apply increment and decrement operators even for primitive data types except boolean .</li>
+             </ul>
+                <textarea rows="18" cols="80" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+public static void main(String args[]) {
+		 int x = 5;
+		     x++;
+		System.out.println(x);
+		
+		char ch='a';
+		ch++;
+		System.out.println(ch);
+		
+		double d = 10.5;
+		d++;
+		System.out.println(d);
+		
+		boolean b = true;
+		b++;
+		System.out.println(b);//Compile Time Error: operator ++ can not be applied to boolean
+  }
+}
+    Output:: java Sample
+             6
+             b
+             11.5
+             </textarea><br>
+             
+              <h4 style="color: green;">Difference between x++ and x = x+1 .</h4>
+              <ul>
+                <li>If we are applying any arithmetic operators between two operands 'x' and 'y' the result type is :
+                    <b>max(int,type of x,type of y)</b></li>
+              </ul>
+              <img alt="" src="images/inc_dec1.PNG"/><br>
+              <ul>
+                <li>In the case of increment and decrement operators internal type casting will happened automatically by the compiler .</li>
+              </ul>
+                      
+</body>
+</html>

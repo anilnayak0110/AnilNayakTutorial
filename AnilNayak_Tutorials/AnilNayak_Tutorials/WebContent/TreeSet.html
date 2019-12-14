@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">TreeSet :</b>
+	</h4>
+	<ul>
+	  <li>The underlying data structure is Balanced Tree .</li>
+	  <li>Insertion order is not preserved and it is based on some sorting order . </li>
+	  <li>Heterogeneous objects are not allowed, if we are trying to insert then we will get runtime exception saying ClassCastException . </li>
+	  <li>Duplicate objects are not allowed . </li>
+	  <li>Null insertion is possible(Only once). </li>
+	  <li>Implements Serializable and Cloneable interfaces but not RandomAccess . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Constructors :</b>
+	</h5>
+	<ul>
+	  <li>TreeSet t = new TreeSet();<br>
+	     Creates an empty TreeSet object, where the elements will be inserted according to default natural sorting order . 
+	  </li>
+	  <li>TreeSet t = new TreeSet(Comparator c); <br>
+	       Creates an empty TreeSet object, where elements will be inserted according to customized sorting order which is described by comparator object . 
+	  </li>
+	  <li>TreeSet t = new TreeSet(Collection c);</li>
+	  <li>TreeSet t = new TreeSet(SortedSet s);</li>
+	</ul>
+	 <textarea rows="18" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                  
+	                  TreeSet t = new TreeSet();
+					  t.add("A");
+		 			  t.add("a");
+					  t.add("B");
+		              t.add("Z");
+		              t.add("L");
+		              t.add(new Integer(10));// O/P-->RuntimeException: ClassCastException
+		              t.add(null);//o/p--->RuntimeException: NullPointerException
+		              System.out.println(t);
+		
+	             }
+	            }
+	</textarea>
+	<h5>
+		<b style="color: green;">Null Acceptance :</b>
+	</h5>
+	<ul>
+	  <li>For empty TreeSet as the first element null insertion is possible . But after insertion that null if we are trying to insert any other element we will get "NullPointerException"</li>
+	  <li>For non-empty TreeSet if we are trying to insert null then we will get "NullPointerException" . </li>
+	</ul>
+	 <textarea rows="18" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                  
+	                  TreeSet t = new TreeSet();
+					  t.add(new StringBuffer("A"));
+					  t.add(new StringBuffer("Z"));
+					  t.add(new StringBuffer("L"));
+					  t.add(new StringBuffer("B"));
+		              System.out.println(t);// RuntimeException: ClassCastException
+		
+	             }
+	            }
+	</textarea>
+	<ul>
+	  <li>If we are depending on default natural sorting order compulsory object should be homogeneous and Comparable, other wise we will get runtime exception saying ClassCastException . </li>
+	  <li>An object is said to be Comparable iff corresponding class implements Comparable interface . </li>
+	  <li>All Wrapper classes and String class implement Comparable interface, but StringBuffer class doesn't implement Comparable interface . </li>
+	  <li>Hence we are getting ClassCastException in the above example . </li>
+	</ul>
+</body>
+</html>

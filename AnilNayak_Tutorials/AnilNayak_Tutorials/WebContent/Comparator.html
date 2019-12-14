@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Comparator interface :</b>
+	</h4>
+	<ul>
+	  <li>This interface present in java.util package</li>
+	  <li>It contains two methods . 
+	     <ul>
+	       <li>public int compare(Object obj1, Object obj2)
+	          <ul>
+	            <li>returns +ve , if obj1 has to come after obj2</li>
+	            <li>returns -ve , if obj1 has to come before obj2</li>
+	            <li>retruns 0 , if obj1 and obj2 are equal</li>
+	          </ul>
+	       </li>
+	       <li>public boolean equals(Object obj)</li> 
+	     </ul>
+	  </li>
+	</ul>
+	<ul>
+	  <li>Whenever we are implementing Comparator interface we have to provide implementation only for compare() method and implementing equals(-) method is optional because it is already available for every class from Object class through inheritance . </li>
+	</ul>
+	 <textarea rows="30" cols="80" style="color: blue;">
+	    
+	    Example: // Write a program to insert Integer Objects into the TreeSet, where sorting order is descending order . 
+	             import java.util.*;
+	             public class TreeSetTest { 
+	                 public static void main(String[] args){ 
+	                  
+	                  TreeSet t = new TreeSet(new MyComparator());
+					  t.add(10);
+					  t.add(0); --->+ve compare(0,10)
+					  t.add(15);--->-ve compare(15,10)
+					  t.add(5);---->+ve compare(5,15), compare(5,10), compare(5,0)
+					  t.add(20);---->-ve compare(20,15)
+					  t.add(20);---->0   compare(20,20)
+					  System.out.println(t); ---> o/p: [20,15,10,5,0]
+		
+	                }
+	            }
+	           class MyComparator implements Comparator {
+
+		@Override
+		public int compare(Object o1, Object o2) {
+		    Integer i1 = (Integer)o1;
+		    Integer i2 = (Integer)o2;
+		    if(i1>i2)
+		    	return -1;
+		    else if(i1< i2)
+		    	return 1;
+		    else
+		    	return 0;
+			
+		} 
+		
+		
+	}
+	</textarea>
+	 <textarea rows="30" cols="80" style="color: blue;">
+	    
+	    Example: // Write a program to insert String Objects into the TreeSet, where sorting order is reverse of Alphabetical order . 
+	             import java.util.*;
+	             public class TreeSetTest { 
+	                 public static void main(String[] args){ 
+	                  TreeSet t = new TreeSet(new MyComparator());
+		 			  t.add("SitaRam");
+		 			  t.add("LaxmiNarayan"); 
+		              t.add("RadhaKrishna");
+		              System.out.println(t); ==> o/p: [SitaRam,RadhaKrishna, LaxmiNarayan]
+	                }
+	            }
+	           class MyComparator implements Comparator {
+
+				@Override
+				public int compare(Object o1, Object o2) {
+		  		String s1 = (String)o1;
+		  		String s2 = (String)o2;
+		  		return s2.compareTo(s1);
+			} 
+		
+		
+	}
+
+	</textarea>
+	 <textarea rows="30" cols="80" style="color: blue;">
+	    
+	    Example: // Write a program to insert StringBuffer objects into the TreeSet where sorting order is Alphabetical order . 
+	             import java.util.*;
+	             public class TreeSetTest { 
+	                 public static void main(String[] args){ 
+	                  TreeSet t = new TreeSet(new MyComparator());
+		 			  t.add(new StringBuffer("SitaRam"));
+		 			  t.add(new StringBuffer("LaxmiNarayan"));
+		              t.add(new StringBuffer("RadhaKrishna"));
+		              System.out.println(t); ==> o/p: [LaxmiNarayan, RadhaKrishna, SitaRam]
+	                }
+	            }
+	           class MyComparator implements Comparator {
+
+				@Override
+				public int compare(Object o1, Object o2) {
+		  		String s1 = o1.toString();
+		  		String s2 = o2.toString();
+		  		return s1.compareTo(s2);
+			} 
+		
+		
+	}
+
+	</textarea>
+	 <textarea rows="30" cols="80" style="color: blue;">
+	    
+	    Example: // Write a program to insert String and StringBuffer objects into the TreeSet, where sorting order is increasing length order . If two objects having the same length then consider their Alphabetical order . 
+	             import java.util.*;
+	             public class TreeSetTest { 
+	                 public static void main(String[] args){ 
+	                 	TreeSet t = new TreeSet(new MyComparator());
+		  				t.add("A");
+		  				t.add(new StringBuffer("ABC"));
+		  				t.add(new StringBuffer("AA"));
+		  				t.add("B");
+		  				t.add("C");
+		  				t.add("A");
+          				System.out.println(t);
+	                }
+	            }
+	          class MyComparator implements Comparator {
+
+				@Override
+				public int compare(Object o1, Object o2) {
+		  		String s1 = o1.toString();
+		  		String s2 = o2.toString();
+		  		int l1 = s1.length();
+		  		int l2 = s2.length();
+		  		if(l1<l2)
+			  		return -1;
+		  		else if(l1>l2)
+			  		return 1;
+		  		else
+			  		return s1.compareTo(s2); 
+		} 	
+	}
+
+	</textarea>
+	<ul>
+	  <li>Note: If we are depending upon default natural sorting order compulsory objects should be homogeneous and Comparable . Otherwise we will get runtime Exception saying ClassCastException . If we are defining our own sorting by Comparator then Objects need not be homogeneous and Comparable i.e , we can add heterogeneous non-comparable object also . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Comparable Vs Comparator :</b>
+	</h5>
+	<ul>
+	 <li>For predefined Comparable classes (like String), Default natural sorting order is already available . If we are not satisfied with that we can define our own sorting by Comparator object . </li>
+	 <li>For predefined non-comparable classes (like StringBuffer), Default natural sorting order is not already available . If we want to define our own sorting then we can use Comparator Object .  </li>
+	</ul>
+		 <textarea rows="40" cols="80" style="color: blue;">
+	      Example:
+	               class Employee implements Comparable {
+     				String name;
+    			    int eid;
+     
+					public Employee(String name, int eid) {
+					super();
+					this.name = name;
+					this.eid = eid;
+					}
+	
+
+					@Override
+				    public String toString() {
+				    return name+"---"+eid;
+	                }
+  
+
+					@Override
+					public int compareTo(Object o) {
+					int eid1 = this.eid;
+		
+					Employee e1 = (Employee)o;
+					int eid2 = e1.eid;
+					if(eid1<eid2)
+					return -1;
+					else if(eid1>eid2)
+					return 1;
+					else
+					return 0;
+			}
+	
+}
+public class TestTreeSet {
+
+	public static void main(String[] args) {
+	
+      Employee e1 = new Employee("A",100);
+      Employee e2 = new Employee("S",101);
+      Employee e3 = new Employee("Z",104);
+      Employee e4 = new Employee("X",102);
+      Employee e5 = new Employee("T",103);
+      
+      TreeSet t = new TreeSet();
+      t.add(e1);
+      t.add(e2);
+      t.add(e3);
+      t.add(e4);
+      t.add(e5);
+      System.out.println(t);
+      TreeSet t1 = new TreeSet(new MyComparator());
+      t1.add(e1);
+      t1.add(e2);
+      t1.add(e3);
+      t1.add(e4);
+      t1.add(e5);
+     
+      System.out.println(t1);
+	}
+
+}
+class MyComparator implements Comparator { 
+    
+
+	@Override
+	public int compare(Object o1, Object o2) {
+		  Employee e1 = (Employee)o1;
+            Employee e2 = (Employee)o2;
+            String s1 = e1.name;
+            String s2 = e2.name;
+            return s1.compareTo(s2);
+	}
+  }
+	</textarea>
+		<img alt="" src="images/CompbleComratr.PNG">
+</body>
+</html>

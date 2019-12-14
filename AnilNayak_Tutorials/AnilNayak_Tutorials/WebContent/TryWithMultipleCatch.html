@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Try with Multiple Catch</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Try with Multiple Catch</b>
+	</h4>
+	<ul>
+	 <li>The way of handling an Exception is varied from Exception to Exception . </li>
+	 <li>Hence for every Exception type is recommended to take separate catch block</li>
+	 <li>Hence try with multiple catch blocks is possible and recommended to use . </li>
+	</ul>
+	<textarea rows="20" cols="40" style="color: blue;">
+	    Not Recommended Approach :
+	    --------------------------
+	    try { 
+	    
+	    }
+	    catch(Exception e){ 
+	    
+	    }
+	    
+	    Recommended Approach :
+	    ----------------------
+	    try { 
+	    
+	    }
+	    catch(ArithmeticException ae){ 
+	    
+	    }
+	    catch(FileNotFoundException fe){ 
+	    
+	    }
+	    catch(SQLException e){ 
+	    
+	    }
+	    catch(Exception e){ 
+	    
+	    }
+	</textarea>
+
+<ul>
+ <li>Note :: If try  with multiple catch blocks present then the order of catch blocks is very important and it should be form child to parent.<br>
+              By mistake if we are taking from parent to child then we will get CompiletimeError saying : Exception "XYZ" has already caught.<br></li>
+</ul>
+<textarea rows="20" cols="40" style="color: blue;">
+   Wrong way to Handle Exception using try and catch :
+   -----------------------------------------------------
+	   try{ 
+	   
+	   }
+	   catch(Exception e){ 
+	   
+	   }
+	   catch(ArithmeticException ae){ 
+	   
+	   }
+	   Compile time Error : Exception: java.lang.ArithmeticException
+	                                  has already been caught .
+	                                  
+	Right way to Handle Exception using try and catch :
+	-----------------------------------------------------
+	try { 
+	
+	}
+	catch(ArithmeticException ae){ 
+	
+	}
+	catch(Exception e){ 
+	
+	}
+	</textarea>
+<ul>
+  <li>If we are trying to take multiple catch blocks for same Exception then we will get Compile time Error . </li>
+</ul>
+<textarea rows="15" cols="40" style="color: blue;">
+      Wrong way to handle Exception:
+      -------------------------------
+        try{ 
+        
+        }
+        catch(ArithmeticException ae){
+        
+        }
+        catch(ArithmeticException ae){
+        
+        }
+        Compile time Error : Exception java.lang.ArithmeticException
+                              already been caught
+	</textarea>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Singleton</title>
+</head>
+<body>
+    <h5>
+       <b style="color: green ">Singleton:</b>
+	</h5>
+   <ul>
+     <li>For any java class if we are allowed to create only one object, such type of class is called singleton class .  </li>
+     <li>Example: java.lang.Runtime is singleton class . </li>
+     <li>We can create our own singleton class , means customized singleton class . </li>
+   </ul>
+   
+   <textarea rows="30" cols="80" style="color: blue;">
+	     class BirthAndDeath { 
+	         public static BirthAndDeath instance = null;
+	         private BirthAndDeath(){ 
+	             System.out.println("Constructor executed"+);
+	         }
+	         public static BirthAndDeath  getInstance(){ 
+	              if (instance == null){ 
+	                  instance = new BirthAndDeath();
+	                  
+	                  return instance;
+	              }
+	             return instance;
+	         }
+	     }
+	     class Test { 
+	          public static void main(String[] args){ 
+	                   
+	                  BirthAndDeath b  =  BirthAndDeath.getInstance();
+	                  BirthAndDeath b1 =  BirthAndDeath.getInstance();
+	                  BirthAndDeath b2 =  BirthAndDeath.getInstance();
+	                  
+	                 System.out.println(b.hashCode()); // same hashCode
+	                 System.out.println(b1.hashCode()); // same hashCode 
+	                 System.out.println(b2.hashCode()); // same hashCode       
+     	          }
+     	  
+	     }
+	    Note: Every time it will create same object and the constructor will executed only one time. 
+	</textarea>
+	
+</body>
+</html>

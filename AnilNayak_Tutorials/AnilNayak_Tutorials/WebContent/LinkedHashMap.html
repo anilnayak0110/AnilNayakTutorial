@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">LinkedHashMap</b>
+     </h4>
+     <ul>
+       <li>It is exactly same as HashMap except the following differences . </li>
+     </ul>
+     <img alt="" src="images/HMLHM.PNG">
+    <textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class HashMapDemo{ 
+	                public static void main(String[] args){ 
+	                     LinkedHashMap m = new LinkedHashMap();
+	                     m.put("A",40);
+	                     m.put("Z",10);
+	                     m.put("K",20);
+	                     System.out.println(m);
+	              
+	                }
+	             }
+	         O/P:===>    {A=40, Z=10, K=20}
+
+	             
+	</textarea>
+	<ul>
+	  <li>Note: In general we can use LinkedHashSet and LinkedHashMap for developing Cache based applications , where duplicates are not allowed but, insertion order must be preserved . </li>
+	</ul>
+</body>
+</html>

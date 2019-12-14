@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Serialization</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Customized Serialization:</b>
+     </h4>
+     <ul>
+      <li>During default Serialization there may be a chance of loss of information due to transient keyword . </li>
+     </ul>
+       <textarea rows="25" cols="80" style="color: blue;">
+	      Example:
+	         import java.io.*;
+	         class MyAccount implements Serializable { 
+	           String username ="ag0110";
+	           transient String password = "ga0110";
+	         }
+	         class CustomizedSerializationDemo { 
+	           public static void main(String[] args) throws Exception{ 
+	              MyAccount account = new MyAccount();
+	              System.out.println(account.username+"------------"+account.password);
+	              FileOutputStream fos = new FileOutputStream("abc.ser");
+		          ObjectOutputStream oos = new ObjectOutputStream(fos);
+		          oos.writeObject(h1);
+		
+		          FileInputStream fis = new FileInputStream("abc.ser");
+		          ObjectInputStream ois = new ObjectInputStream(fis);
+		          MyAccount account2 =(MyAccount)ois.readObject();
+		          System.out.println(account2.username+"------"+account2.password);
+	           }
+	         }
+	       o/p: ag0110------null
+	</textarea>
+	<ul>
+	 <li>In the above example, before Serialization Account object can provide proper username and password . But after Deserialization Account object can provide only username , but not password, because password variable declared as transient keyword . </li>
+	 <li>Hence during default Serialization there may be a chance of loss of information due to transient keyword . </li>
+	 <li>To recover this loss of information we should go for Customized Serialization . </li>
+	 <li>We can implement Customized Serialization by using the following 2 methods . 
+	   <ul>
+	     <li><b>private void writeObject(ObjectOutputStream oos) throws Exception</b></li>
+	     <li>This method will be executed automatically at the time of Serialization . Hence while performing Serialization if we want to do any extra work we have to write code in this method only . </li>
+	   </ul>
+	   <ul>
+	     <li><b>private void readObject(ObjectInputStream ois) throws Exception</b></li>
+	     <li>This method will be executed automatically at the time of Deserialization . Hence while performing Deserialization if we want to do any extra work we have to define that in this method only . </li>
+	   </ul>
+	 </li>
+	 <li>This above two methods will be executed automatically by JVM . </li>
+	</ul>
+      <textarea rows="35" cols="80" style="color: blue;">
+	      Example:
+	              import java.io.*;
+	              class MyAccount implements Serializable { 
+                      String username = "ag0110";
+                      transient String password = "ag0110";
+                      private void writeObject(ObjectOutputStream oos) throws Exception{ 
+                         oos.defaultWriteObject();
+                         String epassword = "123"+password;
+                         oos.writeObject(epassword);
+                      }
+                     private void readObject(ObjectInputStream ois) throws Exception{ 
+                         ois.defaultReadObject();
+                         String epassword = (String)ois.readObject();
+                         password = epassword.substring(3);
+                      }
+                }
+                class Test { 
+                    public static void main(String[] args) throws Exception{ 
+                           MyAccount account = new MyAccount();
+                           System.out.println(account.username+"-----------"+account.password);
+                           FileOutputStream fos = new FileOutputStream("abc.ser");
+                           ObjectOutputStream oos = new ObjectOutputStream(fos);
+                           oos.writeObject(account);
+       
+                           FileInputStream fis = new FileInputStream("abc.ser");
+                           ObjectInputStream ois = new ObjectInputStream(fis);
+                           MyAccount account2 = (MyAccount)ois.readObject();
+                           System.out.println(account2.username+"------------"+account2.password);
+                      }
+             }
+             o/p:
+             ag0110------ag0110
+             ag0110------ag0110
+	</textarea>
+	     <textarea rows="35" cols="80" style="color: blue;">
+	      Example:
+	              import java.io.*;
+	              class MyAccountTest implements Serializable { 
+					private static final long serialVersionUID = 1L;
+					String username = "ag0110";
+    				transient String password = "ag0110";
+    				transient int pinNo = 1234;
+    				private void writeObject(ObjectOutputStream oos) throws Exception{ 
+       					oos.defaultWriteObject();
+       					String epassword = "123"+password;
+       					oos.writeObject(epassword);
+       					int epin = pinNo+4444;
+       					oos.writeObject(epin);
+    				}
+   					private void readObject(ObjectInputStream ois) throws Exception{ 
+       					ois.defaultReadObject();
+       					String epassword = (String)ois.readObject();
+       					password = epassword.substring(3);
+       					int epin = ois.readInt();
+       					pinNo = epin-4444;
+    				}
+			}
+			class Test { 
+  				public static void main(String[] args) throws Exception{ 
+	  				MyAccountTest account = new MyAccountTest();
+         			System.out.println(account.username+"-----------"+account.password+"-----------"+account.pinNo);
+         			FileOutputStream fos = new FileOutputStream("abcd.ser");
+         			ObjectOutputStream oos = new ObjectOutputStream(fos);
+         			oos.writeObject(account);
+
+         			FileInputStream fis = new FileInputStream("abcd.ser");
+         			ObjectInputStream ois = new ObjectInputStream(fis);
+         			MyAccountTest account2 = (MyAccountTest)ois.readObject();
+         			System.out.println(account2.password+"*********"+account2.pinNo);
+    			}
+			}
+	</textarea>
+</body>
+</html>

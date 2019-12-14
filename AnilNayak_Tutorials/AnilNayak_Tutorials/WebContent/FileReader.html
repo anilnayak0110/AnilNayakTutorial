@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IO  Package</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">FileReader</b>
+     </h4>
+     <ul>
+       <li>We can use FileReader to read character data from the file . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors:</b>
+     </h5>
+     <ul>
+       <li>FileReader fr = new FileReader(String fname);</li>
+       <li>FileReader fw = new FileReader(File f);</li>
+     </ul>
+      <h5>
+        <b style="color: green;">Methods :</b>
+     </h5>
+      <h6>
+        <b style="color: green;">int read()</b>
+     </h6>
+     <ul>
+       <li>It attempts to read next character from the file and returns its Unicode value . </li>
+       <li>If the next character is not available then this method returns -1 . </li>
+       <li>If this method returns unicode value at the time of retrieval we have to perform type casting . </li>
+     </ul>
+      <textarea rows="3" cols="80" style="color: blue;">
+	      Example: System.out.println(fr.read());
+	      System.out.println((char)fr.read());   
+	</textarea>
+	 <h6>
+        <b style="color: green;">int read(char[] ch);</b>
+     </h6>
+     <ul>
+       <li>It attempts to read enough characters from the file into char array and return no. of characters copied from the file into array . </li>
+     </ul>
+      <textarea rows="3" cols="80" style="color: blue;">
+	     Example : char[] ch = new char[10];
+	     System.out.println(fr.read(ch));
+	     char[] ch = new char[1000];
+	     System.out.println(fr.read(ch));
+	</textarea>
+	<h6>
+        <b style="color: green;">void close();</b>
+     </h6>
+      <textarea rows="20" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class FileReadDemo { 
+	       public static void main(String[] args) throws IOException{ 
+	          File f = new File("ag.txt");
+	          FileReader fr = new FileReader(f);
+	          char ch[] = new char[(int)f.length()];
+	          fr.read(ch);
+	          for(char ch1: ch)
+	           System.out.println(ch1);
+	           System.out.println("************");
+	           FileReader fr1 = new FileReader("ag.txt");
+	           int i = fr1.read();
+	           while(i!=-1){ 
+	             System.out.println((char)i);
+	             i = fr1.read();
+	           }
+	       }
+	    }
+	</textarea>
+     <h6>
+        <b style="color: green;">Why Usage of FileWriter and FileReader is not recommended ?</b>
+     </h6>
+     <ul>
+       <li>While writing data by FileWriter we have to insert line separator manually which is varied from system to system . It is difficult to the programmer . </li>
+       <li>To overcome above problems we should go for BufferedWriter and BufferedReader . </li>
+     </ul>
+</body>
+</html>

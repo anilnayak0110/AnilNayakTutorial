@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Serialization</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Object Graphs in Serialization  :</b>
+     </h4>
+     <ul>
+       <li>Whenever we serializing an object the set of all objects which are reachable from that object will be Serialized automatically . This group of objects is nothing Object Graph in Serialization </li>
+       <li>In Object graph, every object should be Serializable . If atleast one object is not Serializable then we will get RuntimeException saying NotSerializableException . </li>
+     </ul>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class Human implements Serializable{ 
+	      Animal a = new Animal();
+         }
+       class Animal implements Serializable{ 
+          int animal = 10;
+         }
+       class Test  { 
+			public static void main(String[] args) throws Exception{ 
+				Human h1 = new Human();
+				FileOutputStream fos = new FileOutputStream("abc.ser");
+				ObjectOutputStream oos = new ObjectOutputStream(fos);
+				oos.writeObject(h1);
+		
+				FileInputStream fis = new FileInputStream("abc.ser");
+				ObjectInputStream ois = new ObjectInputStream(fis);
+				Human h2 =(Human)ois.readObject();
+				System.out.println(h2.a.animal);
+       		}
+	}
+	</textarea>
+	<ul>
+	  <li>In the above example, whenever we are serializing Human object automatically Animal objects will be serialized  because these are part of Object graph of Human object . </li>
+	  <li>Among Human and Animal if atleats one object is not serializable then we will get RuntimeException saying NotSerializableException . </li>
+	</ul>
+</body>
+</html>

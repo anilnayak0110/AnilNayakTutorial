@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Multithreading : </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Synchronization:</b>
+	</h4>
+	<ul>
+	  <li>Synchronized is the keyword applicable for methods and blocks, but not for classes and variables . </li>
+	  <li>If a method or block declared as synchronized then at a time only one thread is allowed to execute on the given object, so that data inconsistency problem will be solved . </li>
+	  <li>The main advantage of synchronized keyword is we can overcome data inconsistency problems . </li>
+	  <li>But the main disadvantage of synchronized keyword is it increases waiting time of threads and performance will be reduced . </li>
+	  <li>Hence if there is no specific requirement then it is never recommended to use synchronized keyword . </li>
+	  <li>Every object in java has a unique lock . </li>
+	  <li>Internally synchronization concept is implemented by using lock concept . </li>
+	  <li>Whenever we are using synchronization concept is implemented by using lock concept . </li>
+	  <li>If a thread wants to execute a synchronized method on the given object first it has to get lock of that object . </li>
+	  <li>Once synchronized method execution completes thread releases the lock automatically . </li>
+	  <li>Acquiring and releasing the lock takes care by JVM automatically and programmer is not responsible for these things . </li>
+	  <li>While a thread executing synchronized method on the given object the remaining threads are not allowed to execute any synchronized method on that object simultaneously . </li>
+	  <li>But remaining threads are allowed to execute any non-synchronized methods simultaneously . </li>
+	</ul>
+	<textarea rows="30" cols="80" style="color: blue;">
+	    Example: 
+	             class Dispaly { 
+	                public synchronized void wish(String name){ 
+	                    for(int i=0;i<=10;i++){ 
+	                       System.out.println("God Bless you :"+name);
+	                       try{ 
+	                         Thread.sleep(1000);
+	                       }
+	                       catch(InterruptedException ie){ 
+	                          System.out.println(name);
+	                       }
+	                    }
+	                }
+	             }
+	             
+	             class MyThread extends Thread{ 
+	                  Display d;
+	                  String name;
+	                  MyThread(Display d, String name){ 
+	                     this.d = d;
+	                     this.name = name;
+	                  }
+	                  public void run(){ 
+	                     d.wish(name);
+	                  }
+	                  
+	                  public static void main(String[] args){ 
+	                     Display d = new Display();
+	                     MyThread g = new MyThread(d,"Gayatree");
+	                     MyThread a = new MyThread(d,"Anil");
+	                     g.start();
+	                     a.start();
+	                     
+	                  }
+	             }
+	</textarea>
+	<ul>
+	  <li>If we are not declaring wish(-) method as synchronized then at a time both thread will be executed simultaneously and hence we will get irregular output .</li>
+	  <li>Since we declared wish(-) method as synchronized then at a time only one thread is allowed to execute on the given Display object . </li>
+	</ul>
+	<textarea rows="15" cols="80" style="color: blue;">
+	   Case Study :
+	   
+	          Display d1 = new Display();
+	          Display d2 = new Display();
+	          
+	          MyThread g = new MyThread(d1,"Gayatree");
+	          MyThread a = new MyThread(d2,"Anil");
+	          g.start();
+	          a.start();
+	          
+	         Note: In this case eventhough wish(-) method is synchronized still we will get irregular output because threads are operating on different objects . 
+	</textarea>
+	<ul>
+	  <li>If multiple threads are operating on different objects then there is no impact of synchronized keyword . </li>
+	  <li>But if multiple threads are operating on same java object then there is impact of synchronized keyword . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Class level lock </b>
+	</h5>
+	<ul>
+	  <li>Every class in Java has a unique lock which is also known as a class level lock . </li>
+	  <li>If a thread wants to execute static synchronized method then it has to get class level lock . </li>
+	  <li>Once thread got class level lock then it is allowed to execute any static synchronized method . </li>
+	  <li>While a thread executing any static synchronized method then remaining threads are not allowed to execute any static synchronized methods simultaneously . </li>
+	  <li>But remaining threads are allowed to execute the following methods simultaneously . 
+	      <ul>
+	        <li>Normal static methods </li>
+	        <li>Normal synchronized methods </li>
+	        <li>Normal instance methods</li>
+	      </ul>
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Synchronized Block :</b>
+	</h5>
+	<ul>
+	  <li>If very few lines of the code requires synchronization then it is never recommended to declare entire method as synchronized . 
+	      We have to enclose those few lines of the code with synchronized block . 
+	  </li>
+	  <li>The main advantages of synchronized block over synchronized method is waiting time of thread will reduced . So that performance will be improved . </li>
+	  <li>We can use declare synchronized block as follows . 
+	     <ul>
+	       <li>To get lock of current object :<br>
+	             synchronized(this){ <br>
+	             }
+	       </li>
+	       <li>
+	           To get lock of a particular object 'b':<br>
+	           synchronized(b){ <br>
+	           
+	           }
+	       </li>
+	       <li>
+	            To get lock of Display class (class level lock)<br>
+	            synchronized(Display.class){<br>
+	            
+	            }
+	       </li>
+	       <li>Note: Lock concept applicable only for objects and classes but not for primitives . Hence we can pass either object reference or class name as argument to synchronized block , but not primitives otherwise we will get compile time error . <br>
+	               int x = 10;<br>
+	               synchronized(x){<br>
+	               
+	               }<br>
+	               CE: unexpected type <br>
+	                   found: int<br>
+	                   required :reference
+	       </li>
+	     </ul>
+	  </li>
+	</ul>
+</body>
+</html>

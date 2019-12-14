@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Overriding</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Overriding:</b>
+	</h4>
+   <ul>
+     <li>Whatever the methods parent has by default available to every child through inheritance . </li>
+     <li>If the child class does not satisfied with parent class implementation then it is allowed to override that method based on its requirement . </li>
+     <li>In overriding JVM is responsible for method resolution and it is based on runtime object . 
+        Hence overriding is considered as runtime polymorphisim or dynamic polymorphisim or late binding . </li>
+    
+   </ul>
+   
+   <textarea rows="20" cols="80" style="color: blue;">
+	  Example: 
+	    class Parent { 
+	        public void education(){ 
+	          System.out.println("You should do Engineering");
+	        }
+	    }
+	    class Children extends Parent { 
+	       public void education() { 
+	          System.out.println("I will do whatever I like to do ")
+	       }
+	    }
+	    
+	    class Test { 
+	       
+	       public static void main(String[] args) { 
+	          Parent p = new Parent();
+	          p.education();
+	          
+	          Children c = new Children();
+	          c.education();
+	          
+	          Parent p1 = new Children();
+	          p1.education();
+	       }
+	    }
+	</textarea>
+	<h5>
+       <b style="color: green ">Rules for Overriding:</b>
+	</h5>
+	<ul>
+	  <li>In overriding method names and arguments must be same . i.e method signature must be same . </li>
+	  <li>Return types must be same . But this rule is applicable up to jdk 1.4 version only . From 1.5 version onwards co-variant return types are allowed 
+	      According to this rule child class method return type need not be same as parent class method return type. </li>
+	</ul>
+	
+	 <textarea rows="10" cols="50" style="color: blue;">
+	  Example: 
+	      class P { 
+	         public Object m1() { 
+	            return null;
+	         }
+	      }
+	      class C extends P { 
+	          public String m1() { 
+	             return null;
+	          }
+	      }
+	      
+	      Note : This override concept only applicable from jdk 1.5 onwards not in jdk 1.4 version . 
+	            co-variant return type not applicable for primitive types and it is only applicable for Object types .  
+	</textarea>
+	<img alt="" src="images/Overriding.PNG" />
+	<ul>
+	  <li>Parent class private methods are not available for child class and hence overriding concept is not applicable for private methods . </li>
+	  <li>Based on our requirement we can define exactly same private method in child class also, but it is not overriding . </li>
+	</ul>
+	 <textarea rows="10" cols="50" style="color: blue;">
+	  Example: 
+	      class P { 
+	        private void m1() { 
+	           
+	        }
+	      }
+	      class C extends P { 
+	         private void m1() { 
+	         
+	         }
+	      }
+	      
+	      Note : The above case is valid , but it is not overriding concept . 
+	</textarea>
+	<ul>
+	  <li>We can not override Parent class final methods . </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	  Example: 
+	      class P { 
+	       public final void m1() { 
+	          
+	       }
+	      }
+	      class C extends P { 
+	      
+	        public void m1() { 
+	          
+	        }
+	      }
+	      
+	      Note : m1() in C can not override m1() in P;
+	             overridden method is final . 
+	</textarea>
+	<ul>
+	  <li>Parent class abstract methods we have to override in child class to provide implementation . </li>
+	  <li>We can override non abstract method as abstract . </li>
+	  <li>While overriding we can not reduce the scope of access modifires, but we can increase the scope . </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	  Example: 
+	      class P { 
+	         public void m1(){ 
+	         
+	         }
+	      }
+	      abstract class C extends P { 
+	         public abstract void m1();
+	      }
+	      
+	</textarea>
+	<img alt="" src="images/OverridingModifiers.PNG" />
+	<ul>
+	  <li>While overriding if child class method throws any checked exception compulsory parent class method throws same checked exception or its parent exception .
+	     There are no restriction for unchecked exceptions . </li>
+	</ul>
+	<img alt="" src="images/OverridingException.PNG" />
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	      class P { 
+	         public void m1() throws IOException{ 
+	         
+	         }
+	      }
+	      class C extends P { 
+	         public abstract void m1() throws EOFException,InterruptedException{ 
+	         
+	         }
+	      }
+	      Compiler Error : m1() in C can not override m1() in P;
+	                      method does not throw java.lang.InterruptedException .
+	</textarea>
+	
+	<h5>
+       <b style="color: green ">Overriding with respect to static modifiers:</b>
+	</h5>
+	<ul>
+	  <li>We can not override a static method as non-static method. </li>
+	</ul>
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	     class P { 
+	         public static void m1(){ 
+	         
+	         }
+	     }
+	     
+	     class C extends P { 
+	        public void m1(){ 
+	        
+	        }
+	     }
+	     
+	     Note: m1() in C can not override m1() in P;
+	           overriden methods is static . 
+	</textarea>
+	<ul>
+	  <li>Similarly we can not override a non-static method as static method . </li>
+	</ul>
+	
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	     class P { 
+	         public void m1(){ 
+	         
+	         }
+	     }
+	     
+	     class C extends P { 
+	        public static void m1(){ 
+	        
+	        }
+	     }
+	     
+	     Note: m1() in C can not override m1() in P;
+	           overriden method is static . 
+	</textarea>
+	
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	     class P { 
+	         public void m1(){ 
+	         
+	         }
+	     }
+	     
+	     class C extends P { 
+	        public static void m1(){ 
+	        
+	        }
+	     }
+	     
+	     Note: m1() in C can not override m1() in P;
+	           overriden method is static . 
+	</textarea>
+	
+	<h5>
+       <b style="color: green ">Method Hiding:</b>
+	</h5>
+	<ul>
+	  <li>All rules of method hiding are exactly same as overriding except the following difference . </li>
+	</ul>
+	
+	<img alt="" src="images/Overriding_MethodHiding.PNG" />
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	     class P { 
+	         public static void m1(){ 
+	            System.out.println("Parent");
+	         }
+	     }
+	     
+	     class C extends P { 
+	        public static void m1(){ 
+               System.out.println("Child");	        
+	        }
+	     }
+	     
+	     class Test { 
+	         
+	           public static void main(String[] args) { 
+	               P p = new P();
+	                 p.m1();
+	               
+	               C c = new C();
+	                 c.m1();
+	               
+	               P p1 = new C();
+	                 p1.m1();
+	           }
+	     }
+	     
+	     Note: In the above program the current out put is:
+	            "Parent"
+	            "Child"
+	            "Parent"
+	          
+	          But if we remove static from both methods then it will become overriding and the out put is :
+	            "Parent"
+	            "Child"
+	            "Child"
+	</textarea>
+	
+	<h5>
+       <b style="color: green ">Overriding with respect to var-arg method :</b>
+	</h5>
+	<ul>
+	  <li>We can not override a var-arg method with normal method.If we are trying to override it will become overloading but not overriding. </li>
+	  <li>We can override a var-arg method with another var-arg method only. </li>
+	</ul>
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	     class P { 
+	          public void m1(int... i){ 
+	              System.out.println("Parent");
+	          }
+	     }
+	     class C extends P { 
+	          public void m1(int i){ 
+	             System.out.println("Child");
+	          }
+	     }
+	     
+	     class Test { 
+	         
+	         public static void main(String[] args){ 
+	             P p = new P();
+	               p.m1();
+	             C c = new C();
+	               c.m1();
+	             P p1 = new P();
+	               p1.m1();
+	               
+	         }
+	     }
+	     
+	     Note: It is overloading, but not overriding . 
+	           In the above program if we replace child class method also with var-arg parameter then it will become overriding . 
+	           And in that case the output is :
+	           "Parent"
+	           "Child"
+	           "Child"	     
+	</textarea>
+	<h5>
+       <b style="color: green ">Overriding with respect to variables : </b>
+	</h5>
+	<ul>
+	  <li>Overriding concept is applicable only for methods but not for variables . </li>
+	  <li>Variable resolution always takes care by compiler based on reference type irrespective of whether the variables are static or not .</li>
+	</ul>
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	    class P { 
+	        int x = 100;
+	    }
+	    class C extends P { 
+	         int x = 200;
+	    }
+	    class Test { 
+	    
+	          public static void main(String[] args){ 
+	               P p = new P();
+	               System.out.println(p.x);//100
+	              
+	              C c = new C();
+	              System.out.println(c.x);//200
+	              
+	              P p1 = new C();
+	              System.out.println(p1.x);//100
+	          }
+	    }
+	    
+	</textarea>
+	<h5>
+       <b style="color: green ">Polymorphisim : </b>
+	</h5>
+	<ul>
+	  <li>Having same name with different forms is the concept of polymorphisim . </li>
+	  <li>we can use same abs() method for any type of argument . </li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example: 
+	   abs(int)
+	   abs(long)
+	   abs(float)
+	   abs(double)
+	    Note::: Same name with different arguments overloading. static polymorphisim . 
+	</textarea>
+	<ul>
+	 <li>We can use the same List reference to hold any of its implemented class object . </li>
+	</ul>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example: 
+	    List l = new ArrayList();
+	    List l = new LinkedList();
+	    List l = new Vector();
+	    List l = new Stack();
+	    
+	    Note::: Dynamic Polymorphisim . 
+	</textarea>
+	<img alt="" src="images/polymorphisim.PNG" />
+</body>
+</html>

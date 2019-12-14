@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>jdkjrejvm</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Difference between JDK,JRE and JVM</b>
+	</h4>
+	It is one of the common java interview questions and this article will explain each one of these and what is the difference between them.
+	<br>
+	<h4><b style="color: green;">JDK(Java Development Kit)</b></h4>
+	Java Development Kit contains two parts. One part contains the utilities like javac, debugger, jar which helps in compiling the source code (.java files) into byte code (.class files) and debug the programs.
+	The other part is the JRE, which contains the utilities like java which help in running/executing the byte code. If we want to write programs and run them, then we need the JDK installed.
+	<br>
+	<h4><b style="color: green;">Javac(Java Compiler)</b></h4>
+	javac is the executable/application which compiles the .java source files into the byte code (.class files). javac is included in JDK.
+	<br>
+	<h4><b style="color: green;">JRE(Java Runtime Environment)</b></h4>
+	Java Run-time Environment helps in running the programs. JRE contains the JVM, the java classes/packages and the run-time libraries. If we do not want to write programs, but only execute the programs written by others, then JRE alone will be sufficient.
+	<br>
+	<h4><b style="color: green;">JVM(Java Virtual Machine)</b></h4>
+	Java Virtual Machine is important part of the JRE, which actually runs the programs (.class files), it uses the java class libraries and the run-time libraries to execute those programs. Every operating system(OS) or platform will have a different JVM.
+	<br>
+	<h4><b style="color: green;">JIT(Just In Time Compiler)</b></h4>
+	JIT is a module inside the JVM which helps in compiling certain parts of byte code into the machine code for higher performance. Note that only certain parts of byte code will be compiled to the machine code, the other parts are usually interpreted and executed.
+	<br>
+	<h4><b style="color: green;">JRE Architecture</b></h4>
+	<img alt="" src="images/j1.png"/><br>
+	<h4><b style="color: green;">JDK Architecture</b></h4>
+	<img alt="" src="images/J2.png"/>
+	
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Serialization</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Externalization</b>
+     </h4>
+     <ul>
+      <li>In Serilaization, everything takes care by JVM and programmer doesn't have any control .</li>
+      <li>In Serialization, total object will be Serialized always and it is not possible to serialize part of the object, which may creates  performance problems in some cases . </li>
+      <li>To overcome these problems we should go for Externalization, where everything takes care by programmer and JVM doesn't have any control .</li>
+      <li>The advantage of Externalization is based on our requirement , we can save either total object or part of the object , so that relatively performance will improved .  </li>
+      <li>To provide Externalizable ability for any Java object compulsory the corresponding class should implement Externalizable interface . </li>
+      <li>Externalizable interface is the child interface of Serializable and it contains 2 methods are writeExternal() and readExternal()</li>
+      <li><b>public void writeExternal(ObjectOutput out) throws IOException</b>
+           <ul>
+             <li>This method will be executed automatically at the time of Serialization . </li>
+             <li>Within this method we have to write code to save required variables to the file . </li>
+           </ul>
+      </li>
+      <li><b>public void readExternal(ObjectInput out) throws IOException</b>
+           <ul>
+             <li>This method will be executed automatically at the time of Deserialization . </li>
+             <li>Within this method we have to write code to read required variables from the file and assign to the current object . </li>
+             <li>At the time of Deserialization JVM will create a separate new object by executing public non-argument constructor, or that object readExternal() method will be executed . </li>
+             <li>Externalizable class should compulsory contains public no-argument constructor otherwise we will get RuntimeException saying InvalidClassException .</li>
+           </ul>
+      </li>
+     </ul>
+       <textarea rows="35" cols="80" style="color: blue;">
+	      Example:
+	         import java.io.*;
+	         public class Test implements Externalizable { 
+    			String s ;
+    			int i;
+    			int j;
+    			public Test(){ 
+      				System.out.println("public no-arg constrcutor ");
+    			}
+    			public Test(String s, int i, int j){ 
+     				 this.s = s;
+      				 this.i = i;
+      				 this.j = j;
+    			}
+   			   public void writeExternal(ObjectOutput out)throws IOException{ 
+                   out.writeObject(s);
+                   out.writeInt(i);
+               }
+              public void readExternal(ObjectInput in) throws ClassNotFoundException, IOException{ 
+                  s = (String)in.readObject();
+                  i = in.readInt();
+             }
+             public static void main(String[] args) throws Exception, IOException{ 
+                 Test ext = new Test("AG",10,20);
+                 FileOutputStream fos = new FileOutputStream("abc.ser");
+                 ObjectOutputStream oos = new ObjectOutputStream(fos);
+                 oos.writeObject(ext);
+      
+                 FileInputStream fis = new FileInputStream("abc.ser");
+                 ObjectInputStream ois = new ObjectInputStream(fis);
+                 Test ext1 = (Test)ois.readObject();
+                 System.out.println(ext1.s+"---------"+ext1.i+"----------"+ext1.j);
+            }
+           }
+	         o/p:
+	         AG-----10---0
+	      
+	      Note: If we implements Test class with Serializable interface instead of Externalizable interface the output will be
+	       AG---10---20
+	</textarea>
+	<img alt="" src="images/SerExter.PNG"/>
+ 
+</body>
+</html>

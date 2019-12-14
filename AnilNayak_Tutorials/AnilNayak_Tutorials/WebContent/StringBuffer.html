@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>StringBuffer</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">java.lang.StringBuffer:-</b>
+	</h4>
+	<ul>
+	 <li>If the content is fixed and won't change frequently then it is recommended to use String . </li>
+	 <li>If the content is not fixed and keep on changing then it is not recommended to use String object, because for every change a new String object will be created  internally . </li>
+	 <li>To handle this requirement we should go for StringBuffer . </li>
+	 <li>The main advantages of StringBuffer over String is all changes will be performed in the existing object only instead of creating new object . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Constructor:</b>
+	</h5>
+	<ul>
+	 <li>StringBuffer sb = new StringBuffer(); <br>
+	 It creates an empty StringBuffer object with default initial capacity 16 . </li>
+	 <li>Once StringBuffer reaches its maximum capacity then a new StringBuufer object will be created with new capacity = (current capacity + 1)*2</li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example:
+	  StringBuffer sb = new StringBuffer();
+	  System.out.println(sb.capacity());// 16
+	  sb.append("gayatreeacharyaa");
+	  System.out.println(sb.capacity());//16
+	  sb.append("anilkumarnayak");
+	  System.out.println(sb.capacity());//34
+	</textarea>
+	<ul>
+	  <li>StringBuffer sb = new StringBuffer(int initialCapacity);<br>
+	  It creates an empty StringBuffer object with the specified initial capacity . </li>
+	</ul>
+	<ul>
+	 <li>StringBuffer sb = new StringBuffer(String s);<br>
+	 It creates an equivalent StringBuffer object for the given String with capacity = s.length()+16<br>
+	  Example : StringBuffer sb = new StringBuffer("Gayatree");
+	       <br>System.out.println(sb.capacity());//24
+	 </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Methods:</b>
+	</h5>
+	<ul>
+	  <li>public int length();</li>
+	  <li>public int capacity();</li>
+	  <li>public char charAt(int index);</li>
+	</ul>
+	<textarea rows="5" cols="60" style="color: blue;">
+	  Example:
+	  StringBuffer sb = new StringBuffer("Gayatree");
+	  System.out.println(sb.charAt(3)); // a
+	  System.out.println(sb.charAt(30)); // StringIndexOutOfBoundsException
+	</textarea>
+	<ul>
+	 <li>public void setCharAt(int index, char ch)<br>
+	   To replace the character locating at specified index with provided character . 
+	 </li>
+	 <li>public StringBuffer append(String s) <br>
+	     public StringBuffer append(int i)<br>
+	     public StringBuffer append(float f)<br>
+	     public StringBuffer append(boolean b)<br>
+	     public StringBuffer append(Object o)
+	 </li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example:
+	  StringBuffer sb = new StringBuffer();
+	  sb.append("PI value is :");
+	  sb.append(3.14);
+	  sb.append("It is exactly :");
+	  sb.append(true);
+	  System.out.println(sb);
+	</textarea>
+     <ul>
+       <li>public StringBuffer insert(int index, String s)<br>
+           public StringBuffer insert(int index, int i)<br>
+           public StringBuffer insert(int index, float f)<br>
+           public StringBuffer insert(int index, double d)<br>
+           public StringBuffer insert(int index, boolean b)<br>
+           public StringBuffer insert(int index, Object o)
+       </li>
+     </ul>
+     <textarea rows="5" cols="60" style="color: blue;">
+	  Example:
+	  StringBuffer sb = new StringBuffer("Gayatree");
+	  sb.insert(8,"Anil");
+	  System.out.println(sb); // o/p: GayatreeAnil
+	</textarea>
+	<ul>
+	 <li>public StringBuffer delete(int begin, int end)<br>
+	    To delete character from begin index to end-1 index . 
+	 </li>
+	 <li>public StringBuffer deleteCharAt(int index)</li>
+	 <li>public StringBuffer reverse()</li>
+	 <li>public void setLength(int length)<br>
+	     StringBuffer sb = new StringBuffer("GayatreeAnil");<br>
+	     sb.length(8);<br>
+	     System.out.println(sb);// o/p: GayatreeA
+	 </li>
+	 <li>public void ensureCapacity(int capacity)<br>
+	     To increase capacity on on the based of our requirement . <br>
+	     StringBuffer sb = new StringBuffer();<br>
+	     System.out.println(sb.capacity());// 516<br>
+	     sb.ensureCapacity(1000);<br>
+	     System.out.println(sb.capacity());// 1000
+	 </li>
+	 <li>public void trimToSize()<br>
+	    To deallocate extra allocated free memory . <br>
+	    StringBuffer sb = new StringBuffer(1000);<br>
+	    sb.append("abc");<br>
+	    sb.trimToSize();<br>
+	    System.out.println(sb.capacity());// o/p: 3
+	 </li>
+	 <li>Note : Every method present in the StringBuffer is synchronized . Hence at a time only one thread is allowed to operate on StringBuffer . 
+	     It increases waiting time of Threads and creates performance problem . 
+	  </li>
+	  <li>To overcome this problem SUN people introduced StringBuilder in jdk 1.5 version . </li>
+	</ul>
+</body>
+</html>

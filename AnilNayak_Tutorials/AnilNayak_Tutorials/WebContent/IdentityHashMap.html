@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">IdentityHashMap</b>
+     </h4>
+     <ul>
+       <li>It is exactly same as HashMap except the following difference . </li>
+       <li>In case of Normal HashMap, JVM will use .equals() method to identify duplicate keys, which is meant for content comparison . But in case of IdentityHashMap, JVM will use == operator to identify duplicate keys, which is meant for reference comparison . </li>
+     </ul>
+     <textarea rows="15" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class HashMapDemo{ 
+	                public static void main(String[] args){ 
+	                      IdentityHashMap h = new IdentityHashMap();
+          Integer I1 = new Integer(10);
+          Integer I2 = new Integer(20);
+          h.put(I1,"P");
+          h.put(I2,"K");
+          System.out.println(I1.equals(I2));
+          System.out.println(I1==I2);
+          System.out.println(h);
+	              
+	                }
+	             }
+	</textarea>
+</body>
+</html>

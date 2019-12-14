@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>String</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">java.lang.String:-</b>
+	</h4>
+    <ul>
+      <li>Once we created a String object we can not perform any changes in the existing object, if we are trying to perform any changes with those changes a new object will be created . 
+          This behavior is called <b>Immutability</b></li>
+      <li>While creating String Object , the Object will created  in two area i.e "Heap" and "String Constant Pool" area . </li>
+      <li>String s = new String("Heera");<br>
+          In this case, 2 objects will be created . One is in the "Heap" area and other is in SCP(String Constant Pool Area).<br>
+          and "s" reference always pointing to Heap Object . 
+      </li>
+      <li>String s ="Heera" <br>
+          In this case, only one object will be created in "String Constant Pool" and "s" reference always pointing to that object . 
+      </li>
+      <li>Note: Garbage Collector is not allowed to access "SCP" area . Hence eventhough object does not  contain any reference, then also 
+          the object will not available to Garbage Collector . </li>
+      <li>All "SCP" objects will be destroyed automatically at the time of JVM shutdown .  </li>
+      <li>Object creation in SCP is always optional . First JVM will check is any object already present in SCP with required content or not . 
+         <br> If it is already available then JVM will reuse that object . If it is not available then only a new Object will be created .  </li>
+      <li></li>
+    </ul>
+    <img alt="" src="images/StringSCP.PNG"/>
+    <ul>
+      <li>Whenever we are using new operator compulsory an new object will be created on the Heap . </li>
+      <li>There may be a chance 2 objects with same content on Heap, but there is no chance of existing 2 objects with the same content on SCP .</li>
+    </ul>
+	<img alt="" src="images/StringSCP1.PNG"/>
+	<ul>
+	  <li>For every String constant, one object will be placed in SCP area . </li>
+	  <li>Because of some runtime operation like a method call if an object is required to create, it will be created only on the Heap, but not in SCP . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Intering of String objects :-</b>
+	</h5>
+	<ul>
+	  <li>By using Heap object reference if we want to get corresponding SCP object reference then we should go for intern() method . </li>
+	</ul>  
+	<img alt="" src="images/StringIntern.PNG"/>
+	<ul>
+	  <li>If the corresponding SCP object is not available then intern() method will create that object and return it . </li>
+	</ul>
+	<img alt="" src="images/StringIntern1.PNG"/>
+	 <h5>
+       <b style="color: green ">Importance of String Constant Pool(SCP):-</b>
+	</h5>
+	<ul>
+	  <li>In our program, any string object is required to use repeatedly, then it is not recommended to create a separate object for every requirement because memory utilization and performance will be reduced .  </li>
+	  <li>Instead of creating a separate object every time we can create only one object and we can reuse the same object every time . So that performance and memory utilization will be improved . </li>
+	  <li>We can achieve this by using SCP . Hence the main advantages of SCP are memory utilization and performance will be improved .  </li>
+	  <li>The main disadvantage of SCP is as several references pointing to same object in SCP by using one reference if we are trying to perform any change the remaining references will be impacted . </li>
+	  <li>To overcome this problem SUN people defined String objects as Immutable . </li>
+	  <li>According to this once we creating String object we can not perform any changes in the existing object . If we are trying to perform any changes then with those changes a new object will be created . 
+	      Hence SCP is the only reason why String object are Immutable . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Why SCP like concept available only for String but not for StringBuffer ?</b>
+	</h5>
+	<ul>
+	  <li>String objects are most commonly used objects in Java .  Hence SUN people defined specially designed memory area (SCP) for String objects . </li>
+	  <li>StringBuffer objects are not commonly used objects in Java . Hence SUN people won't define any specially designed memory area for StringBuffer objects . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Why String Objects are immutable ? where as StringBuffer objects are mutable ?</b>
+	</h5>
+	<ul>
+	  <li>In case of String objects, just because of SCP a single object is referred by multiple references . 
+	      By using one reference if we are all]owed to change the content then remaining references will be impacted . 
+	      To overcome this problem SUN people made String objects as immutable . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Similar to String objects is any other objects are immutable ?</b>
+	</h5>
+	<ul>
+	  <li>In addition to String objects, all wrapper class objects also immutable in java . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">String class Constructor :-</b>
+	</h5>
+	<ul>
+	  <li>String s = new String();<br>
+	     Creates an empty String objects . 
+	  </li>
+	  <li>String s = new String(String literal);<br>
+	      To create an equivalent String String object on the Heap for the given String literal . 
+	  </li>
+	  <li>
+	      String s = new String(StringBuffer sb);<br>
+	      To create an equivalent String object for the given StringBuffer . 
+	  </li>
+	  <li>
+	      String s = new String(char[] ch);
+	      <br>To create an equivalent String object for the given char[] array .<br>
+	      char[] ch = {'a','b','c','d'};<br>
+	      String s = new String(ch);<br>
+	      System.out.println(s);o/p:abcd
+	  </li>
+	  <li>
+	      String s = new String(byte[] b);
+	      <br>To create an equivalent String object for the given byte[] array .<br>
+	      byte[] b = {100,101,102,103};<br>
+	      String s = new String(b);<br>
+	      System.out.println(s);o/p:defg
+	  </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Important methods of String class : </b>
+	</h5>
+	<ul>
+	  <li><b>public char charAt(int index):</b><br>
+	  returns the character locating at specified index<br>
+	   Example : String s = "Heera";<br>
+	   System.out.println(s.charAt(3)); o/p: r<br>
+	   System.out.println(s.charAt(20)); o/p: ArrayIndexOutOfBoundsException 
+	  </li>
+	  <li><b>public String concat(String s)</b><br>
+	     String s = "Heera";<br>
+	     s = s.concat("Acharya");<br>
+	     System.out.println(s); o/p: HeeraAcharya
+	  </li>
+	  <li>
+	    <b>public boolean equals(Object o)</b><ul>
+	      <li>To perform content comparison where case is important 
+	       </li>
+	       <li>This is overriding version of Object class equals(_) method .</li>
+	    </ul></li>
+	   <li><b>public boolean equalsIgnoreCase(String s ):</b> 
+	     <ul>
+	       <li>String s = "Java";<br>
+	          System.out.println(s.equals("JAVA"));//o/p: false<br>
+	          System.out.println(s.equalsIgnoreCase("JAVA"));o/p: true
+	       </li>
+	       <li>Note: Usually we can use equalsIgnoreCase(_) method to compare user_id where case is not important and where as equals(_) method to compare passwords where case is important . </li>
+	     </ul>
+	   </li>
+	   <li><b>public String substring(int begin):</b>
+	   <ul>
+	     <li>return substring from begin index to end of the String . </li>
+	   </ul>
+	   </li>
+	   <li><b>public String substring(int begin, int end):-</b> <ul>
+	     <li>return substring from begin index to end-1 of the String . <br>
+	         Example : String s = "Gayatree";<br>
+	         System.out.println(s.substring(4));o/p: tree<br>
+	         System.out.println(s.substring(2,6)); o/p: yatr
+	     </li>
+	   </ul></li>
+	   <li><b>public int length() :</b> 
+	     <ul>
+	       <li>return no of characters present in the String . <br>
+	          Example: String s = "Java";<br>
+	          System.out.println(s.length());o/p:4
+	       </li>
+	     </ul>
+	   </li>
+	   <li><b>public String replace(char old, char new)</b>
+	     <ul>
+	       <li>String s = "aaaa"; <br>
+	           System.out.println(s.replace('a','g'));o/p:gggg
+	       </li>
+	     </ul>
+	   </li>
+	   <li><b>public String toLowerCase()</b></li>
+	   <li><b>public String toUpperCase()</b></li>
+	   <li><b>public String trim(): </b>
+	     <ul>
+	       <li>It removes all blank spaces present at beginning and end of the String, but not middle blank spaces .  </li>
+	     </ul>
+	   </li>
+	   <li><b>public int indexOf(char ch) :</b>
+	      <ul>
+	         <li>It returns index of first occurrence of specified character . </li>
+	      </ul>
+	   </li>
+	   <li><b>public int lastIndexOf(char ch) : </b>
+	     <ul>
+	       <li>It returns index of last occurrence of specified character . <br>
+	          String s = "abab";<br>
+	          System.out.println(s.indexOf('a'));o/p:0<br>
+	          System.out.println(s.lastIndexOf('a'));o/p:2
+	       </li>
+	     </ul>
+	   </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Creation of our own Immutable class :</b>
+	</h5>
+	<ul>
+	  <li>Once we created an object we can not perform any changes in the existing object . If we are trying to perform any changes with those changes a new object will be created . </li>
+	  <li>If there is no change in the content with our operation then existing object will be reused . </li>
+	</ul>
+	<textarea rows="25" cols="60" style="color: blue;">
+	  Example: final public class Test { 
+	               private int i;
+	               Test(int i){ 
+	                  this.i = i;
+	               }
+	               public Test modify(int i){ 
+	                    if(this.i == i){ 
+	                      return this;
+	                    }
+	                    else{ 
+	                      return new Test(i);
+	                    }
+	               }
+	             public static void main(String[] args){ 
+	                 Test t1 = new Test(10);
+	                 Test t2 = t1.modify(100);
+	                 Test t3 = t1.modify(10);
+	                 System.out.println(t1==t2);//o/p: false
+	                 System.out.println(t1==t3);//o/p: true
+	             }
+	        } 
+	          
+	</textarea>
+    <ul>
+      <li>Once we created a Test object we can not perform any changes in the existing object . </li>
+      <li>If we are trying to perform any changes with those changes a new object will be created .</li>
+      <li>If there is no change in the content then existing object will be reused . </li>
+    </ul>
+    <h5>
+       <b style="color: green ">final vs Immutability :</b>
+	</h5>
+	<ul>
+	  <li>final applicable for variables, but not for objects where as Immutability applicable for objects, but not for variables . </li>
+	  <li>By declaring a reference variable as final we won't get any immutability nature in the corresponding object , we can perform any type of changes . 
+	      But we can not perform reassignment for the reference variable .<br>
+	      
+	      Example: final StringBuffer sb = new StringBuffer("Gayatree");<br>
+	               sb.append("Acharya");<br>
+	               System.out.println(sb);<br>
+	               StringBuffer sb = new StringBuffer("Heera");-CE: can not assgin a value to final variable sb .
+	  </li>
+	</ul>
+</body>
+</html>

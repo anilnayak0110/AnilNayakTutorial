@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Wrapper Class</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Wrapper Class</b>
+	</h4>
+   <ul>
+     <li>The main objectives of Wrapper classes are : 
+       <ul>
+         <li>To wrap primitives into Object from . So that we can handle primitives also just like Objects .</li>
+         <li>To define several utility methods which are required for primitives . </li>
+       </ul>
+     </li>
+   </ul>
+   <h5>
+       <b style="color: green ">Constructors :</b>
+	</h5>
+	<ul>
+	 <li>Almost all Wrapper classes defines 2 constructors. One can take corresponding primitive and the others can take String argument . </li>
+	</ul>
+	<textarea rows="8" cols="60" style="color: blue;">
+	 Example :
+	           Integer I = new Integer(10);
+	           Integer I = new Integer("10");
+	           
+	           Double d = new Double(10.5);
+	           Double d = new Double("10.5");
+	</textarea>
+	<ul>
+	  <li>If the String argument is not representing number then we will get RuntimeException: NumberFormatException : <br>
+	     Example: Integer i = new Integer("ten"); // NumberFormatException
+	  </li>
+	  <li>Float class contains 3 constructors with float, double and String arguments . <br>
+	     Example: Float f = new Float(10.5f);<br>
+	              Float f = new Float("10.5f");<br>
+	              Float f = new Float(10.5);<br>
+	              Float f = new Float("10.5");
+	  </li>
+	  <li>Character class contains only one constructors with char primitive as arguments . <br>
+	         Character ch = new Character('a');
+	         Character ch = new Character("a");// Compiletime Error
+	  </li>
+	  <li>Boolean class contains 2 constructors with boolean primitives and String arguments . </li>
+	  <li>If we pass boolean primitives as argument then allowed values are true and false (where case should be in lower case )</li>
+	</ul>
+	<textarea rows="7" cols="60" style="color: blue;">
+	 Example :
+	          Boolean b = new Boolean(true);
+	          Boolean b = new Boolean(false);
+	          Boolean b = new Boolean(True); Compiletime Error
+	          Boolean b = new Boolean(Heera);Compiletime Error 
+	</textarea>
+	<ul>
+	  <li>If we pass String argument then content and case both are not important . </li>
+	  <li>If the content is case insensitive String of "true" then it is treated as true . In all other cases it is treated as false . </li>
+	</ul>
+	<textarea rows="14" cols="60" style="color: blue;">
+	 Example :
+	          Boolean b = new Boolean("true");// o/p: true
+	          Boolean b = new Boolean("false");// o/p: false
+	          Boolean b = new Boolean("True");// o/p: false
+	          Boolean b = new Boolean("Heera");// o/p: false
+	          Boolean x = new Boolean("Yes");// o/p: false
+	          Boolean y = new Boolean("No");// o/p: false
+	          System.out.println(x);// o/p: false
+	          System.out.println(y);// o/p: false
+	          System.out.println(x==y); //o/p: false
+	          System.out.println(x.equals(y)); o/p: true
+	</textarea>
+	<img alt="" src="images/Wrapper.PNG">
+	<ul>
+	  <li>Note : In all Wrapper classes, toString() method is overridden for return its content .</li>
+	  <li>In all wrapper classes, .equals(_) method is overridden for content comparison . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Utility Methods :</b>
+	</h5>
+	<ul>
+	  <li>valueOf()</li>
+	  <li>xxxVlaue()</li>
+	  <li>parseXxx()</li>
+	  <li>toString()</li>
+	</ul>
+	<h6>
+       <b style="color: green ">valueOf()</b>
+	</h6>
+	<ul>
+	 <li>We can use valueOf() methods to create wrapper Object for the given String or primitive . </li>
+	 <li>Form 1: Every wrapper class except character class contains the following valueOf() method to create wrapper object for the given String . <br>
+	     public static wrapper valueOf(String s);
+	 </li>
+	</ul>
+	<textarea rows="7" cols="60" style="color: blue;">
+	 Example :
+	         Integer I = Integer.valueOf("10");
+	         Double d  = Integer.valueOf("10.5");
+	         Boolean b = Boolean.valueOf("Heera");
+	</textarea>
+	<ul>
+	  <li>Form 2: Every Integral type wrapper class (Byte, Short, Integer, Long) contain the following valueOf() method to create Wrapper object for the given specified radix String . <br>
+	       public static wrapper valueOf(String s, int radix);
+	       <br> The allowed range of radix is 2 to 36<br>
+	       Example: Integer I = Integer.valueOf("111",2);
+	       <br> System.out.println(I);// o/p: 7
+	  </li>
+	  <li>Form 3: Every Wrapper class including Character class defines the following valueOf() method to create Wrapper Object for the given primitive . <br>
+	       Integer I  = Integer.valueOf(10);<br>
+	       Character ch = Character.valueOf('a');<br>
+	       Boolean b = Boolean.valueOf(true); 
+	  </li>
+	</ul>
+	<img alt="" src="images/valueOf.PNG">
+	<h6>
+       <b style="color: green ">xxxValue():</b>
+	</h6>
+	<ul>
+	  <li>We can use xxxVlaue() method to find primitive values for the given Wrapper object . </li>
+	  <li>Every number type Wrapper class (Byte,Short,Integer,Long,Float,Double) contains the following xxxValue() method to find primitive for the given wrapper object . </li>
+	</ul>
+	<textarea rows="8" cols="60" style="color: blue;">
+	 Example :
+	          public byte byteVlaue()
+	          public int intValue()
+	          public short shortValue()
+	          public long longValue()
+	          public float floatValue()
+	          public double doubleValue()
+	</textarea>
+	<textarea rows="10" cols="60" style="color: blue;">
+	 Example :
+	         Integer I = new Integer(130);
+	         System.out.println(I.byteValue());//O/P: -126
+	         System.out.println(I.shortValue());//O/P: 130
+	         System.out.println(I.intValue());//O/P:130
+	         System.out.println(I.longValue());//O/P:130
+	         System.out.println(I.floatValue());//O/P:130.0
+	         System.out.println(I.doubleValue());//O/P:130.0
+	         
+	</textarea>
+	<ul>
+	  <li>Character class contains charValue() method to final char primitive for the given Character object . <br>
+	       Example : Character ch = new Character('a');<br>
+	                       char c = ch.charValue();<br>
+	                       System.out.println(c);// o/p: 'a' 
+	  </li>
+	  <li>Boolean class contains booleanValue() method to find boolean primitive for the given Boolean object . <br>
+	       Example: Boolean B = Boolean.valueOf("Heera");<br>
+	                boolean b = B.booleanValue();<br>
+	                System.out.println(b); // o/p: false
+	   </li>
+	</ul>
+	<img alt="" src="images/xxxValue.PNG">
+	<h6>
+       <b style="color: green ">parseXxx():</b>
+	</h6>
+	<ul>
+	  <li>We can use parseXxx() method to convert String to primitive . </li>
+	  <li>Form 1: Every wrapper class except Character class contains the following parseXxx() method to convert String to primitive . <br>
+	      public static primitive parseXxx(String s);<br>
+	      Example: int i = Integer.parseInt("10");<br>
+	               double d = Double.parseDouble("10.5");<br>
+	               boolean b = Boolean.parseBoolean("true");
+	  </li>
+	  <li>Form 2: Every Integral type wrapper class contains the following parseXxx() method to convert specified radix String to primitive . <br>
+	              public static primitive parseXxx(String s, int radix);<br>
+	              Note : The allowed range of radix is 2 to 36 . 
+	  </li>
+	</ul>
+	<img alt="" src="images/parseXxx.PNG">
+	<h6>
+       <b style="color: green ">toString():</b>
+	</h6>
+	<ul>
+	  <li>We can use toString() method to convert wrapper Object and primitives to String . </li>
+	  <li>Form 1: Every wrapper class contains the following toString() method to convert wrapper object to String . <br> 
+	        public String toString();
+	  </li>
+	  <li>It is the overriding version Object class toString() method . </li>
+	  <li>Whenever we are trying to print any wrapper object reference internally this method will be called . <br>
+	      Example: Integer I = new Integer(10);<br>
+	               System.out.printl(I);// Internally called I.toString(); // O/P: 10<br>
+	               String s = I.toString();<br>
+	               System.out.println(s);// o/p: s
+	  </li>
+	  <li>Form 2: Every wrapper class  including Character class contains the following static toString() method to convert primitive to String . <br> 
+	          public static String toString(primitive p);<br>
+	          Example: String s = Integer.toString(10);<br>
+	                   String s = Boolean.toString(true);<br>
+	                   String s = Character.toString('a');
+	  </li>
+	  <li>Form 3: Integer and Long classes contain the following toString() method to convert primitive to specified radix String form . <br> 
+	               public static String toString(primitive p, int radix);<br>
+	               Example : String s = Integer.toString(7,2);<br>
+	                         System.out.println(s);// o/p: 111
+	  </li>
+	</ul>
+	<h6>
+       <b style="color: green ">toXxxString():-</b>
+	</h6>
+	<ul>
+	  <li>Integer and Long classes contain the following toXxxString() methods . <br>
+	       public static String toBinaryString(primitive p);<br>
+	       public static String toOctalString(primitive p);<br>
+	       public static String toHexString(primitive p);<br>
+	       Example 1 : String s = Integer.toBinaryString(10);<br>
+	                   System.out.println(s); // o/p: 1010<br>
+	       
+	       Example 2: String s = Integer.toOctalString(10);<br>
+	                  System.out.println(s);// o/p : 12<br>
+	       
+	       Example 3: String s = Integer.toHexString(10);<br>
+	                  System.out.println(s);// o/p: a           
+	  </li>
+	</ul>
+	<img alt="" src="images/toXxxString.PNG">
+	<h6>
+       <b style="color: green ">The flow between Wrapper object, primitive and String </b>
+	</h6>
+	<img alt="" src="images/Wrapperr.PNG">
+	<h6>
+       <b style="color: green ">Partial hierarchy of java.lang.package :-</b>
+	</h6>
+	<img alt="" src="images/LnagHirarchy.PNG">
+	<ul>
+	  <li>The wrapper classes which are not child class of Number are Character and Boolean . </li>
+	  <li>Wrapper classes which are not direct child class of Object are Byte, Short, Integer, Long, Float and Double . </li>
+	  <li>In addition to String, all wrapper objects are immutable . </li>
+	  <li>All wrapper classes, String, StringBuffer and StringBuilder are final classes . </li>
+	</ul>
+	<h6>
+       <b style="color: green ">Void class:-</b>
+	</h6>
+	<ul>
+	  <li>Sometimes we may consider Void class also Wrapper class . </li>
+	  <li>It is the direct Child class of Object and it is the final class . </li>
+	  <li>It does not contain any methods and it contains only one variable TYPE . <br> 
+	      public static final java.lang.class TYPE;
+	  </li>
+	  <li>We can use Void class in Reflections API to check whether return type of method is void or not . <br> 
+	      Example : if(ob.getClass().getMethod("m1").getRunType()==Void.TYPE)<br>
+	                { }
+	  </li>
+	</ul>
+</body>
+</html>

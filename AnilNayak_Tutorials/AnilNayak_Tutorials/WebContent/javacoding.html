@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java Coding Standards</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Java Coding Standards</b>
+	</h4>
+	Whenever we are writing java code, the real purpose of code should understand,
+	so we must follow some coding standard while writing java code .
+	By using java coding standard, the readability and maintainability of the code will increase .
+	
+    Lets see a sample <b>Example:</b><br>
+    <b>Wrong Java coding standard</b><br>
+    <textarea rows="10" cols="40" style="color: blue;font-size: medium;">
+      public class Sample{
+          public static void main(String args[]){
+           System.out.println("Welcome to AKN Java Funda");
+           }
+      }
+    </textarea><br>
+    <b>Correct Java Coding standard</b><br>
+    <textarea rows="10" cols="40" style="color: blue;font-size: medium;">
+      package com.anilnayak.sample;
+      public class Sample{
+          public static void main(String args[]){
+           System.out.println("Welcome to AKN Java Funda");
+           }
+      }
+    </textarea><br>
+    The difference is every class first statement should start with some standard package name .
+    <h5>
+		<b style="color: green;">Coding Standard for classes and interfaces</b>
+	</h5>
+	Every class should start with <b>uppercase</b> character,
+	and if it contains multiple words, then the inner word should start with <b>uppercase</b> character .
+	<br>
+	class name Example:<br>
+	<b>String<br>
+	StringBuffer<br>
+	SringBuilder<br>
+	Employee<br>
+	Student<br>
+	StockMarket</b><br>
+	
+	interface name Example:<br>
+	<b>List<br>
+	   RandomAccess<br>
+	   Runnable<br>
+	   EmployeeService<br>
+	   StudentService<br>
+	   StockMarketService</b>
+	
+	 <h5>
+		<b style="color: green;">Coding Standard for methods</b>
+	</h5>
+	Every method name should start with <b>lowercase</b> character,
+	and if it contains multiple words, then the inner word should start with <b>uppercase</b> character (camel-case convention).
+	<br>
+	method name example:<br>
+	<b>run()<br>
+	   sleep()<br>
+	   println()<br>
+	   getEmployeeName()<br>
+	   getAddress()</b>
+	   
+	    <h5>
+		<b style="color: green;">Coding Standard for variables</b>
+	</h5>
+	Every variable name should start with <b>lowercase</b> character,
+	and if it contains multiple words, then the inner word should start with <b>uppercase</b> character (camel-case convention).
+	<br>
+	variable name example:<br>
+	<b>name<br>
+	   address<br>
+	   mobileNumber<br>
+	   cityName</b>
+	   
+	     
+	    <h5>
+		<b style="color: green;">Coding Standard for constants</b>
+	</h5>
+	Every constants should start with only <b>uppsercase</b> character,
+	and if it contains multiple words, then each word should separate with underscore symbol(_) .
+	<br>
+	constants name example:<br>
+	<b>MAX_VALUE<br>
+	   MIN_VALUR<br>
+	   URL_ADDRESS</b>
+	   
+</body>
+</html>

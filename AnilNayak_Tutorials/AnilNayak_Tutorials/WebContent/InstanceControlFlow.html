@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Static Control Flow</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Instance Control Flow :</b>
+	</h4>
+	<ul>
+	  <li>Whenever we are creating an object the following sequence of events will be executed . </li>
+	  <li>Execution of instance variable assignments and instance blocks from top to bottom . </li>
+	  <li>Execution of constructor . </li>
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+       Parent.java:
+       --------------
+       class Parent { 
+                  
+               int i = 10;
+               { 
+                  m1();
+                  System.out.println("First Instance Block");
+               }
+               Parent(){ 
+                  System.out.println("Parent Constructor");
+               }
+               public static void main(String[] args){ 
+                    Parent p = new Parent();
+                    System.out.println("Parent main");
+               }
+               public void m1(){ 
+                 System.out.println(j);
+               }
+               {
+                 System.out.println("Second Instance Block");
+               }
+               int j = 20;
+          }
+	</textarea>
+	<ul>
+	  <li>Note: static control flow is one time activity, which will be executed at the time of class loading. 
+	            But instance control flow is not one time activity, for every object creation it will be performed . </li>
+	  
+	</ul>
+	<h5>
+       <b style="color: green ">Instance control flow in parent to child relationship :</b>
+	</h5>
+	<ul>
+	  <li>Whenever we are creating child class objects the following sequence of events will be executed automatically . </li>
+	  <li>1. Identification of instance members from parent to child . </li>
+	  <li>Execution of instance variable assignments and instance blocks only in parent class . </li>
+	  <li>Execution of parent class constructor . </li>
+	  <li>Execution of instance variable assignments and instance blocks in child class . </li>
+	  <li>Execution of child class constructor . </li>
+	</ul>
+	<textarea rows="40" cols="80" style="color: blue;">
+       Parent.java:
+       --------------
+       class Parent { 
+                  
+               int i = 10;
+               { 
+                  m1();
+                  System.out.println("First Instance Block");
+               }
+               Parent(){ 
+                  System.out.println("Parent Constructor");
+               }
+               public static void main(String[] args){ 
+                    Parent p = new Parent();
+                    System.out.println("Parent main");
+               }
+               public void m1(){ 
+                 System.out.println(j);
+               }
+               {
+                 System.out.println("Second Instance Block");
+               }
+               int j = 20;
+          }
+          
+          class Child extends Parent { 
+             int x = 100;
+             { 
+                m2();
+                System.out.println("Child First Instance Block");
+             }
+             Child(){ 
+                 System.out.println("Child Constructor");
+             }
+             public static void main(String[] args){ 
+                  Child c = new Child();
+                  System.out.println("Child Main");
+             }
+             public void m2(){ 
+                 System.out.println(y);
+             }
+             {
+               System.out.println("Child Second Instance Block");
+             }
+             int y = 200;
+           }
+              
+          }
+           Note: Whenever we are loading child class automatically parent class will be loaded. But whenever we are loading parent class automatically Child class won't be loaded .
+           
+	</textarea>
+	<ul>
+	  <li>Object creation is most costly operation in java. Hence if there is no specific requirement then it is never recommended to create object . </li>
+	  <li>Usage of static methods is recommended when compared with instance methods . </li>
+	</ul>	
+</body>
+</html>

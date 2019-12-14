@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Garbage Collection</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	 <h4>
+        <b style="color: green;">Finalization</b>
+     </h4>
+     <ul>
+      <li>Just before destroying an object Garbage Collector calls finalize() method to perform cleanup activities . </li>
+      <li>Once finalize() method completes automatically Garbage Collector destroys that object . </li>
+      <li>finalize() method present in object class with the following declaration . <br>
+          protected void finalize() throws Throwable
+      </li>
+      <li>Just before destroying an object Garbage Collector always calls finalize() method to perform clean up activities on that object then the corresponding class finalize() method will be executed .</li>
+      <li>For example, if String object eligible for Garbage Collector then String class finalize() method will be executed, but not Test class finalize() method . </li>
+     </ul>
+      <textarea rows="15" cols="80" style="color: blue;">
+	      Example:
+	               public class Test { 
+						public static void main(String[] args){ 
+						String s = new String("AG");
+        				s = null;
+        				System.gc();
+        				System.out.println("End of Main");
+       				}
+	
+        			public void finalize(){ 
+          				System.out.println("Finalize method called");
+        			}
+				}
+	        o/p: End of Main       
+	</textarea>
+	<ul>
+	 <li>In the above program, String object eligible for Garbage Collector and hence String class finalize() method get executed, which has empty implementation . Thats why we get out put as only "End OF main"</li>
+	 <li>If we replace String object with Test object then Test class finalize() method will be executed . In this case output is <br>
+	      End of Main<br>
+	      Finalize method called
+	 </li>
+	</ul>
+	 <textarea rows="15" cols="80" style="color: blue;">
+	      Example:
+	               public class Test { 
+						public static void main(String[] args){ 
+							Test t = new Test();
+							 t.finalize();
+        					 t.finalize();
+        					 t = null;
+                             System.gc();
+                             System.out.println("End of Main");
+                      }
+	
+                 public void finalize(){ 
+                System.out.println("Finalize method called");
+        }
+	}
+	o/p:
+	Finalize method called
+	End of Main
+	Finalize method called     
+	</textarea>
+	<ul>
+	 <li>In the above example finalize() method will be executed 3 times, in that 2 times by the programmer like a normal method call and one time by the Garbage Collector . In this case the output is like above . </li>
+	 <li>If programmer calls finalize() method and while executing that finalize() method if an Exception raised and uncaught then the programmer will terminate abnormally by raising that Exception .</li>
+	 <li>If Garbage Collector calls finalize() method and while executing that finalize() method if an exception raised and uncaught then JVM ignores that Exception and rest of the program will be executed normally .  </li>
+	</ul>
+	 <textarea rows="15" cols="80" style="color: blue;">
+	      Example:
+	              public class Test { 
+					public static void main(String[] args){ 
+		 			Test t = new Test();
+         			t.finalize();
+         			t = null;
+         			System.gc();
+         			System.out.println("End Of Main");
+      			}
+      			public void finalize(){ 
+        			System.out.println("finalize method call");
+        			System.out.println(10/0);
+      			} 
+	}
+	  o/p:
+	  finalize method call
+	  Exception in thread "main" java.lang.ArithmeticException: / by zero            
+	</textarea>
+	<ul>
+	  <li>If we are comment "t.finalize()" method then we will get proper out put without abnormal termination, because in this case garbage collector call finalize() method . </li>
+	  <li>Hence JVM will ignore that Exception and rest of the program will be executed normally . In this case output is <br>
+	    End Of Main<br>
+		finalize method call<br>
+	  </li>
+	</ul>
+     
+</body>
+</html>

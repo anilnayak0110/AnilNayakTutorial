@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">Collections:</b>
+     </h4>
+     <ul>
+       <li>Collections class is an utility class present in java.util package to define several utility methods for Collection objects . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">To sort elements of List :</b>
+     </h5>
+     <ul>
+       <li>Collections class defines the following methods for this purpose. <br>
+          public static void sort(List l)<br>
+          To sort based on default natural sorting order . 
+        </li>
+        <li>In this case, compulsory List should contain only homogeneous and comparable objects, otherwise we will get RuntimeException : saying ClassCastException</li>
+        <li>List should not contain null, otherwise we will get NullPointerException <br>
+            public static void sort(List l, Comparator c)<br>
+            To sort based on customized sorting order . 
+         </li>
+     </ul>
+       <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: To sort elements of List according to natural sorting order . 
+	    ----------------------------------------------------------------------
+	             import java.util.*;
+	             public class CollectionsDemo {
+	                public static void main(String[] args){ 
+	                  ArrayList l = new ArrayList();
+	                  l.add("Z");
+	                  l.add("A");
+	                  l.add("K");
+	                  l.add("N");
+	                  l.add(new Integer(10));//==>RuntimeException:ClassCastException
+	                  l.add(null);==>RuntimeExcception: NullPointerException
+	                  System.out.println("Before sorting :"+l);
+	                  Collections.sort(l);
+	                  System.out.println("After Sorting :"+l);
+	                }
+	             } 
+	            
+	        o/p: 
+	        Before sorting :[Z, A, K, N]
+            After Sorting  :[A, K, N, Z]
+	             
+	</textarea>
+	<textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: To sort elements of List according to customized sorting order . 
+	    ----------------------------------------------------------------------
+	             import java.util.*;
+	             public class CollectionsDemo {
+	                public static void main(String[] args){ 
+	                  ArrayList l = new ArrayList();
+	                  l.add("Z");
+	                  l.add("A");
+	                  l.add("K");
+	                  l.add("L");
+	                  System.out.println("Before Sorting :"+l);
+	                  Collections.sort(l,new MyComparator());
+	                  System.out.println("After sorting :"+l);
+	                  
+	                }
+	             }
+	             class MyComparator implements Comparator { 
+	                public int compare(Object o1, Object o2){ 
+	                   String s1 = (String)o1;
+	                   String s2 = o2.toString();
+	                   return s2.compareTo(s1);
+	                }
+	             }
+	            
+	        o/p: 
+	       Before Sorting :[Z, A, K, L]
+           After sorting :[Z, L, K, A]
+	             
+	</textarea>
+	 <h5>
+        <b style="color: green;">Searching elements of List :</b>
+     </h5>
+     <ul>
+       <li>public static int binarySearch(List l, Object o)<br>
+          If we are sorting List according to default natural sorting then we have to use this method .<br>
+       </li>
+       <li>public static int binarySearch(List l, Object o, Comparator c)<br>
+         If we sort List according to Comparator then we use this method .
+       </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Conclusions:-</b>
+     </h5>
+     <ul>
+       <li>Internally the above search methods will use Binary search algorithm . </li>
+       <li>Before performing search operation compulsory List should be sorted, otherwise we will get unpredictable results . </li>
+       <li>Successful search returns index . </li>
+       <li>Unsuccessful search returns insertion point . </li>
+       <li>Insertion point is the place where we can place target element in sorted List . </li>
+       <li>If the List is sorted according to Comparator then at the time of search operation also then we should pass the same Comparator object, otherwise we will get unpredictable results . </li>
+     </ul>
+     <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: List is sorted according to natural sorting order . 
+	    ----------------------------------------------------------------------
+	             import java.util.*;
+	             public class CollectionsDemo {
+	                public static void main(String[] args){ 
+	                   ArrayList l = new ArrayList();
+	                   l.add("Z");
+	                   l.add("A");
+	                   l.add("M");
+	                   l.add("K");
+	                   l.add("a");
+	                   System.out.println(l);
+	                   Collections.sort(l);
+	                   System.out.println(l);
+	                   System.out.println(Collections.binarySearch(l,"Z"));
+	                   System.out.println(Collections.binarySearch(l,"J"));
+	                }
+	              }
+	              
+	              o/p:
+	              [Z, A, M, K, a]
+				  [A, K, M, Z, a]
+                  3
+                 -2
+	              
+	</textarea>
+	  <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: List is sorted according to customized sorting order . 
+	    ----------------------------------------------------------------------
+	             import java.util.*;
+	             public class CollectionsDemo {
+	                public static void main(String[] args){ 
+	                   ArrayList l = new ArrayList();
+	                   l.add(15);
+	                   l.add(0);
+	                   l.add(20);
+	                   l.add(10);
+	                   l.add(5);
+	                   System.out.println(l);
+	                   Collections.sort(l, new MyComparator());
+	                   System.out.println(l);
+	                   System.out.println(Collections.binarySearch(l,10,new MyComparator()));
+	                   System.out.println(Collections.binarySearch(l,13,new MyComparator()));
+	                   System.out.println(Collections.binarySearch(l,17));
+	                }
+	              }
+	              class MyComparator implements Comparator { 
+	                  public int compare(Object o1, Object o2){ 
+	                     Integer i1 = (Integer)o1;
+	                     Integer i2 = (Integer)o2;
+	                     return i2.compareTo(i1);
+	                  }
+	              }
+	              o/p:
+	             [15, 0, 20, 10, 5]
+			     [20, 15, 10, 5, 0]
+                 2
+                -3
+                -6
+	              
+	</textarea>
+	<ul>
+	  <li>Note: For the list of n elements :
+	     <ul>
+	       <li>Range of successful search : 0 to n-1</li>
+	       <li>Range of unsuccessful search : -(n+1) to -1</li>
+	       <li>Total Result Range : -(n+1) to (n-1)</li>
+	     </ul>
+	  </li>
+	  <li>Example: 3 elements :
+	    <ul>
+	      <li>Range of successful search : 0 to 2</li>
+	      <li>Range of unsuccessful search : -4 to -1</li>
+	      <li>Total Result Range : -4 to 2</li>
+	    </ul>
+	  </li>
+	</ul>
+	<ul>
+	  <li>Reversing the elements of List :<br>
+	     public static void reverse(List l);
+	  </li>
+	</ul>
+	  <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example: List is sorted according to customized sorting order . 
+	    ----------------------------------------------------------------------
+	             import java.util.*;
+	             public class CollectionsDemo {
+	                public static void main(String[] args){ 
+	                   ArrayList l = new ArrayList();
+	                   l.add(15);
+	                   l.add(0);
+	                   l.add(20);
+	                   l.add(10);
+	                   l.add(5);
+	                   System.out.println(l);
+	                   Collections.reverse(l);
+	                   System.out.println(l);
+	                }
+	              }
+	              
+	           o/p:
+	           [15, 0, 20, 10, 5]
+               [5, 10, 20, 0, 15]
+	              
+	</textarea>
+	 <h5>
+        <b style="color: green;">reverse() vs reverseOrder():-</b>
+     </h5>
+     <ul>
+       <li>We can use reverse() method to reverse order of elements of List . </li>
+       <li>We can use reverseOrder() method to get reversed Comparator . </li>
+       <li>Example: Comparator c = Collections.reverseOrder(Comparator c);</li>
+     </ul>
+</body>
+</html>

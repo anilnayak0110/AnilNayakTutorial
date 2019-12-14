@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IS-A-Relationship</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">IS-A-Relationship:</b>
+	</h4>
+	<ul>
+	  <li>It is also known as Inheritance .</li>
+	  <li>By using extends keyword we cab implement IS-A-Relationship . </li>
+	  <li>By using IS-A-Relationship we can achieve re-usability of the code .</li>
+	  <li>Whatever the Parent class has by default available to child class . Hence on the child class object we can call both parent class and child class method . </li>
+	  <li>Whatever has child class by default not available to child class . Hence by using parent class object we can't access child class method</li>
+	  <li>Parent class reference can be used to hold child class object . But by using parent class reference we can call only the methods of parent class and we can not call child specific methods . </li>
+	  <li>We can not use child class reference to hold parent class object . </li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	  Example: 
+	 class P {
+	    public void m1(){
+	    
+	    }
+	 }
+	 class C extends P {
+	    public void m2(){
+	    
+	    }
+	 }
+	 class Test {
+	   
+	   public static void main(String[] args){
+	       
+	       P p = new P();
+	       p.m1();
+	       p.m2(); // <b style="color: red">Error : We can not access child class method using parent class Object . </b>
+	       
+	       C c = new C();
+	       c.m1();
+	       c.m2();
+	       
+	       P p1 = new C();
+	       p1.m1();
+	       p1.m2(); // <b style="color: red">Error : We can not access child class method using parent class reference . </b>
+	       
+	       C c1 = new P(); //<b style="color: red">Error : Child class reference can not hold Parent class Object . </b>
+	   }
+	 }
+	</textarea>
+	<ul>
+	 <li>Entire Java API is implemented based on the Inheritance concept . </li>
+	 <li>Whatever the common methods which are applicable for any Exception or Error are defined in Throwable class .
+	     Hence Throwable class acts as the root for java exception hierarchy . </li>
+	 <li>Whatever the common methods which are applicable for any java object are defined in Object class . 
+	     Hence Object class acts as a root for all java classes . </li>    
+	</ul>
+	<img alt="" src="images/Innheritance.PNG" />
+	
+	<h5>
+		<b style="color: green;">When we will use Inheritance ? :</b>
+	</h5>
+	<ul>
+	  <li>When we need all the data member and methods from the parent class then we should go for inheritance . 
+	    Otherwise we should not go for inheritance to avoid performance problem . </li>
+	</ul>
+	
+	<h5>
+		<b style="color: green;">Why multiple inheritance is not supported by java ? :</b>
+	</h5>
+	<ul>
+	  <li>There may be a chance of ambiguity problem and hence multiple inheritance is not allowed in java . </li>
+	</ul>
+	
+	<textarea rows="10" cols="100" style="color: blue;">
+	  Example: 
+	  class P {
+	    public void m1(){
+	    
+	    }
+	  }
+	  class C {
+	    public void m1(){ 
+	    
+	    }
+	  }
+	  class Test extends P,C {
+	     
+	     public static void main(String[] args){ 
+	        Test t = new Test();
+	        t.m1(); //<b style="color: red">Error : Ambiguity Error  </b>
+	     }
+	  }
+	 </textarea>
+	 
+	 <ul>
+	   <li>But an interface can extend more than one interface at a time and hence multiple inheritance is allowed only for interface . </li>
+	   <li>An interface can extends multiple interface at a time . </li>
+	   <li>In the interfaces eventhough multiple method declaration are there but implementation is unique . Hence there is no chance of ambiguity problems in interface .  </li>
+	   <li>If our class does not extends from any other class class, then only our class is the direct child class of Object . </li>
+	   <li>If our class extends any other class then it is not direct child class of Object . </li>
+	 </ul>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">Generics</b>
+     </h4>
+     <h5>
+        <b style="color: green;">Introduction:</b>
+     </h5>
+     <ul>
+      <li>The main purpose of Generics is to provide type safety and to resolve type casting problems . 
+        <ul>
+          <li><b>Case- 1: Type Safety:</b></li>
+          <li>Arrays are always type safe i.e, we can give the guarantee for the type of elements present inside array . </li>
+          <li>For example, our programming requirement is to store String objects. We can choose String[] . By mistake if we are trying to provide any other type we will get compile time error . <br>
+              Example: String[] s = new String[2500];<br>
+              s[0] = "Gayatree";<br>
+              s[1] = "Anil";<br>
+              s[2] = new Integer(10);<br>//CE: incompatible types<br>
+                                               found: java.lang.Integr<br>
+                                               required: java.lang.String
+              s[2] = "siva";<br>
+             
+          </li>
+          <li>i.e We can give the guarantee that String array can contain only String type of objects . Hence with respect to type  Arrays are safe to use i.e Arrays are type safe . </li>
+          <li>Collections are not type safe i.e we can not give the guarantee for the type of elements present inside Collection .</li>
+          <li>For example:, if our programming requirement is to hold only String type of objects and if we choose ArrayList . By mistake if we are trying to add any other type then we won't get any compile time error, but the program may fail at runtime .  </li>
+          <li>Example: ArrayList l = new ArrayList();<br>
+                       l.add("Gayatree");<br>
+                       l.add("Anil");<br>
+                       l.add(new Integer(10));<br>
+                       ---------------------------<br>
+                       String name1 = (String)l.get(0);<br>
+                       String name2 = (String)l.get(1);<br>
+                       String name3 = (String)l.get(2);==>RE:ClassCastException<br>
+                      
+          </li>
+          <li> We can not give the guarantee for the type of elements present inside Collection . Hence Collections are not safe to use with respect to type i.e Collections are not type safe . </li>
+        </ul>
+      </li>
+      <li><b>Case 2: Type Casting :</b></li>
+      <li>In case of Arrays, at the time of retrieval we are not required to perform type casting . </li>
+      <li>Example: String[] s = new String[2500];<br>
+                   S[0] = "Gayatree";<br>
+                   String name1 = s[0];// type casting is not required . <br>
+                   But in case of Collection at the time of retrieval compulsory we have to perform type casting .<br>
+                   Example: ArrayList al = new ArrayList();<br>
+                   l.add("Gayatree");<br>
+                   String name1 = l.get(0);//CE: incompatible types<br>
+                                                 found: java.lang.Object<br>
+                                                 required: java.lang.String<br>
+                  String name1 = (String)l.get(0);//CE: Type casting is mandatory
+                   
+      </li>
+      <li>Hence type casting is a bigger headache in Collections. </li>
+      <li>To overcome above problems we should go for Generics . </li>
+      <li>Hence the main purposes of Generics are 
+         <ul>
+           <li>To provide type safety</li>
+           <li>To resolve type casting problems . </li>
+         </ul>
+      </li>
+      <li>Example: if our programming requirement is to hold only String type of objects we can create Generic version of ArrayList object as follows . <br>
+          ArrayList<String> al = new ArrayList<String>();
+      </li>
+      <li>For this ArrayList object we can add only String type of objects . By mistake if we are trying to add any others type we will get Compile time error : <br>
+          Example: l.add("Gayatree");<br>
+                   l.add("Anil");<br>
+                   l.add(new Integer(10));// Comiple time error :
+          
+      </li>
+      <li>Hence through Generics we are getting type safety . </li>
+      <li>All the time of retrieval we are not required to perform any type casting .  <br>
+         Example: ArrayList<String> al = new ArrayList<String>();<br>
+             l.add("Gayatree");<br>
+             String name = l.get(0);// Type casting is not required . 
+         
+      </li>
+      <li>Hence through Generics we can resolve type casting problems . </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Conclusion:-</b>
+     </h5>
+     <ul>
+       <li>Polymorphisim concept  applicable only for the Base type, but not for parameter type(Usage of parent reference to hold child object is called polymorphisim ).<br>
+           ArrayList<String> al = new ArrayList<String>();<br>
+           List<String> l = new ArrayList<String>();<br>
+           Collection<String> l = new ArrayList<String>();<br>
+           ArrayList<Object> l = new ArrayList<String>();// Compile time error: incompatible types<br>found: ArrayList<String><br>required: ArrayList<Object></li>
+       <li>For the type parameter we can provide any class or interface name, but not primitives otherwise we will get Compile time error . <br>
+          Example: ArrayList<int> al = new ArrayList<int>();<br>
+                  CE: unexpected type<br>
+                  found: int<br>
+                  required: reference
+       </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Generic classes  :</b>
+     </h5>
+     <ul>
+       <li>But in 1.5 version a generic version of ArrayList class is declared as follows . <br>
+           Example: class ArrayList<T> {//
+               add(T ob)<br>
+               T get(int index)
+           }
+           (where 'T' is type parameter)
+       </li>
+       <li>Based on our requirement 'T' will be replaced with our provided type . <br>
+          Example: if our programming requirement is to store only String type of objects we can create generic version of ArrayList object as follows . <br>
+          ArrayList<String> l = new ArrayList<String>();
+       </li>
+       <li>For this ArrayList object compiler consider version of ArrayList class is as follows <br>
+           class ArrayList<String>{ <br>
+              add(String ob)<br>
+              String get(int index)<br>
+           }
+       </li>
+       <li>The argument to add(-) method is String and hence we can add only String type of objects . By mistake if we are trying to add any other type then we will get Compile time error . <br> 
+           Example: l.add("Gayatree");<br>
+           l.add(new Integer(10));// CE: can not find symbol<br>
+                                         symbol: method add(Integer)<br>location: class ArrayList<String>
+       </li>
+       <li>Hence through Generics we are getting Type safety . </li>
+       <li>	The return type of get(-) method is String and hence at the time of retrieval we are not required to perform type casting . <br>
+          Example: String name = l.get(0);//Type casting is not required 
+        </li>
+        <li>In Generics we are associating a type parameter for the classes , such type of parameterized classes are called Generic classes (Template classes )</li>
+        <li>Based on our requirement we can create our own Generic classes . </li>
+     </ul>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    class Gen<T>{ 
+	       T ob;
+	       Gen(T ob){ 
+	         this.ob = ob;
+	       }
+	       public void show(){ 
+	         System.out.println("Type of object :"+ob.getClass().getName());
+	       }
+	       public T getOb(){ 
+	         return ob;
+	       }
+	    }
+	    class GenDemo { 
+	      public static void main(String[] args){ 
+	         Gen<String> g1 = new Gen<String>("Gayatree");
+	         g1.show();
+	         System.out.println(g1.getOb());
+	         
+	          Gen<Integer> g2 = new Gen<Integer>(10);
+	         g2.show();
+	         System.out.println(g2.getOb());
+	      }
+	    }
+	    o/p:
+	    Type of object :java.lang.String
+		Gayatree
+		Type of object :java.lang.Integer
+		10
+	</textarea>
+	 <h5>
+        <b style="color: green;">Bounded Types:</b>
+     </h5>
+     <ul>
+       <li>We can bound type parameter for a particular range by using extends keyword . Such types are called Bounded Types . <br>
+          Example: class Test<T>{ 
+              
+          }
+       </li>
+       <li>As the type parameter we can pass any type and there are no restrictions. Hence it is unbounded type. </li>
+     </ul>
+     <h6>
+        <b style="color: green;">Syntax for Bounded Type :</b>
+     </h6>
+      <textarea rows="10" cols="80" style="color: blue;">
+	     class Test<T extends X>{ 
+	       X can be either class or interface
+	     } 
+	</textarea>
+	<ul>
+	 <li>If X is a class then as the type parameter we can pass either X type or its child classes . </li>
+	 <li>If X is an interface then as the type parameter we can pass either X type or its implementation classes . </li>
+	</ul>
+	 <textarea rows="10" cols="80" style="color: blue;">
+	     class Test<T extends Number>{ 
+	      ------
+	      ------
+	     } 
+	     Test<Integer> t1 = new Test<Integer>();
+	     Test<Double> d1 = new Test<Double>();
+	     Test<String> s1 = new Test<String>();// CE: Type parameter java.lang.String is not in its bound 
+	</textarea>
+	 <textarea rows="10" cols="80" style="color: blue;">
+	     class Test<T extends Number>{ 
+	      ------
+	      ------
+	     } 
+	     Test<Runnable> t1 = new Test<Runnable>();
+	     Test<Thread> d1 = new Test<Thread>();
+	     Test<Integer> s1 = new Test<Integer>();// CE: Type parameter java.lang.String is not in its bound 
+	</textarea>
+     <ul>
+       <li>We can define bounded types in Combination also . </li>
+     </ul>
+     <textarea rows="6" cols="80" style="color: blue;">
+	     class Test<T extends Number & Runnable>{ 
+	      ------
+	      ------
+	     } 
+	</textarea>
+	<ul>
+	  <li>As the parameter we can pass any type which should be child class of Number and important Runnable interface . </li>
+	</ul>
+	<textarea rows="6" cols="80" style="color: blue;">
+	     class Test<T extends Runnable & Comparable>{ 
+	      ------
+	      ------
+	     } 
+	     <T extends Number & Runnable & Comparable>
+	     <T extends Runnable & Number > C.E. [We have to take class first followed by interface]
+	     <T extends Number & Thread > [We can not extend multiple classes simultaneously]
+	</textarea>
+	<ul>
+	  <li>We can define bounded types only by using extends keyword and we can not use implements and super keywords . But implements keyword purpose we can replace with extends keyword . </li>
+	</ul>
+	<textarea rows="6" cols="80" style="color: blue;">
+	     class Test<T extends Number>{ 
+	      ------
+	      ------
+	     } 
+	     class Test<T implements Runnable>{ }//Error
+	     class Test<T extends Runnable>{}
+	     class Test<T super String>{}//Error
+	</textarea>
+	<ul>
+	  <li>As the type parameter instead of T we can use any valid java identifier , but it is convention to use T always . </li>
+	</ul>
+	<textarea rows="6" cols="80" style="color: blue;">
+	     class Test<T>{}//correct
+	     class Test<X>{}//correct
+	     class Test<AG>{}//correct
+	</textarea>
+	<ul>
+	  <li>Based on our requirement we can use any no of type parameters and need not be one .</li>
+	</ul>
+	<textarea rows="6" cols="80" style="color: blue;">
+	    class Test<X,Y>{ }
+	    class Test<A,B,C>{}
+	    class HashMap<k,v>{}
+	    HashMap<Integer,String> hm = new HashMap<Integer,String>();
+	</textarea>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Coupling</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h5>
+       <b style="color: green ">Coupling : </b>
+	</h5>
+	<ul>
+	  <li>The degree of dependency between the components is called coupling . </li>
+	  <li>Dependency between the components should be less as possible . </li>
+	</ul>
+	<textarea rows="10" cols="80" style="color: blue;">
+	  Example: 
+	      class A { 
+	         static int i = 10;
+	      }
+	      class B { 
+	         static int j = C.m1();
+	      }
+	      class C { 
+	        
+	        public static int m1(){ 
+	          return D.k;
+	        }
+	      }
+	      class D { 
+	         static int k =190;
+	      }
+	      
+	      Note :  The above components are said to be tightly coupled with each other. 
+	           Because the dependency between the components is high . 
+	</textarea>
+	<ul>
+	  <li>Tightly coupling is not a good programing practice, because it has several disadvantages . 
+	      <ul>
+	        <li>Without effecting remaining components we can not modify any component . Hence enhancement will become difficult . </li>
+	        <li>It reduces maintainbility of the application . </li>
+	        <li>It does not promots reusability . </li>
+	      </ul>
+	 </li>
+	 <li>Loose coupling is always good programing parctice . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Cohesion : </b>
+	</h5>
+	<ul>
+	  <li>For every component we have to define a clear well defined functionality, such type of component is said to be follow high cohesion . </li>
+	</ul>
+	<img alt="" src="images/cohession.PNG" />
+	<ul>
+	 <li>High cohesion is always recommonded. Because it has the following advantages. 
+	    <ul>
+	     <li>Without effecting remaining components we can modify any components . Hence enhancement will become easy . </li>
+	     <li>It improves maintainbility of the application . </li>
+	     <li>It promotes reusability( Whenever validation is required we can reuse the same Validation component everywhere without rewriting again . )</li>
+	     <li>High cohesion and loose coupling ar good programing practice . </li>     
+	    </ul>
+	 </li>
+	</ul>
+</body>
+</html>

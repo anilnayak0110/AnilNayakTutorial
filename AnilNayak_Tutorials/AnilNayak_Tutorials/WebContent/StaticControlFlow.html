@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Static Control Flow</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Static Control Flow :</b>
+	</h4>
+	<ul>
+	  <li>Whenever we are executing a java class the following is the sequence of events will be performed automatically . 
+	    <ul>
+	      <li>1. Identification of static members from top to bottom . </li>
+	      <li>2. Execution of static variable assignments and static blocks from top to bottom . </li>
+	      <li>3. Execution of main method . </li>
+	    </ul>
+	  </li>
+	</ul>
+	<img alt="" src="images/StaticControlFlow.PNG" />
+	 <h5>
+       <b style="color: green ">Read Indirectly Write Only State:</b>
+	</h5>
+	<ul>
+	  <li>If a variable is in RIWO(Read Indirectly Write Only State) we can not perform read operation directly. Otherwise we will get compile time error saying
+	      "Illegal forward reference"</li>
+	</ul>
+	
+	<textarea rows="20" cols="80" style="color: blue;">
+	  Example 1: 
+	          class Test { 
+	            static int i = 10;
+	            static { 
+	                System.out.println(i);
+	            }
+	          }
+	          
+	Example 2: 
+	         class Test { 
+	              static { 
+	                 System.out.println(i);
+	              }
+	              static int i = 10;
+	          }
+	          CompileTimer Error : illegal forward reference . 
+	
+	Example 3: 
+	           class Test { 
+	                 static { 
+	                    m1();
+	                 }
+	                 public static void m1(){ 
+	                    System.out.println(i);
+	                    System.exit(0);
+	                 }
+	                 static int i = 10;
+	             }
+	</textarea>
+	 <h5>
+       <b style="color: green ">static control flow in parent and child relationship :</b>
+	</h5>
+	<ul>
+	  <li>Whenever we are trying to execute child class the following sequence of events will be executed automatically . </li>
+	  <li>Execution of static variable assignments and static blocks from top bottom and parent to child . </li>
+	  <li>Execution of only child class main() method . </li>
+	</ul>
+	<img alt="" src="images/static_inheritance.PNG" />
+	
+	 <h5>
+       <b style="color: green ">static block:</b>
+	</h5>
+	<ul>
+	  <li>static blocks will be executed at the time of class loading . Hence while loading a java class if we want to perform any activity 
+	      we have to define that inside static block . </li>
+	  <li>We can define multiple static blocks within the same class and all these static blocks will be executed from top to bottom . </li>
+	</ul>
+	<h6>
+       <b style="color: green ">Without using main() is it possible to print some statements to the console ?</b>
+	</h6>
+	<textarea rows="10" cols="50" style="color: blue;">
+	  Answer: Yes, by using static block . 
+	  
+	  Example : class Test {
+	  
+	                static{
+	                       	System.out.println("Hello I can print");
+	                       	System.exit(0);
+	                       }
+	                  }
+	   
+	</textarea>
+	<h6>
+       <b style="color: green ">Without using main() method and static block is it possible to print some statements to the console ? </b>
+	</h6>
+	<textarea rows="20" cols="80" style="color: blue;">
+	  Answer: Yes, by using static block . 
+	  
+	  Example 1: 
+	               class Test {
+	  
+	                      		static int i = m1();
+	                      		public static int m1() { 
+	                         		System.out.println("Hello I can Print");
+	                         		System.exit(0);
+	                         		return 888; 
+	                        	}
+	                  		}
+	                  		
+	   Example 2: 
+	                 class Test { 
+	                              static Test t = new Test();
+	                              Test(){
+	                                     	System.out.println("Hello I am print");
+	                                     	System.exit(0);
+	                                    }
+	                             }
+	                  
+	                 All time of object creation constructor will be executed . 
+	   
+	   Example 3:
+	                class Test { 
+	                             static Test t = new Test();
+	                             { 
+	                                 System.out.println("Hello I can Print");
+	                                 System.exit(0);
+	                              }
+	                           }
+	           
+	           Note : At the time of Object creation instance block will be executed . 
+	</textarea>
+	<h6>
+       <b style="color: green ">Without using System.out.println() is it possible to print some statements to the console ?</b>
+	</h6>
+	<ul>
+	  <li>Answer: Yes , By using System.err.println()</li>
+	</ul>
+</body>
+</html>

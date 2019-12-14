@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Multithreading : </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Thread Prevent:</b>
+	</h4>
+	
+	<h5>
+       <b style="color: green ">The method to prevent Thread Execution :</b>
+	</h5>
+	<ul>
+	  <li>We can prevent a Thread execution by using the following 3 methods : 
+	     <ul>
+	       <li>yield()</li>
+	       <li>join()</li>
+	       <li>sleep()</li>
+	     </ul>
+	  </li>
+	</ul>
+	<h5>
+       <b style="color: green ">yield():</b>
+	</h5>
+	<ul>
+	  <li>yield() method causes to pause current execution of thread to give the chance to remaining waiting threads of same priority . </li>
+	  <li>If there is no waiting thread or all waiting threads having low priority then the same thread will continue its execution . </li>
+	  <li>If several waiting threads having the same priority then we can not expect which thread will get chance and it depends on the Thread Scheduler . </li>
+	  <li>public static native void yield() ;</li>
+	</ul>
+	<img alt="" src="images/ThreadYield.PNG">
+	<textarea rows="20" cols="80" style="color: blue;">
+	    
+	    Example:
+	             class MyThread extends Thread { 
+	                  public void run(){ 
+	                     for(int i=0;i<10;i++){ 
+	                        Thread.yield();
+	                        System.out.println("Child Thread");
+	                     }
+	                  }
+	             }
+	             class ThreadYieldTest { 
+	                public static void main(String[] args){ 
+	                    MyThread t = new MyThread();
+	                    t.start();
+	                    for(int i=0;i<10;i++){ 
+	                        
+	                        System.out.println("Main Thread");
+	                     }
+	                }
+	             }
+	</textarea>
+	<ul>
+	  <li>Note : In the above example the chance of completing main thread first is high because child thread always calling yield() method . </li>
+	  <li>Note: But some Operating System not provide proper support for yield() method </li>
+	</ul>
+	
+	<h5>
+       <b style="color: green ">join():</b>
+	</h5>
+	<ul>
+	  <li>If a thread wants wait until completing some other threads then we should go for join() method . </li>
+	  <li>For Example: If a thread t1 wants to wait until completing thread t2 then t1 thread has to call t2.join() then immediately t1 thread will be entered into waiting state . </li>
+	  <li>public final void join() throws InterruptedException</li>
+	  <li>public final void join(long ms) throws InterruptedException</li>
+	  <li>public final void join(long ms,int ns) throws InterruptedException</li>
+	</ul>
+	<img alt="" src="images/ThreadJoin.PNG">
+	<textarea rows="40" cols="70" style="color: blue;">
+	   Case 1: Waiting of Main thread until completing of Child Thread :
+	   --------------------------------------------------------------------
+	    Example:
+	             class MyThread extends Thread { 
+	                  public void run(){ 
+	                     for(int i=0;i<10;i++){ 
+	                        
+	                        System.out.println("Child Thread");
+	                     }
+	                  }
+	             }
+	             class ThreadYieldTest { 
+	                public static void main(String[] args) throws InterruptedException{ 
+	                    MyThread t = new MyThread();
+	                    t.start();
+	                    t.join();
+	                    for(int i=0;i<10;i++){ 
+	                        
+	                        System.out.println("Main Thread");
+	                     }
+	                }
+	             }
+	   o/p: Child Thread
+	        Child Thread
+	        -----
+	        ----
+	        10(times)
+	        Main Thread
+	        ---
+	        10(times)
+	 
+	 Case 2: Waiting of Child Thread Until Completing of Main Thread :
+	 -----------------------------------------------------------------
+	 class MyThread extends Thread { 
+	     
+	          static Thread mt ;
+	          public void run() { 
+	             try{ 
+	                mt.join();
+	             }
+	             catch(InturruptedException ie){ 
+	                
+	             }
+	             for(int i =0;i<10;i++){ 
+	                System.out.println("Child Thread");
+	             }
+	          
+	          }
+	 }
+	 class ThreadJoinDemo { 
+	    public static void main(String[] args){ 
+	        MyThread mt = Thread.currentThread();
+	        MyThread t = new MyThread();
+	        t.start();
+	         for(int i =0;i<10;i++){ 
+	                System.out.println("Main Thread");
+	             }
+	        
+	    }
+	 }
+	</textarea>
+	<ul>
+	  <li>In this case main thread has to wait until completing of child thread . </li>
+	  <li>Note: Every join() method throws InterruptedException which is checked Exception and hence whenever we are using join() bmethod compulsory we should handle 
+	      InterruptedException either by try-catch or throws keyword . </li>
+	  <li>If main thread calls join() method on child thread object and child thread calls join() method on main thread then both threads will wait for each other . 
+	       So the program will be hanged like Dead lock situation . </li>
+	  <li>If a thread calls join() method on the same thread object then the program will be hanged like Dead lock . <br>
+	       Example : Thread.currentThread().join();
+	  </li>
+	</ul>
+	<h5>
+       <b style="color: green ">sleep():</b>
+	</h5>
+	<ul>
+	  <li>If a thread don't want to perform any operation for a particular period of time then we should go for sleep() method . </li>
+	  <li>public static native void sleep(long ms) throws InterruptedException</li>
+	</ul>
+	<img alt="" src="images/ThreadSleep.PNG">
+	<textarea rows="10" cols="60" style="color: blue;">
+	 class ThreadSleepTest { 
+	    public static void main(String[] args) throws InterruptedException{ 
+	         for(int i =0;i<10;i++){ 
+	                System.out.println("Sleep Executed :"+1);
+	                Thread.sleep(3000);
+	             }
+	        
+	    }
+	 }
+	</textarea>
+	<h5>
+       <b style="color: green ">How a Thread can interrupted another thread :</b>
+	</h5>
+	<ul>
+	  <li>A thread can interrupted sleeping and waiting thread by using interrupt() method of Thread class . <br> 
+	        public void interrupt();
+	  </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	     class MyThread extends Thread { 
+	         public void run(){ 
+	            try{ 
+	                for(int i =0; i<0;i++){ 
+	                   System.out.println("I am lazy thread");
+	                   Thread.sleep(2000);
+	                }
+	            }
+	            catch(InterruptedException ie){ 
+	               System.out.println("I got interrupted");
+	            }
+	         }
+	     }
+	     class ThreadInterruptedTest{ 
+	         public static void main(String[] args){ 
+	              MyThread t = new MyThread();
+	              t.start();
+	              t.interrupt();
+	              System.out.println("End of Main Thread");
+	         }
+	     }
+	</textarea>
+	<ul>
+	  <li>In the above program, main thread interrupts child thread then the output is : <br>
+	       o/p: End of main THread<br>
+	            I am Lazy Thread<br>
+	            I got interrupted
+	  </li>
+	</ul>
+	<ul>
+	  <li>Note: Whenever we are calling interrupt() method we may not see impact immediately, If the target thread is in sleeping or waiting state then immediately the thread will interrupted . </li>
+	  <li>If the target thread not in sleeping or waiting state then interrupt call will wait until target thread entered into sleeping or waiting . </li>
+	  <li>Once target thread entered into sleeping or waiting state then immediately it will interrupted . </li>
+	  <li>There is only one situation where interrupt call will be wasted i.e if the target thread never entered into sleeping or waiting state in its life time . </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	    class MyThread extends Thread { 
+	            public void run(){ 
+	                for(int i=0;i<=100;i++){ 
+	                     System.out.println("I am Lazy Thread "+i);
+	                }
+	                System.out.println("I am entering into sleeping thread");
+	                try{ 
+	                    Thread.sleep(1000);
+	                }
+	                catch(InterruptedException ie){ 
+	                   System.out.println("I got interrupted");
+	                }
+	            }
+	    }
+	    class ThreadInterruptedTest { 
+	             public static void main(String[] args){ 
+	                 MyThread t = new MyThread();
+	                 t.start();
+	                 t.interrupt();
+	                 System.out.println("End of Main Thread");
+	             }
+	    }
+	</textarea>
+	<ul>
+	  <li>In the above program, interrupt call waited until executing for loop 100 times . </li>
+	</ul>
+</body>
+</html>

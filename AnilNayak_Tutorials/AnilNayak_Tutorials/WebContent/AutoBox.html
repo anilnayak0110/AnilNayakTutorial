@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Auto boxing and Auto unboxing : </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Auto boxing and Auto unboxing :</b>
+	</h4>
+	<ul>
+	  <li>Until 1.4 version, we can not provide primitive value in the place of wrapper object and wrapper object in the place of primitive .</li>
+	  <li>All required conversions should be performed explicitly by the programmer 
+	  </li>
+	</ul>
+	<textarea rows="18" cols="60" style="color: blue;">
+	  Example 1: ArrayList al = new ArrayList();
+	                       al.add(10); // Compiletime error 
+	             
+	             Integer I = new Integer(10);
+	             al.add(I); Correct . 
+	             
+	   Example 2: Boolean B = new Boolean("true");
+	              if(B) { // Comile time error : Incompatible types 
+	                ---                          found : java.lang.Boolean
+	                ---                          required : boolean 
+	              }
+	              boolean b = B.booleanValue();
+	              if(b){ 
+	              ---
+	              }
+	</textarea>
+	<ul>
+	  <li>But from 1.5 version onwards, we can provide primitive value in the place of wrapper object and wrapper object in the place of primitive . </li>
+	  <li>All required conversions will be performed automatically by the compiler . </li>
+	  <li>These automatically conversions are called Auto boxing and Auto unboxing .  </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Auto boxing :</b>
+	</h5>
+	<ul>
+	  <li>Automatic conversions of primitive to wrapper object by compiler is called Autoboxing . </li>
+	  <li>Example : Integer I = 10; [ Compiler converts into to Integer automatically  by Autoboxing . ]</li>
+	  <li>After compilation the above line will become : Integer I = Integer.valueOf(10); </li>
+	  <li>Internally Autoboxing is implemented by using valueOf() method . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Autounboxing ;</b>
+	</h5>
+	<ul>
+	  <li>Automatic conversions of wrapper object into primitive by compiler is called Autounboxing . </li>
+	  <li>Example : Integer I = new Integer(10); <br> 
+	      int i = I; [Compiler converts Integer to int automatically by Autounboxing ]
+	  </li>
+	  <li>After compilation the above line will become <br>
+	       int i = I.intValue();
+	  </li>
+	  <li>Internally Autounboxing  concept implemented by using xxxValue() method . </li>
+	</ul>
+	<img alt="" src="images/AutoBoxUnBox.PNG">
+	<textarea rows="12" cols="60" style="color: blue;">
+	 Example :
+	         class Test { 
+	                static Integer I = 10; ---> Auto Boxing)
+	                public static void main(String args[]){ 
+	                   int i = I ; ---> Auto unboxing 
+	                }
+	                public static void m1(Integer I){ 
+	                     int k = I; ---> Auto unboxing 
+	                     System.out.println(k);
+	                }
+	         }
+	         
+	</textarea>
+	<ul>
+	  <li>It is valid in 1.5 version, but invalid in 1.4 version . </li>
+	  <li>From 1.5 version onwards we can use primitives and wrapper objects interchangeably . </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	 Example :
+	         class Test { 
+	              static Integer I = 0;
+	              public static void main(String[] args){ 
+	                 int k = I;
+	                 System.out.println(k);// o/p: 0
+	              }
+	         }
+	         
+	  Example : 
+	             class Test { 
+	                static Integer I;
+	                public static void main(String[] args){ 
+	                    int k = I;
+	                    System.out.println(k); // NullpointerException
+	                }
+	             }
+	</textarea>
+	<ul>
+	  <li>Note : If we are trying to perform Autounboxing for null reference we will get NullPointerException . </li>
+	  <li>Note: All wrapper objects are immutable i.e , once we created a wrapper object we can not perform any change in the existing object . </li>
+	  <li>Note: If we are trying to perform any change with those changes a new object will be created . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Conclusion :</b>
+	</h5>
+	<ul>
+	  <li>Internally to provide support for autoboxing a Buffer of wrapper object will be created at the time of wrapper class loading . </li>
+	  <li>By Autoboxing, if an object is required to create first it will check is it already there in the buffer or not . </li>
+	  <li>If it is not present in buffer then only a new object will be created . </li>
+	  <li>But buffer concept is available only in the following cases . </li>
+	</ul>
+	<img alt="" src="images/AutoCon.PNG">
+	<ul>
+	  <li>Except this range in all remaining cases a new object will be created . </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	     Example: Integer x = 127;
+	              Integer y = 127;
+	              System.out.println(x == y);// true
+	              
+	              Integer X = 128;
+	              Integer Y = 128;
+	              System.out.println(X==Y); // false
+	              
+	              Boolean x = true;
+	              Boolean y = true;
+	              System.out.println(x==y); true
+	              
+	              Double x = 10.0;
+	              Double y = 10.0;
+	              System.out.println(x==y); false
+	</textarea>
+	<ul>
+	  <li>Internally Autoboxing concept is implemented by using valueOf() method . </li>
+	  <li>Hence Buffering concept is applicable for valueOf() methods also . </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	     Example:  Integer x = new Integer(10);
+	               Integer y = new Integer(10);
+	               System.out.println(x==y);// false
+	               
+	               Integer x = 10;
+	               Integer y = 10;
+	               System.out.println(x==y); // true
+	               
+	               Integer X = Integer.valueOf(10);
+	               Integer Y = Integer.valueOf(10);
+	               System.out.println(X==Y); o/p: true
+	               
+	               Integer X = Integer.valueOf(10);
+	               Integer Y = 10;
+	               System.out.println(X==Y); O/P: true
+	</textarea>
+	<h5>
+       <b style="color: green ">Overloading w.r.t widening, var-arg and Autoboxing :</b>
+	</h5>
+	<h6>
+       <b style="color: green ">Widening vs Autoboxing : </b>
+	</h6>
+	<textarea rows="15" cols="60" style="color: blue;">
+	case 1:     class Test { 
+	             
+	             public static void m1(long l){ 
+	               System.out.println("widening")
+	             }
+	             public static void m1(Integer I){
+	                System.out.println("Autoboxing"); 
+	             }
+	            public static void main(String args[]){ 
+	               int x = 10;
+	               m1(x);
+	            }
+	     }
+	     //o/p: Widening 
+	     
+	     Note: Widening dominates Autoboxing . 
+	</textarea>
+	
+	<h6>
+       <b style="color: green ">Widening vs var-arg method : </b>
+	</h6>
+	<textarea rows="15" cols="60" style="color: blue;">
+	  Example: class Test { 
+	       public static void m1(long l){ 
+	          System.out.println("Widening");
+	       }
+	       public static void m1(int... i){ 
+	          System.out.println("Var-arg");
+	       }
+	       public static void main(String[] args){ 
+	          int x = 10;
+	          m1(x);
+	       }
+	  }
+	  o/p: Widening
+	  Note : Widening dominates var-arg method 
+	</textarea>
+	<h6>
+       <b style="color: green ">Autoboxing vs var-arg method :</b>
+	</h6>
+	<textarea rows="15" cols="60" style="color: blue;">
+	  Example: class Test { 
+	       public static void m1(Integer l){ 
+	          System.out.println("Autoboxing");
+	       }
+	       public static void m1(int... i){ 
+	          System.out.println("Var-arg");
+	       }
+	       public static void main(String[] args){ 
+	          int x = 10;
+	          m1(x);
+	       }
+	  }
+	  o/p: Autoboxing
+	  Note: Autoboxing dominates var-arg method
+	</textarea>
+	<ul>
+	  <li>In general var-arg method will get least priority i.e , if no other method matched then only var-arg method will get chance . </li>
+	  <li>Note : While resolving overloaded methods compiler will always gives the precedence in the following order . 
+	    <ul>
+	      <li>1. Widening</li>
+	      <li>2. Autoboxing</li>
+	      <li>3. var-arg method</li>
+	    </ul>
+	  </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	  Example: class Test { 
+	       public static void m1(Long l){ 
+	          System.out.println("Long");
+	       }
+	       public static void main(String[] args){ 
+	          int x = 10;
+	          m1(x);
+	       }
+	  }
+	  o/p: CE:  m1(java.lang.Long) in Test can not be applied to (int). 
+	  Note: Widening followed by Autoboxing is not allowed in Java, But Autoboxing followed by widening is allowed . 
+	</textarea>
+	
+	<textarea rows="15" cols="60" style="color: blue;">
+	  Example: class Test { 
+	       public static void m1(Object o){ 
+	          System.out.println("Object");
+	       }
+	       public static void main(String[] args){ 
+	         int x = 10;
+	         m1(x);
+	       }
+	  }
+	  o/p: Object
+	  
+	  Note : int --->Integer---->Object
+	</textarea>
+</body>
+</html>

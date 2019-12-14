@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Multithreading : </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Interthread Communication:</b>
+	</h4>
+	<ul>
+	  <li>Two threads can communicate with each other by using wait(), notify() and notifyAll() methods . </li>
+	  <li>The thread which required updation it has to call wait() method and immediately it will entered into waiting state . </li>
+	  <li>The thread which provides updation is responsible to call notify() method . So that waiting thread will get that notification and it continue its execution with those updations . </li>
+	  <li>wait(), notify() and notifyAll() methods present in Object class, but not Thread class because Thread can call these methods on any java object . </li>
+	  <li>To call wait(), notify() and notifyAll() methods compulsory the current thread should be owner of that object i.e compulsory the current thread should has lock of that object . i.e compulsory the current thread should inside synchronized area . </li>
+	  <li>Hence we can call wait(),notify() and notifyAll() methods only from synchronized area otherwise we will get RuntimeException saying : IllegalMonitorStateException . </li>
+	  <li>Once a thread call wait() method on any object it immediately releases the lock of that object and entered into waiting state .(But not all locks) </li>
+	  <li>Once a thread calls notify() method on any object it releases lock of that object but may not immediately . </li>
+	  <li>Except wait(), notify() and notifyAll() methods thread won't releases the lock anywhere else . </li>
+	</ul>
+	<img alt="" src="images/ThreadInter.PNG">
+	<textarea rows="30" cols="80" style="color: blue;">
+	     Example :
+	               class ThreadA { 
+	                   public static void main(String[] args){ 
+	                      ThreadB b = new ThreadB();
+	                      b.start();
+	                      synchronized(b){ 
+	                         System.out.println("Main Thread calling wait method ");
+	                         b.wait();
+	                         System.out.println("Main Thread got notification call");
+	                         System.out.println(b.total);
+	                      }
+	                   }
+	               }
+	               class ThreadB extends Thread { 
+	                 int total = 0;
+	                 public void run(){ 
+	                    synchronized(this){ 
+	                      System.out.println("Child thread start calculation");
+	                      for(int i = 0;i<100;i++){ 
+	                         total = total + i;
+	                      }
+	                      System.out.println("Child giving notification call");
+	                      this.notify();
+	                    }
+	                 }
+	               }
+	</textarea>
+	<h5>
+       <b style="color: green ">Difference between notify() and notifyAll():</b>
+	</h5>
+	<ul>
+	  <li>We can use notify() method to give the notification for only one waiting thread . If several threads are waiting then only one thread will be notified and all remaining threads will wait for future notifications, but which thread will be notified we can not expect it depends on JVM . </li>
+	  <li>We can use notifyAll() method to give the notification for all waiting threads of a particular object, eventhough all waiting threads got notified, but execution will happen one by one because they required lock . </li>
+	</ul>
+</body>
+</html>

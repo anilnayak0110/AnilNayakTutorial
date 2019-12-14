@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Data Hiding</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">DataHiding:</b>
+	</h4>
+	<ul>
+	  <li>Data hiding means the outside person is not allowed to access our internal data directly. i.e our applications internal data should not go out directly .</li>
+	  <li>After validation only outside person is allowed to access our data .</li>
+	  <li>By using private modifier we can achieve data hiding . </li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example: 
+	 class Account {
+	    private double balance;
+	    public double getBalance(){
+	         // validation
+	         return balance;
+	    }
+	 }
+	</textarea>
+</body>
+</html>

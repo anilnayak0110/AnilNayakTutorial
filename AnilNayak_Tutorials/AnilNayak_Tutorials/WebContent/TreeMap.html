@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h5>
+        <b style="color: green;">TreeMap</b>
+     </h5>
+     <ul>
+       <li>The underlying data structure is Red-Black Tree . </li>
+       <li>Duplicate keys are not allowed. But values can be duplicated . </li>
+       <li>Insertion order is not preserved and it is based on some sorting order keys . </li>
+       <li>If we are depending on default natural sorting order then keys should be homogeneous and comparable, other wise we will get runtime exception ClassCastException . </li>
+       <li>If we are defining our own sorting by Comparator then keys can be heterogeneous and non Comparable . </li>
+       <li>But there are no restrictions on values, they can be heterogeneous and non Comparable . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Null Acceptance :</b>
+     </h5>
+     <ul>
+       <li>For empty TreeMap as the first Enrty  with null key is allowed, but after inserting that Entry if we are trying to insert any other Entry we will get runtime exception saying NullPointerException . </li>
+       <li>For non-empty TreeMap if we are trying to insert entry with null key then we will get runtime exception saying NullPointerException . </li>
+       <li>There are no restrictions on null values . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors:-</b>
+     </h5>
+     <ul>
+      <li>TreeMap t = new TreeMap();<br>for default natural sorting order . </li>
+      <li>TreeMap t = new TreeMap(Comparator c);<br>for customized sorting order . </li>
+      <li>TreeMap t = new TreeMap(SortedMap m);</li>
+      <li>TreeMap t = new TreeMap(Map m);</li>
+     </ul>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class TreeMapDemo { 
+	                public static void main(String[] args){ 
+	                   TreeMap t = new TreeMap();
+	                   t.put(100,"ZZZ");
+	                   t.put(103,"YYY");
+	                   t.put(101,"XXX");
+	                   t.put(104,106);
+	                   t.put(107,null);
+	                   t.put("FFFF","XXXX");==>ClassCastException
+	                   t.put(null,"XXXX");==>RuntimeException: NullPointerException
+	                   System.out.println(t);
+	                }
+	             }
+	          o/p:
+	          
+	          {100=ZZZ, 101=XXX, 103=YYY, 104=106, 107=null}
+	             
+	</textarea>
+	 <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class TreeMapDemo { 
+	                public static void main(String[] args){ 
+	                   TreeMap t = new TreeMap(new MyComparator());
+	                   t.put("XXXX",10);
+	                   t.put("AAAA",20);
+	                   t.put("ZZZZ",30);
+	                   t.put("LLLL",40);
+	                   System.out.println(t);
+	                }
+	             }
+	             class MyComparator implements Comparator {
+	                public int compare(Object o1, Object o2){ 
+	                  String s1 = o1.toString();
+	                  String s2 = o2.toString();
+	                  return s2.compareTo(s1);
+	                }
+	             }
+	          o/p:
+	          
+	          {ZZZZ=30, XXXX=10, LLLL=40, AAAA=20}
+	             
+	</textarea>
+</body>
+</html>

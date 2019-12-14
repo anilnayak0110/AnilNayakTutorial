@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Multi Catch Block Exception</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Multi Catch Block Exception</b>
+	</h4>
+	<ul>
+	  <li>As the part of 1.7 version the following two concepts introduced in Exception Handling . 
+	     <ul>
+	       <li>Multi-catch block</li>
+	       <li>try with resources</li>
+	     </ul>
+	  </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Multi Catch Block:</b>
+	</h5>
+	<ul>
+	  <li>Even though multiple Exceptions having same handling code we have to write a separate catch block for every Exception type in 1.6 version : </li>
+	</ul>
+	 <textarea rows="10" cols="45" style="color: blue;">
+        try { 
+         ---
+         ---
+         ---
+        }
+        catch(ArithmeticException ae){ 
+           e.printStackTrace();
+        }
+        catch(InterruptedException ie){ 
+           e.printStackTrace();
+        }
+        catch(NullPointerException ne){ 
+            System.out.println(e.getMessage());
+        }
+    </textarea>
+    <ul>
+      <li>The problem in this approach are <br>
+        <ul>
+          <li>1. length of the code will be increased . </li>
+          <li>2. Readability of the code will be reduced . </li>
+        </ul>
+      </li>
+      <li>To resolve these problems SUN people introduced multi-catch block 1.7 version .</li>
+      <li>According to this we can write a Single catch block which can handle multiple different type of Exceptions simultaneously . <br>
+         Such type of catch block is called Multi-Catch block . 
+      </li>
+    </ul>
+    <textarea rows="10" cols="45" style="color: blue;">
+        try { 
+         ---
+         ---
+         ---
+        }
+        catch(ArithmeticException|InterruptedException ae){ 
+            e.printStackTrace();
+        }
+        catch(NullPointerException|IOException ie){ 
+          System.out.println(e.getMessage());
+        }
+    </textarea>
+    <ul>
+      <li>In multi-catch block there should not be any relation between Exception type(either child to parent or parent to child or same type)<br>
+        other wise we will get Compile time Error :
+      </li>
+    </ul>
+    <textarea rows="4" cols="45" style="color: blue;">
+       catch(Exception | ArithmeticException ae){ 
+         e.printStackTrace();
+       }
+    </textarea>
+    <h5>
+       <b style="color: green ">try with resources :</b>
+	</h5>
+	<ul>
+	  <li>Until 1.6 version, whatever the resources we opened at the part of try block should be closed in finally block . </li>
+	</ul>
+	 <textarea rows="10" cols="45" style="color: blue;">
+       Example : 
+               BufferedReader br = null;
+               try{ 
+                   br = new BufferedReader(new FileReader("input.txt"));
+               }
+               catch(IOException e){ 
+                  // Handling Code :
+               }
+               finally{ 
+                   if(br!=null){ 
+                       br.close();
+                   }
+               }
+    </textarea>
+    <ul>
+     <li>The problem in this approach are :<br>
+         <ul>
+           <li>We should compulsory close the resources in finally block and hence complexity of the programming will be increased . </li>
+           <li>We should compulsory write finally block which increases the length of the code, so that readability will be reduced . </li>
+           <li>To overcome these problems SUN people introduced try with resources in 1.7 version . </li>
+           <li>The main advantage of try with resources, the resources which are opened as the part of try block will be will be closed automatically <br>
+               once the control reaches end of try block either normally or abnormally .  
+            </li>
+            <li>Hence we are not required to write finally block explicitly, which reduces complexity and length of the code . </li>
+         </ul>
+     </li>
+    </ul>
+     <textarea rows="10" cols="45" style="color: blue;">
+      Example : try(BufferedReader br = new BufferedReader(new FileReader("input.txt"))){ 
+      
+                    // Use br based on our requirement br will be closed automatically 
+                        once control reaches end of try block either normally or abnormally 
+                  }
+                  
+                  catch(IOException ie){ 
+                      // Handling Code : 
+                  }
+    </textarea>
+    <h5>
+       <b style="color: green ">Conclusion:</b>
+	</h5>
+	<ul>
+	  <li>We can declare any no of resources, but these resources should be separated with ;(semicolon)<br>
+	        try(R1;R2;R3){ 
+	           -----
+	           -----
+	           -----
+	        }
+	  </li>
+	  <li>The resource reference variables are implicitly final . Hence within the try block we can not perform reassignment for that reference variable . </li>
+	</ul>
+	<textarea rows="10" cols="45" style="color: blue;">
+      Example : try(BufferedReader br = new BufferedReader(new FileReader("input.txt"))){ 
+                          br = new BufferedReader(new FileReader("abc.txt"));
+                  }
+                  
+                  catch(IOException ie){ 
+                      // Handling Code : 
+                  }
+    </textarea>
+    <ul>
+      <li>The resources should be Autoclosable .</li>
+      <li>A resource is said to be Autoclosable  if the corresponding class implements java.lang.Autoclosable interface . </li>
+      <li>Autoclosable interface introduced in 1.7 version and it contains only one method i.e close() method . </li>
+    </ul>
+    <ul>
+     <li>Until 1.6 version, try should be followed by either catch of finally but form 1.7 version onwards we can take only try with resources without catch or finally block . </li>
+    </ul>
+    <textarea rows="5" cols="10" style="color: blue;">
+         try(R){ 
+         ----
+         ----
+         }
+    </textarea>
+    <ul>
+      <li>The main advantage of try with resources is we are not required to close resources explicitly and hence we are not required to write finally block . </li>
+      <li>Hence finally block will be come dummy . </li>
+    </ul>
+</body>
+</html>

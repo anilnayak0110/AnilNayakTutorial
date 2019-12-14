@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+       <h4>
+		<b style="color: green;">SortedSet:-</b>
+	  </h4>
+	  <ul>
+	    <li>It is the child interface of Set . </li>
+	    <li>If we want to represent a group of individual objects without duplicates according to some sorting order then we should go for SortedSet . </li>
+	    <li>SortedSet defines the following the specific methods .
+	       <ul>
+	         <li>Object first()<br>
+	            returns first element of the SortedSet.
+	         </li>
+	         <li>Object last()<br>
+	           returns last element of the SortedSet. 
+	         </li>
+	         <li>SortedSet tailSet(Object obj)<br>
+	            returns SortedSet whose elements are >= obj . 
+	         </li>
+	         <li>SortedSet subSet(Object obj1, Object obj2)<br>
+	             returns SortedSet whose elements are >=obj1 and < obj2
+	         </li>
+	         <li>
+	           Comparator comparator()<br>
+	            returns Comparator object describes underlying sorting technique.
+	         </li>
+	         <li>Note: For numbers, default natural sorting order is Ascending order where as for String objects it is Alphabetical order . </li>
+	       </ul>
+	    </li>
+	  </ul>
+	   <textarea rows="10" cols="60" style="color: blue;">
+	    Example:
+	            100      first()--->100
+	            101      last()---->110
+	            102
+	            104      headSet(104)--->[100,101,102]
+	            106      tailSet(104)--->[104,106,107,108,110]
+	            107      subset(102,107)--->[102,104,106]
+	            108     
+	            110   
+	</textarea>
+	 
+</body>
+</html>

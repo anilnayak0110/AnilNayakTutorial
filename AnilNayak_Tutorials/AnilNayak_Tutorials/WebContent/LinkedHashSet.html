@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+       <h4>
+		<b style="color: green;">LinkedHashSet</b>
+	  </h4>
+	  <ul>
+	    <li>It is the child class of HashSet</li>
+	    <li>It is exactly same as HashSet except the following differences .</li>
+	  </ul>
+	  <img alt="" src="images/LHSHS.PNG">
+	 <textarea rows="18" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                   LinkedHashSet h = new LinkedHashSet();
+	                   h.add("B");
+	                   h.add("C");
+	                   h.add("D");
+	                   h.add("E");
+	                   h.add(null);
+	                   h.add(10);
+	                   System.out.println(h.add("E"));o/p==>false
+	                   System.out.println(h);o/p==>[B,C,D,E,null,10]
+
+	                 }
+	             }
+	</textarea>
+	<ul>
+	  <li>Note : Very common application area of LinkedHashSet is developing Cache based applications, where duplicates are not allowed and insertion order must be preserved . </li>
+	</ul>
+</body>
+</html>

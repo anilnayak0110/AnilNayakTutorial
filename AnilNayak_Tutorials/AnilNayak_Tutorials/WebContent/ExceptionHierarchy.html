@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Exception Hierarchy</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Exception Hierarchy:</b>
+	</h4>
+	<ul>
+	  <li>Throwable class acts as a root for Exception hierarchy . </li>
+	  <li>Throwable class contain 2 child classes . 
+	      <ul>
+	        <li>1. Exception</li>
+	        <li>2. Error</li>
+	      </ul>
+	  </li>
+	</ul>
+	<ul>
+	  <li>Exception: - Most of the cases Exceptions are caused by our program and these are recoverable .
+	      For Example: If our programming requirement is to read data from a remote file . At runtime if remote file is not available then we will get 
+	                   Runtime Exception: saying "FileNotFoundException" . If "FileNotFoundException" occurs we can provide a local file to 
+	                   continue rest of the program normally .  </li>
+	  <li>Error: Most of the cases errors are not caused by our program and these are due to lack of system resource . </li>
+	  <li>Errors are non-recoverable : 
+	      For Example : if OutOfMemoryError occurs being a programmer we can not do anything, then the program will be terminated abnormally . 
+	                    System or Server Admin is responsible to increase Heap memory . </li>
+	</ul>
+	<h4>
+       <b style="color: green ">Checked Exception and UnChecked Exception:</b>
+	</h4>
+	<h5>
+       <b style="color: green ">Checked Exception</b>
+	</h5>
+	<ul>
+	 <li>The Exceptions which are checked by compiler for smooth execution of the program at runtime are called <b>Checked Exceptions</b></li>
+	 <li>Compiler will check whether we are handling checked Exception or not . </li>
+	 <li>If we are not handling then we will get compile time error . </li>
+	</ul>
+	
+	<textarea rows="10" cols="60" style="color: blue;">
+	    class Test { 
+	         public static void main(String[] args){ 
+	             PrintWriter pw = new PrintWriter("abc.txt");
+	             pw.println("Hello");
+	         }
+	    } // Compile Time Error : Unreported Exception java.io.FileNotFoundException; 
+	         must be caught or declared to be thrown . 
+	</textarea>
+	
+	<img alt="" src="images/ThrowableTree.PNG">
+	<h5>
+       <b style="color: green ">UnChecked Exception:</b>
+	</h5>
+	<ul>
+	  <li>The Exception which are not checked by compiler whether the programmer handling or not are called <b>Unchecked Exception</b>
+	     <br>Example: ArithmeticException, NullPointerException</li>
+	  <li>Note 1: Whether Exception is checked or unchecked compulsory every Exception should occurs at runtime only and there is no chance of occurring any Exception at compile time .</li>
+	  <li>Note 2: RuntimeException and its child classes and its child classes are unchecked Exception . Except these the remaining are checked Exception . </li>
+	</ul>
+	<h4>
+       <b style="color: green ">Fully Checked and Partial Checked Exception:</b>
+	</h4>
+	<h5>
+       <b style="color: green ">Fully Checked Exception:</b>
+	</h5>
+	<ul>
+	  <li>A checked Exception is said to be fully checked exception if all of its child classes also checked . </li>
+	  <li>Example :IOException, InterruptedException </li>
+	</ul>
+	<h5>
+       <b style="color: green ">Partially Exception:</b>
+	</h5>
+	<ul>
+	  <li>A checked Exception is said to be partially fully checked exception if some of its child classes are unchecked . </li>
+	  <li>Example :Exception, Throwable </li>
+	  <li>Note: The only available partially checked Exceptions are : <b>Exception</b> and <b>Throwable</b></li>
+	</ul>
+	<h4>
+       <b style="color: green ">Exception Handling by using try-catch:</b>
+	</h4>
+	<ul>
+	  <li>It is highly recommended to handle Exception . </li>
+	  <li>The code which may raise Exception is called <b>Risky code</b>, we have to place risky code inside the <b>try</b> block and the exception handling code inside the <b>catch</b> block . </li>
+	</ul>
+	
+	<textarea rows="40" cols="65" style="color: blue;">
+	   try{ 
+	      Risky Code
+	   }
+	   catch(Exception e){ 
+	       Handling Code . 
+	   }
+	   
+	   //<b>Without try-catch </b>
+	   class Test { 
+	       public static void main(String[] args){ 
+	          System.out.println("Statement 1");
+	          System.out.println(10/0);
+	          System.out.println("Statement 3");
+	       }
+	   }
+	   o/p: statement1
+	       Exception in thread "main": java.lang.ArithmeticException : / by zero
+	        at Test.main() // This is called Abnormal termination
+	   
+	   //<b>With try-catch </b>
+	   class Test { 
+	       public static void main(String[] args){ 
+	           System.out.println("Statement1");
+	           try{ 
+	              System.out.println(10/0);
+	           }
+	           catch(ArithemeticException e){ 
+	              System.out.println(10/2);
+	           }
+	           System.out.println("Statement3");
+	           
+	       }
+	   }// o/p: statement1
+	              5
+	             statement3 // This is called Normal Termination
+	</textarea>
+</body>
+</html>

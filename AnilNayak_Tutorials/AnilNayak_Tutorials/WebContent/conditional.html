@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Conditional Operator</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Conditional Operator(?:)</b>
+	</h4>
+	<ul>
+	  <li>The only ternary operator in java is conditional operator</li>
+	   <li>We can also do nesting of conditional operator in java </li>
+	</ul>
+    <img alt="" src="images/CondOP.PNG" />
+	  
+	<h5>
+		<b style="color: green;">Difference between new vs newInstance():</b>
+	</h5>
+	<ul>
+	 <li>We can use new operator to create object if we know the class name at the beginning .</li>
+	 <li>newInstance() is a method present in "Class" class which can be used to create object<br>
+	     if we don't know the class name at the beginning and it is available dynamically at runtime .</li>
+	</ul>
+	   <img alt="" src="images/NewVsNewInstance.PNG" />
+	   
+	   <h5>
+		<b style="color: green;">Difference between ClassNotFoundException and NoClassDefFoundError:</b>
+	   </h5>
+	   <ul>
+	     <li>If hard coded class name is not available at runtime then we will get runtime exception :<b style="color:red;">NoClassDefFoundError</b>, which is unchecked Exception<br>
+	         Example: Test t = new Test();<br>
+	         At runtime, if "Test.class" file is not available then we will get runtime Exception saying:
+	          <b style="color: red;">NoClassDefFoundError</b></li>
+	     <li>When dynamically provided class is not available at runtime then we will get runtime exception:
+	          <b style="color: red;">ClassNotFoundException</b><br>
+	           Example: Object o = Class.forName("Test").newInstance();<br>
+	           If "Test.class" is not available at runtime then we will get runtime exception saying <b style="color: red;">ClassNotFoundException</b></li>
+	     
+	   </ul>
+</body>
+</html>

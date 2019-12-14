@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>InstanceOf Operator</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">InstanceOf Operator</b>
+	</h4>
+	<ul>
+	 <li>Using InstanceOf operator we can check the given object is of a particular type or not .</li>
+	 <li>InstanceOf operator return boolean value .</li>
+	 <li>To use instanceOf operator there must be a relationship between two argument type, or else
+	     we will get Compile time error: Inconvertable type </li>
+	</ul>
+		<img alt="" src="images/InstanceOf.PNG">
+	<ul>
+	 <li>When we will check from parent object to child object we will get result as "false" always.</li>
+	 <li>When we will check "null" instanceOf Some classes we will get "false" always</li>
+	</ul>
+	<img alt="" src="images/InstanceOf1.PNG">
+	<h4>
+		<b style="color: green;">Difference between instanceOf and isInstance():</b>
+	</h4>
+	<ul>
+	  <li>We can use instanceOf operator to check whether the given object is of particular type or not and the type is specified at the beginning .<br>
+	      Example: Thread t = new Thread();<br>
+	               System.out.println(t instanceOf Runnable); O/P: true</li>
+	  <li>We can use isInstance() method to check whether the given object is of particular type or not and we don't know the type at the beginning<br>
+	       and is specified dynamically at runtime <br>
+	       Example: Thread t = new Thread()<br>
+	               System.out.println(Class.forName(args[0].isInstance(t))); </li>             
+	</ul>
+</body>
+</html>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inner Class</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Various Possible Combinations of classes and interfaces:</b>
+     </h4>
+     <h5>
+        <b style="color: green;">class inside a class :</b>
+     </h5>
+     <ul>
+       <li>Without existing one type of object if there is no chance of existing another type of object then we can declare a class inside another class .</li>
+     </ul>
+     <textarea rows="5" cols="80" style="color: blue;">
+          class University { 
+              class Department{ 
+              
+              }
+          }
+	</textarea>
+	<ul>
+	  <li>Without existing University object there is no chance of existing Department object . </li>
+	  <li>Hence we have to define Department class inside University class .</li>
+	</ul>
+	<h5>
+        <b style="color: green;">interface inside a class :</b>
+     </h5>
+     <ul>
+       <li>Inside a class, if we require multiple implementations of on interface and there implementations are relevant to a particular class then we can define an interface inside a class .  </li>
+     </ul>
+      <textarea rows="15" cols="80" style="color: blue;">
+          class AutomobileType{ 
+             interface Automobile { 
+                public int getNoOfWheels();
+             }
+             class Car implements Automobile { 
+               public int getNoOfWheels(){ 
+                   return 4;
+               }
+             }
+             class Truck implements Automobile { 
+                 public int getNoOfWheels(){ 
+                   return 3;
+               }
+             }
+          }
+	</textarea>
+	<h5>
+        <b style="color: green;">interface inside interface :</b>
+     </h5>
+      <textarea rows="8" cols="80" style="color: blue;">
+         interface Map{ 
+           interface Entry { 
+             public Object getKey();
+             public Object getValue();
+             public Object setValue(Object o);
+           }
+         }
+	</textarea>
+	<ul>
+	 <li>Entry inner interface is always static . </li>
+	 <li>Hence we can implement Inner interface directly  without implementing Outer interface . </li>
+	 <li>Whenever we are implement Inner interface i.e Outer and Inner interfaces we can implement independently . </li>
+	</ul>
+      <textarea rows="15" cols="80" style="color: blue;">
+        interface Outer{ 
+          public void m1();
+          interface Inner{ 
+            public void m2();
+          }
+        }
+        class Test1 implements Outer.Inner {
+          public void m2(){ 
+            System.out.println("Inner interface Method");
+          }
+        }
+        class Test2 implements Outer { 
+          public void m1(){ 
+            System.out.println("Outer interface method");
+          }
+        }
+	</textarea>
+	<h5>
+        <b style="color: green;">class inside interface :</b>
+     </h5>
+     <ul>
+       <li>If a class functionality is closely associated with the use of interface then it is highly recommended to declare that class inside interface . </li>
+     </ul>
+      <textarea rows="10" cols="80" style="color: blue;">
+         interface EmailService { 
+           public void sendEmail(EmailDetails e);
+           class EmailDetails { 
+             private String toList;
+             private String subject;
+             
+           }
+         }
+	</textarea>
+	<ul>
+	 <li>In the above example, EmailDetails functionality is required for EmailService and we are not using anywhere else .  </li>
+	 <li>Hence it is highly recommended to declare EmailDetails class inside EmailService interface . </li>
+	 <li>We can also declare a class inside interface to provide default implementation for that interface . </li>
+	</ul>
+	 <textarea rows="25" cols="80" style="color: blue;">
+      import com.test.Veichle.Bus;
+
+interface Veichle 
+{ 
+   public int getNoOfWheels();
+   class Cycle implements Veichle { 
+     
+	@Override
+	public int getNoOfWheels() {
+		return 2;
+	}
+      
+   }
+   class Bus implements Veichle{ 
+  
+
+	@Override
+	public int getNoOfWheels() {
+		// TODO Auto-generated method stub
+		return 6;
+	}
+   }
+}
+class Test  { 
+   public static void main(String[] args){ 
+     Veichle.Cycle d = new Veichle.Cycle();
+     System.out.println(d.getNoOfWheels());
+     Bus b = new Bus();
+     System.out.println(b.getNoOfWheels());
+   }
+}
+o/p:
+2
+6
+	</textarea>
+	<ul>
+	 <li>In the above example, Cycle is the default implementation of the Veichle interface where as Bus is customized implementation of Veichle interface .</li>
+	 <li>Note: Every class which is declared inside interface is always public static whether we are declaring or not . Hence we can create object directly without implementing interface and without creating an instance of interface type . </li>
+	 <li>Nested interfaces are always static, but Nested class need not be static . </li>
+	</ul>
+</body>
+</html>

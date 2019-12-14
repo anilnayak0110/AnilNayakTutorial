@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Various Memory Area of JVM: </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Various Memory areas of JVM :</b>
+    </h4>
+    <ul>
+      <li>Whenever JVM runs a program it needs memory to store several things like byte code , objects , variables etc. </li>
+      <li>Total JVM memory organized in the following 5 categories 
+        <ul>
+          <li>Method Area</li>
+          <li>Heap Area</li>
+          <li>Stack Area</li>
+          <li>PC Registers(Program Counter)</li>
+          <li>Native Method Stack</li>
+        </ul>
+      </li>
+    </ul>
+    <h4>
+       <b style="color: green ">Method Area :</b>
+    </h4>
+    <ul>
+     <li>Method area stores Runtime constant pools, variables and methods information, static variables, bytecode of classes and interfaces loaded by JVM . </li>
+     <li>Method area will be created at the time of JVM set up . </li>
+     <li>This memory area will be shared by all threads (shared / global memory)</li>
+     <li>This memory area need not be continuous . </li>
+    </ul>
+     <h4>
+       <b style="color: green ">Heap Area :</b>
+    </h4>
+    <ul>
+     <li>It is the main important memory area to the programmer . </li>
+     <li>Heap area will be created at the time of JVM start up . </li>
+     <li>Heap area need not be continuous .</li>
+     <li>It will be shared by all threads (global | shared memory) .</li>
+     <li>All objects and corresponding instance variables will be stored in the Heap memory . </li>
+     <li>Every Array in java is an object and hence Arrays will be stored in the Heap memory . </li>
+    </ul>
+    <img alt="" src="images/JMemory.PNG">
+    <h4>
+       <b style="color: green ">Program to display Heap Memory Statistics :</b>
+    </h4>
+    <ul>
+      <li>A java application can communicate with JVM by using Runtime object . </li>
+      <li>Runtime class is a Singleton class present in java.lang package </li>
+      <li>We can create Runtime object by using getRuntime() method . <br>
+          Runtime r = Runtime.getRuntime()
+      </li>
+      <li>Once we got Runtime object we can call the following methods on that object . 
+           <ul>
+             <li>maxMemory():
+               <ul>
+                 <li>It returns no. of bytes of max memory allocated to the Heap .</li>
+               </ul>
+             </li>
+             <li>totalMemory():
+              <ul>
+                <li>It returns no. of bytes of total memory allocated to the Heap (initial memory)</li>
+              </ul>
+             </li>
+             <li>finalMemory():
+              <ul>
+                <li>It returns no. of bytes of free memory present in the Heap </li>
+              </ul>
+             </li>
+           </ul>
+      </li>
+    </ul>
+    <textarea rows="10" cols="80" style="color: blue;">
+	       Example:
+	                 public class AG { 
+	                    public static void main(String[] args){  
+	                       long mb = 1024*1024;
+	                       Runtime r = Runtime.getRuntime();
+	                       System.out.println("Max Memory :"+r.maxMemory());
+	                       System.out.println("Total Memory :"+r.maxMemory());
+	                       System.out.println("Free Memory :"+r.maxMemory());
+	                       System.out.println("Consumed Memory :"+r.maxMemory() - r.freeMemory());
+	                    }
+	                 }
+	</textarea>
+	<ul>
+	  <li>Note: Default Heap size 64 MB </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">How to Set Max and Min  Heap Size ?</b>
+    </h5>
+    <ul>
+      <li>Heap memory is final memory and based on our requirement we can increase and decrease Heap size . </li>
+      <li>We can use the following flags with Java Command . </li>
+    </ul>
+    <ul>
+      <li>-Xmx : To set maximum Heap size i.e , maxMemory() .<br>
+         Ex: java -Xmx128m HeapDemo
+      </li>
+      <li>This cmd will set 128MB as max Heap size </li>
+      <li>Output: Max Memory : 127</li>
+      <li>Total Memory : 4</li>
+      <li>Free Memory : 4</li>
+      <li>Consumed Memory : 0</li>
+    </ul>
+     <ul>
+      <li>-Xms : To set minimum Heap size i.e , totalMemory() .<br>
+         Ex: java -Xms64m HeapDemo
+      </li>
+      <li>This cmd will set min. Heap size as 64MB</li>
+      <li>Ex: java -Xmx128 -Xms64m HeapDemo</li>
+      <li>Output: Max Memory : 127</li>
+      <li>Total Memory : 63</li>
+      <li>Free Memory : 53</li>
+      <li>Consumed Memory : 0</li>
+    </ul>
+    <h4>
+       <b style="color: green ">Stack Memory :</b>
+    </h4>
+    <ul>
+      <li>For every thread JVM will create a separate stack . Runtime stack will be created automatically at the time of thread creation . </li>
+      <li>All method calls and corresponding local variables, intermediate results will be stored in the Stack . </li>
+      <li>For every method call a separate entry will be added to the stack and the entry is called Stack Frame . </li>
+      <li>After Completing all method the corresponding entry from the stack will be removed . </li>
+      <li>After completing all method calls just before terminating the thread runtime stack will be destroyed by the JVM . </li>
+      <li>The data stored in the stack is private to the corresponding thread . </li>
+    </ul>
+     <img alt="" src="images/StackMemory.PNG">
+      <h4>
+       <b style="color: green ">Stack Frame Structure :</b>
+    </h4>
+    <ul>
+      <li>Each Stack Frame contains 3 parts . 
+         <ul>
+          <li>Local variable Array</li>
+          <li>Operand Stack</li>
+          <li>Frame Data</li>
+         </ul>
+      </li>
+    </ul>
+     <h5>
+       <b style="color: green ">Local Variable Array :</b>
+    </h5>
+    <ul>
+      <li>It contains all parameters and local variables of the method . </li>
+      <li>Each slot in the array is of 4 bytes . </li>
+      <li>Values of type int, float and reference occupy one entry in the array . </li>
+      <li>Values of type long and double occupy 2 consecutive entries in array . </li>
+      <li>byte,short and char values will be converted to int type before Storing and occupy one slot . </li>
+      <li>But the way of storing boolean values is varied from JVM to JVM . </li>
+    </ul>
+     <h5>
+       <b style="color: green ">Operand Stack :</b>
+    </h5>
+    <ul>
+      <li>JVM uses operand stack as workspace . </li>
+      <li>Some instructions can push the values to the operand stack and some instructions pop the values from operand stack and store result once again to the operand stack . </li>
+    </ul>
+     <h5>
+       <b style="color: green ">Frame Data :</b>
+    </h5>
+    <ul>
+      <li>Frame Data contains all symbolic references(Constant pool) related to that method . </li>
+      <li>It also contains a reference to exception table which provides the corresponding catch block information in the case of exceptions . </li>
+    </ul>
+    <h4>
+       <b style="color: green ">PC(Program Counter) Registers:</b>
+    </h4>
+    <ul>
+      <li>For every thread a separate PC register will be created at the time of thread creation .</li>
+      <li>PC registers contain address of current executing instruction . Once instruction execution completes automatically PC register will be incremented to hold address of next instruction . </li>
+    </ul>
+    <h4>
+       <b style="color: green ">Native Method Stacks :</b>
+    </h4>
+    <ul>
+      <li>For every thread JVM will create a separate native method stack . </li>
+      <li>All native method calls invoked by the thread will be stored in the corresponding native method stack . </li>
+      <li>Note 1: Method area , heap and stack are considered as major memory areas w.r.t programmer's view . </li>
+      <li>Method area and heap area are for JVM, where as stack, PC registers and native method stack are for thread i.e one separate heap for JVM, one separate method area for every JVM, one stack for every thread , one separate PC register for every thread and one separate native method stack for every thread . </li>
+      <li>static variables will be stored in method area where as instance variables will be stored in heap area and local variables will be stored in stack area . </li>
+    </ul>
+    <h4>
+       <b style="color: green ">Execution Engine :</b>
+    </h4>
+    <ul>
+      <li>This is central component of JVM . </li>
+      <li>Execution Engine is responsible to execute java class files.</li>
+      <li>Execution engine mainly contains 2 components for executing java classes . 
+           <ul>
+             <li>Interpreters</li>
+             <li>JIT compiler</li>
+           </ul>
+      </li>
+    </ul>
+     <h6>
+       <b style="color: green ">Interpreter:</b>
+    </h6>
+    <ul>
+      <li>It is responsible to load byte code and interpret into machine code(Native code) and execute that machine code line by line . </li>
+      <li>The problem with interpreter is it interprets every time even same method invoked multiple times, which reduces performance of the system .</li>
+      <li>To overcome this problem SUN people introduced JIT compiler in 1.1 version </li>
+    </ul>
+     <h6>
+       <b style="color: green ">JIT Compiler:</b>
+    </h6>
+    <ul>
+      <li>The main purpose of JIT compiler is to improve performance . </li>
+      <li>Internally JIT Compiler maintains a separate count for every method .</li>
+      <li>Whenever JVM come across any method call first that method will be interpreted normally by the interpreter and JIT compiler increments the corresponding count variable . </li>
+      <li>The process will be continued for every method . Once if any method count reaches threshold value then JIT compiler identifies that method is repeatedly used method .</li>
+      <li>Immediately, JIT compiler compiles that method and generates the corresponding native code . </li>
+      <li>Next time, JVM come across that method call then JVM directly use native code and executes it instead of interpreting once again . So that performance of the system will improved . </li>
+      <li>The threshold count varying from JVM to JVM . Some advanced JIT compilers will recompile generated native code if count reaches threshold value second time . So that more optimized machine code will be generated . </li>
+      <li>JVM interprets total program line by line atleast once .  </li>
+      <li>JIT Compiler is applicable only for repeatedly invoked methods but not for every method . </li>
+    </ul>
+         <img alt="" src="images/JITCompiler.PNG">
+         <h4>
+       <b style="color: green ">JNI(Java Native Interface)</b>
+    </h4>
+    <ul>
+      <li>JNI acts as bridge(mediator)for java method call and corresponding native libraries  </li>
+    </ul>
+</body>
+</html> 

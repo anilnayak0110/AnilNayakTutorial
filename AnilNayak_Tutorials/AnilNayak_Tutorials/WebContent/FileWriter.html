@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IO  Package</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">FileWriter</b>
+     </h4>
+     <ul>
+       <li>We can use FileWriter object to write character data to the file . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors:</b>
+     </h5>
+     <ul>
+       <li>FileWriter fw = new FileWriter(String fname);</li>
+       <li>FileWriter fw = new FileWriter(File f);</li>
+     </ul>
+     <ul>
+       <li>The above two constructors meant for overriding. Instead of overriding if we want append operation we have to use the following two constructors . </li>
+     </ul>
+     <ul>
+       <li>FileWriter fw = new FileWriter(String name, boolean append);</li>
+       <li>FileWriter fw = new FileWriter(File f, boolean append);</li>
+       <li>If the specified file is not already available then the above constructors will create that file . </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Important Methods of FileWriter :</b>
+     </h5>
+     <h6>
+        <b style="color: green;">Write(int ch)</b>
+     </h6>
+     <ul>
+       <li>To write a single character to the file . </li>
+     </ul>
+      <h6>
+        <b style="color: green;">Write(char[] ch)</b>
+     </h6>
+     <ul>
+       <li>To write an array of characters to the file </li>
+     </ul>
+     <h6>
+        <b style="color: green;">Write(String s)</b>
+     </h6>
+     <h6>
+        <b style="color: green;">flush()</b>
+     </h6>
+     <ul>
+       <li>To give guarantee that entire data including last character will be added to the file . </li>
+     </ul>
+      <h6>
+        <b style="color: green;">close()</b>
+     </h6>
+     <textarea rows="18" cols="80" style="color: blue;">
+	    Example: 
+	              class FileWriterDemo { 
+	                 public static void main(String[] args) throws IOException{ 
+	                    FileWriter fw = new FileWriter("ag.txt",true);
+	                    fw.write(100);
+	                    fw.write("Nilyatree \n Acharya");
+	                    fw.write('\n');
+	                    char[] ch = {'a','b','c'};
+	                    fw.write(ch);
+	                    fw.write('\n');
+	                    fw.flush();
+	                    fw.close();
+	                    
+	                 }
+	              }
+	</textarea>
+</body>
+</html>

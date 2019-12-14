@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">Properties :</b>
+     </h4>
+     <ul>
+       <li>In our program, anything which changes frequently never recommended to hard code in java program because for every change in java source file we have to recompile, rebuild and redeploy the application and sometimes server restart also required, which creates big business impact to the client . </li>
+       <li>Such type of variables we have to configure in properties file and we have to read those properties from Properties file into java application . </li>
+       <li>The main advantage in this approach is if there is a change in properties file, to reflect that change just redeployement is enough, which won't create any business impact . </li>
+       <li>We can use Properties object to hold properties which are coming from properties file . </li>
+       <li>Properties class is the child class of Hashtable . </li>
+       <li>In properties, both key and value should be String type . </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Constructor:-</b>
+     </h5>
+     <ul>
+      <li>Properties p = new Properties();</li>
+     </ul>
+     <ul>
+       <li><b>Methods:</b>
+         <ul>
+           <li>public String getProperty(String name);<br>
+              To get the value associated with specified property name . 
+           </li>
+           <li>public String setProperty(String pname, String pvalue);<br>
+              To set a new property
+           </li>
+           <li>public Enumeration propertyNames();<br>
+               It returns all property names .
+           </li>
+           <li>public void load(InputStream is)<br>
+               To load properties from properties file into java Properties object . 
+           </li>
+           <li>public void store(OutputStream os, String comment)<br>
+             To store properties from java properties object into properties file . 
+           </li>
+         </ul>
+       </li>
+     </ul>
+     <img alt="" src="images/Properties.PNG">
+      <textarea rows="20" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             import java.io.*;
+	             public class HashMapDemo{ 
+	                public static void main(String[] args){ 
+	                   Properties p = new Properties();
+	                   FileInputStream fis = new FileInputStream("abc.properties");
+	                   p.load(fis);
+	                   System.out.println(p);
+	                   String s = p.getProperty("Anil");
+	                   System.out.println(s);
+	                   p.setProperty("heera","1111");
+	                   FileOutputStream fos = new FileOutputStream("abc.properties");
+	                   p.store(fos,"updated  the current file ");
+	                }
+	             }
+	             o/p:{anil=10, gayatree=1,heera=1111}
+	             
+	             abc.properties
+	             ---------------
+	             anil = 10
+	             gayatree = 1
+	             heera = 1111
+	</textarea>
+  
+</body>
+</html>

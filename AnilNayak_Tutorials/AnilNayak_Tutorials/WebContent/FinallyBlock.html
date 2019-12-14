@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Finally Block</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Finally Block</b>
+	</h4>
+   <ul>
+     <li>It is not recommended to maintain clean up code inside try block because there is no guarantee for the execution of every statement inside try block always . </li>
+     <li>It is never recommended to maintain clean up code inside catch block because if there is no Exception then catch block won't be executed . </li>
+     <li>We required some place to maintain clean up code which should be executed always irrespective of whether Exception raised or not, whether 
+         Exception handled or not, such type of best place is nothing but finally block .  </li>
+     <li>Hence the main purpose of finally block is to maintain clear up code . </li>
+   </ul>
+   <textarea rows="10" cols="45" style="color: blue;">
+     Example :
+             try{ 
+                  Risky code
+             }
+             catch(Exception e){
+               Exception handling code
+             }
+             finally{ 
+                 clean up code 
+             }
+             
+	</textarea>
+	<ul>
+	  <li>The specialty of finally block is it will be executed always irrespective of whether Exception raised or not and handled or not handled .  </li>
+	</ul>
+	<textarea rows="40" cols="60" style="color: blue;">
+     Example :
+            class Test { 
+                public static void main(String[] args){ 
+                    try { 
+                       System.out.println("Try");
+                    }
+                    catch(Exception e){ 
+                      System.out.println("Catch");
+                    }
+                    finally{ 
+                      System.out.println("Finally code");
+                    }
+                }
+            }
+            O/P: try
+                 finally
+                 
+         -------------------------------------------
+         class Test { 
+               public static void main(String[] args){ 
+                   try { 
+                      System.out.println("try");
+                      System.out.println(10/0);
+                   }
+                   catch(Exception e){ 
+                      System.out.println("Catch");
+                   }
+                   finally{ 
+                       System.out.println("Finally");
+                   }
+                }
+             }
+             O/P: try
+                  catch
+                  finally
+        ------------------------------------------------
+        class Test { 
+             
+             public static void main(String[] args){ 
+                 try{ 
+                     System.out.println("try");
+                     System.out.println(10/0);
+                 }
+                 catch(NullPointerException e){ 
+                    System.out.println("Catch");
+                 }
+                 finally{ 
+                    System.out.println("finally");
+                 }
+               }
+            }
+            O/P: try
+                 finally
+                 RuntimeException: ArithmeticException: / by zero     
+       
+	</textarea>
+	<h5>
+       <b style="color: green ">finally vs return statement</b>
+	</h5>
+	<ul>
+	   <li>Eventhough return statement present inside try and catch blocks first finally will be executed and then return statement will be considered i.e 
+	      finally block dominates return statement .  </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+     Example :
+           class Test { 
+                 public static void main(String[] args){ 
+                     try{ 
+                        System.out.println("try");
+                        return;
+                     }
+                     catch(Exception e){ 
+                        System.out.println("catch");
+                        
+                     }
+                     finally{ 
+                        System.out.println("finally");
+                     }
+                 }
+           } 
+	</textarea>
+	<ul>
+	  <li>Note: If return statement inside try, catch and finally blocks then finally block return statement will be considered . </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+     Example :
+           class Test { 
+                 public static void main(String[] args){ 
+                    System.out.println(m1());
+                 }
+                 public static int m1(){ 
+                    try{ 
+                         return 777;
+                    }
+                    catch(Exception e){ 
+                        return 888;
+                    }
+                    finally{ 
+                         return 999;
+                    }
+                 }
+           } 
+           O/P: 999
+	</textarea>
+	<h5>
+       <b style="color: green ">finally vs System.exit(0):</b>
+	</h5>
+	<ul>
+	  <li>There is only one situation where finally block won't be executed i.e: whenever we are using System.exit(0). </li>
+	  <li>Whenever we are using System.exit(0) then JVM itself will be Shutdown . In this case, finally block won't be executed . </li>
+	  <li>Hence System.exit(0) dominates finally block . </li>
+	</ul>
+	
+	<textarea rows="20" cols="60" style="color: blue;">
+     Example :
+           class Test { 
+                 public static void main(String[] args){ 
+                    try{ 
+                        System.out.println("try");
+                        System.exit(0);
+                    }
+                    catch(Exception e){ 
+                       System.out.println("catch");
+                    }
+                    finally{ 
+                        System.out.println("finally");
+                    }
+                }
+              }
+	</textarea>
+	<h5>
+       <b style="color: green ">System.exit(0):</b>
+	</h5>
+	<ul>
+	  <li>The argument represents status code. </li>
+	  <li>Instead of zero we can take any valid int value . </li>
+	  <li>'0' means Normal Termination . </li>
+	  <li>"non-zero" means Abnormal Termination . </li>
+	  <li>Whether zero or non-zero there is no difference in impact and the program will be terminated . </li>
+	  <li>Internally JVM will use this code . </li>
+	</ul>
+	
+	<h5>
+       <b style="color: green ">Difference between final, finally and finalize():-</b>
+	</h5>
+	<ul>
+	  <li><b>final:</b>
+	     <ul>
+	       <li>"final" is the modifier applicable for classes, methods and variables . </li>
+	       <li>If we declare a class as final then we can not create child class . </li>
+	       <li>If we declare a method as final then we can not override that method in the child class . </li>
+	       <li>If we declare a variable as final then we can not change its value because it will become constant . </li>
+	     </ul>
+	  </li>
+	   <li><b>finally:</b>
+	     <ul>
+	       <li>"finally" is a block always associated with try-catch to maintain cleanup code . </li>
+	       <li>The specialty of finally block is it will be executed always irrespective of whether Exception raised or not and handled or not . </li>
+	     </ul>
+	  </li>
+	  <li><b>finalize():</b>
+	     <ul>
+	       <li>It is a method always called by Garbage Collector just before destroying an object to perform clean up activities .</li>
+	       <li>Once finalize() method completes automatically Garbage Collector destroys that Object .  </li>
+	     </ul>
+	  </li>
+	</ul>  
+      <h5>
+       <b style="color: green ">Control Flow in try-catch-finally :-</b>
+	  </h5>
+	<textarea rows="15" cols="30" style="color: blue;">
+       try{ 
+         statement 1;
+         statement 2;
+         statement 3;
+       }
+       catch(Exception e){ 
+          statement 4;
+       }
+       finally{ 
+           statement 5;
+       }
+       statement 6;          
+	</textarea>
+	<ul>
+	  <li>Case-1: If there is no Exception<br>
+	              statement 1, statement 2, statement 3, statement 5, statement 6 will execute with Normal Termination </li>
+	  <li>Case-2: If an Exception raised at statement 2 and corresponding catch block matched .<br>
+	              statement 1, statement 4, statement 5, statement 6 will execute with Normal Termination </li>
+	  <li>Case-3: If an Exception raised at statement 2 and corresponding catch block not matched .<br>
+	              statement 1, statement 5  will execute with Abnormal Termination </li>
+	  <li>Case-3: If an Exception raised at statement 2 and corresponding catch block not matched .<br>
+	              statement 1, statement 5  will execute with Abnormal Termination </li>
+	  <li>Case-4: If an Exception raised at statement 4 then it is always Abnormal Termination, but before that finally block will be executed . </li>
+	  <li>Case-5: If an Exception raised at statement 5 or statement 6 then it always Abnormal Termination . </li>
+	</ul>
+	
+	 <h5>
+       <b style="color: green ">Control Flow in nested try-catch-finally</b>
+	</h5>
+	 <textarea rows="25" cols="30" style="color: blue;">
+       try{ 
+         statement 1;
+         statement 2;
+         statement 3;
+         try{ 
+             statement 4;
+             statement 5;
+             statement 6;
+         }
+         catch(Exception e){ 
+             statement 7;
+         }
+         finally{ 
+             statement 8;
+         }
+         statement 9;
+       }
+       catch(Exception e){ 
+          statement 10;
+       }
+       finally{ 
+           statement 11;
+       }
+       statement 12;          
+	</textarea>
+	<ul>
+	  <li>Case 1: If there is no Exception, then <br>
+	     statement 1,2,3,4,5,6,8,9,11,12 will execute with normal termination . 
+	  </li>
+	  <li>Case 2: If an Exception raised at statement 2 and corresponding catch block matched . <br>
+	      statement 1,10,11,12 will execute with Normal Termination .</li>
+	  <li>Case 3: If an Exception raised at statement 2 and corresponding catch block not matched <br>
+	      statement 1,11 will execute with Abnormal Termination . </li>
+	  <li>Case 4: If an Exception raised at statement 5 and corresponding inner catch block matched <br>
+	     statement 1,2,3,4,7,8,9,11,12 will execute with Normal Termination .
+	  </li>
+	  <li>Case 5: If an Exception raised at statement 5 and corresponding inner catch block not matched, but out catch block matched . <br>
+	     statement 1,2,3,4,8,10,11,12 will execute with Normal Termination .</li>
+	  <li>Case 6: If an Exception raised at statement 5 and both inner and outer catch blocks are not matched . <br>
+	     statement 1,2,3,4,8,11 will execute with Abnormal Normal Termination .</li>
+	  <li>Case 7: If an Exception raised at statement 7 and corresponding catch blocked matched. <br>
+	     statement 1,2,3,4,5,6,8,10,11,12 will execute with Normal Termination .</li>
+	   <li>Case 8: If an Exception raised at statement 7 and corresponding catch blocked not matched. <br>
+	     statement 1,2,3,4,5,6,8,11 will execute with Abnormal Termination .</li>
+	   <li>Case 9: If an Exception raised at statement 8 and corresponding catch block matched . <br>
+	       statement 1,2,3,4,5,6,7,10,11,12 will execute with Normal Termination . </li>
+	   <li>Case 10: If an Exception raised at statement 8 and corresponding catch block not matched . <br>
+	       statement 1,2,3,4,5,6,7,11 will execute with Abnormal Termination . </li>
+	   <li>Case 11: If an Exception raised at statement 9 and corresponding catch block matched . <br>
+	       statement 1,2,3,4,5,6,7,8,11,12 will execute with Normal Termination .
+	    </li>
+	    <li>Case 12: If an Exception raised at statement 9 and corresponding catch block not matched . <br>
+	       statement 1,2,3,4,5,6,7,8,11 will execute with Abnormal Normal Termination .
+	    </li>
+	    <li>Case 13: If an Exception raised at statement 10, then it is always Abnormal Termination . </li>
+	    <li>If an Exception raised at statement 11 or statement 12 then it is always Abnormal Termination . </li> 
+	</ul>
+	 <textarea rows="20" cols="40" style="color: blue;">
+          class Test { 
+               public static void main(String[] args){ 
+                   try{ 
+                        System.out.println(10/0);
+                   }
+                   catch(ArithmeticException ae){ 
+                       System.out.println(10/0);
+                   }
+                   finally{ 
+                        String s = null;
+                        System.out.println(s.length());
+                   }
+               }
+          } O/P: Runtime Exception : Null Pointer Exception         
+	</textarea>
+	<ul>
+	  <li>Note: Default Exception Handler can handle only one Exception at a time which is the most recently raised Exception . </li>
+	</ul>
+</body>
+</html>

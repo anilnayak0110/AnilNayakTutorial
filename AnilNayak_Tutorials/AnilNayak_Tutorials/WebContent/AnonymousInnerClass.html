@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inner Class</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Anonymous Inner Classes :</b>
+     </h4>
+     <ul>
+      <li>Sometimes we can declare inner class without name such type of inner classes are called Anonymous inner classes . </li>
+      <li>The main purpose of Anonymous inner classes is just for instant use (1 time usage) .</li>
+      <li>There are three types of Anonymous inner classes : 
+          <ul>
+            <li>Anonymous Inner class that extends a class</li>
+            <li>Anonymous Inner class that implements an interface </li>
+            <li>Anonymous Inner class that defined inside arguments </li>
+          </ul>
+      </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Anonymous Inner class that extends a class</b>
+     </h5>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    class Biscuit { 
+	       public void test(){ 
+	         System.out.println("Salty");
+	       }
+	    }
+	    class Test { 
+	       public static void main(String[] args){ 
+	         Biscuit b = new Biscuit(){ 
+	            public void test(){ 
+	              System.out.println("Sweet");
+	            }
+	         };
+	         b.test();
+	         Biscuit b1 = new Biscuit();
+	         b1.test();
+	         Biscuit b2 = new Biscuit(){ 
+	           public void test(){ 
+	             System.out.println("SaltyAndSweet");
+	           }
+	         };
+	         b2.test();
+	       }
+	    }
+	    o/p:
+	    Sweet
+Salty
+SaltyAndSweet
+	</textarea>
+	<ul>
+	  <li>We are creating child class for Buiscuit without name(Anonymous Inner class). </li>
+	  <li>For that child class we are overriding test() method for that child class we are creating an Object with parent reference . </li>
+	</ul>
+	  <textarea rows="25" cols="80" style="color: blue;">
+	    class Test { 
+	       public static void main(String[] args){ 
+	          Thread t = new Thread(){ 
+	             for(int i = 0; i<10; i++){ 
+	                System.out.println("Child Thread");
+	             }
+	          };
+	          t.start();
+	          for(int i = 0; i<10; i++){ 
+	             System.out.println("Main Thread");
+	          }
+	       }
+	    }
+	</textarea>
+	<h5>
+        <b style="color: green;">Anonymous Inner class that implements an interface</b>
+     </h5>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    class Test { 
+	       public static void main(String[] args){ 
+	         Runnable r = new Runnable(){ 
+	           public void run() { 
+	              for(int i = 0; i<10; i++){ 
+	                System.out.println("Child Thread");
+	              }
+	           }
+	         };
+	        Thread t = new Thread();
+	        t.start();
+	        for(int i = 0; i<10; i++){ 
+	           System.out.println("Main Thread");
+	        } 
+	       }
+	    }
+	</textarea>
+	<h5>
+        <b style="color: green;">Anonymous Inner class that implements an interface</b>
+     </h5>
+     <textarea rows="25" cols="80" style="color: blue;">
+	    class Test { 
+	       public static void main(String[] args){ 
+	          new Thread(new Runnable(){
+	             public void run(){ 
+	               for(int i = 0;i<10;i++){ 
+	                 System.out.println("Child Thread");
+	               }
+	             }
+	           }).start();
+	          for(int i = 0;i<10;i++){ 
+	            System.out.println("Main Thread");
+	          }
+	       }
+	    }
+	</textarea>
+	<h5>
+        <b style="color: green;">Anonymous Inner class vs Normal class :</b>
+     </h5>
+     <ul>
+      <li>A normal Java class can extends only one class at a time, but anonymous inner class also can extend only one class at a time . </li>
+      <li>A normal java class can implements any number of interfaces at a time, but anonymous inner class can implement only one interface at a time . </li>
+      <li>A normal java class can extend a class and can implement any no of interfaces simultaneously, but anonymous inner class can extend a class and implements an interface simultaneously .  </li>
+      <li>The main application area of anonymous inner classes is to implement GUI based application for Event Handling . </li>
+     </ul>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Throws</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">throws keyword</b>
+	</h4>
+  <ul>
+    <li>In our program, if there is any chance of raising checked exception compulsory we should handle that checked Exception, other wise 
+        we will get Compile time Error : Saying ,<br>
+          unreported exception X ; must be caught or declared to be thrown
+     </li>
+  </ul>
+   <textarea rows="10" cols="45" style="color: blue;">
+     Example : class Test { 
+         public static void main(String[] args){ 
+            PrintWriter pw = new PrintWriter("abc.txt");
+            pw.println("Heera");
+         }
+     }
+     CE: Unreported exception java.io.FileNotFoundException ;
+        must be caught or declared to be thrown .    
+         
+    </textarea>
+    
+    <textarea rows="10" cols="45" style="color: blue;">
+     Example : class Test { 
+         public static void main(String[] args){ 
+          Thread.sleep(5000);
+         }
+     }
+     CE: Unreported exception java.lang.InterruptedException ;
+        must be caught or declared to be thrown .    
+         
+    </textarea>
+  <ul>
+   <li>We can handle this Compile time Error : by using the following 2 ways . 
+     <ul>
+       <li>by using try-catch</li>
+       <li>by using throws keyword . </li>     
+     </ul>
+  </li>
+  </ul>
+  <h5>
+       <b style="color: green ">By using try-catch</b>
+	</h5>
+	 <textarea rows="10" cols="45" style="color: blue;">
+        Example: class Test { 
+                 public static void main(String[] args){ 
+                      try{ 
+                         Thread.sleep(5000);
+                      }
+                      catch(InterruptedException e){ 
+                      
+                      }
+                 }
+        }
+    </textarea>
+     <h5>
+       <b style="color: green ">By using throws keyword:</b>
+	</h5>
+	<ul>
+	  <li>We can use throws keyword to delegate responsibility of Exception . Handling to the caller(It may be method of JVM) then caller is responsible to handle that checked Exception . </li>
+	</ul>
+	 <textarea rows="10" cols="45" style="color: blue;">
+         class Test { 
+             public static void main(String[] args) throws InterruptedException { 
+                Thread.sleep(5000);
+             }
+         }
+    </textarea>
+    <ul>
+      <li>throws : 
+        <ul>
+          <li>We can use throws keyword to delegate responsibility of Exception handling to the caller . </li>
+          <li>It is required only for checked Exceptions and usage of throws for unchecked Exceptions there is no use .</li>
+        </ul>
+      </li>
+    </ul>
+     <textarea rows="15" cols="45" style="color: blue;">
+         class Test { 
+            public static void main(String[] args) throws InterruptedException{ 
+                doWork();
+            }
+            public static void doWork() throws InterruptedException{ 
+                doMoreWork();
+            }
+            public static void doMoreWork() throws InterruptedException{ 
+                 Thread.sleep(5000);
+            }
+            
+         }
+         RE: Unreported exception java.lang.InterruptedException;
+             must be caught or declared to be thrown . 
+    </textarea>
+    <ul>
+      <li>If we remove at least one throws keyword in the above program then we will get Compile time error . i.e all throws statements must be required . </li>
+      <li>Note: It is recommended to use try-catch over throws statement . </li>
+    </ul>
+    <ul>
+      <li>Case-i : We can use throws keyword for methods and constructors, but not for classes. </li>
+    </ul>
+    <textarea rows="8" cols="45" style="color: blue;">
+        class Test throws Exception{ 
+             Test() throws Exception
+             { 
+             
+             }
+             public void m1() throws Exception
+             { 
+             }
+        }
+    </textarea>
+    <ul>
+      <li>Case-ii : We can use throws keyword only for Throwable types, other wise we will get Compile time Error : saying , incompatible types. </li>
+    </ul>
+     <textarea rows="8" cols="45" style="color: blue;">
+        class Test{ 
+           public static void main(String[] args)throws Test{ 
+           
+           }
+        } CE: incompatible types
+              found : Test
+              required: java.lang.Throwable
+    </textarea>
+     <textarea rows="8" cols="45" style="color: blue;">
+        class Test extends Exception{ 
+           public static void main(String[] args)throws Test{ 
+           
+           }
+        } 
+    </textarea>
+     <ul>
+      <li>Case-iii : In try block, if there is no chance of raising an Exception then we can not write catch block for that Exception, other wise we will get Compile time error : saying , 
+           Exception X is never thrown in body of corresponding try statement . 
+     </li>
+     <li>But this rule is applicable only for fully checked Exception . </li>
+    </ul>
+     <textarea rows="10" cols="45" style="color: blue;">
+       class Test { 
+          public static void main(String[] args){ 
+              try{ 
+                System.out.println("Hello");
+              }
+              catch(ArithmeticException ae){ 
+              
+              }
+          }
+       }O/P: Hello [ Because ArithmeticException is an unchecked exception]
+    </textarea>
+    
+     <textarea rows="10" cols="45" style="color: blue;">
+       class Test { 
+          public static void main(String[] args){ 
+              try{ 
+                System.out.println("Hello");
+              }
+              catch(Exception e){ 
+              
+              }
+          }
+       }O/P: Hello [Partially Checked Exception]
+    </textarea>
+    
+    <textarea rows="15" cols="45" style="color: blue;">
+       class Test { 
+          public static void main(String[] args){ 
+              try{ 
+                System.out.println("Hello");
+              }
+              catch(InterruptedException e){ 
+              
+              }
+          }
+       }O/P: CE: exception java.lang.InterruptedException 
+             is  never thrown in body of corresponding try statement 
+             [Fully Checked Exception]
+    </textarea>
+    
+    <textarea rows="10" cols="45" style="color: blue;">
+       class Test { 
+          public static void main(String[] args){ 
+              try{ 
+                System.out.println("Hello");
+              }
+              catch(Error e){ 
+              
+              }
+          }
+       }O/P: Hello [Unchecked]
+    </textarea>
+    <h5>
+       <b style="color: green ">Exception Handling keywords summary : -</b>
+	</h5>
+	<ul>
+	  <li>try : To maintain Risky code .</li>
+	  <li>catch : To maintain Exception handling code . </li>
+	  <li>finally : To maintain clean up code . </li>
+	  <li>throw : To hand over our created Exception object to the JVM .  </li>
+	  <li>throws : To delegate responsibility of Exception handling to the caller . </li>
+	</ul>
+</body>
+</html>

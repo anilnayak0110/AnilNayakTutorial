@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Object</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Object</b>
+	</h4>
+
+<h5>
+     <b style="color: green ">Introduction</b>
+	</h5>
+<ul>
+  <li>For writing any java program, whether it is small or complex <br>, 
+     but the most commonly required classes and interfaces are defined in a separate package <br>
+     which is nothing but java.lang package .</li>
+  <li>We are not required to import java.lang package explicitly because by default is available to every java program . </li>
+</ul>
+   <h5>
+     <b style="color: green ">Object class :</b>
+	</h5>
+	<ul>
+	  <li>For all java classes whether it is predefined or customized the most commonly required methods are defined in Object class . </li>
+	  <li>SUN people define Object class as root for all java classes . So that its methods by default available to every java class through inheritance . </li>
+	  <li>Note 1: If our class doesn't extend any other class then only it is the direct child class of Object . </li>
+	  <li>Note 2: If our class extending any other class then it is the indirect child class of Object . </li>
+	</ul>
+	<img alt="" src="images/Object.PNG"/>
+	<h5>
+     <b style="color: green ">Object class defines the following 11 methods :</b>
+	</h5>
+	<ul>
+	  <li><b>public String toString()</b></li>
+	  <li><b>public native int hashCode()</b></li>
+	  <li><b>public boolean equals(Object o)</b></li>
+	  <li><b>protected native Object clone() throws CloneNotSupportedException</b></li>
+	  <li><b>protected void finalize() throws Throwable </b></li>
+	  <li><b>public final Class getClass()</b></li>
+	  <li><b>public final void wait() throws InterruptedException</b></li>
+	  <li><b>public final native void wait(long ms) throws InterruptedException </b></li>
+	  <li><b>public final void wait(long ms, int ns) throws InterruptedException</b></li>
+	  <li><b>public native final void notify()</b></li>
+	  <li><b>public native final void notifyAll()</b></li>
+	</ul>
+	
+	<h5>
+     <b style="color: green ">toString()</b>
+	</h5>
+	<ul>
+	 <li>We can use toString() method to get String representation of an Object . </li>
+	 <li>Whenever we are trying to print any Object reference internally toString() method will be called . </li>
+	 <li>Student s = new Student();<br>
+	     System.out.println(s);<br>
+	     System.out.println(s.toString());
+	  </li>
+	  <li>If our class does not contain toString() method then Object class toString() method will be called . </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+	  Example: 
+	            class Student { 
+	                  String name;
+	                  int rollNo;
+	                  Student(String name, int rollNo){ 
+	                       this.name  = name;
+	                       thi.rollNo = rollNo;
+	                  }
+	                  public static void main(String[] args){ 
+	                       Student s1 = new Student("Durga",101);
+	                       Student s2 = new Student("Ravi",102);
+	                       System.out.println(s1); ==> o/p: Student@3e25a5
+	                       System.out.println(s1.toString());
+	                       System.out.println(s2);==> Student@19821f
+	                  }
+	            }
+	          
+	</textarea>
+	<ul>
+	  <li>In the above example, Object class toString() method get executed which is implemented as follows.</li>
+	</ul>
+	<textarea rows="8" cols="60" style="color: blue;">
+	  Example: 
+	      public String toString(){ 
+	              return getClass().getName+"@"+Integer.toHexString(hashCode());
+	            }
+	       i.e className@hexadecimal_string_of_hashCode. 
+	</textarea>
+	<ul>
+	  <li>To return more meaningful String representation we can override toString() method in our class . </li>
+	  <li>Whenever we are trying to print Student reference to return his name and rollNo we have to override toString() method as follows . </li>
+	</ul>
+	<textarea rows="8" cols="60" style="color: blue;">
+	 public String toString() {
+	      || return name;
+	      || return name +"..."+rollNo;
+	      return "This is Student with name :"+name+" and rollNo:"+rollNo;
+	 }
+	</textarea>
+	<ul>
+	  <li>In String Class, StringBuffer class, all wrapper classes, all Collection classes toString() method is overridden for meaningful String representation . </li>
+	  <li>Hence it is highly recommended to override toString() method in our class also. </li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	     class Test { 
+	          public String toString(){ 
+	              return "test";
+	          }
+	          public static void main(String[] args){ 
+	             String  s = new String("XYZ");
+	             Integer i = new Integer(10);
+	             
+	             Test t = new Test();
+	             System.out.println(s); // O/P: XYZ
+	             System.out.println(i); // O/P: 10
+	             System.out.println(t); // O/P: test
+	          }
+	     }
+	</textarea>
+	<h5>
+     <b style="color: green ">hashCode():-</b>
+	</h5>
+	<ul>
+	  <li>For every object JVM will generate a unique number which is nothing  but HashCode . </li>
+	  <li>JVM will use hashCode while saving Objects into hashing related data structures like HashSet, Hashtable and HashMap . </li>
+	  <li>If the Objects are saved according to hashcode then the advantage is search operation become easy . </li>
+	  <li>If we are not overriding hashCode() method then Object class hashCode() method will be executed which will generate hashCode based on address of Object . </li>
+	  <li>If we override hashCode method then its no longer related to address of Object . </li>
+	  <li>It is highly recommended to override hashCode() method . So that we can customize order of elements in hashing related data structures . </li>
+	  <li>Overriding hashCode() method is said to be proper iff for every object we have to generate a unique no as hashCode . </li>
+	</ul>
+	<textarea rows="8" cols="60" style="color: blue;">
+	     class Student { 
+	          public int hashCode(){ 
+	             return 100;
+	          }
+	     }
+	</textarea>
+	<ul>
+	  <li>This is improper way of overriding hashCode() method because for all objects we are generating same hashCode . </li>
+   </ul>
+   <textarea rows="8" cols="60" style="color: blue;">
+	     class Student { 
+	          int rollNo;
+	         public int hashCode(){ 
+	            return rollNo;
+	         }
+	     }
+	</textarea>
+	<ul>
+	  <li>This is proper way of overriding hashCode() method because we are generating a unique no. as hashCode for every object. </li>
+   </ul>
+   <h5>
+     <b style="color: green ">toString() vs hashCode():-</b>
+	</h5>
+	<ul>
+	  <li>If we are giving the chance to Object class toString() method it internally calls hashCode() method . </li>
+	  <li>But if we are overriding toString() method it may not call hashCode() method . </li>
+	</ul>
+	<h5>
+     <b style="color: green ">equals(Object o):-</b>
+	</h5>
+	<ul>
+	  <li>We can use equals(-) method to check equality of two objects . </li>
+	  <li>If our class doesn't contain equals(-) method then Object class equals(-) method will be executed . </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+	     class Student { 
+	        String name;
+	        int rollNo;
+	        Student(String name, int rollNo){ 
+	            this.name   = name;
+	            this.rollNo = rollNo;
+	        }
+	        public static void main(String[] args){
+	                 
+	           Student s1 = new Student("A",101);
+	           Student s2 = new Student("B",102);
+	           Student s3 = new Student("A",101);
+	           Student s4 = s1;
+	           System.out.println(s1.equals(s2));// O/P: false
+	           System.out.println(s1.equals(s3));// O/P: false
+	           System.out.println(s1.equals(s4)); //O/P: true         
+	        }
+	    }
+	</textarea>
+	<ul>
+	 <li>In the above example, Object class equals(-) method got executed which is mean for Reference comparison(Address comparison) . <br>
+	     i.e, if two reference pointing to the same Object then only ".equals(-)" method returns true . 
+	 </li>
+	 <li>Instead of reference comparison if we want content comparison, then we can override equals(-) method in our class .  </li>
+	 <li>Whenever we are overriding equals(-) methods in our class we have to consider the following things .<br>
+	      <ul>
+	         <li><b>What is the meaning of content comparison ?</b>
+	            <ul>
+	              <li>If we pass different type of objects then our equals(-) method should return false, but not ClassCastException i.e 
+	                  we have to handle ClassCastException to return false . </li>
+	              <li>If we pass null argument our .equals(-) method should return false, but not NullPointerException i.e 
+	                  we have to handle NullPointerException to return false . </li>
+	              <li>The following is the valid way of overriding equals(-) method in Student class for Content comparison . </li>
+	            </ul>
+	         </li>
+	      </ul>
+	 </li>
+	</ul>
+		<textarea rows="60" cols="60" style="color: blue;">
+		 public class Student {
+	
+	int rollNo;
+	String name;
+	
+	public Student(String name,int rollNo) {
+		super();
+		this.rollNo = rollNo;
+		this.name = name;
+	}
+
+	public static void main(String[] args) {
+		 Student s1 = new Student("A",101);
+         Student s2 = new Student("B",102);
+         Student s3 = new Student("A",101);
+         Student s4 = s1;
+         System.out.println(s1.equals(s2));// O/P: false
+         System.out.println(s1.equals(s3));// O/P: true
+         System.out.println(s1.equals(s4)); //O/P: true
+         System.out.println(s1.equals("A"));// O/P: false
+         System.out.println(s1.equals(null));// O/P: false
+	}
+	
+	public boolean equals(Object o){
+		try{
+		 int rollNo1 = this.rollNo;
+		 String name1 = this.name;
+		 
+		 Student s = (Student)o;
+		 
+		 int rollNo2 = s.rollNo;
+		 String name2 = s.name;
+		 if(name1.equals(name2)&&rollNo1 == rollNo2){
+			 return true;
+		 }
+		 else{
+			 return false;
+		 }
+		}
+		catch(ClassCastException ce){
+		  return false;	
+		}catch(NullPointerException ne){ 
+			return false;
+		}
+	}
+
+}
+	      
+	   Simplified version of equals(-) methods :-
+	   ------------------------------------------
+	   public boolean equals(Object o){ 
+	       try { 
+	             Student s = (Student)o;
+	             if(name.equals(s.name) && rollNo == s.rollNo){ 
+	                  return true;
+	             }
+	             else{ 
+	                  return false;
+	             }
+	       }
+	       catch(ClassCastException cce){ 
+	            return false;
+	       }
+	       catch(NullPointerException ne){ 
+	            return false;
+	       }
+	   }   
+	   
+	   
+	   More Simplified version of equals(-) methods :-
+	   ------------------------------------------
+	   public boolean equals(Object o){ 
+	      if(o instanceof Student){ 
+	         Student s = (Student)o;
+	         if(name.equals(s.name) && rollNo == s.rollNo)
+	             return true;
+	         else
+	            return false;
+	      }
+	      return false;
+	   }     
+	</textarea>
+	<ul>
+	  <li>In String class, all wrapper classes and all Collection classes equals(-) method is overridden for content comparison,
+	    <br> but in StringBuffer equals(-) method is not overridden for content comparison . </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+	
+          String s1 = new String("A");
+          String s2 = new String("A");
+          System.out.println(s1==s2); o/p: false
+          System.out.println(s1.equals(s2)); o/p: true
+          
+          ------------------------------------------------
+          
+          StringBuffer sb1 = new StringBuffer("A");
+          StringBuffer sb2 = new StringBuffer("A");
+          System.out.println(sb1==sb2); o/p: false
+          System.out.println(sb1.equals(sb2)); o/p:false
+          
+	</textarea>
+	
+	<ul>
+	 <li>In String class , .equals(-) method is already overridden for content comparison ,
+          Hence eventhough objects are different .equals(-) method return true, if the content is same .</li>
+     <li>In StringBuffer class, .equals(-) method is not overridden for content comparison .
+          Hence Object class equals(-) method will be executed which is mean for reference comparison . 
+          Due to this if Objects are different .equals(-) method return false eventhough content is same . </li>
+	</ul>
+	<h5>
+     <b style="color: green ">Comparison between == operator and .equals(-) method :-</b>
+	</h5>
+	<ul>
+	  <li>If two objects are equal by == operator then these objects are always equal by .equals(-) method . </li>
+	  <li>If two objects are not equal by == operator then we can not conclude anything about .equals(-) method, it may returns true or false . </li>
+	  <li>If object1.equals(object2) returns true then we can not conclude anything about '==' operator , it may return false or true . </li>
+	  <li>If object1.equals(object2) returns false then object1 == object2 is always return false . </li>
+	</ul>
+	<img alt="" src="images/Equals_Comp.PNG"/>
+	<h5>
+     <b style="color: green ">Contract between .equals(_) method and hashCode() methods :-</b>
+	</h5>
+	<ul>
+	  <li>Two equivalent objects must have same hashCode i.e . 
+	    if object1.equals(object2) is true then object1.hashCode() == object2.hashCode() should be returns true . </li>
+	  <li>If two objects are not equal by .equals(_) method then there is no restriction on their hashCodes, may be same or may not be same .</li>
+	  <li>If hashCodes of two objects are equal then these objects may or may not equal by .equals(_) method . </li>
+	  <li>If hashCodes of two objects are not equals then these object are always not equal by .equals(_) method . </li>
+	  <li>To satisfy above contract between equals(_) method and hashCode() method whenever we are overriding equals(_) method compulsory we have to 
+	       override hashCode() method .  </li>
+	</ul>
+	<h5>
+     <b style="color: green ">clone() :-</b>
+	</h5>
+	<ul>
+	  <li>The process of creating exact duplicate object is called Cloning . </li>
+	  <li>The main purpose of cloning is to maintain back up process .</li>
+	  <li>We can  create cloned object by using clone() method of Object class . </li>
+	  <li>protected native Object clone() throws CloneNotSupportedException </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+	     class Test implements Cloneable { 
+	        int i = 10;
+	        int j = 20;
+	        
+	        public static void main(String[] args) throws CloneNotSupportedException{ 
+	           Test t1 = new Test();
+	           Test t2 = (Test)t1.clone();
+	           
+	           t1.i = 100;
+	           t1.j = 200;
+	           System.out.println(t2.i +"_________"+t2.j); O/P: 10 ____20
+	        }
+	        
+	     }
+	</textarea>
+	<ul>
+	  <li>We can perform cloning only for Cloneable objects . </li>
+	  <li>An Object is said to be Cloneable if the corresponding class implements Cloneable interface . </li>
+	  <li>Cloneable interface present in java.lang package and it does not contain any methods . It is a Marker interface . </li>
+	  <li>If we are trying to perform cloning for non-cloneable objects then we will get RuntimeException saying : CloneNotSupportedException :</li>
+	</ul>
+    <h6>
+     <b style="color: green ">Shallow cloning :-</b>
+	</h6>
+	<ul>
+	  <li>The process of creating bitwise-copy of an object is called Shallow cloning . </li>
+	  <li>If the main object contains any primitive variables exact duplicate copy will be created in cloned object . </li>
+	  <li>If the main object contains any reference variable then the corresponding object won't be created, just reference variable will be created by pointing to old contained object .</li>
+	  <li>By using main object reference if we perform any change to the contained object then those changes will be reflected to cloned object . </li>
+	  <li>By default Object class clone() method meant for Shallow cloning . </li>
+	</ul>
+	<textarea rows="30" cols="60" style="color: blue;">
+	    class Sky { 
+	       int j ;
+	       Sky(int j){ 
+	          this.j = j;
+	       }
+	    }
+	    class Earth { 
+	        Sky sk;
+	        int i ;
+	        
+	        Earth(Sky sk , int i){ 
+	           this.sk = sk;
+	           this.i = i;
+	        }
+	        public Object clone() throws CloneNotSupportedException { 
+	            return super.clone();
+	        }
+	    }
+	    class ShallowCloning{ 
+	        public static void main(String[] args){ 
+	            Sky s = new Sky(10);
+	            Earth e = new Earth(s,20);
+	            System.out.println(e.i +"----"+e.s.j); o/p: 10----------20
+	            
+	            Earth e2 = (Earth)e.clone();
+	            e1.i = 200;
+	            e1.s.j = 300;
+	            System.out.println(e2.i +"-----------"+e2.s.j)o/p: 10 -------300
+	        }
+	    }
+	</textarea>
+	<ul>
+	  <li>Shallow cloning is the best choice if the object contains only primitive values . </li>
+	  <li>In shallow cloning by using main object reference if we perform any change to the contained object , then those changes will be reflected 
+	       automatically to the cloned object also . </li>
+	  <li>To overcome this problem we should go for Deep cloning . </li>
+	</ul>
+	<h6>
+     <b style="color: green ">Deep cloning :-</b>
+	</h6>
+	<ul>
+	  <li>The process of creating exactly duplicate independent object (including contained object also) is called Deep cloning .  </li>
+	  <li>In Deep cloning, if main object contains any reference variable then the corresponding object copy will be created  in cloned object . </li>
+	  <li>Object class clone() method meant for Shallow cloning, if we want Deep cloning the programmer is responsible to implement by overriding clone() method . </li>
+	</ul>
+	<textarea rows="30" cols="60" style="color: blue;">
+	    class Sky { 
+	       int j ;
+	       Sky(int j){ 
+	          this.j = j;
+	       }
+	    }
+	    class Earth { 
+	        Sky sk;
+	        int i ;
+	        
+	        Earth(Sky sk , int i){ 
+	           this.sk = sk;
+	           this.i = i;
+	        }
+	        public Object clone() throws CloneNotSupportedException { 
+	           Sky s1 = new Sky(sk.j);
+	           Earth e1 = new Earth(s1,i);
+	           return e1;
+	        }
+	    }
+	    class DeepCloning{ 
+	        public static void main(String[] args){ 
+	            Sky s = new Sky(10);
+	            Earth e = new Earth(s,20);
+	            System.out.println(e.i +"----"+e.s.j); o/p: 10----------20
+	            
+	            Earth e2 = (Earth)e.clone();
+	            e1.i = 200;
+	            e1.s.j = 300;
+	            System.out.println(e2.i +"-----------"+e2.s.j)o/p: 10 -------20
+	        }
+	    }
+	</textarea>
+	<ul>
+	 <li>In deep cloning, by using main object reference if we perform any change to the contained object then those changes won't be reflected to the cloned object . </li>
+	 <li>Note 1: If the object contains only primitive variables , then Shallow cloning is the best choice . </li>
+	 <li>Note 2: If the Object contains reference variables then Deep Cloning is the best choice . </li>
+	</ul>
+	<h5>
+     <b style="color: green ">getClass():-</b>
+	</h5>
+	<ul>
+	  <li>This method returns runtime class definition of an object . </li>
+	  <li>Example : Student s = new Student();<br>
+	          System.out.println(s.getClass().getName());
+	  </li>
+	</ul>
+	<h5>
+     <b style="color: green ">finalize():-</b>
+	</h5>
+	<ul>
+	  <li>Just before destroying an object Garbage Collector always call finalize() method to perform clean up activities . </li>
+	  <li>Once finalize() method completes automatically Garbage Collector destroys that object .  </li>
+	</ul>
+	<h5>
+     <b style="color: green ">wait(), notify(), notifyAll() methods :-</b>
+	</h5>
+	<ul>
+	  <li>Two threads can communicate with each other by using wait(), notify() and notifyAll() methods i.e, these methods meant for Interthread Communication . </li>
+	</ul>
+</body>
+</html>

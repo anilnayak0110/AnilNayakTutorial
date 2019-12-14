@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Variables</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/137ABBD9-C70B-CD4C-B420-25D49B01D85F/main.js" charset="UTF-8"></script><script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Variables</b>
+	</h4>
+A Java variable is the piece of memory name that contains a data value.
+Variables are basically used to store data for you java program and use that data in
+your program when you need .
+<h4>
+     <b style="color: green;">Java Variables Types</b>
+	</h4>
+	Based on type variables are divided into two parts
+	<ul>
+	 <li>Primitive Variables
+	    <ul>
+	      <li>e.g: int x = 10; (Here <b>x</b> is the primitive variable)</li>
+	    </ul>
+	 </li>
+	 <li>Reference Variables
+	    <ul>
+	      <li>e.g: Employee e = new Employee(); (Here <b>e</b> is the reference variable)</li>
+	    </ul>
+	 </li>
+	</ul>
+	Based on the purpose and positions variables are divided into three parts
+	<ul>
+	  <li>Instance variable</li>
+	  <li>Static variable</li>
+	  <li>Local variable</li>
+	</ul> 
+	<h5>
+     <b style="color: green;">Instance Variable</b>
+	</h5>
+	<ul>
+	  <li>If the value of the variable is varied from object to object is called instance variable .</li>
+	  <li>For every object a separate copy of instance variable will create .</li>
+	  <li>The scope of the instance variable is same as object, because the instance variable will create while creation of object
+	      and destroyed at the time of object destroyed .</li>
+	  <li>Instance variable store in heap area .</li>
+	  <li>Instance variable should declare inside the class, but out side the method, block or constructor .</li>
+	  <li>Instance variable can not access from static area directly, we should access through object reference,
+	      but from instance area can access directly .</li>
+	  <li>For instance variable no need to perform initialization explicitly, JVM will provide default values .</li>
+	  <li>Instance variable is also called as object level variables or attributes .</li>
+	</ul>
+	 <b>Example:: Access instance variable in static area and instance area .</b>
+	  <textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+	int x = 10;
+
+	// Instance area
+	public void getValue() {
+		System.out.println(x);
+	}
+
+	// static area
+	public static void main(String args[]) {
+		Sample s = new Sample();
+		System.out.println(s.x);
+		s.getValue();
+	}
+}
+     Output:: 10
+                   10
+	  </textarea><br>
+	  <b>Example:: Default value for instance variables .</b><br>
+	   <textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+	int x;
+	String str;
+	boolean flag;
+
+	public static void main(String args[]) {
+		Sample s = new Sample();
+		System.out.println(s.x);
+		System.out.println(s.str);
+		System.out.println(s.flag);
+
+	}
+}
+     Output:: 0
+                  null
+                 false
+	  </textarea>    
+	<h5>
+     <b style="color: green;">Static Variable</b>
+	</h5>
+	<ul>
+	  <li>If the value of the variable is not changed from object to object, then such type of variable should declared with static modifier and that
+	      variable is called as static variable .</li>
+	  <li>For all object a single copy of static variable will create .</li>
+	  <li>The scope of the static variable is same as class, static variable will be create at the time of class loading
+	      and destroyed at the time of class unloading .</li>
+	  <li>Static variable stored in Method area .</li>
+	  <li>Static variable should declare inside the class, but out side the method, block or constructor .</li>
+	  <li>Static variable can access from both static and instance area directly, through class name or through object reference,
+	      but within the same class it is recommended to access directly.</li>
+	  <li>For static variable no need to perform initialization explicitly, JVM will provide default values .</li>
+	  <li>Static variable is also called as class level variables or attributes .</li>        
+	</ul>
+	 <b>Example:: Access static variable in static area and instance area .</b>
+	  <textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+	static int x = 10;
+
+	// Instance area
+	public void getValue() {
+		System.out.println(x);
+	}
+
+	// static area
+	public static void main(String args[]) {
+        Sample s = new Sample();
+		System.out.println(x);
+		s.getValue();
+	}
+}
+     Output:: 10
+                   10
+	  </textarea><br>
+	  <b>Example:: Default value for static variables .</b><br>
+	   <textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+	static int x;
+	static String str;
+	static boolean flag;
+
+	public static void main(String args[]) {
+		System.out.println(x);
+		System.out.println(str);
+		System.out.println(flag);
+
+	}
+}
+     Output:: 0
+                  null
+                 false
+	  </textarea>
+	<h5>
+     <b style="color: green;">Local Variable</b>
+	</h5>
+	<ul>
+	  <li>When some variable required to declared only for the particular block, constructor or method, then
+	      that type of variable is called as local variable . </li>
+	  <li>Local variable stored in Stack area .</li>
+	  <li>The scope of the local variable is depends upon the block,
+	     local variable executed when block execute and destroyed when block execution complete .</li>
+	  <li>For local variable JVM won't provide any default value, we should perform initialization before using that variable,
+	     when we are not using that variable then initialization is not compulsory .</li>
+	  <li>The only applicable modifier for local variable is <b>final</b> and <b>default</b> if we declared with any other modifier we will get compile time error .</li>               
+	</ul>
+	 <b>Example:: Declared local variables</b><br>
+	  <textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+	public void getValue() {
+		int x = 10;
+		System.out.println(x);
+	}
+
+	public static void main(String args[]) {
+		Sample s = new Sample();
+		int z = 100;
+		int y;// ( Since we are not use that y variable so no need to initialize)
+		s.getValue();
+		System.out.println(z);
+	}
+}
+     Output:: 10
+                   100
+	  </textarea><br>
+</body>
+</html>

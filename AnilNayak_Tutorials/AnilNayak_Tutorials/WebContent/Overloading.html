@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Overloading</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Overloading:</b>
+	</h4>
+	<ul>
+	 <li>Two methods are said to be overloaded if both method having same name but different arguments . </li>
+	 <li>We can take two methods with the same name and different arguments are allowed and these methods are considered as overloaded methods . </li>
+	 <li>Having overloading concept in java reduces complexity of the programming . </li>
+	</ul>
+	 <textarea rows="20" cols="80" style="color: blue;">
+	  Example: 
+	  class Test { 
+	     public void m1(int i){ 
+	        System.out.println("int-argument");
+	     }
+	     public void m1(float f){ 
+	        System.out.println("float-argument");
+	     }
+	     public void m1(double d){ 
+	        System.out.println("double-argument");
+	     }
+	     public void m1(String s){ 
+	        System.out.println("String-argument");
+	     }
+	     public void m1(){ 
+	        System.out.println("no-arguments");
+	     }
+	     
+	     public static void main(String[] args){ 
+	     
+	        Test t = new Test();
+	        t.m1(10);
+	        t.m1(10.5f);
+	        t.m1(10.5);
+	        t.m1("Heera");
+	        t.m1();
+	     }
+	  }
+	  Note: In overloading, method resolution always takes care by compiler based on reference type, not based on runtime object . 
+	        Hence overloading is also considered as compile time polymorphisim or static polymorphisim or early binding . 
+	</textarea>
+	<h5>
+       <b style="color: green ">Automatic Promotion in Overloading:</b>
+	</h5>
+	<ul>
+	  <li>In overloading method resolution, if there is no method with exact match we won't get any compile time error immediately. 
+	      First compiler promotes the argument to the next level and checks whether the matched method is available or not . 
+	      If matched method is available then it will be considered, otherwise, compiler promotes the arguments to the next level . 
+	      This process will continued until all possible promotions . Still if the matched method is not available, then we will get compile time error . 
+	      This process is called automatic promotion in overloading . </li>
+	</ul>
+	The following are various possible automatic promotions in overloading . <br>
+	<img alt="" src="images/Overloading.PNG" />
+	
+	<textarea rows="20" cols="80" style="color: blue;">
+	  Example: CASE -1 :
+	  
+	           class Test { 
+	              public void m1(int a){ 
+	                 System.out.println("Int arguments")
+	              }
+	              public void m1(float f){ 
+	                 System.out.println("Float arguments")
+	              }
+	              
+	              public static void main(String[]  args){ 
+	                 Test t = new Test();
+	                 t.m1(10);
+	                 t.m1(12.5f);
+	                 t.m1('a');
+	                 t.m1(10l);
+	                 t.m1(10.5); // Compile time Error : can not find symbol
+	                                Symbol   : method m1(double)
+	                                location : class Test
+	              }
+	           }
+	           
+	    Example: CASE -2 :
+	          
+	          class Test { 
+	              public void m1(String s){ 
+	                System.out.println("String-version");
+	              }
+	              public void m1(Object o){ 
+	                 System.out.println("Object-version");
+	              }
+	              
+	              public static void main(String[] args){ 
+	                 Test t = new Test();
+	                 t.m1(new Object());
+	                 t.m1("Heera");
+	                 t.m1(null);
+	              }
+	          }
+	          
+	          Note:- In overloading child will get more priority than parent . 
+	    
+	    Example: CASE - 3 :
+	          
+	          class Test { 
+	             public void m1(String s){ 
+	               System.out.println("String-version");
+	             }
+	             public void m1(StringBuffer sb){ 
+	               System.out.println("StringBuffere version");
+	             }
+	             
+	             public static void main(String[] args){ 
+	                Test t = new Test();
+	                t.m1(new StringBuffer("Heera"));
+	                t.m1("Heera");
+	                t.m1(null); // Compile Time Error : reference to m1() is ambiguous
+	             }
+	          }
+	          
+	    Example: CASE - 4 :
+	         
+	         class Test { 
+	            public void m1(int i){ 
+	              System.out.println("int arguments");
+	            }
+	            public void m1(int... i){ 
+	              System.out.println("var-arg methos");
+	            }
+	            public static void main(String[] args){ 
+	               Test t = new Test();
+	               t.m1(10);
+	               t.m1();
+	               t.m1(10,20); 
+	            }
+	         }
+	         
+	         Note : In general var-arg method will get least priority. i.e If no other method matched then only var-arg method will be executed . 
+	   
+	   Example: CASE - 5 :
+	   
+	        class Fruits { 
+	            
+	        }
+	        
+	        class Juice extends Fruits { 
+	           
+	        }
+	        class Test { 
+	            public void m1(Fruits f) { 
+ 	               System.out.println("Fruits");
+	            }
+	            public void m1(Juice j) { 
+	               System.out.println("Juice");
+	            }
+	            
+	            public static void main(String[] args){ 
+	                Test t = new Test();
+	                Fruits f = new Fruits();
+	                t.m1(f);
+	                Juice j = new Juice();
+	                t.m1(j);
+	                Fruits f1 = new Juice();
+	                t.m1(f1);
+	            }
+	        }
+	        
+	        Note : In overloading, method resolution always takes care by compiler based on reference type only .
+	               Hence runtime object will become dummy in overriding . 
+	</textarea>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>IO  Package</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">PrintWriter</b>
+     </h4>
+     <ul>
+      <li>The most enhanced writer to write character data to the file is PrintWriter . </li>
+      <li>The main advantage of PrintWriter is we can write any type of primitive data directly to the file . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors : </b>
+     </h5>
+     <ul>
+      <li>PrintWriter pw = new PrintWriter(String fname);</li>
+      <li>PrintWriter pw = new PrintWriter(File f);</li>
+      <li>PrintWriter pw = new PrintWriter(Writer w);</li>
+      <li>Note: PrintWriter can communicate either directly to the file or via Writer object . </li>
+     </ul>
+     <h5>
+        <b style="color: green;">Methods : </b>
+     </h5>
+     <ul>
+       <li>write(int ch);</li>
+       <li>write(char[] ch);</li>
+       <li>write(String s);</li>
+       <li>flush();</li>
+       <li>close();</li>
+       <li>print(char ch);</li>
+       <li>print(int i);</li>
+       <li>print(double d);</li>
+       <li>print(String s);</li>
+       <li>print(boolean b);</li>
+       <li>print(char ch);</li>
+       <li>println(int i);</li>
+       <li>println(double d);</li>
+       <li>println(String s);</li>
+       <li>println(boolean b);</li>
+     </ul>
+  
+      <textarea rows="20" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class PrintWriterDemo{ 
+	       public static void main(String[] args) Throws IOException{ 
+	         `FileWriter fw = new FileWriter("AG.txt");
+	          PrintWriter pw = new PrintWriter(fw);
+	          pw.write(100);
+	          pw.write(100);
+	          pw.write(true);
+	          pw.write('C');
+	          pw.write("AG");
+	          pw.flush();
+	          pw.close();
+	       }
+	    }
+	</textarea>
+
+  <h6>
+        <b style="color: green;">What is the difference between pw.write(100) and pw.print(100)? </b>
+     </h6>
+     <ul>
+       <li>In case of pw.write(100), the corresponding character 'd' will be added to the file . But in case of pw.print(100), the int value 100 will be added directly to the file .  </li>
+       <li>Note: The most enhanced Reader to read character data from the file is BufferedReader where as the most enhanced Writer to write character data to the file is PrintWriter . </li>
+       <li>Note: In general we can use Readers and Writers to handle text data . </li>
+       <li>But we can use Streams to handle binary data (like images, video files, audio files, jar files etc .)</li>
+       <li>We can use OutputStream to write binary data to the file where as InputStream to read binary data from the file . </li>
+     </ul>
+    <h6>
+        <b style="color: green;">Write a program to merge data from two files into a third file . </b>
+     </h6>
+      <textarea rows="30" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class FileMergeDemo{ 
+	       public static void main(String[] args) Throws IOException{ 
+	         
+	          PrintWriter pw = new PrintWriter("file3.txt");
+	          BufferedReader br = new BufferedReader(new FileReader("file1.txt"));
+	          String line = br.readLine();
+	          while(line!=null){
+	            pw.println(line);
+	            line = br.readLine();
+	          }
+	          br = new BufferedReader(new FileReader("file2.txt"));
+	          line = br.readLine();
+	          while(line!=null){ 
+	            pw.println(line);
+	            line = br.readLine();
+	          }
+	          pw.flush();
+	          br.close();
+	          pw.close();
+	       }
+	    }
+	</textarea>
+	 <h6>
+        <b style="color: green;">Write a program to remove duplicates from the given input file .  </b>
+     </h6>
+      <textarea rows="30" cols="80" style="color: blue;">
+	    // Program to read the character data from the file :
+	    import java.io.*;
+	    class DuplicateDleteDemo{ 
+	       public static void main(String[] args) Throws IOException{ 
+	         PrintWriter pw = new PrintWriter("Output.txt");
+       BufferedReader br1 = new BufferedReader(new FileReader("file1.txt"));
+       String line = br1.readLine();
+       while(line!=null){
+         boolean available = false;
+          BufferedReader br2 = new BufferedReader(new FileReader("Output.txt"));
+          String target = br2.readLine();
+          while(target!=null){ 
+             if(line.equals(target)){ 
+               available = true;
+               break;
+             }
+            
+             target = br2.readLine();
+          }
+          if(available==false){ 
+            pw.println(line);
+            pw.flush();
+          }
+          line = br1.readLine();
+        
+       }
+      
+	       }
+	    }
+	</textarea>
+     
+</body>
+</html>

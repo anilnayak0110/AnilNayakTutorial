@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Vector:</b>
+	</h4>
+	<ul>
+	  <li>The underlying data structure is Resizable array or Growable array . </li>
+	  <li>Insertion order is preserved . </li>
+	  <li>Duplicate Objects are allowed . </li>
+	  <li>Heterogeneous objects are allowed . </li>
+	  <li>Null insertion is possible . </li>
+	  <li>Implements serializable, cloneable and RandomAccess interfaces . </li>
+	  <li>Every method present inside Vector is synchronized and hence Vector object is Thread safe . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Constructors:</b>
+	</h5>
+	<ul>
+	  <li>Vector v = new Vector();<br>
+	      Creates an empty Vector object with default initial capacity 10 .
+	  </li>
+	  <li>Once Vector reaches its maximum capacity then a new Vector object will be created with <br>
+	       new capacity = 2*current capacity;
+	  </li>
+	  <li>Vector v = new Vector(int initialcapacity)</li>
+	  <li>Vector v = new Vector(int initialcapacity, int incrementalcapacity);</li>
+	  <li>Vector v = new Vector(Collection c);</li>
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+	        Methods :
+	        ---------
+	        1. To add elements :
+	        
+	           add(Object o) --> Collection
+	           add(int index, Object o)--> List
+	           addElement(Object o)-->Vector
+	           
+	        2. To remove elements :
+	           
+	           remove(Object o) --> Collection
+	           removeElement(Object o)--> Vector
+	           remove(int index)--> List
+	           removeElementAt(int index)--> Vector
+	           clear()-->Collection
+	           removeAllElements()-->Vector
+	           
+	        3. To retrieve elements from the Vector :
+	           Object get(int index)-->List
+	           Object elementAt(int index)-->Vector
+	           Object firstElement()-->Vector
+	           Object lastElement()-->Vector
+	        
+	        4. Some other Methods :
+	           int size()
+	           int capacity()
+	           Enumeration elements()
+	</textarea>
+	<textarea rows="20" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class LinkedListDemo { 
+	                 public static void main(String[] args){ 
+	                    Vector v = new Vector();
+	                    System.out.println(v.capacity());==>o/p: 10
+	                    for(int i=1;i<=10;i++){ 
+	                      v.addElement(i);
+	                    }
+	                    System.out.println(v.capacity());==>o/p: 10
+	                    v.addElement("A");
+	                    System.out.println(v.capacity());==> o/p: 20
+	                    System.out.println(v);==> o/p:[1,2,3,.....10,A]      
+	                 }
+	             }
+	</textarea>
+</body>
+</html>

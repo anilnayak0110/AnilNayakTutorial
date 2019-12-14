@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Serialization</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Serialization With Respect to Inheritance</b>
+     </h4>
+     <ul>
+      <li>Case- I : If parent is Serializable then by default every child is Serializable i.e, Serializable nature is inheriting from parent to child . Hence eventhough child class doesn't implement Serializable if parent class implements Serializable then we can Serialize child class object . </li>
+     </ul>
+       <textarea rows="25" cols="80" style="color: blue;">
+	      Example:
+	         import java.io.*;
+	         class Animal implements Serializable { 
+               int i = 10;
+             }
+            class Deer extends Animal { 
+               int j = 20;
+             }
+           class Test { 
+            public static void main(String[] args) throws Exception{ 
+	             Deer deer = new Deer();
+                 FileOutputStream fos = new FileOutputStream("abc.ser");
+                 ObjectOutputStream oos = new ObjectOutputStream(fos);
+                 oos.writeObject(deer);
+      
+                 FileInputStream fis = new FileInputStream("abc.ser");
+                 ObjectInputStream ois = new ObjectInputStream(fis);
+                 Deer deer2 = (Deer)ois.readObject();
+                 System.out.println(deer2.i+"------"+deer2.j);
+            }
+}
+	</textarea>
+	
+	 <ul>
+      <li>Case- II : Even though parent class does not implement Serializable interface we can Serialize child class object if child class implements Serializable . </li>
+      <li>At the time of Serialization JVM will check is any instance variable is inheriting from non-serializable parent or not . If any variable is inheriting from non-serializable parent then JVM ignores original value and save default value to the file . </li>
+      <li>At the time of Deserialization JVM will check is any parent class is non-serializable or not , if any parent class is non-serializable then execute Instance Control flow in that non-serializable parent and share its instance variables to the current object . </li>
+      <li>In Instance Control flow execution of non-serializable parent JVM will always invoke non-argument constructor . Hence every non-serialiable class should compulsory contain no-argument constructor , otherwise we will get RuntimeException saying InvalidClassException .</li>
+     </ul>
+            <textarea rows="40" cols="80" style="color: blue;">
+	      Example:
+	         import java.io.*;
+	         class Animal { 
+	            int i = 10;
+	            Animal(){ 
+	              System.out.println("Animal Constructor executed");
+	            }
+	         }
+	         class Deer extends Animal implements Serializable  { 
+	           int j = 20;
+	           Deer(){ 
+	             System.out.println("Deer Constructor executed");
+	           }
+	         }
+	         class InSerializableDemo{ 
+	           public static void main(String[] args) throws Exception{ 
+	             Deer deer = new Deer();
+	             deer.i = 888;
+	             deer.j = 999;
+	             FileOutputStream fos = new FileOutputStream("abc.der");
+	             ObjectOutputStream oos = new FileOutputStream(fos);
+	             oos.writeObject(deer);
+	             FileInputStream fis = new FileInputStream("abc.der");
+	             ObjectInputStream ois = new ObjectInputStream(fis);
+	             Deer deer2 = (Deer)ois.readObject();
+	             System.out.println(deer2.i+"-----"+deer2.j);
+	           }
+	         }
+	         o/p:
+	         Animal Constructor executed
+			 Deer Constructor executed
+			 Animal Constructor executed
+             10-----999
+	</textarea>
+ 
+</body>
+</html>

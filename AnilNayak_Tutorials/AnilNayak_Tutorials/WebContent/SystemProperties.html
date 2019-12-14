@@ -1,0 +1,177 @@
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>System Properties:</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">System Properties :</b>
+	</h4>
+	<ul>
+	  <li>For every System some persistent information will be maintained in the form of System properties . </li>
+	  <li>These include : 
+	    <ul>
+	      <li>Java version</li>
+	      <li>JVM vendor</li>
+	      <li>JVM vendor url</li>
+	      <li>Username</li>
+	      <li>User country</li>
+	      <li>OS name etc..</li>
+	    </ul>
+	  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">Demo program to display all System properties :</b>
+	</h5>
+	<textarea rows="8" cols="80" style="color: blue;">
+	       import java.util.*;
+	       class Test { 
+	         public static void main(String[] args){ 
+	           Properties p = System.getProperties();
+	           p.list(System.out);
+	         }
+	       }
+	</textarea>
+	<h5>
+       <b style="color: green ">jar vs war vs ear :</b>
+     </h5>
+     <h5>
+       <b style="color: green ">jar :</b>
+     </h5>
+     <ul>
+       <li>A jar file contains a group of .class files . </li>
+     </ul>
+     <h5>
+       <b style="color: green ">war(web archive)</b>
+     </h5>
+     <ul>
+       <li>A war file represent one web application which contains Servlets, Jsp's, HTML pahes, CSS files, JavaScript files etc . </li>
+       <li>If we maintain web application in the form of war then project delivery transportation and deployment will become easy . </li>
+     </ul>
+      <h5>
+       <b style="color: green ">ear(enterprise archive)</b>
+     </h5>
+     <ul>
+       <li>An ear file represent an enterprise application which contains Servlets,JSP's,EJB's,JMS components etc . </li>
+       <li>Note:- Whether the file is jar or war or ear we can create only by using jar command based on extension the corresponding file will be created . 
+          <ul>
+            <li>jar -cvf ag.jar *.*</li>
+            <li>jar -cvf ag.war *.*</li>
+            <li>jar -cvf ag.ear *.*</li>
+          </ul>
+       </li>
+     </ul>
+     <h5>
+       <b style="color: green ">Web application vs Enterprise application :</b>
+     </h5>
+     <ul>
+       <li>Web application can be developed by only web related technologies like servlets, jsp's, HTML, CSS etc .</li>
+       <li>Whereas Enterprise application can be developed by any technology from Java J2EE like Servlets, JSP, EJB etc . </li>
+       <li>Note: J2EE Compatible application is enterprise application . </li>
+     </ul>
+     <h5>
+       <b style="color: green ">Web Server vs Application Server :</b>
+     </h5>
+     <ul>
+       <li>Web server provides environment to run web applications . <br>
+           Example: Tomcat
+       </li>
+       <li>Web server can provide support only for web related technologies like servlets, jsp's, HTML etc . </li>
+       <li>Application Server provides environment to run enterprise applications . <br>
+          Example: Weblogic, websphere, Jboss etc . 
+       </li>
+       <li>Application server provides support for any technology from java J2EE like Servlets, JSP's,EJB's etc . </li>
+       <li>Note: J2EE Compatible server is Application server . </li>
+       <li>Every Application server contains in-built web server . </li>
+     </ul>
+     <h5>
+       <b style="color: green ">Path vs classpath :</b>
+     </h5>
+     <ul>
+       <li>classpath describe the location where required .class files are available . </li>
+       <li>Java compiler and JVM will use classpath to locate required .class file</li>
+       <li>If we are not setting classpath then our program may not be compile and run . </li>
+       <li>path describes the location where binary executables are available . </li>
+       <li>If we are not setting path then java and javac command won't work . </li>
+     </ul>
+     <h5>
+       <b style="color: green ">java vs javaw vs javaws :</b>
+     </h5>
+     <ul>
+       <li><b>java</b>
+         <ul>
+           <li>We can use java command to run Java class .</li>
+           <li>In this case, console output will be considered . </li>
+         </ul>
+       </li>
+        <li><b>javaw</b>
+         <ul>
+           <li>We can use javaw command to run Java application without considering console output . </li>
+           <li>In this case, System.out.println statements will be executed but won't display the corresponding output to the console .  </li>
+           <li>Even in the case of exception also exception information won't be displayed to the console . </li>
+           <li>This utility is best suitable to run GUI based  applications . </li>
+         </ul>
+       </li>
+     </ul>
+     <textarea rows="20" cols="80" style="color: blue;">
+	       import java.util.*;
+	       class Test { 
+	         public static void main(String[] args){ 
+	          PrintWriter out = new PrintWriter("abc.txt");
+	          out.println("File Output");
+	          out.flush();
+	          System.out.println("Console Output");
+	         }
+	       }
+	       
+	       java Test 
+	       ------------
+	       In this case, console output will be displayed to the console and File output will be return to the file .
+	       
+	       javaw Test
+	       ----------
+	       In this case, FileOutput will be return to the file but console output won't be displayed at the console . 
+	       
+	</textarea>
+	
+	 <textarea rows="15" cols="80" style="color: blue;">
+	      class Test {
+	        public static void main(String[] args){ 
+	          Syetem.out.println(10/0);
+	        }
+	       }
+	       
+	       java Test
+	       ---------
+	       In this case, Exception information will be displayed to the console .
+	       
+	       javaw Test
+	       ----------
+	       In this case, Exception information won't be displayed to the console . 
+	</textarea>
+	<ul>
+	  <li>Java is to run java program with console output and javaw is to run Java program, without console output .</li>
+	</ul>
+	<ul>
+	  <li><b>javaws(java webstart utility):</b>
+	    <ul>
+	     <li>javaws is used to launch a Java application that is distributed through web . <br>
+	        Syntax : javaws jnlp_url
+	     </li>
+	    </ul>
+	  </li>
+	  <li>It downloads application from the url and launches it. </li>
+	  <li>It is useful to distribute application to users and use central control to provide updates and ensures are using latest software . </li>
+	  <li>When the application is invoked it is cached in the local computer . </li>
+	  <li>Everytime it will checks is any update available from the distributor . </li>
+	</ul>
+</body>
+</html> 

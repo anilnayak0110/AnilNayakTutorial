@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Multithreading : </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Deadlock :</b>
+	</h4>
+	<ul>
+	  <li>If two threads are waiting for each other forever such type of infinite waiting is called deadlock . </li>
+	  <li>There are no resolution technique for deadlock but several prevention techniques are available . </li>
+	  <li>synchronized keyword is the only reason for deadlock . Hence while using synchronized keyword we have to take special case . </li>
+	</ul>
+	<textarea rows="30" cols="80" style="color: blue;">
+	     Example :
+	                 class A{ 
+	                      public synchronized void foo(B b){ 
+	                          System.out.println("Thread 1 starts execution of foo() method ");
+	                          try{ 
+	                              Thread.sleep(1000);
+	                          }
+	                          catch(InterruptedException ie){ 
+	                             System.out.println("Thread 1 trying to call b.last()");
+	                             b.last();
+	                          }
+	                          public synchronized void last(){ 
+	                             System.out.println("Inside A, this is last() method");
+	                          }
+	                      }
+	                 }
+	                 class B{ 
+	                     public synchronized void bar(A a){ 
+	                         System.out.println("Thread2 starts execution of bar() method");
+	                         try{ 
+	                            Thread.sleep(1000);
+	                         }
+	                         catch(InterruptedException ie){ 
+	                           System.out.println("Thread2 trying to call a.last()");
+	                           a.last();
+	                         }
+	                         public synchronized void last(){ 
+	                            System.out.println("Inside B this is last() method");
+	                         }
+	                         
+	                     }
+	                 }
+	                 
+	                 class DeadLock extends Thread{ 
+	                    A a = new A();
+	                    B b = new B();
+	                    public void m1(){ 
+	                      this.start();
+	                      a.foo(b);
+	                    }
+	                    public void run(){ 
+	                      b.bar(a);
+	                    }
+	                    public static void main(String[] args){ 
+	                       DeadLock d = new DeadLock();
+	                       d.m1();
+	                    }
+	                 }
+	</textarea>
+	 <h5>
+       <b style="color: green ">Starvation vs Deadlock :</b>
+	</h5>
+	<ul>
+	  <li>A long waiting of a thread where waiting never ends is called Deadlock . </li>
+	  <li>A long waiting of a thread where waiting ends at certain point is called Starvation . </li>
+	  <li>Example: Low priority thread has to wait until completing all high priority threads . Its a long waiting , but that waiting ends at certain point which is nothing but Starvation . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">How to stop a Thread in middle of execution :</b>
+	</h5>
+	<ul>
+	  <li>We can stop a thread execution explicitly by using stop() method of Thread class . <br>
+	      public void stop();
+	  </li>
+	  <li>If we call stop() method on any Thread object immediately it will be entered into Dead State .  </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">How to suspend and resume a Thread :</b>
+	</h5>
+	<ul>
+	  <li>A thread can suspend other thread by using suspend() method then immediately that thread will be entered into suspended state . <br>
+	      public void suspend();
+	  </li>
+	  <li>A thread can resume a suspended thread by using resume() method then immediately suspended thread will continue its execution .<br>
+	       public void resume();
+	  </li>
+	  <li>Anyway these methods are deprecated and not recommended to use . </li>
+	</ul>
+</body>
+</html>

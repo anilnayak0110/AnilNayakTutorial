@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Garbage Collection</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Various Ways to make a Object to Garbage Collector :</b>
+     </h4>
+     <ul>
+      <li>Eventhough programmer not responsible to destroy objects but its always a good programming practice to make an object eligible for Garbage Collector , if it is no longer required .  </li>
+      <li>An object is said to be eligible for Garbage Collector if it does not contain any references . </li>
+      <li>The following are various ways to make an object eligible for Garbage Collector . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Nullifying the reference variable:</b>
+     </h5>
+     <ul>
+      <li>If an object no longer required then assign null to all its reference variable then that object automatically will become eligible for Garbage Collector . </li>
+     </ul>
+     <img alt="" src="images/GC1.PNG"/>
+      <h5>
+        <b style="color: green;">Reassigning reference variable :</b>
+     </h5>
+     <ul>
+      <li>If an object no longer required then reassign its reference variable to some other object then old object is by default eligible for Garbage Collector . </li>
+     </ul>
+     <img alt="" src="images/GC2.PNG"/>
+      <h5>
+        <b style="color: green;">Objects created inside a method :</b>
+     </h5>
+     <ul>
+       <li>The objects created inside a method are by default eligible for Garbage Collector once method completes .</li>
+     </ul>
+     <img alt="" src="images/GC3.PNG"/>
+      <h5>
+        <b style="color: green;">The methods for requesting JVM to run Garbage Collector :</b>
+     </h5>
+     <ul>
+      <li>Once we made an object eligible for Garbage Collector it may not be destroyed immediately by the Garbage Collector . </li>
+      <li>Whenever JVM runs Garbage Collector then only that object will be destroyed but when exactly JVM runs Garbage Collector we can not expect it depends on JVM . </li>
+      <li>Instead of waiting until JVM runs Garbage Collector , we can request JVM to run Garbage Collector but whether JVM accept our request or not there is no guarantee . </li>
+      <li>But most of the times JVM will accept our request . </li>
+      <li>The following are various ways for requesting JVM to run Garbage Collector . </li>
+     </ul>
+     <h6>
+        <b style="color: green;">By using System.gc();</b>
+     </h6>
+     <ul>
+      <li>System class contains a static method gc() for this purpose . </li>
+     </ul>
+      <h6>
+        <b style="color: green;">By using Runtime class:</b>
+     </h6>
+     <ul>
+      <li>A java application can communicate with JVM by using Runtime object . </li>
+      <li>Runtime class present in java.lang package and it is a singleton class .</li>
+      <li>We can create Runtime object by using Runtime.getRuntime() method . <br>
+         Runtime r = Runtime.getRuntime();
+      </li>
+      <li>Once we get Runtime object we can apply the following methods on that object . </li>
+     </ul>
+      <h6>
+        <b style="color: green;">freeMemory()</b>
+     </h6>
+     <ul>
+      <li>returns no. of bytes of free memory present in JVM . </li>
+     </ul>
+      <h6>
+        <b style="color: green;">totalMemory()</b>
+     </h6>
+     <ul>
+      <li>returns no. of bytes of total memory on the Heap(i.e , Heap Size)</li>
+     </ul>
+      <h6>
+        <b style="color: green;">gc()</b>
+     </h6>
+     <ul>
+      <li>For requesting JVM to run Garbage Collector . </li>
+     </ul>
+     <textarea rows="20" cols="80" style="color: blue;">
+	      Example:
+	               import java.util.*;
+	               class RuntimeDemo { 
+	                  public static void main(String[] args){ 
+	                    Runtime r = Runtime.getRuntime();
+	                    System.out.println(r.totalMemory());
+	                    System.out.println(r.freeMemory());
+	                    
+	                    for(int i = 0;i<1000;i++){ 
+	                       Date d = new Date();
+	                       d = null;
+	                    }
+	                     System.out.println(r.freeMemory());
+	                     r.gc();
+	                      System.out.println(r.freeMemory());
+	                  }
+	               }
+	           o/p:
+	           16252928
+               15858136
+               15838288
+               16149416
+	</textarea>
+	<ul>
+	 <li>Note: gc() method present in System class is static method where as gc() method present in Runtime class is instance method . </li>
+	 <li>It is convenient to use System.gc() because it is a static method, but it is recommended to use Runtime class gc() method because internally System class gc() method calls Runtime class gc() .</li>
+	</ul>
+	 <h6>
+        <b style="color: green;">finalization</b>
+     </h6>
+     <ul>
+      <li>Just before destroying an object Garbage Collector calls finalize() method to perform cleanup activities . </li>
+      <li>Once finalize() method completes automatically Garbage Collector destroys that object . </li>
+      <li>finalize() method present in object class with the following declaration . <br>
+          protected void finalize() throws Throwable
+      </li>
+      <li>Just before destroying an object Garbage Collector always calls finalize() method to perform clean up activities on that object then the corresponding class finalize() method will be executed .</li>
+      <li>For example, if String object eligible for Garbage Collector then String class finalize() method will be executed, but not Test class finalize() method . </li>
+     </ul>
+</body>
+</html>

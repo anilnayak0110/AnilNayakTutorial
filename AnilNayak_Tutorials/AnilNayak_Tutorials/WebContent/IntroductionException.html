@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Introduction to Exception</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Introduction:</b>
+	</h4>
+	<h5>
+       <b style="color: green ">What is Exception:</b>
+	</h5>
+	<ul>
+	  <li>Exception is an event which terminates the flow of execution of program abnormally . </li>
+	</ul>
+	<h5>
+       <b style="color: green ">What is Exception Handling:</b>
+	</h5>
+	<ul>
+	  <li>Exception Handling does not mean repair an Exception . We have to define an alternative way to continue the flow of execution of program . </li>
+	</ul>
+	
+	<textarea rows="10" cols="80" style="color: blue;">
+        For Example : If our programming requirement is to read data from remote file 
+                      and if that remote file is not available then the program should be terminated abnormally. 
+                      so we have to provide a local file to continue rest of the program normally. 
+        
+        try { 
+              // Read data from remote file . 
+        }
+        catch(FileNotFoundException fe){ 
+               Use local file to continue the program normally . 
+        }
+	</textarea>
+	<h5>
+       <b style="color: green ">Runtime Stack Mechanism:</b>
+	</h5>
+     <ul>
+       <li>For every thread JVM will create a runtime stack . </li>
+       <li>All method calls performed by that thread will be stored in the corresponding stack .</li>
+       <li>Each entry in the stack is called "Activation Record" or "Stack Frame".</li>
+       <li>After completing all method calls just before terminating thread JVM destroys the corresponding stack .</li>
+     </ul>
+    
+</body>
+</html>

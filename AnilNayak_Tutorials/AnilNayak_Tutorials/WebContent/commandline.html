@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java Coding Standards</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Java Command line Arguments</b>
+	</h4>
+	<ul>
+	  <li>The arguments which we are passing from command prompt at runtime is called Command Line Arguments .</li>
+	  <li>The main objective of command line arguments is, we can customize the behaviour of main method . 
+	      <br>EX: Java Sample A        G        L       H <br>
+	                         								args[0]  args[1]  args[2] args[3]</li>
+	</ul>
+	 <b>Example::</b><br>
+	  <textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+
+	public static void main(String args[]) {
+		Sample s = new Sample();
+		      for(int i=0; i < args.length; i++){
+		         System.out.println(args[i]);
+			   }
+			}
+}
+     Output:: java Sample A G
+                   A
+                   G
+	  </textarea><br>
+</body>
+</html>

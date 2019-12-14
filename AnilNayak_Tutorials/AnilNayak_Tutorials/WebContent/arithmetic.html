@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Arithmetic Operator</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Arithmetic Operators</b>
+	</h4>
+	<ul>
+		<li>If we apply any arithmetic operation between two variables x and y, the result type is always max(int, type of x, type of y)</li>
+	</ul>
+	<img alt="" src="images/Arithmetic.png" />
+	<br>
+	<ul>
+		<li>In integral arithmetic(byte, int, short, long) there is no way to represent infinity, if infinity is the result then we will get ArithmeticException / by zero <b>System.out.println(10/0);// Runtime Exception: ArithmeticException / by zero</b>,But in floating point arithmetic (float,double) there is way to represent infinity. <b>System.out.println(10/0.0)//infinity .</b></li>
+
+		<li>For the <b>Float</b> and <b>Double</b> class contains the following constants: <b>POSITIVE_INFINITY</b><br> <b>NEGATIVE_INFINITY</b></li>
+		<li><b>System.out.println(10/0.0)//output : infinity</b><br><b>System.out.println(10/-0.0)//output : -infinity</b></li>
+		<li><b>NaN(Not a Number)</b> in integral arithmetic(byte, short,int, long) there is no way to define undefined result . So if we got any undefined result then we will get <b>ArithemticException</b></li>
+		<li><b>System.out.println(0/0)//output: ArithmeticException</b></li>
+		<li>But in <b>Float</b> and <b>Double</b> class there is a way to represent undefined result, here we will not get <b>ArithemticException</b></li>
+		<li><b>System.out.println(0.0/0.0);//Output: NaN</b><br> <b>System.out.println(-0.0/0.0);//Output:NaN</b></li>
+		<li>For any x value including <b>NaN</b>, the following expression return false.</li>		
+	</ul>
+	<img alt="" src="images/Arith.png" />
+	<ul>
+	  <li><b>ArithmeticException:</b><br>1. It is a Runtime Exception but not compile time error .<br>2. It occurs only in integral arithmetic but not in floating point arithmetic .<br>3. The only operations which cause ArithmeticException are '/' and '%' .</li>
+	</ul>
+
+</body>
+</html>

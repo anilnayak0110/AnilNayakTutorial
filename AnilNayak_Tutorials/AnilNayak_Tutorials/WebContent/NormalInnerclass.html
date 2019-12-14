@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Inner Class</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+	 <h4>
+        <b style="color: green;">Normal or Regular Inner classes :</b>
+     </h4>
+     <ul>
+      <li>If we are declaring any named class directly inside a class without static modifier such type of inner class is called Normal or Regular Inner class . </li>
+     </ul>
+     <textarea rows="10" cols="80" style="color: blue;">
+	    Example of Normal Inner class :
+	     class Outer { 
+	       class Inner{ 
+	       
+	       }
+	     }
+	   
+	   Example: class Outer { 
+	        class Inner{ 
+	        
+	        }
+	        public static void main(String[] args){ 
+	          System.out.println("Outer class main method");
+	        }
+	   }
+	</textarea>
+	<img alt="" src="images/Inner.PNG"/>
+	<ul>
+	  <li>Inside inner class we can not declare static members . Hence we can not declare main(-) method and we can not invoke inner classes directly from command prompt . </li>
+	  <li>If we are trying to declare static members inside inner classes then we will get compile time error . </li>
+	</ul>
+	 <textarea rows="10" cols="80" style="color: blue;">
+	    Example: 
+	         class Outer { 
+	            class Inner { 
+	               public static void main(String[] args){  
+	                  System.out.println("Inner class main method");
+	               }
+	            }
+	         }
+	         o/p: CE: Inner classes can not have static declaration .  
+	</textarea>
+	 <textarea rows="30" cols="80" style="color: blue;">
+	   Accessing Inner class code from static area of Outer class :
+	   ------------------------------------------------------------
+	   Example: 
+	             class Outer { 
+	                 class Inner { 
+	                   public void m1(){ 
+	                     System.out.println("Inner class Method");
+	                   }
+	                 }
+	                 public static void main(String[] args){ 
+	                    Outer outer = new Outer();
+	                    Outer.Inner i = outer.new Inner(); or Outer.Inner i = new Outer().new Inner();
+	                    i.m1(); or new Outer().new Inner().m1();
+	                 }
+	             }
+	             o/p:
+	             Inner class method
+	             
+	   
+	   Accessing Inner class code from instance area of Outer class:-
+	   --------------------------------------------------------------
+	   Example:
+	            class Outer { 
+	               class Inner{ 
+	                    public void m1(){ 
+	                       System.out.println("Inner class method");
+	                    }
+	                    public void m2(){ 
+	                     Inner i = new Inner();
+	                     i.m1();
+	                    }
+	                    public static void main(String[] args){ 
+	                      Outer o = new Outer();
+	                      o.m2();
+	                    }
+	               }
+	            }
+	            o/p: Inner class method
+	   
+	   Accessing Inner class code from outside of Outer class :
+	   --------------------------------------------------------
+	   Example:
+	           class Outer { 
+	              class Inner{ 
+	                 public void m1(){ 
+	                   System.out.println("Inner class method");
+	                 }
+	              }
+	           }
+	           class Test{ 
+	             public static void main(String[] args){ 
+	                Outer o = new Outer();
+	                Outer.Inner i = o.new Inner();
+	                i.m1();
+	             }
+	           }
+	         o/p:
+	         Inner class method 
+	</textarea>
+	<ul>
+	  <li>From Normal or Regular inner class, we can access both static and non-static members of Outer class </li>
+	</ul>
+	 <textarea rows="18" cols="80" style="color: blue;">
+	    Example: 
+	         class Outer { 
+	            int x = 10;
+	            static int y = 20;
+	            class Inner { 
+	               public void m1(){ 
+	                   System.out.println(x);
+	                   System.out.println(y);
+	               }
+	            }
+	            public static void main(String[] args){ 
+	               Outer o = new Outer();
+	               Outer.Inner i = o.new Inner();
+	               i.m1();
+	            }
+	         }
+	         o/p:
+	         10
+	         20 
+	</textarea>
+	<ul>
+	  <li>Within the inner class 'this' always refers current inner class object . But to refer current Outer class object we have to use Outer_class_name.this </li>
+	</ul>
+	 <textarea rows="18" cols="80" style="color: blue;">
+	    Example: 
+	            class Outer { 
+	               int x = 10;
+	               class Inner { 
+	                 int x = 100;
+	                 public void m1(){  
+	                   int x = 1000;
+	                   System.out.println(x);
+	                   System.out.println(this.x); or System.out.println(Inner.this.x);
+	                   System.out.println(Outer.this.x);
+	                 }
+	               }
+	               public static void main(String[] args){ 
+	                  new Outer().new Inner().m1();
+	               }
+	            }
+	            o/p:
+	            1000
+	            100
+	            10
+	</textarea>
+	<ul>
+	  <li>The only applicable modifier for top level classes (Outer classes) are public, <default>, final, abstract and strictfp . </li>
+	  <li>But for Inner classes applicable modifiers are  
+	      <ul>
+	        <li>public,<default>,final,abstract,strictfp,private,protected,static</li>
+	      </ul>
+	  </li>
+	</ul>
+	 <h5>
+        <b style="color: green;">Nesting of Inner classes :</b>
+     </h5>
+     <ul>
+       <li>We can declare Inner class inside Inner class i.e nesting of Inner classes is possible . </li>
+     </ul>
+      <textarea rows="18" cols="80" style="color: blue;">
+	    Example: 
+	            class A { 
+	              class B { 
+	                 class C { 
+	                    public void m1(){ 
+	                      System.out.println("Inner most class method");
+	                    }
+	                 }
+	              }
+	              public static void main(String[] args){ 
+	                 A a = new A();
+	                 A.B b = a.new B();
+	                 A.B.C c = b.new C();
+	                 c.m1();
+	              }
+	            }
+	            o/p: Inner most class method
+	</textarea>
+</body>
+</html>

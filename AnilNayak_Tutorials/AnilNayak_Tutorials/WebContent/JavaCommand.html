@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java Commands </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Java Commands :</b>
+	</h4><br>
+	<h5>
+       <b style="color: green ">javac command:</b>
+	</h5>
+	<ul>
+	 <li>We can use javac command to compile a single or group of java source files . </li>
+	 <li>javac compile the java file like Test.java </li>
+	 <li>After compiling java file it creates  dot(.) class files, which contains byte code of java class . </li>
+	 <li>If a java file contains more than one class, then the java compiler can creates those number of dot(.) class file . </li>
+	</ul>
+	<textarea rows="9" cols="80" style="color: blue;">
+	     javac [options] javaFileName.java
+	               
+	     [Options] : - source, -d, -version, -verbose, -cp|-classpath...etc
+	              
+	     javac Test.java
+	              
+	     Note : Here Test.java is the file name of the java . 
+	              
+	</textarea>
+	<h5>
+       <b style="color: green ">java</b>
+	</h5>
+	<ul>
+	  <li>We can use java command to run a single class . </li>
+	  <li>java command execute the class name of java file, which contains the java main(String[] args) method .</li>
+	  <li>Without compilation of java file we can not execute java command directly , because it except dot(.) class file to execute . </li>
+	  <li>By using java command we can pass command line arguments also </li>
+	  <li>java execution happen by Java Virtual Machine(JVM)</li>
+	</ul>
+	<textarea rows="9" cols="80" style="color: blue;">
+	         java [options]  ClassName(Which contains Main Method) Command Line Argument
+	               
+	         [Options] : - source, -d, -version, -verbose, -cp|-classpath...etc
+	         
+	         Example: java Test
+	         
+	         Note: Here Test is the class name of the java file .
+	</textarea>
+	<ul>
+	 <li>Note: We can compile any number of class at a time, but we can execute only one class at a time . </li>
+	</ul>
+</body>
+</html>

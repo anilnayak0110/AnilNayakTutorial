@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Class Modifiers</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Class Modifiers :</b>
+	</h4>
+	<ul>
+	 <li>Whenever we are writing our own classes we have to provide some information about our classes to JVM . </li>
+	 <li>This information including :
+	     <ul>
+	       <li>Whether this class can be accessible from anywhere or not. </li>
+	       <li>Whether child class creation is possible or not .</li>
+	       <li>Whether object creation possible or not for that class .</li>
+	     </ul>
+	 </li>
+	 <li>We can provide this information by declaring with appropriate modifiers .</li>
+	 <li>The only applicable modifiers for outer class is :
+	    <ul>
+	      <li>public</li>
+	      <li>default</li>
+	      <li>final</li>
+	      <li>abstract</li>
+	      <li>strictfp</li>
+	    </ul>
+	 </li>
+	  <li>The only applicable modifiers for inner class is :
+	    <ul>
+	      <li>public</li>
+	      <li>default</li>
+	      <li>final</li>
+	      <li>abstract</li>
+	      <li>strictfp</li>
+	      <li>private</li>
+	      <li>protected</li>
+	      <li>static</li>
+	    </ul>
+	 </li>
+	</ul>
+	<h5>
+		<b style="color: green;">public classes:</b>
+	</h5>
+	<ul>
+	  <li>If a class declared as public then we can access that class from anywhere either within or outside of package .</li>
+	</ul>
+	<textarea rows="30" cols="60" style="color: blue;">
+	  Example:
+	  
+	  package com.anilnayak.javafunda.test;
+	  public class A {
+	   
+	   public void t1(){
+	     System.out.println(" A class method ");
+	   }
+	   
+	   }
+	   
+	   ***********************************************
+	   
+	   package com.anilnayak.javafunda.test1;
+	   import com.anilnayak.javafunda.test.A;
+	   public class B{
+	   
+	     public static void main(String args[]){
+	         A a = new A();
+	         a.m1();
+	       }
+	    }
+	    
+	    -> If class A is not public then while compiling B class we will get Compile Time Error 
+	       Saying : "com.anilnayak.javafunda.test.A is not public in com.anilnayak.javafunda.test"
+	       can not be accessed from outside package .
+	</textarea>
+	<h5>
+		<b style="color: green;">default classes:</b>
+	</h5>
+	<ul>
+	 <li>If a class is default then we can access that class only only within the current package i.e, from outside package we can not access .</li>
+	 <li>Hence default access is also known as package level access .</li>
+	</ul>
+	<h5>
+		<b style="color: green;">final :</b>
+	</h5>
+	<ul>
+	 <li>final is the modifiers applicable for classes, methods and variables .</li>
+	</ul>
+	<h6>
+		<b style="color: green;">final method :</b>
+	</h6>
+	<ul>
+	 <li>If we declared any class method as final, then we can not override that method in child class .</li>
+	 <li>final method we can not override . </li>
+	</ul>
+	<textarea rows="25" cols="50" style="color: blue;">
+	Example :
+	   public class A {
+	       public void p1(){
+	         System.out.println("Hi");
+	       }
+	       
+	       public final void p2(){
+	        System.out.println("Heera");
+	       }
+	       
+	     }
+	     
+	     public class B extends A {
+	     
+	         public void p2(){
+	           System.out.println("Hello");
+	         }
+	     }
+	       
+	   Compile Error : p2() in B can not override p2() in A ; overridden method is final .
+	</textarea>
+	
+	<h6>
+		<b style="color: green;">final class :</b>
+	</h6>
+	<ul>
+	  <li>If a class declared as final, then we can not create child class .</li>
+	</ul>
+	<textarea rows="15" cols="70" style="color: blue;">
+	  Example :
+	  
+	  final class P {
+	                
+	                }             
+	  class C extends P {
+	  
+	  }
+	  
+	  Compile Time Error : can not inherit from final P .
+	  
+	  Note: - Every method present inside final class is always final, whether we are declaring or not .
+	        But every variable present inside final class need not be final .
+	</textarea>
+	
+	<ul>
+	  <li>The main advantage of final keyword is we can achieve security, means no one allowed to change the value or extend our final class .</li>
+	  <li>But the main disadvantage of final keyword is we are missing key benefits of Object oriented features like [Inheritance by final class and polymorphsim by final methods]</li>
+	  <li>If there is no specific requirements then it is never recommended to use final keyword .</li>
+	</ul>
+	
+	<h5>
+		<b style="color: green;">abstract modifiers :</b>
+	</h5>
+	<ul>
+	 <li>abstract modifiers applicable only for methods and classes, but not for variable .</li>
+	</ul>
+	<h6>
+	   <b style="color: green;">abstract methods :</b>
+	</h6>
+	<ul>
+	  <li>Eventhough we don't know about implementation, still we can declare a method with with abstract modifier i.e abstract method has only declaration but not implementation .</li>
+	  <li>Hence abstract method declaration should compulsory ends up with semicolon .</li>
+	</ul>
+	Example:  public abstract void t1(); [ correct abstract method ]<br>
+	          public abstract void t2(){}; [not correct abstract method ]<br>
+	<ul>
+	  <li>Child class is responsible to provide implementation for parent class abstract method . </li>
+	</ul>
+	<textarea rows="15" cols="70" style="color: blue;">
+	  Example :
+	   
+	   abstract class FlowerTree {
+	   
+	         public abstract int getNoOfFlowers();
+	         
+	         }
+	         
+	         class class Decoration extends FlowerTree { 
+	          
+	              public int getNoOfFlowers(){ 
+	               return 10;
+	               }
+	             } 
+	         
+	</textarea>
+	<ul>
+	 <li>The main advantage of placing abstract method in the parent class is we can provide guide lines to the child classes, such that which method compulsory child has to implement . </li>
+	 <li>abstract method never talks about implementation .</li>
+	 <li>The following are various illegal combinations of modifier for methods . 
+	    <ul>
+	      <li>abstract  with final</li>
+	      <li>abstract  with synchronized</li>
+	      <li>abstract  with static</li>
+	      <li>abstract  with native</li>
+	      <li>abstract  with private</li>
+	      <li>abstract  with strictfp</li>
+	    </ul>
+	 </li>
+	</ul> 
+	Example: public abstract final void m1(); Compiler Error : illegal combination of modifiers : abstract and final .
+	
+	<h6>
+	   <b style="color: green;">abstract class :</b>
+	</h6>
+	<ul>
+	 <li>For any java class, if we don't want object creation such type of class we have to declare with abstract modifier i.e, for abstract class object creation is not possible .</li>
+	</ul>
+	<textarea rows="10" cols="40" style="color: blue;">
+	 Example:
+	 abstract class Test {
+	 
+	    public static void main(String args[]){
+	     Test t = new Test();
+	     }
+	    } 
+	     // Compiler Error : That is abstract; can not be instantiated .
+	</textarea>
+	<h5>
+	   <b style="color: green;">abstract class vs abstract method :</b>
+	</h5>
+	<ul>
+	  <li>If a class contains at least one abstract method then compulsory we should declare class as abstract, otherwise we will get compile time error .</li>
+	  <li>Eventhough a class does not contain any abstract methods still we can declare a class as abstract . If we dont want to create object for that class,
+	      then we can declare that class as abstract .</li>
+	</ul>
+	Example: HttpServlet is a abstract class , but it does not contains any abstract methods. 
+	<h6>
+	   <b style="color: green;">abstract vs final:</b>
+	</h6>
+	<ul>
+	  <li>For abstract method we should override in child class to provide implementation, but for final methods we can not override . Hence abstract final combination is illegal for method. </li>
+	  <li>For abstract class we should create child class to provide implementation, but for final class we can not create child class . Hence abstract final combination is illegal for classes</li>
+	  <li>We can not declare abstract method inside final class, but we can declare final method inside abstract class .</li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	 Example:
+	  final class Test {
+	    abstract void m1(); // Illegal
+	    }
+	    
+	    abstract class Test {
+	    
+	         public final void m2(){ } // Legal
+	         
+	         }
+	</textarea>
+	<ul>
+	 <li>If we are extending any abstract class then for each and every abstract method of parent class we should provide implementation, other wise we have to
+	    will get compile time error .</li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	 Example:
+	  abstract class P {
+	    abstract void m1();
+	    abstract void m2();
+	    }
+	    
+	    public class C extends P {
+	    
+	         public void m2(){ } 
+	         
+	         }
+	         
+	         Compile Time Error : C is not abstract and does not override abstract method m1() in P .
+	</textarea>
+</body>
+</html>

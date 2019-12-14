@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Member Modifiers</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Member Modifiers :</b>
+	</h4>
+	
+	<h5>
+		<b style="color: green;">public members :</b>
+	</h5>
+	<ul>
+	 <li>If a member declared as public, then we can access that member from anywhere . Means from inside the class, outside of class, iside of package and outside of package</li>
+	 <li>But the corresponding class should be visible, means from which class we are going to access that class should visible .
+	     So before checking member visibility we have to check class visibility .</li>
+	  <li>If both class and members are public then only we can access that members from outside package .</li>   
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+	  Example:
+	  
+	  package p1;
+	  class A{
+	      public void m1(){
+	         System.out.println("A class method")
+	      }
+	  
+	  }
+	  
+	  ******************************************
+	  package p2;
+	  import p1.A;
+	  class B{
+	       public static void main(String[] args){
+	         A a = new A();
+	         a.m1();
+	       }
+	      }
+	      
+	 Note: In the above example, eventhough m1() method is public we can not access 
+	       from outside package because the corresponding class A is not public.
+	       i.e If both method and class are public, then only we can access method 
+	       from outside package .     
+	</textarea>
+	<h5>
+		<b style="color: green;">default members :</b>
+	</h5>
+	<ul>
+	  <li>If a member declared as default, we can access that member within the current package anywhere . i.e from outside the package we can not access .</li>
+	</ul>
+	<h5>
+		<b style="color: green;">private members :</b>
+	</h5>
+	<ul>
+	  <li>If a member declared as private, we can access that member only within the current class . i.e outside the class we can not access .</li>
+	</ul>
+	<h5>
+		<b style="color: green;">protected members :</b>
+	</h5>
+	<ul>
+	 <li>If a member declared as protected, then we can access that member anywhere within the current package, 
+	     but only in child class outside package .</li>
+	  <li>Means protected scope =  default scope[Within package]  + child class[outside package] </li>
+	  <li>We can access protected members within the current package anywhere either by using parent reference or child reference .</li>
+	  <li>But outside package we can access protected member only by using child reference and we can not use parent reference to access .</li>
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+	  Example:
+	 
+	   package p1;
+	   public class A{
+	     protected void m1(){
+	       System.out.println("Hi I am protected of A")
+	     }
+	   } 
+	   ***************************
+	   public class B extends A {
+	       public static void main(String[] args){
+	         A a = new A();
+	         a.m1();
+	         B b= new B();
+	         b.m1();
+	         A a1 = new B();
+	         a1.m1();
+	       }
+	   } 
+	   
+	   *******************************
+	   package p2;
+	   import p1.A;
+	   public class C extends A{
+	      public static void main(String args[]){ 
+	         A a = new A();
+	         a.m1();               //CE: m1() has protected access in p1.A;
+	         C c = new C();
+	         c.m1();
+	         A a1 = new C();
+	         a1.m1();             //CE: m1() has protected access in p1.A;
+	      }
+	   } 
+	   
+	   Note: Object class contains 2 protected methods i.e clone() and finalize() method . 
+	</textarea>
+	<ul>
+	  <li>The most restricted modifiers is private and the most accessible modifiers is public</li>
+	  <li>Recommended modifier for variable is private where as for method is public .</li>
+	</ul>
+	<h4>
+		<b style="color: green;">final variable :</b>
+	</h4>
+	<h5>
+		<b style="color: green;">final instance variable :</b>
+	</h5>
+	<ul>
+	  <li>If the value of a variable is varied from object	to object such type of variables are called instance variable .</li>
+	  <li>For every object a separate copy of instance variable will be created .</li>
+	  <li>For instance variable, we are not required to perform initialization explicitly, JVM will provide default value .</li>
+	  <li>But if the instance variable declared as final then compulsory we have to perform initialization explicitly whether we are using ot not , 
+	      otherwise we will get compile time error . </li>
+	</ul>
+	<textarea rows="30" cols="60" style="color: blue;">
+	   Example:
+	   class T {
+	      int x ; // instance variable no need initialization JVM will provide default value
+	      final int y ; // C.E: variable x might not have been initialized .
+	   }
+	   
+	  Note:For final instance variables, compulsory we have to perform initialization before constructor execution .
+	       i.e the following cases where we can do initialization for final instance variables .
+	       
+	   class T {
+	      final int x = 10;
+	   } 
+	   
+	   class T {
+	      final int x;
+	      {
+	        x = 10; // instance block 
+	      }
+	   }
+	   
+	   class T {
+	     final int x;
+	     T(){
+	       x = 10;
+	     }
+	   }   
+	</textarea>
+	<h5>
+		<b style="color: green;">final static variable :</b>
+	</h5>
+	<ul>
+	  <li>If the value of variable is not varied from object to object then it is never recommended to declare that variable as instance .
+	      We have to declare such type of variable at class level by using static modifier .</li>
+	  <li>In case of instance variable, for every object a separate copy will be created, but in case of static variable a single copy will be created  at class level</li>
+	  <li>For static variables, we are not required to perform initialization explicitly and JVM will provide default value .</li>    
+	  <li>If we declare static variable as final then compulsory we should perform initialization explicitly, other wise we will get compile time error .</li>
+	</ul>
+	<textarea rows="12" cols="60" style="color: blue;">
+	 Example :
+	   class Test {
+	        static double d;
+	        public static void main(String[] args){
+	          System.out.println(d);
+	        }
+	   }
+	   
+	   o/p:- 0.0
+	   ******************************************************
+	   class Test {
+	      final static double d; // CE: variable d might not have been initialized .
+	   }
+	</textarea>
+	<ul>
+	  <li>For final static variables, compulsory we should perform initialization before class loading .</li> 
+	  <li>The following are various places to perform initialization for final static variables .</li> 
+	  <li>If we perform initialization anywhere else we will get compile time error .</li>
+	</ul>
+	<textarea rows="18" cols="60" style="color: blue;">
+	   1. At the time of declaration:--
+	   --------------------------------
+	   class Test {
+	      final static int x = 10;
+	      }
+	      
+	  2. Inside static block:--
+	  --------------------------
+	  class Test { 
+	      final static int x;
+	      static {
+	        x = 10;
+	      }
+	  }
+	 ------Wrong place for final static variable initialization-------- 
+	  3. class Test { 
+	       final static int x;
+	       public static void main(String[] args){ 
+	          x = 10; // C.E: can not assign a value to final variable x .
+	       }
+	    } 
+	</textarea>
+	<h5>
+		<b style="color: green;">final local variable :</b>
+	</h5>
+	<ul>
+	  <li>Sometimes to meet temporary requirements of the programmer we have to declare variable inside a method, block and constructor, such type of variables are called local variables .</li> 
+	  <li>For the local variables, JVM won't provide any default values . We have to perform initialization explicitly, before using that local variable .</li>
+	</ul>
+	<textarea rows="18" cols="60" style="color: blue;">
+	  class Test {
+	    public static void main(String[] args){ 
+	      int x;
+	      System.out.println("Hello");
+	    }
+	  }
+	  o/p:--- Hello
+	  ****************************************
+	  class Test{
+	     public static void main(String[] args){ 
+	        int x;
+	        System.out.println(x); // C.E: variable x might not have been initialized .
+	     }
+	  }
+	</textarea>
+	<ul>
+	 <li>Eventhough local variable declared as final before using only we have to perform initialization .</li>
+	 <li>If we are not using local variable, then it is not required to perform initialization eventhough it is final .</li>
+	</ul>
+	<textarea rows="25" cols="60" style="color: blue;">
+	   Note: The only applicable modifier for local variables is final. By mistake
+	         if we are trying to declare with any other modifier we will get Compile Time Error .
+	         
+	       Example :
+	         class Test { 
+	             public static void main(String[] args){ 
+	             
+	               public int x = 10;  // CE
+	               private int x = 10; // CE
+	               protected int x = 10; // CE
+	               static int x = 10; // CE
+	               transient int x = 10; // CE
+	               volatile int x = 10; // CE
+	               
+	               final int x = 10; 
+	             }
+	         }
+	    
+	    Note: If we are not declaring any modifier then it is by default 
+	          <default> modifier, but this rule is applicable only for 
+	          instance and static variable, but not for local variables .     
+	</textarea>
+	<h5>
+		<b style="color: green;">Formal Parameters :</b>
+	</h5>
+	<ul>
+	  <li>Formal parameters of a method simply acts as local variables of that method .</li>
+	  <li>Hence we can declare formal parameters as final .</li>
+	  <li>If the formal parameter declared as final then within the method we can not change its value .</li>
+	</ul>
+	<textarea rows="15" cols="60" style="color: blue;">
+	   class Test { 
+	     public static void main(String[] args){ 
+	       m1(10,20);
+	     }
+	     public static void m1(final int x, int y){ 
+	       x = 100; // CE: can not assign a value to the final variable .
+	       y = 200;
+	       System.out.println(x+"-----"+y);
+	     }
+	  }
+	  o/p: 10------200   
+	</textarea>
+	<h5>
+		<b style="color: green;">Static Modifiers :</b>
+	</h5>
+	<ul>
+	 <li>static is the modifier applicable only for variables and methods but not for classes .</li> 
+	 <li>we can not declare top level class as static, but we can declare inner class as static .</li> 
+	 <li>we can access static members directly from instance and static areas, 
+	     but we can not access instance members directly from static area .</li> 
+	 <li>we can access instance members directly from instance area .</li>
+	 <li>instance and static variables with the same name is not allowed, 
+	     but instance and local variables or static and local variables can have same name .</li> 
+	 <li>Overloading concept is applicable for static methods including main() method also .
+	     But JVM is always call String[] argument method only .</li> 
+	 <li>Inheritance concept is applicable for static methods including main() method .
+	     Hence while executing child class if child class does not have main() method, 
+	     then parent class main() method will be executed .</li> 
+	  <li>For static method when we override it will seems override, but it is actually method hiding .</li>   
+	</ul>
+	<textarea rows="30" cols="60" style="color: blue;">
+	   class Test { 
+	     public static void main(String[] args){ 
+	       System.out.println("String[] args")
+	     }
+	     public static void main(int[] args){ 
+	      System.out.println("int[] args");
+	     }
+	  }
+	  o/p: String[] args 
+	  
+	  **********************************
+	  class P {
+	       
+	      public static void main(String[] args) { 
+	           System.out.println("Parent main")
+	        }
+	     } 
+	  class C extends P { 
+	      
+	  }
+	  
+	  //Compile the java program :
+	  javac P.java ----> you will get two ".class" file i.e P.class and C.class 
+	  //Run java 
+	  java P--> out put is : "Parent Main" 
+	  java C --> out put is : "Parent Main" 
+	  
+	  *******************Method Hiding************
+	  class P { 
+	    public static void main(String[] args){ 
+	      System.out.println("Parent main");
+	    }
+	  }
+	  class C extends P { 
+	     public static void main(String[] args){ 
+	       System.out.println("Child main");
+	     }
+	  } 
+	   //Compile the java program :
+	  javac P.java ----> you will get two ".class" file i.e P.class and C.class 
+	  //Run java 
+	  java P--> out put is : "Parent Main" 
+	  java C --> out put is : "Child Main"
+	</textarea>
+	<h5>
+		<b style="color: green;">Synchronized Keyword :</b>
+	</h5>
+	<ul>
+	  <li>Synchronized modifier applicable only for methods and blocks, but not for classes and variables .</li>
+	  <li>If multiple threads operating simultaneously on same java object, then there may be a chance of data inconsistency problems .
+	      To overcome this problem we should go for synchronized .</li> 
+	  <li>If a method or block declared as synchronized then at a time only one thread is allowed to operate method or block on the given object .
+	      So that we can resolve data inconsistency problems .</li>
+	 <li>But the main disadvantage is that it increases waiting time of threads and creates performance problems .</li> 
+	 <li>Hence if there is no specific requirement then it is never recommended to use synchronized keyword .</li>   
+	</ul>
+	<h5>
+		<b style="color: green;">transient Keyword :</b>
+	</h5>
+	<ul>
+	  <li>transient modifier applicable only for variables, but not for methods and classes .</li>
+	  <li>We can use transient keyword in serialization .</li> 
+	  <li>While performing serialization if we don't to save the value of a particular variable to meet security constraint,
+	       then such type of variable we should declare as transient keyword .</li>
+	  <li>At the time of serialization JVM ignores original value of transient variable and save default value to the file .</li>     
+	</ul>
+	<img alt="" src="images/Transient.PNG"><br>
+	<h5>
+		<b style="color: green;">volatile Keyword :</b>
+	</h5>
+	<ul>
+	  <li>volatile modifier is applicable only for variables but not for methods and classes .</li>
+	  <li>If the value of a variables keep on changing by multiple threads then may be chance of data inconsistency problems .
+	      To overcome this problem we should we should go for volatile modifier .</li>
+	   <li>If a variable declared as  volatile then for every thread a separate copy will be created and all 
+	       intermediate modifications performed by that thread will takes place in the local copy . So that there is no effect on remaining threads .</li>
+	   <li>The man advantage of volatile keyword is we can overcome data inconsistency problems . </li>
+	   <li>But the disadvantage is creating and maintaining a separate copy for every thread increases complexity and 
+	       creates performance problems . </li>         
+	</ul>
+</body>
+</html>

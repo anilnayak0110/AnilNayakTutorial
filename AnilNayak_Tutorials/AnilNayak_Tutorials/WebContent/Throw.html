@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Throw</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">throw keyword</b>
+	</h4>
+   <ul>
+     <li>Sometimes we can create Exception object explicitly and we can hand over that object to the JVM manually, for this we have to use throw keyword .</li>
+   </ul>
+   Example: throw new ArithmeticException("/ by zero");
+            
+   <ul>
+     <li>The result of following 2 programs exactly same . </li>
+   </ul>
+   
+   <textarea rows="15" cols="45" style="color: blue;">
+     Example :
+           class Test{ 
+              public static void main(String[] args){ 
+                 System.out.println(10/0);
+              }
+           }
+           Exception in thread "main": java.lang.ArithmeticException : / by zero
+                   at Test.main()
+     
+     Note: In this case, main() method is responsible to create Exception object and handover
+           to the JVM implicitly . 
+	</textarea>
+	
+	 <textarea rows="15" cols="45" style="color: blue;">
+     Example :
+           class Test{ 
+              public static void main(String[] args){ 
+                throw new ArithemeticException("/ by zero");
+              }
+           }
+           Exception in thread "main": java.lang.ArithmeticException : / by zero
+                   at Test.main()
+     
+     Note: In this case, programmer is responsible to create Exception object explicitly and hand over to the JVM .
+	</textarea>
+	<ul>
+	  <li>Most of the times, we can use throw keyword for customized exceptions(Our own exceptions) but not for predefined Exceptions . </li>
+   </ul>
+   
+   <textarea rows="10" cols="45" style="color: blue;">
+     Example :
+       withdraw(double amount){ 
+          if(amount>balance){ 
+            throw new InSufficientFundsException();
+          }
+          else{
+              Process the request 
+          }
+       }
+          
+	</textarea>
+   
+    <textarea rows="20" cols="45" style="color: blue;">
+     Example : class Test { 
+                     static ArithemticException e = new ArithmeticException();
+                     
+                     public static void main(String[] args){ 
+                        throw e;
+                     }
+                 }
+                 RuntimeException : ArithmeticException
+                 
+             -------------------------------------------
+             class Test { 
+                     static ArithemticException e;
+                     
+                     public static void main(String[] args){ 
+                        throw e;
+                     }
+                 }
+                 RuntimeException : NullPointerException
+    </textarea>
+    <ul>
+      <li>After throw statement we are not allowed to write any statement directly, other wise we will get Compile time Error saying, Unreachable Statement . </li>
+    </ul>
+     <textarea rows="20" cols="45" style="color: blue;">
+     Example : class Test { 
+                      public static void main(String[] args){ 
+                           System.out.println(10/0);
+                           System.out.println("Hello");
+                      }
+                   }
+                 RuntimeException : Arithmetic Exception : / by zero
+                          at Test.main()
+                          
+      ----------------------------------------------------------------
+        class Test { 
+                     
+                     public static void main(String[] args){ 
+                        throw new ArithmeticException(" / by zero");
+                     }
+                 }
+                 RuntimeException : Unreachable Statement.
+    </textarea>
+     <ul>
+      <li>We can use throw keyword only for Throwable types, other wise we will get Compile Time Error: saying: incompatible types . </li>
+    </ul>
+     <textarea rows="20" cols="45" style="color: blue;">
+     Example :  class Test { 
+            public static void main(String[] args){ 
+                throw new Test();
+            }
+     }
+     CE: incompatible Types
+         found : Test
+         required : java.lang.Throwable
+    
+    -----------------------------------------------------
+    class Test extends RuntimeException {
+        public static void main(String[] args){ 
+            throws new Test();
+        }
+    }
+    RE: Exception in Thread "main":Test
+         at Test.main()     
+         
+    </textarea>
+</body>
+</html>

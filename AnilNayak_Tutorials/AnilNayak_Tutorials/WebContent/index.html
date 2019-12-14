@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>AKN JavaFunda</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+ 
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <style type="text/css">
+.navbar-brand-center {
+	margin: 270px;
+	padding: 0px;
+}
+</style>
+  <script>
+	$(document).ready(function() {
+		
+		$("#div1").load('image.html');
+
+		$("#home").on("click", function() {
+			$("#div1").load('image.html');
+		});
+		$("#java").on("click", function() {
+			
+			$('#div1').load('java.html');
+		});
+		$("#jdbc").on("click", function() {
+			$('#div1').load('jdbc.html');
+		});
+		$("#servlet").on("click", function() {
+			$('#div1').load('servlet.html');
+		});
+		$("#jsp").on("click", function() {
+			$('#div1').load('jsp.html');
+		});
+		$("#hibernate").on("click", function() {
+			$('#div1').load('hibernate.html');
+		});
+		$("#spring").on("click", function() {
+			$('#div1').load('spring.html');
+		});
+		$("#webservice").on("click", function() {
+			$('#div1').load('webservice.html');
+		});
+		$("#springboot").on("click", function() {
+			$('#div1').load('springboot.html');
+		});
+		$("#maven").on("click", function() {
+			$('#div1').load('maven.html');
+		});
+		$("#gradel").on("click", function() {
+			$('#div1').load('gradel.html');
+		});
+	});
+</script>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+  <nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#">AnilNayak JavaFunda</a>
+			</div>
+			<ul class="nav navbar-nav">
+				<li id="home"><a href="#">Home</a></li>
+				<li id="java"><a href="#">Java</a></li>
+				<li id="jdbc"><a href="#">Jdbc</a></li>
+				<li id="servlet"><a href="#">Servlet</a></li>
+				<li id="jsp"><a href="#">Jsp</a></li>
+				<li id="hibernate"><a href="#">Hibernate</a></li>
+				<li id="spring"><a href="#">Spring</a></li>
+				<li id="webservice"><a href="#">Web Services</a></li>
+				<li id="springboot"><a href="#">Spring Boot</a></li>
+				<li id="maven"><a href="#">Maven</a></li>
+				<li id="gradel"><a href="#">Gradel</a></li>
+			</ul>
+		</div>
+	</nav>
+  </div>
+  <div class="row">
+     <div id="div1" style="height: 500px;"></div>
+</div>
+  <div class="row">
+   <nav class="navbar navbar-inverse">
+		<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand-center">© Copyright 2017-2020
+				www.akn.javafunda.com. All rights reserved. Developed by Anil Nayak</a>
+		</div>
+	</div>
+	</nav>
+  </div>
+</div>
+</body>
+</html>

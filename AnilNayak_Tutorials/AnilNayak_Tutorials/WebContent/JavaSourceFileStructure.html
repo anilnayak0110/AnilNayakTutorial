@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java Source File</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">JAVA SOURCE FILE STRUCTURE :</b>
+	</h4>
+	<ul>
+	  <li>A java program can contain any number of classes, but at most one class can be declared as public .</li>
+	  <li>If there is a public class then the name of the program and name of the public class must be matched, other wise we will get Compile time Error .</li>
+	  <li>If there is no public class then we can use any name for java program and there is no restrictions .</li>
+	  <li>For compilation we need java program name and for execution we need java class name . </li>
+	  <li>Whenever we are compiling a java program for every class a .class file will be created .</li>
+	  <li>Whenever we are executing a java class that corresponding class main method will be executed .</li>
+	  <li>Whenever we are executing a java class if the corresponding .class file is not available then we will get Runtime Exception: NoClassDefoundError . </li>
+	  <li>It is highly recommended  as the class should public and name of the program and name of the class should be same .</li>
+	</ul>
+	<img alt="" src="images/JavaSource.PNG"><br>
+	<h4>
+		<b style="color: green;">IMPORT STATEMENT :</b>
+	</h4>
+	<ul>
+	  <li>Import statement is used to import a built-in or user defined java class, which available in other directory and your class
+	      can refer that class and use it in  your class . </li>
+	  <li>We can avoid import statement by using fully qualified names, but this is not recommended, because it increases the code length and 
+	      reduces the code readability .</li>   
+	</ul>
+	<img alt="" src="images/Import.PNG"><br>
+	<h5>
+		<b style="color: green;">Types of import statement :</b>
+	</h5>
+	<ul>
+	  <li><b>Explicit Import</b></li>
+	  <li><b>Implicit Import</b></li>
+	</ul>
+	<h6>
+		<b style="color: green;">Explicit Import:</b>
+	</h6>
+	<ul>
+	 <li>It is highly recommended to use explicit class import because it improves readability .</li>
+	</ul>
+	Example: import java.util.ArrayList;
+	<h6>
+		<b style="color: green;">Implicit Import:</b>
+	</h6>
+	<ul>
+	  <li>It is not recommended to use implicit import class because it reduces readability of the code .</li>
+	  <li>The problem in implicit import class is all the class inside the package are available for compilation even we use or not used .</li>
+	  <li>We will get ambiguity problem for implicit import statement</li>
+	</ul>
+	Example: import java.util.*;<br>
+	<img alt="" src="images/Ambigous.PNG"><br>
+	<ul>
+	 <li>In above program ambiguous problem happen because "Date" class present in both package in java.util and in java.sql also </li>
+	 <li>While resolving this problem compiler always give the precedence in the following order .
+	      <ul>
+	        <li>Explicit class import</li>
+	        <li>Class present in the current working directory </li>
+	        <li>Implicit class import</li>
+	      </ul></li>
+	  <li>When we are importing a package all classes and interfaces present in that package are by default available, but not sub package .</li>
+	  <li>Hence to use sub package we have to import until the sub package level . </li>
+	  <li>The following two packages are not required to import because all class and interfaces present in there packages are by default available .
+	     <ul>
+	      <li>java.lang package</li>
+	      <li>default package (current working directory )</li>
+	     </ul>
+	  </li>
+	  <li>Import statement are totally depends on compile time and there no effect on execution time . </li>
+	</ul>
+	<textarea rows="8" cols="40" style="color: blue">
+	  import java.util.Date;
+	  import java.sql.*;
+	  public class Test{
+	    public static void main(String[] args){
+	    	Date d = new Date();
+	    }
+	    }
+	</textarea>
+	<h4>
+		<b style="color: green;">Java 1.5 version new features :</b>
+	</h4>
+	<ul>
+	 <li>for-each loop</li>
+	 <li>var-arg method</li>
+	 <li>co-varient return types</li>
+	 <li>Autoboxing and Autounboxing</li>
+	 <li>Queue</li>
+	 <li>Generics</li>
+	 <li>Enum</li>
+	 <li>Annotations</li>
+	 <li>static import</li>
+	</ul>
+	<h5>
+		<b style="color: green;">Static import:</b>
+	</h5>
+	<ul>
+	 <li>Static import introduce in java 1.5 version .</li>
+	 <li>According to SUN people static import improves readability of the code .</li>
+	 <li>But according to world wide programming expert static import reduces the readability of the code .</li>
+	 <li>Hence if there is no specific requirement then it is not recommended to use static import . </li>
+	 <li>Basically we can access static members by using class name, but whenever we are writing static import then we are not required to use class names, we can access static members directly . </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue">
+	Example: 
+	
+	 public class Test{
+	 
+	    public static void main(String[] args){
+	    
+	      System.out.println(Math.sqrt(4));
+	      System.out.println(Math.random());
+	      System.out.println(Math.max(10,1));
+	      System.out.println(Math.min(1,10));
+	      
+	      }
+	    }
+	
+	</textarea><br>
+	
+	<textarea rows="16" cols="50" style="color: blue">
+	Example: 
+	
+	 import static java.lang.Math.sqrt;
+	 import static java.lang.Math.random;
+	 import static java.lang.Math.max;
+	 import static java.lang.Math.min;
+	 
+	 public class Test{
+	 
+	    public static void main(String[] args){
+	    
+	      System.out.println(sqrt(4));
+	      System.out.println(random());
+	      System.out.println(max(10,1));
+	      System.out.println(min(1,10));
+	      
+	      }
+	    }
+	
+	</textarea>
+	
+	<h5>
+		<b style="color: green;">Explain about System.out.println() ?:</b>
+	</h5>
+	<img alt="" src="images/SystemOutPrintln.PNG"><br>
+	<ul>
+	 <li>As out is a static variable present in System class, whenever we are writing static import we can access out variable directly without class name</li>
+	</ul>
+	<textarea rows="8" cols="40" style="color: blue">
+	 Example :
+	 
+	 import static java.lang.System.out;
+	 class Test {
+	      public static void main(String[] args){
+	         out.println("Heera");
+	         out.println("How are you");
+	         }
+	       }  
+	</textarea>
+	<h5>
+		<b style="color: green;">Package :</b>
+	</h5>
+	<ul>
+	 <li>It is an encapsulation mechanism to group related classes and interfaces into a single module .</li>
+	 <li>Example : All classes and interfaces which are required for database operations are grouped into a separate package, which is nothing but java.sql package .</li>
+	 <li>All classes and interfaces which are required for File I/O operations are grouped into a separate package is java.io package .</li>
+	 <li>The main advantages of package statement are ,
+	     <ul>
+	       <li>We can resolve naming conflicts .</li>
+	       <li>It improves maintainability of the application .</li>
+	       <li>It improves modularity of the application .</li>
+	       <li>It provide security .</li>
+	     </ul></li>
+	   <li>The standard naming convention for package is :
+	        com.domainname.modulename.submodulename.classname </li>  
+	</ul>
+	Example : com.rbi.card.debitcard.customer;<br>
+	<textarea rows="8" cols="40" style="color:blue;">
+	  package com.anilnayak.javafunda;
+	  public class Test {
+	  
+	        public static void main(String args[]){
+	          System.out.println("Hello Heera How are you ?");
+	        }
+	     }
+	</textarea>
+	<img alt="" src="images/package.PNG"><br>
+	<ul>
+	 <li>If the required package directory is not available while compiling automatic those directory will created .</li>
+	 <li>In any java program, there should be at most one package statement . We can not write two package in a single java program .</li>
+	</ul>
+	<img alt="" src="images/package1.PNG"><br>
+	
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Java ClassPath </title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Java ClasPath</b>
+	</h4>
+	<ul>
+	 <li>classpath describes the location where required .class files are available . </li>
+	 <li>java compiler and JVM will use classpath to locate required class files.</li>
+	 <li>We can set classpath in the following 3 ways . 
+	 <ul>
+	  <li>By using Environment variable classpath </li>
+	  <li>By using set command at command prompt </li>
+	  <li>By using -cp option at command level </li>
+	 </ul>
+	 </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">By using Environment variable classpath :</b>
+	</h5>
+	<ul>
+	 <li>This way of setting classpath is permanent and preserved across the System </li>
+	 <li>This way of setting classpath is recommended whenever we are installing a permanent software in our system</li>
+	</ul>
+	 <h5>
+       <b style="color: green ">By using Set command at command prompt :</b>
+	</h5>
+	<ul>
+	  <li>Set classpath = C:\AG</li>
+	  <li>This way of setting classpath will be preserved only for that command prompt .</li>
+	  <li>Once we close command prompt automatically classpath will be lost . </li>
+	</ul>
+	 <h5>
+       <b style="color: green ">By using -cp option at command level</b>
+	</h5>
+	<ul>
+	 <li>This way of setting classpath will be preserved only for that command. </li>
+	 <li>Once command execution completes automatically classpath will be lost . </li>
+	 <li>Example: java -cp C:\AG Test</li>
+	 <li>Note: The most commonly used approach in Realtime is third approach i.e, to Set classpath at command level . </li>
+	</ul>
+	 <h6>
+       <b style="color: green ">Conclusions:</b>
+	</h6>
+	<ul>
+	  <li>By default JVM will always search in Current Working Directory for the required .class file . </li>
+	  <li>If we Set classpath explicitly then JVM won't search in current working directory(cwd) and it will search only in our specified location . </li>
+	  <li>If we set classpath explicitly then we can run our program from anywhere . </li>
+	</ul>
+	<textarea rows="15" cols="80" style="color: blue;">
+	       class Test { 
+	         public static void main(String[] args){ 
+	           System.out.println("Class path Demo");
+	         }
+	       } 
+	       
+	       C:\AG> javac Test.java
+	       C:\AG> java Test
+	       C:\ java Test RE: NoClassDefFoundError:  Test   
+	       
+	       C:\java -cp C:\AG Test
+	       D:\java -cp C:\AG Test     
+	</textarea>
+	
+	<textarea rows="30" cols="80" style="color: blue;">
+	       C:
+	        |--pack1
+	            |--pack2
+	                |--AG.java
+	   
+	   package pack1.pack2;
+	   public class AG { 
+	     public void m1(){
+	         System.out.println("Hello Nilyatree AG");
+	     }
+	   }
+	   
+	   D:
+	    |--pack3
+	       |--pack4
+	          |--GA.java
+	  
+	  package pack3.pack4;
+	  import pack1.pack2.AG;
+	  public class GA { 
+	    public void m2(){ 
+	      AG a = new AG();
+	      a.m1();
+	      System.out.println("Hii Nilyatree from GA");
+	    }
+	  }
+	  
+	  E:
+	   |--Nilyatree.class
+	   
+	   import pack3.pack4.GA;
+	   class Niyatree { 
+	     public static void main(String[] args){ 
+	       GA a = new GA();
+	       a.m2();
+	       System.out.println("Hii Mama Papa I am Nilyatree your daughter");
+	     }
+	   }
+	   
+	   C:\> javac -d . AG.java
+	   D:\> javac -d . GA.java // Error: Can not find symbol
+	                              symbol: class AG
+	                              location: class GA
+	   D:\> javac -cp C: -d . GA.java
+	   
+	   E:\> javac Nilyatree.java // Error : can not find symbol
+	                                symbol : class GA
+	                                symbol : class Nilyatree
+	   E:\> java Nilyatree // RuntimeException: NoClassDefFoundError: GA
+	   
+	   E:\> java -cp D: Nilyatree // RuntimeException: NoClassDefFoundError: Nilyatree
+	   
+	   E:\> java -cp .;D: Nilyatree // RuntimeException: NoClassDefFoundError: AG
+	   
+	   E:\> java -cp .;D:;C:Nilyatree
+	   
+	   F:\> java -cp E:;D:;C:Nilyatree             
+	</textarea>
+	<h6>
+       <b style="color: green ">Conclusions:</b>
+	</h6>
+	<ul>
+	 <li>If any location created because of package statement that location should be resolved by using import statement and base location we have to update in classpath . </li>
+	 <li>Compiler will check only one level of dependency where as JVM will check all levels of dependency . </li>
+	 <li>In classpath, the order of locations is important and JVM will always search from left to right until required .class file available . </li>
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+	   Example :     C:\
+	              -----------
+	              class Nilyatree { 
+	                public static void main(String[] args){ 
+	                  System.out.println("C:AG");
+	                }
+	              }
+	              
+	              D:\
+	              -------
+	              class Nilyatree{ 
+	                public static void main(String args[]){ 
+	                  System.out.println("D:GA");
+	                }
+	              }
+	              
+	              E:\
+	              -----
+	              class Nilyatree { 
+	                public static void main(String[] args){ 
+	                  System.out.println("E:Nilyatree");
+	                }
+	              }
+	             java -cp C:;D:;E: Nilyatree
+	             o/p: C:AG
+	             java -cp E:;D:;C: Nilyatree
+	             o/p: E:Nilyatree
+	 </textarea>
+</body>
+</html> 

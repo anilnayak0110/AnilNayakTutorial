@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h4>
+        <b style="color: green;">Queue</b>
+     </h4>
+     <ul>
+      <li>Queue is the child interface of Collection.</li>
+      <li>If we want to represent a group of individual objects prior to processing then we should go for Queue . </li>
+      <li>From 1.5 version onwards, LinkedList also implements Queue . </li>
+      <li>Usually Queue follows First In First Out (FIFO) order . But based on our requirement we can implement our own priorities also(Priority Queue).</li>
+      <li>LinkedList based implementation of Queue always follows FIFO order . </li>
+      <li>Example: Before sending a mail we have to store all mail id's in some data structure and for the first inserted mail id mail should be send first . For this requirement Queue is the best choice . </li>
+     </ul>
+     <ul>
+       <li><b>Methods :</b>
+         <ul>
+           <li>boolean offer(Object o)<br>
+              To add an Object into the Queue 
+           </li>
+           <li>Object peek()<br>
+               To return head element of Queue . If the queue is empty then this method returns null . 
+           </li>
+           <li>Object element()<br>
+              To return head element of Queue . If queue is empty then this method raises Runtime Exception: NoSuchElementException
+           </li>
+           <li>Object poll()<br>
+               To remove and return head  element of the queue . If queue is empty then this method returns null . 
+           </li>
+           <li>Object remove()<br>
+               To remove and return head element of the queue . If queue is empty then this method raises Runtime Exception: NoSuchElementException . 
+           </li>
+         </ul>
+       </li>
+     </ul>
+      <h4>
+        <b style="color: green;">Priority Queue:</b>
+     </h4>
+     <ul>
+       <li>This is a data structure to store a group of individual objects prior to processing according to some priority . </li>
+       <li>The priority order can be either default natural sorting order or customized sorting order . </li>
+       <li>If we are depending on default natural sorting order then the objects should be homogeneous and Comparable , other wise we will get ClassCastException . </li>
+       <li>If we are defining our own sorting by Comparator then the objects need not be homogeneous and Comparable . </li>
+       <li>Duplicate objects are not allowed . </li>
+       <li>Insertion order is not preserved . </li>
+       <li>Null insertion is not possible even as first element also . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Constructors:-</b>
+     </h5>
+     <ul>
+       <li>PriorityQueue q = new PriorityQueue();<br>
+           Creates an empty PriorityQueue with default initial capacity 11 and all objects will be inserted according to default natural sorting order . 
+       </li>
+       <li>PriorityQueue q = new PriorityQueue(int initialCapacity);</li>
+       <li>PriorityQueue q = new PriorityQueue(int initialCapacity, Comparator c);</li>
+       <li>PriorityQueue q = new PriorityQueue(SortedSet s);</li>
+       <li>PriorityQueue q = new PriorityQueue(Collection c);</li>
+     </ul>
+      <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class PriorityQueueDemo {
+	                public static void main(String[] args){ 
+	                   PriorityQueue q = new PriorityQueue();
+	                   System.out.println(q.peek());//null
+	                   System.out.println(q.element());//java.util.NoSuchElementException
+	                   for(int i = 0; i<=10; i++){ 
+	                      q.offer(i);
+	                   }
+	                   System.out.println(q);
+	                   System.out.println(q.poll());
+	                   System.out.println(q);
+	                }
+	             } 
+	              
+	        o/p: 
+	        
+	        null
+			[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+			0
+			[1, 3, 2, 7, 4, 5, 6, 10, 8, 9]
+	             
+	</textarea>
+	<ul>
+	  <li>Note: Some operating systems won't provide proper support for PriorityQueue's .</li>
+	</ul>
+	   <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class PriorityQueueDemo {
+	                public static void main(String[] args){ 
+	                   PriorityQueue q = new PriorityQueue(15,new MyComparator());
+	                   q.offer("A");
+	                   q.offer("Z");
+	                   q.offer("L");
+	                   q.offer("B");
+	                   System.out.println(q);
+	                }
+	             } 
+	             class MyComparator implements Comparator { 
+	                public int compare(Object o1, Object o2){ 
+	                   String s1 = (String)o1;
+	                   String s2 = o2.toString();
+	                   return s2.compareTo(s1);
+	                }
+	             }
+	        o/p: [Z, B, L, A]
+	             
+	</textarea>
+	
+</body>
+</html>

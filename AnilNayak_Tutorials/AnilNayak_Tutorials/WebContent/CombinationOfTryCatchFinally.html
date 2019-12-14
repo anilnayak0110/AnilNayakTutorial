@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Combination Of Try Catch and Finally</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h4>
+       <b style="color: green ">Combination Of Try Catch and Finally</b>
+	</h4>
+	<ul>
+	  <li>We can take try-catch-finally inside try, catch and finally blocks i.e nesting of try catch and finally is possible .</li>
+	  <li>Whenever we are taking try compulsory we have to write either catch or finally i.e, try without catch or finally is invalid . </li>
+	  <li>Whenever we are writing catch compulsory try block should be required i.e, catch without try is always invalid . </li>
+	  <li>Whenever we are writing finally block compulsory try block should be required i.e, finally without try is always invalid . </li>
+	  <li>In try-catch-finally order is important . </li>
+	  <li>For try-catch and finally blocks curly braces are mandatory . </li>
+	  <li>Once we entered into the try block without executing finally block we can not go out . </li>
+	  <li>If the control won't entered into try block, then finally block won't be executed . </li>
+	</ul>
+	
+	<textarea rows="80" cols="45" style="color: blue;">
+       Combination of try-catch-finally :
+       ----------------------------------
+       Case-1:
+       -------
+          try{ 
+          
+          }
+          catch(Exception e){ 
+          
+          }
+         [Right]
+      
+      Case-2:
+      -------
+         try{ 
+         
+         }
+         catch(ArithmeticException e){ 
+         
+         }
+         catch(NullPointerException ne){ 
+         
+         }
+       [Right]
+    
+     Case-3:
+     -------
+     try{
+      
+     }
+     catch(ArithmeticException ae){ 
+     
+     }
+     catch(ArithmeticException ae){ 
+     
+     }
+     [Wrong]CE: Exception ArithmeticException has already been caught .
+     
+     Case-4:
+     ------
+     try{ 
+     
+     }
+     catch(Exception e){ 
+     
+     }
+     finally{ 
+     
+     }
+     [Right]
+     
+     Case-5:
+     -------
+     try{ 
+     
+     }
+     [Wrong]
+     CE: try without catch or finally . 
+     
+     Case-6:
+     -------
+     catch(Exception e){ 
+     
+     }
+     [Wrong]
+     CE: catch without try
+     
+     Case-7:
+     -------
+     finally{ 
+     
+     }
+     CE: finally without try
+     
+     Case-8:
+     -------
+     try{ 
+     
+     }
+     finally{ 
+     
+     }
+     [Right]
+     
+     Case-9:
+     ------
+     try{ 
+     
+     }
+     System.out.println("Heera");
+     catch(Exception e){ 
+     
+     }
+     [Wrong]
+     CE: try without catch or finally
+          and catch without try
+     
+     Case-10:
+     --------
+     try{ 
+     
+     }
+     catch(ArithmeticException e){ 
+     
+     }
+     System.out.println("Hello");
+     catch(Exception e){ 
+     
+     }
+     [Wrong]
+     CE: catch without try 
+     
+     Case-11:
+     -------
+     try{ 
+     
+     }
+     catch(Exception e){ 
+     
+     }
+     System.out.println("Hello");
+     finally{ 
+     
+     }
+     [Wrong]
+     CE: finally without try
+     
+     Case-12:
+     -------
+     try{ 
+     
+     }
+     finally{ 
+     
+     }
+     catch(Exception e){ 
+     
+     }
+     [Wrong]
+     CE: catch without try 
+     
+     Case-13:
+     -------
+     try{ 
+     
+     }
+     catch(Exception e){ 
+     
+     }
+     try{ 
+     
+     }
+     finally{ 
+     
+     }
+     [Right]
+     
+     Case-14:
+     --------
+     try{ 
+     
+     }
+     catch(Exception e){ 
+     
+     }
+     finally{ 
+     
+     }
+     finally{ 
+     
+     }
+     [Wrong]
+     CE: finally without try
+     
+     Case-15:
+     -------
+     try{ 
+     
+       try{ 
+       
+       }
+       catch(Exception  e){ 
+       
+       }
+      }
+      catch(Exception e){ 
+      
+      }
+      
+    Case-16:
+    --------
+    try{ 
+    
+    }
+    catch(ArithmeticException ae){ 
+    
+       try{ 
+       
+       }
+        catch(Exception e){ 
+    
+        }
+    }
+    [Right]
+   
+   Case-17:
+   --------
+   try{ 
+   
+   }
+   catch(Exception e){ 
+   
+   }
+   finally{ 
+      try{ 
+      
+      }
+      finally{ 
+      
+      }
+   }
+   [Right]
+   
+   Case-18:
+   -------
+   try{ 
+      try{ 
+      
+      }
+   }
+   catch(Exception e){ 
+   
+   }
+   CE: try without catch or finally
+   
+   Case-19:
+   --------
+   try{ 
+       try{ 
+       
+       }
+       catch(Exception e){ 
+       
+       }
+     }
+     catch(Exception e){ 
+     
+    }
+    
+  Case-20:
+  --------
+  try
+    System.out.println("Hello");
+  catch(Exception e){ 
+  
+  }
+  [Wrong]
+  
+  Case-21:
+  --------
+  try{ 
+  
+  }
+  catch(Exception e)
+   System.out.println("Hello");
+  [Wrong]
+  
+  Case-22:
+  --------
+  try{ 
+  
+  }
+  catch(Exception e){ 
+  
+  }
+  finally
+     System.out.println("finally");
+  
+  [Wrong]
+  
+  Case-23:
+  --------
+  try{ 
+  
+  }
+  catch(Exception e){ 
+  
+  }
+  finally{ 
+     try{ 
+     
+     }
+     catch(Exception e){ 
+     
+     }
+  }
+ [Right]
+ </textarea>
+	
+</body>
+</html>

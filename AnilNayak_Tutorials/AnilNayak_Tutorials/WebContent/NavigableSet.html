@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">NavigableSet Interface</b>
+	</h4>
+	<ul>
+	  <li>It is the child interface of SortedSet . </li>
+	  <li>It defines several methods for navigation purposes . </li>
+	</ul>
+	<h5>
+		<b style="color: green;">Methods :</b>
+	</h5>
+	<ul>
+	  <li>floor(e)<br>
+	     It returns highest element which is <=e 
+	  </li>
+	  <li>lower(e)<br>
+	     It returns highest element which is < e
+	  </li>
+	  <li>ceiling(e)<br>
+	      It returns lowest element which is >=e
+	  </li>
+	  <li>
+	     higher(e)<br>
+	     It returns lowest element which is > e
+	  </li>
+	  <li>pollFirst()<br>
+	       Remove and return first element . 
+	  </li>
+	  <li>
+	      pollLast()<br>
+	      Remove and return last element
+	  </li>
+	  <li>
+	     descendingSet()<br>
+	     It returns NavigableSet in reverse order . 
+	  </li>
+	</ul>
+	<textarea rows="20" cols="80" style="color: blue;">
+	     Example:
+	             import java.util.*;
+	             public class TreeSetTest { 
+	                 public static void main(String[] args){ 
+	                 
+	                     TreeSet t = new TreeSet();
+		  				 t.add(100);
+		   				 t.add(200);
+		   				 t.add(300);
+		   				 t.add(400);
+		   				 System.out.println(t);
+		   				 System.out.println(t.ceiling(200));
+		   				 System.out.println(t.higher(200));
+		   				 System.out.println(t.floor(300));
+		   				 System.out.println(t.lower(300));
+		   				 System.out.println(t.pollFirst());
+		   				 System.out.println(t.pollLast());
+		   				 System.out.println(t.descendingSet());
+		   			     System.out.println(t);
+		   
+	                }
+	            }
+	            
+	            o/p: [100, 200, 300, 400]
+					 200
+                     300
+					 300
+                     200
+                     100
+                     400
+                     [300, 200]
+                     [200, 300]
+	</textarea>
+		
+</body>
+</html>

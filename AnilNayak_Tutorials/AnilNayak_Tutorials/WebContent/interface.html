@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Interface</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Interface:</b>
+	</h4>
+	<h5>
+		<b style="color: green;">Introduction:</b>
+	</h5>
+	<ul>
+		<li>Any service requirement specification is considered as an
+			interface .</li>
+	</ul>
+	<img alt="" src="images/Interface.PNG">
+	<br>
+	<ul>
+		<li>From the client point of view, interface defines the set of
+			services what he is expecting . and from the service provider point
+			of view, interface defines the set of services what he is offering .
+			Hence interface is acts as a contract between client and service
+			provider .</li>
+		<li>Inside interface every method is abstract . Hence interface
+			is also considered as 100% pure abstract class .</li>
+	</ul>
+	<h5>
+		<b style="color: green;">interface declaration and implementation
+			:</b>
+	</h5>
+	<ul>
+		<li>Whenever we implementing an interface for each and every
+			method of that interface we should provide implementation, otherwise
+			we have to declare the class as abstract . And for that abstract
+			class, child class is responsible to provide implementation .</li>
+		<li>Whenever we are implementing interface methods, compulsory we
+			should declare that method as public in implementation class,
+			otherwise we will get Compile Time Error .</li>
+	</ul>
+	<textarea rows="10" cols="60" style="color: blue;">
+	  Example: 
+	  interface InterTest { 
+	         void m1();
+	         void m2();
+	         }
+	   public class Test implements InterTest { 
+	      public void m1(){ }
+	      public void m2(){ }
+	   }      
+	</textarea>
+	<h5>
+		<b style="color: green;">extends vs implements :</b>
+	</h5>
+	<ul>
+		<li>A class can extend only one class at a time where as an
+			interface can extend any number of interfaces simultaneously .</li>
+		<li>A class can implements any number of interface simultaneously
+			.</li>
+		<li>A class can extend another class and can implement any number
+			of interfaces simultaneously .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	  Consider the following expression : 
+	     1. X extends Y               [ In this case both X and Y should be either class or interfaces ]
+	     2. X extends Y,Z             [ In this case X, Y and Z should be interfaces ]
+         3. X implements Y,Z          [ In this case X should be class and Y and Z should be interfaces ]	
+         4. X extends Y implements Z  [ In this case X and Y should be a class and Z should be interfaces ] 
+         5. X implements Y extends Z  [ In this case we will get Compile time error : because we have to take extends first followed by implements .]   
+	     
+	</textarea>
+	<h5>
+		<b style="color: green;">interface methods :</b>
+	</h5>
+	<ul>
+		<li>Every interface method is always public and abstract whether
+			we are declaring or not .</li>
+		<li>As every interface method is public and abstract whether we
+			are declaring or not, so we can not declare interface methods with
+			the following modifiers
+			<ul>
+				<li>private</li>
+				<li>protected</li>
+				<li>final</li>
+				<li>synchronized</li>
+				<li>static</li>
+				<li>native</li>
+			</ul>
+		</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	    interface InterfTest {
+	         void m1(); [ public because to make this method available to every implementation class . ]
+	                    [ abstract because the implementation class is responsible to implement this method . ]
+	    }
+	    
+	    Hence the following method declarations are equal inside interface . 
+	    void m1();
+	    public void m1();
+	    abstract void m1();
+	    public abstract void m1();
+	</textarea>
+	<h5>
+		<b style="color: green;">interface variables :</b>
+	</h5>
+	<ul>
+		<li>An interface can contain variables .</li>
+		<li>The main purpose of interface variables is to define
+			requirement level constants .</li>
+		<li>Every interface variables is always public static and final
+			weather we are declaring or not .</li>
+		<li>interface variables we must have to initialize, or else we
+			will get compile time error .</li>
+		<li>We can access interface variables inside implementation
+			class, but we can not modify .</li>
+		<li>As every interface variable is always public, static and
+			final, we can not declare with the following modifiers .
+			<ul>
+				<li>private</li>
+				<li>protected</li>
+				<li>transient</li>
+				<li>volatile</li>
+			</ul>
+		</li>
+	</ul>
+
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	    interface InterfTest {
+	        int x = 10; [ public because to make this variable available to every implementation class . ]
+	                    [ static because without existing object also, implementation class has to access this variable . ]
+	                    [ implementation class can access this variable, but can not modify because it is common variable for served implementation classes . ]
+	    }
+	    
+	    Hence the following variables declarations are equal inside interface . 
+	    
+	    int x = 10;
+	    public int x = 10;
+	    static int x = 10;
+	    final int x = 10;
+	    public static int x = 10;
+	    public final int x = 10;
+	    static final int x = 10;
+	    public static final int x = 10;
+	    
+	</textarea>
+
+	<h5>
+		<b style="color: green;">interface naming conflicts :</b>
+	</h5>
+	<ul>
+		<li>CASE 1: If two interfaces contains a method with same
+			signature and same return type then in the implementation class one
+			method implementation is enough .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	    interface Left {
+	       public void m1();
+	    }
+	     interface Right {
+	       public void m1();
+	    }
+	    
+	   class Test implements Left,Right{
+	       public void m1(){
+	        
+	       }
+	   }
+	    
+	</textarea>
+	<ul>
+		<li>CASE 2: If two interface contain a method with same name but
+			with different arguments then in the implementation class we have to
+			provide implementation for both methods and these methods acts as
+			overloaded methods .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	    interface Left {
+	       public void m1();
+	    }
+	     interface Right {
+	       public void m1(int i);
+	    }
+	    
+	   class Test implements Left,Right{
+	       public void m1(){
+	        
+	       }
+	        public void m1(int i){
+	        
+	       }
+	   }
+	   </textarea>
+	<ul>
+		<li>CASE 3: If two interfaces contain a method with same
+			signature but different return types then it is impossible to
+			implement both interfaces simultaneously .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	    interface Left {
+	       public void m1();
+	    }
+	     interface Right {
+	       public int m1();
+	    }
+	    
+	   </textarea>
+	<ul>
+		<li>We can not write any java class which implement both
+			interfaces simultaneously .</li>
+	</ul>
+
+	<b>Questions :</b> Is a java class can implement any no of interfaces
+	simultaneously ? .
+	<br>
+	<b>Answer :</b> Yes , Except if two interfaces contain a method with
+	same signature but with different return types .
+
+	<h4>
+		<b style="color: green;">Interface variable naming conflicts :</b>
+	</h4>
+	<ul>
+		<li>CASE 1: If two interfaces contain a variable with same name
+			and there may be a chance of variable naming conflict, but we can
+			resolve by using interface names .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	             interface Left{
+	                 int x = 888;
+	             }
+	             interface Right{
+	                int y = 999;
+	             }
+	             class Test implements Left,Right {
+	                public static void main(String[] args){
+	                  System.out.println(Left.x);
+	                  System.out.println(Right.y);
+	                }
+	             }
+	   </textarea>
+	<h4>
+		<b style="color: green;">Adapter Classes:</b>
+	</h4>
+	<ul>
+		<li>An Adapter class is a simple Java class that implements an
+			interface with only empty implementations .</li>
+		<li>If we implement an interface directly compulsory we should
+			provide implementation for each and every method of that interface,
+			whether we are interested or not .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	             interface X{
+	                 m1();
+	                 m2();
+	                 m3();
+	                 |
+	                 |
+	                 |
+	                 m100();
+	             }
+	            
+	             class Test implements X {
+	                m3(){}
+	                _ _ _
+	                _ _ _
+	                _ _ _
+	                m100(){}
+	             }
+	   </textarea>
+	<ul>
+		<li>The problem in this approach is it increases length of the
+			code and reduces readability, it increases complexity of the
+			programming .</li>
+		<li>But we can resolve this problem by using Adapter class .</li>
+		<li>Instead of implementing interface if we extend from Adapter
+			class then we have to provide implementation only for required
+			methods, but not for total methods of interface .</li>
+		<li>The advantages of this approach is length of the code will be
+			reduced and readability will be improved .</li>
+	</ul>
+	<textarea rows="10" cols="100" style="color: blue;">
+	    Example:
+	             interface X{
+	                 m1();
+	                 m2();
+	                 m3();
+	                 |
+	                 |
+	                 |
+	                 m100();
+	             }
+	            
+	            abstract class AdapterX implements X {
+	                m1(){}
+	                m2(){}
+	                m3(){}
+	                ...
+	                ...
+	                ...
+	                ...
+	                m100()
+	            }
+	             class Test extends AdapterX {
+	                m3(){}
+	             }
+	             class Demo extends AdapterX {
+	                m1(){}
+	             }
+	   </textarea>
+	<h4>
+		<b style="color: green;">Marker Interface:</b>
+	</h4>
+	<ul>
+		<li>An interface which does not contain any methods and by
+			implementing that interface if our objects will get some ability such
+			type of interface are called <b>Marker Interface</b>
+		</li>
+	</ul>
+
+	Example: ---------- Serializable, Cloneable, RandomAccess,
+	SingleThreadModel.
+	<br> Serializable: ------------- By implementing Serializable
+	interface our objects can travel accross the network and can be saved
+	to a file .
+	<br> Cloneable: ---------- By implementing Cloneable interface our
+	objects can able to produce exactly duplicate objects .
+	<br>
+
+	<b>Questions :</b> Without having any methods how we are getting
+	ability in marker interfaces .?
+	<br>
+	<b>Answer :</b> Internally JVM is responsible to provide required
+	ability .
+	<br>
+
+	<b>Questions :</b>Why JVM is providing required ability in marker
+	interface ?
+	<br>
+	<b>Answer :</b>To reduce the complexity of the programming .
+	<br>
+
+	<h4>
+		<b style="color: green;">interface vs abstract class vs concrete
+			class:</b>
+	</h4>
+
+	<ul>
+		<li>If we don't know anything about implementation just we have
+			requirement specification then we should go for interface .</li>
+		<li>If we know the partial implementation then we should go for
+			class .</li>
+		<li>If we know the implementation completely and ready to provide service then we should go for concrete class .</li>	
+	</ul>
+	
+	<h4>
+		<b style="color: green;">Difference between interface and abstract class :</b>
+	</h4>
+	<img alt="" src="images/Interface_vs_abstract.PNG" height="800" width="800">
+	<b>Question:</b> We can not create object for abstract class but why we need constructor ?<br>
+	<b>Answer:</b> Abstract class constructor will be executed to perform initialization of child object at the time of child object creation.<br>
+	Note : Either directly or indirectly we can not create object for abstract class . <br>
+	Whenever we are creating child class object then  parent class constructor will be executed, but parent object won't be created.
+	
+</body>
+</html>

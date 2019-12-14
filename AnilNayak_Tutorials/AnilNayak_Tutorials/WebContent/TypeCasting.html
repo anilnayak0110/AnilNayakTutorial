@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Type Casting</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+    <h5>
+       <b style="color: green ">Type Casting:</b>
+	</h5>
+	<ul>
+	  <li>Type casting is used to convert an object or variable of one type into another.</li>
+	  <li>Syntax : 
+				  dataType variableName = (dataType) variableToConvert; </li>
+	 <li>There are two types of type casting is there : 
+	     <ul>
+	       <li>narrowing (larger to smaller type) or implicit type casting</li>
+	       <li>widening (smaller to larger type) or explicit type casting</li>
+	       <li> Widening can be done automatically (for example, int to double), but narrowing must be done explicitly (like double to int).</li>
+	     </ul>
+	 </li>
+	</ul>
+	<textarea rows="10" cols="80" style="color: blue;">
+	      Example of Implicit type casting:
+	         int i =10;
+	         double d = i; // This is called implicit type casting .
+	         
+	        double d = 10.5;
+	        int i = (int)d; // This is called explicit type casting . 
+	        
+	</textarea>
+	
+	<textarea rows="50" cols="80" style="color: blue;">
+	
+	Note : Some cases about explicit type casting . 
+	
+	 Compile time Checking Rule-I:
+	 -------------------------------
+	 D d = new D();
+	 A  b = (C) d;
+	 
+	 1. The type of 'd' and 'C' must have some relationship . 
+	    (Parent to child or child to parent or same type ). otherwise, we will get compile time error saying :
+	    inconvertible types
+	    found : d type
+	    required : C
+	    
+      Object o = new String("Heera");
+      StringBuffer sb = (StringBuffer)o; // Correct type casting
+      
+      String s = new String("Heera");
+      StringBuffer sb = (StringBuffer)s; // Compile Time Error : inconvertible types
+                                             found : java.lang.String
+                                             required : java.lang.StringBuffer
+                                             
+      
+     
+     Compile time Checking Rule-II:
+	 -------------------------------   
+	 'C' must be either same or derived type of A . otherwise we will get compile time error saying .
+	        
+	        incompatible types
+	        found : C
+	        required : A 
+	                                            
+      
+      Object o = new String("Heera");
+      StringBuffer sb = (StringBuffer)o;// With respect to both compile time checking.
+      
+      Object o = new String("Heera");
+      StringBuffer  sb = (String)o; //2nd rule fails
+                                    // Compile time Error : 
+                                        found : java.lang.String
+                                        required : java.lang.StringBuffer
+                                        
+                                        
+     Runtime Checking :
+     --------------------
+     1. The underlying object type of 'd' must be either same or derived type of 'C', otherwise we will get RuntimeException saying : ClassCastException.
+     
+     Ex-1 : Object o = new String("Heera");
+            StringBuffer sb = (StringBuffer)o; // Code compile fine . ClassCastException
+            
+     Ex-2 : Object o = new String("Heera");
+           String s = (String)o;
+           System.out.println(s); // Legal type casting w.r.t compile time and runtime .
+           
+           
+          
+      Through type casting we are not creating any new object. For the existing object only we are providing another type of reference variable . 
+      
+      Ex: 1: String s = new String("Heera");
+          	 Object o = (Object)s;
+          	 System.out.println(s==o); // true 
+      
+      Ex: 2 Integer i = new Integer(10);
+            Number n  = (Number)i;
+            Object o = (Object)n;
+            
+            System.out.println(i.hashCode());
+            System.out.println(n.hashCode()); // all three are same hash code . 
+            System.out.println(o.hashCode());
+            
+            System.out.println(i == n);//true
+            System.out.println(i == o); // true
+            
+                  
+      
+	</textarea>
+    
+</body>
+</html>

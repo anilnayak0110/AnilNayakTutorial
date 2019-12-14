@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Collection Framework</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+
+     <h5>
+        <b style="color: green;">NavigableMap interface</b>
+     </h5>
+     <ul>
+       <li>It is the child interface of SortedMap interface . </li>
+       <li>It defines several methods for navigation purposes . </li>
+     </ul>
+      <h5>
+        <b style="color: green;">Methods :</b>
+     </h5>
+     <ul>
+      <li>floorKey(e)</li>
+      <li>lowerKey(e)</li>
+      <li>ceilingKey(e)</li>
+      <li>higherKey(e)</li>
+      <li>pollFirstEntry()</li>
+      <li>pollLastEntry()</li>
+      <li>descendingMap()</li>
+     </ul>
+     <textarea rows="25" cols="80" style="color: blue;">
+	    
+	    Example:
+	             import java.util.*;
+	             public class HashMapDemo{ 
+	                public static void main(String[] args){ 
+	                   
+	                   TreeMap t = new TreeMap();
+		t.put("b", "Banana");
+		t.put("o", "Orange");
+		t.put("a", "Apple");
+		t.put("p", "Pinapple");
+		System.out.println(t);
+		System.out.println(t.ceilingKey("o"));
+		System.out.println(t.higherKey("b"));
+		System.out.println(t.floorKey("b"));
+		System.out.println(t.lowerKey("b"));
+		System.out.println(t.pollFirstEntry());
+		System.out.println(t.pollLastEntry());
+		System.out.println(t.descendingKeySet());
+		System.out.println(t);
+	              
+	                }
+	             }
+	       
+	O/P:===>   {a=Apple, b=Banana, o=Orange, p=Pinapple}
+o
+o
+b
+a
+a=Apple
+p=Pinapple
+[o, b]
+{b=Banana, o=Orange}
+	             
+	</textarea>
+</body>
+</html>

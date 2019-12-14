@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Constructor</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<style type="text/css">
+</style>
+</head>
+<body>
+   <h4>
+       <b style="color: green ">Constructor :</b>
+	</h4>
+	<ul>
+	  <li>After creation of an object compulsory we have to perform initialization . </li>
+	  <li>Whenever we are creating an object some piece of the code will be executed automatically to perform initialization of an object . This piece of the code is nothing but constructor . </li>
+	  <li>Hence the main objective of constructor is to perform initialization of an object . </li>
+	</ul>
+	<textarea rows="20" cols="60" style="color: blue;">
+	  Example: 
+	     class Student { 
+	     
+	                String name ;
+	                int rollNo;
+	                
+	                Student(String name, int rollNo){ 
+	                   this.name   = name;
+	                   this.rollNo = rollNo;
+	                   }
+	                
+	                public static void main(String[] args){ 
+	                     Student s  = new Student("Gayatree",1);
+	                     Student s1 = new Student("Anil",10);
+	                }
+	            }
+	</textarea>
+	
+	<h5>
+       <b style="color: green ">Constructor vs Instance block</b>
+	</h5>
+	<ul>
+	  <li>The main objective of constructor is to perform initialization of an object . </li>
+	  <li>Other than initialization activity if we want to perform anything for every object creation we have to define that inside instance block . </li>
+	  <li>Both constructor and instance block will be executed for every object creation, but instance block first followed by constructor . </li>
+	</ul>
+	
+	<textarea rows="20" cols="60" style="color: blue;">
+	  Example: 
+	     To track the no of objects created for class :
+	     ------------------------------------------------
+	     
+	     class CountNoOfObject { 
+	           static int count = 0;
+	           
+	           { 
+	               count ++;
+	           }
+	           
+	           public static void main(String[] args){ 
+	           
+	                 CountNoOfObject c1 = new CountNoOfObject();
+	                 CountNoOfObject c2 = new CountNoOfObject();
+	                 System.out.println("Total Number of object are : "+ count);
+	           }
+	     }
+	</textarea>
+	
+	<h5>
+       <b style="color: green ">Rules for writing constructor :  </b>
+	</h5>
+	<ul>
+	  <li>Name of the constructor and name of the class must be same . </li>
+	  <li>Return type is not applicable for constructor, even void also not applicable . But by mistake if we are declaring return type for the constructor then we won't get any compile time error or runtime errors . It is simple treated as a method </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	     Example :
+	               class Test { 
+	               
+	                   void Test(){ 
+	                       // It treated as a method :              
+	                       }
+	                  }
+	         Note: But in this way of defining a method is not recommended . 
+	</textarea>
+	<ul>
+	  <li>The only applicable modifiers for constructor are : <b>public, default, private, protected . </b>, by mistake if we are using any other modifiers we will get compile time error .</li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	     Example :
+	               class Test { 
+	               
+	                   final Test(){ 
+	                       // Compiler Error : modifier final not allowed here .               
+	                       }
+	                  }
+	         Note: But in this way of defining a method is not recommended . 
+	</textarea>
+	<h5>
+       <b style="color: green ">Default constructor :  </b>
+	</h5>
+	<ul>
+	  <li>Every class in java including abstract class contains constructor concept .</li>
+	  <li>If we are not writing any constructor then only compiler will generate default constructor . </li>
+	  <li>If we are writing atleast one constructor then compiler won't generate default constructor .  </li>
+	  <li>Hence every class contain either programmer written constructor or compiler generated constructor but not both . </li>
+	</ul>
+	<h6>
+       <b style="color: green ">Prototype of default constructor : </b>
+	</h6>
+	<ul>
+	 <li>It is always no argument constructor . </li>
+	 <li>Access modifiers of default constructor is exactly same as class modifiers .(It is applicable either for public or default . )</li>
+	 <li>It contains only line e, super(); which is used to call super class no argument constructor .</li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	     Example :
+	               class Test {                         class Test{ 
+	               
+	                                    ===>                      Test(){ 
+	                  }                                                    super();
+	                                                                     }
+	               }
+	                                                             }
+	                                                             
+	</textarea>
+	<ul>
+	  <li>The first line inside every constructor should be either super() or this() . If we are not writing anything then the compiler will always generate super() . </li>
+	</ul>
+	<ul>
+	   <li>Case 1: we have to use super() or this() only in the first line of the constructor . If we are using anywhere we will get compile time error . </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	     class Test { 
+	     
+	              Test(){ 
+	                       System.out.println("Hello");
+	                       super(); // Compile time Error : call to super must be first statement in constructor . 
+	                      }
+	                }
+	                                                             
+	</textarea>
+	<ul>
+	   <li>Case 2: we can use either super() or this() but not both simultaneously .  </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	     class Test { 
+	     
+	              Test(){ 
+	                       super();
+	                       this();
+	                       System.out.println("Constructor");  
+	                      }// Compile time error: Call to this must be first statement in constructor
+	                }
+	            }
+	                                                             
+	</textarea>
+	<ul>
+	   <li>Case 3: we can use either super() or this() only inside the constructor . If we are using anywhere else we will get compile time error . </li>
+	</ul>
+	<textarea rows="10" cols="50" style="color: blue;">
+	     class Test { 
+	     
+	                 public void m1(){ 
+	                      super();
+	                     } // Compile time error : Call to super must be first statement in constructor . 
+	              }
+	                                                             
+	</textarea>
+	<br>Note : We can call a constructor directly from another constructor by using <b>this()</b> or <b>super()</b>
+	
+	<img alt="" src="images/super_this.PNG">
+	
+	<h5>
+       <b style="color: green ">Overloaded Constructors:</b>
+	</h5>
+	<ul>
+	  <li>A class can contain more than constructor and all these constructors should have the same name but different argument types . 
+	      Hence these constructors are considered as overloaded constructor . </li>
+	</ul>
+	<textarea rows="20" cols="50" style="color: blue;">
+	     class Test { 
+	                   Test(){ 
+	                       this(10);
+	                       System.out.println("No-arg");
+	                   }
+	                   Test(int i){ 
+	                       this(10.5);
+	                       System.out.println("int-arg");
+	                   }
+	                   Test(double d){ 
+	                       System.out.println("double-arg");
+	                   }
+	                   public static void main(String[] args){ 
+	                       Test t1 = new Test();
+	                       Test t2 = new Test(10);
+	                       Test t3 = new Test(10.5);
+	                   }
+	              }
+	                                                             
+	</textarea>
+	<ul>
+	  <li>For constructor inheritance concept is not applicable and hence overriding concept is not applicable . But overloading concept is applicable . </li>
+	  <li>Every class in java including abstract class can contain constructors. But interface can not contain constructor . </li>
+	</ul>
+	
+	<h6>
+       <b style="color: green "> Q: Abstract class contain constructor but we can not create object for abstract class, then what is the use of constructor ? </b>
+	</h6>
+	<ul>
+	   <li>Ans: Abstract class constructor will be executed whenever we are creating child object . This constructor is useful to perform initialization of child object . </li>
+	   <li>Whenever we are creating child object automatically parent class constructor will be executed, but parent class object won't be executed .  </li>
+	</ul>
+	<textarea rows="20" cols="50" style="color: blue;">
+	     class P{ 
+	              P() { 
+	                   System.out.println(this.hashCode());
+	                }      
+	             }
+	     class C extends P { 
+	          C() { 
+	              System.out.println(this.hashCode());
+	          }
+	     class Test { 
+	         public static void main(String[] args){ 
+	              C c = new C();
+	              System.out.println(c.hashCode());
+	         }
+	     }
+	    }
+	                                                             
+	</textarea>
+	<ul>
+	  <li>Case 1: Recursive method call is always a RuntimeException  saying <b>StackOverflowError</b>. Where as recursive constructor innovation is always a compile time error .  </li>
+	</ul>
+	<textarea rows="20" cols="50" style="color: blue;">
+	   class Test { 
+	        public static void m1(){ 
+	           m2();
+	        }
+	        public static void m2(){ 
+	           m1();
+	        }
+	        public static void main(String[] args){ 
+	           m1();
+	           System.out.println("Hello");
+	        }
+	   } // Runtime Exception: StackOverflowError .                                                          
+	</textarea>
+	<textarea rows="20" cols="50" style="color: blue;">
+	   class Test { 
+	       Test(){
+	          this(10); 
+	       }
+	       Test(int i){ 
+	          this();
+	       }
+	       public static void main(String[] args){ 
+	          System.out.println("Hello");
+	       }
+	   } // Runtime Exception: Recursive constructor innovation.                                                          
+	</textarea>
+	
+	<textarea rows="20" cols="50" style="color: blue;">
+	   class P { 
+	      
+	   }
+	   class C extends P { 
+	   
+	   }
+	   
+	   class P { 
+	        P(){ 
+	        
+	        }
+	   }
+	   class C extends P { 
+	   
+	   }
+	   
+	   class P { 
+	        P(int i){ 
+	        
+	        }
+	   }
+	   class C extends P { 
+	         C(int i) {
+		       super(i);
+		      }
+	   }                                                 
+	</textarea>
+	<ul>
+	  <li>Conclusion: If parent class contains some arguments constructor while writing child classes we have to take special case to write constructor . </li>
+	</ul>
+	
+	<ul>
+	  <li>Case 3: If parent class constructor throws some checked exception compulsory child class constructor should throws the same checked exception or its parent . </li>
+	</ul>
+	<textarea rows="20" cols="50" style="color: blue;">
+	   class P { 
+	      P() throws IOException{ 
+	      
+	      }
+	   }
+	   class C extends P { 
+	       C() { 
+	          super();
+	       }
+	   }
+	   Compile time error: unreported exception 
+	                         java.io.IOException in
+	                         default constructor . 
+	                         
+	
+	
+	class P { 
+	    P() throws Exception{ 
+	    
+	    }
+	}
+	class C extends P { 
+	 
+	 C() throws IOException{ 
+	    super();
+	 }
+	}                            
+	</textarea>
+</body>
+</html>

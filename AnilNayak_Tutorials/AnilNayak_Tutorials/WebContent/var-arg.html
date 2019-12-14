@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Var-arg method</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script type="text/javascript" src="https://gc.kis.scr.kaspersky-labs.com/137ABBD9-C70B-CD4C-B420-25D49B01D85F/main.js" charset="UTF-8"></script><script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style type="text/css">
+</style>
+</head>
+<body>
+	<h4>
+		<b style="color: green;">Var-arg Method</b>
+	</h4>
+	<ul>	
+<li>Until jdk 1.4 version we can not declare a method with number of arguments, so when there is any change in
+number of arguments, then we should create a new method, so this approach increase the length of the code and
+reduce the readability of the code .</li>
+<li>So to resolve this problem Sun people introduced <b>var-arg</b> method in jdk 1.5 version .</li>
+<li>So from jdk 1.5 onwards we can declare a method with number of arguments, and this method is called <b>var-arg</b> method .</li>
+<li>We can declare var-arg method as like this <b>public m1(int...x)</b></li>
+<li>We can invoke this method by passing any number of integer arguments .<br>
+    <b>Example:: m1();<br>
+                     m1(10);<br>
+                     m1(10,20);<br>
+                     m1(10,20,30)</b></li>
+</ul>
+<b>Lets take an Example::</b><br>
+<textarea rows="18" cols="50" style="color: blue;font-size: medium;">
+package com.anilnayak.sample;
+public class Sample {
+  
+	public static void sum(int...x) {
+		int sum = 0;
+		for(int y:x) {
+			sum = sum + y;
+		}
+		System.out.println("Total sum::"+sum);
+	}
+	public static void main(String[] args) {
+		sum(10);
+		sum(10,20);
+		sum(10,20,30);
+	}
+
+}
+
+Output::
+Total sum::10
+Total sum::30
+Total sum::60
+</textarea>
+<ul>
+  <li>The correct way of writing var-arg method as follows below :<br>
+      <b>m1(int...x)</b><b style="color: green">Right</b><br>
+      <b>m1(int x...)</b><b style="color: red">Wrong</b><br>
+      <b>m1(int ...x)</b><b style="color: green">Right</b><br>
+      <b>m1(int. ..x)</b><b style="color: red">Wrong</b><br>
+      <b>m1(int .x..)</b><b style="color: red">Wrong</b></li>
+      <li>We can write var-arg parameter with normal parameter, but var-arg parameter should be last parameter .</li>
+      <li>In var-arg method we can take only one var-arg parameter, we can't take more than one var-arg parameter .</li>
+      <li>var-arg method always get least priority, means when no method matched then var-arg method will got chance to execute .</li>
+      <li>We can replace single dimensional array with var-arg parameter, but reverse not possible .
+          <br><b>example:: m1(int[] x) == m1(int...x)<b style="color: green">Right</b><br>
+                           m1(int...x) == m1(int[] x)<b style="color: red">Wrong</b></b></li>
+</ul>
+</body>
+</html>
